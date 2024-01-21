@@ -10,15 +10,17 @@
       <th scope="col">Product Type</th>
       <th scope="col">Transaction</th>
       <th scope="col">Margin</th>
+      <th scope="col">Loss</th>
     </tr>
   </thead>
   <tbody>
-  <?php foreach($data as $news): ?>
+  <?php foreach($products as $p): ?>
     <tr>
-    <td><?= $news['provider'] ?></td>
-    <td><?= $news['product_type'] ?></td>
-    <td><?= $news['trx'] ?></td>
-    <td><?= $news['margin'] ?></td>
+    <td><?= $p['provider'] ?></td>
+    <td><?= $p['product_type'] ?></td>
+    <td><?= $p['trx'] ?></td>
+    <td><?= $p['margin'] ?></td>
+    <td><?= $p['loss'] ?></td>
     </tr>
     <?php endforeach ?>
   </tbody>
