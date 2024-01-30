@@ -230,4 +230,9 @@ class Home extends BaseController
     echo view('admin/dashboard/category_by_provider', $results);
 	}
 
+
+    public function test(){
+        echo view("/admin/dashboard/test");
+    }
+
 }

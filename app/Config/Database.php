@@ -26,11 +26,11 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'epsxpay.com',
-        'username'     => 'epsxpayc_dev',
-        'password'     => 'udahguakasih',
-        'database'     => 'epsxpayc_dev',
-        'DBDriver'     => 'MySQLi',
+        'hostname'     => '36.64.19.114',
+        'username'     => 'digi_eps',
+        'password'     => 'htLlph3lYkrqfaRTqKEELxaf',
+        'database'     => 'digi_eps',
+        'DBDriver'     => 'SQLSRV',
         'DBPrefix'     => '',
         'pConnect'     => false,
         'DBDebug'      => true,
@@ -41,7 +41,7 @@ class Database extends Config
         'compress'     => false,
         'strictOn'     => false,
         'failover'     => [],
-        'port'         => 3306,
+        'port'         => 1433,
         'numberNative' => false,
     ];
 
