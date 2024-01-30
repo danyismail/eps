@@ -26,10 +26,10 @@ class Database extends Config
      */
     public array $default = [
         'DSN'          => '',
-        'hostname'     => 'epsxpay.com',
-        'username'     => 'epsxpayc_dev',
-        'password'     => 'udahguakasih',
-        'database'     => 'epsxpayc_dev',
+        'hostname'     => 'localhost',
+        'username'     => '',
+        'password'     => '',
+        'database'     => '',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,
@@ -71,6 +71,27 @@ class Database extends Config
         'busyTimeout' => 1000,
     ];
 
+
+    public array $kpi = [
+        'DSN'          => '',
+        'hostname'     => '36.64.19.114',
+        'username'     => 'digi_eps',
+        'password'     => 'htLlph3lYkrqfaRTqKEELxaf',
+        'database'     => 'digi_eps',
+        'DBDriver'     => 'SQLSRV',
+        'DBPrefix'     => '',
+        'pConnect'     => false,
+        'DBDebug'      => true,
+        'charset'      => 'utf8',
+        'DBCollat'     => 'utf8_general_ci',
+        'swapPre'      => '',
+        'encrypt'      => false,
+        'compress'     => false,
+        'strictOn'     => false,
+        'failover'     => [],
+        'port'         => 1433,
+        'numberNative' => false,
+    ];
     public function __construct()
     {
         parent::__construct();

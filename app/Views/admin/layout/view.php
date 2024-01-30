@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
 
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>epsxpay.com</title>
+<title>Hospital</title>
 <link rel="icon" href="assets/img/logo.png" type="image/png">
 
 <link rel="stylesheet" href="assets/css/bootstrap1.min.css" />
@@ -28,6 +29,8 @@
 </head>
 <body class="crm_body_bg">
 
+
+
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
     <ul id="sidebar_menu">
@@ -37,8 +40,8 @@
                 <span>Dashboard</span>
             </a> -->
             <ul>
-                <li><a >Report</a></li>
-                <!-- <li><a ></a></li> -->
+                <li><a class="active" href="index.html">Dashboard 1</a></li>
+                <li><a href="index_2.html">Dashboard 2</a></li>
             </ul>
         </li>
     </ul>
@@ -89,7 +92,7 @@
     <div class="main_content_iner ">
         <div class="container-fluid p-0">
             <div class="row justify-content-center">
-                <?php $this->renderSection('content'); ?>
+
             </div>
         </div>
     </div>
