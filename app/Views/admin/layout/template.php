@@ -37,8 +37,8 @@
                 <span>Dashboard</span>
             </a> -->
             <ul>
-                <li><a >Report</a></li>
-                <!-- <li><a ></a></li> -->
+                <li><a href="<?=base_url('/')?>">Report</a></li>
+                <li><a href="<?=base_url('/kpi')?>">KPI</a></li>
             </ul>
         </li>
     </ul>
@@ -137,5 +137,26 @@
 <script src="assets/js/custom.js"></script>
 <script src="assets/vendors/apex_chart/bar_active_1.js"></script>
 <script src="assets/vendors/apex_chart/apex_chart_list.js"></script>
+
+<script>
+    $(function() {
+        function getData() {
+            $.ajax({
+                type: "GET",
+                url: "https://jsonplaceholder.typicode.com/posts",
+                crossDomain: true,
+                header: {
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin":"*"
+                },
+                success: function (data) {
+                    $result.val(newValue);
+                }
+            });
+        };
+        getData()
+    })
+</script>
+
 </body>
 </html>
