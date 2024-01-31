@@ -142,15 +142,19 @@
     $(function() {
         function getData() {
             $.ajax({
-                type: "GET",
-                url: "https://jsonplaceholder.typicode.com/posts",
+                type: "POST",
+                url: "http://36.88.42.95:1523/api/eps/getKpis",
+                processData: false,
+                contentType: 'application/json',
                 crossDomain: true,
+                data: JSON.stringify({page: 1, view: 10}),
                 header: {
+                    "content-type": "text/plain;charset=UTF-8",
                     "accept": "application/json",
                     "Access-Control-Allow-Origin":"*"
                 },
                 success: function (data) {
-                    $result.val(newValue);
+                    console.log('data = ', data)
                 }
             });
         };
