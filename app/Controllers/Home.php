@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-use App\Models\ProviderModel; 
+use App\Models\ProviderModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\IncomingRequest;
 
@@ -9,9 +9,9 @@ class Home extends BaseController
 {
     public function getProduct()
 	{
-        if (isset($_POST['filterTanggal'])){
-            $startDt = $_POST['startDt'];
-            $endDt = $_POST['endDt'];
+        if(isset($_GET['startDt']) && isset($_GET['endDt']) ){
+            $startDt = $_GET['startDt'];
+            $endDt = $_GET['endDt'];
             $this->indexWithDate($startDt, $endDt);
         } else {
             $this->index();
@@ -23,7 +23,7 @@ class Home extends BaseController
 	{
         $db = \Config\Database::connect();
         $provider = new ProviderModel();
-        $results = $provider->orderBy('name', 'ASC')->findAll();  
+        $results = $provider->orderBy('name', 'ASC')->findAll();
 
         $response['data'] = array();
 
@@ -50,7 +50,7 @@ class Home extends BaseController
             $mEc = 0;
             $mPln = 0;
             $mGame = 0;
-            
+
             foreach ($detail as $dd){
                 if ($dd['product_type'] === 'DATA'){
                     $countData = $dd['trx'];
@@ -114,8 +114,25 @@ class Home extends BaseController
             );
         }
 
+        $response['total'] = array();
+        $product_type = array('DATA', 'REGULER', 'SMS', 'TELP', 'TRANSFER', 'VOUCHER', 'ECOMMERCE', 'PLN', 'GAME');
+
+        foreach ($product_type as $item){
+            $sql = "SELECT format_date ,product_type ,COUNT(1) as trx,ROUND(sum(margin)) as margin ,ROUND(sum(loss)) as loss from v_reporting vr group by product_type HAVING product_type='".$item."'";
+            $total  = $db->query($sql)->getRow();
+
+            array_push($response['total'], array
+                (
+                    'TOTAL_TRX_'.$item => $total->trx ?? 0,
+                    'TOTAL_MARGIN_'.$item   => $total->margin ?? 0,
+                 )
+            );
+        }
+
         // return $this->respond($response);
-        echo view('admin/dashboard/index', $response);
+        $date = ['startDate' => 'start', 'endDate' => 'end'];
+        $merge_data = array_merge($response, $date);
+        echo view('admin/dashboard/index', $merge_data);
 	}
 
     public function indexWithDate(string $startDt, string $endDt)
@@ -124,12 +141,18 @@ class Home extends BaseController
         $endDt = date("Y-m-d H:i:s", strtotime($endDt));
         $db = \Config\Database::connect();
         $provider = new ProviderModel();
-        $results = $provider->orderBy('name', 'ASC')->findAll();  
+        $results = $provider->orderBy('name', 'ASC')->findAll();
 
         $response['data'] = array();
 
+        $filterDate = "format_date BETWEEN '".$startDt. "' AND '".$endDt ."'";
+        if($startDt === $endDt) {
+            $startDt = date("Y-m-d", strtotime($startDt));
+            $filterDate = "format_date like '%".$startDt. "%'";
+        }
+
         foreach ($results as $key) {
-            $sql = "SELECT format_date ,provider ,product_type ,COUNT(1) as trx,ROUND(sum(margin)) as margin ,ROUND(sum(loss)) as loss from v_reporting vr group by provider,product_type HAVING format_date BETWEEN '" . $startDt . "' AND '" . $endDt ."'" . "AND provider in (" . "'".$key['name']."'".")";
+            $sql = "SELECT format_date ,provider ,product_type ,COUNT(1) as trx,ROUND(sum(margin)) as margin ,ROUND(sum(loss)) as loss from v_reporting vr group by provider,product_type HAVING " .$filterDate. " AND provider in (" . "'".$key['name']."'".")";
             $query  = $db->query($sql);
             $detail = $query->getResultArray();
             $countData = 0;
@@ -151,7 +174,7 @@ class Home extends BaseController
             $mEc = 0;
             $mPln = 0;
             $mGame = 0;
-            
+
             foreach ($detail as $dd){
                 if ($dd['product_type'] === 'DATA'){
                     $countData = $dd['trx'];
@@ -215,8 +238,25 @@ class Home extends BaseController
             );
         }
 
-        // return $this->respond($response);
-        echo view('admin/dashboard/index', $response);
+        $response['total'] = array();
+        $product_type = array('DATA', 'REGULER', 'SMS', 'TELP', 'TRANSFER', 'VOUCHER', 'ECOMMERCE', 'PLN', 'GAME');
+
+        foreach ($product_type as $item){
+            $sql = "SELECT format_date ,product_type ,COUNT(1) as trx,ROUND(sum(margin)) as margin ,ROUND(sum(loss)) as loss from v_reporting vr group by product_type HAVING " .$filterDate. " AND product_type='".$item."'";
+            // echo $sql."<br /><br /><br />";
+            $total  = $db->query($sql)->getRow();
+
+            array_push($response['total'], array
+                (
+                    'TOTAL_TRX_'.$item => $total->trx ?? 0,
+                    'TOTAL_MARGIN_'.$item   => $total->margin ?? 0,
+                 )
+            );
+        }
+
+        $date = ['startDate' => $startDt, 'endDate' => $endDt];
+        $merge_data = array_merge($response, $date);
+        echo view('admin/dashboard/index', $merge_data);
 	}
 
 
@@ -229,10 +269,5 @@ class Home extends BaseController
     // return $this->respond($results);
     echo view('admin/dashboard/category_by_provider', $results);
 	}
-
-
-    public function test(){
-        echo view("/admin/dashboard/test");
-    }
 
 }

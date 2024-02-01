@@ -1,145 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Product</title>
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="asset-admin/css/styles.css" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-        <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">EPS Dashboard</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <!-- <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
-                </div>
-            </form> -->
-            <!-- Navbar-->
-            <!-- <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul> -->
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <!-- <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link" href="/report">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Report
-                            </a> -->
-                            <div class="sb-sidenav-menu-heading">Menu</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Reporting
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="/">Product</a>
-                                </nav>
-                            </div>
-                            <!-- <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a> -->
-                            <!-- <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
-                                        </nav>
-                                    </div>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">401 Page</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
-                                            <a class="nav-link" href="500.html">500 Page</a>
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div> -->
-                            <!-- <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="/dashboard">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a> -->
+<html lang="zxx">
+<head>
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<title>epsxpay.com</title>
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+
+<link rel="stylesheet" href="assets/css/bootstrap1.min.css" />
+<link rel="stylesheet" href="assets/vendors/themefy_icon/themify-icons.css" />
+<link rel="stylesheet" href="assets/vendors/swiper_slider/css/swiper.min.css" />
+<link rel="stylesheet" href="assets/vendors/select2/css/select2.min.css" />
+<link rel="stylesheet" href="assets/vendors/niceselect/css/nice-select.css" />
+<link rel="stylesheet" href="assets/vendors/owl_carousel/css/owl.carousel.css" />
+<link rel="stylesheet" href="assets/vendors/gijgo/gijgo.min.css" />
+<link rel="stylesheet" href="assets/vendors/font_awesome/css/all.min.css" />
+<link rel="stylesheet" href="assets/vendors/tagsinput/tagsinput.css" />
+<link rel="stylesheet" href="assets/vendors/datatable/css/jquery.dataTables.min.css" />
+<link rel="stylesheet" href="assets/vendors/datatable/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="assets/vendors/datatable/css/buttons.dataTables.min.css" />
+<link rel="stylesheet" href="assets/vendors/text_editor/summernote-bs4.css" />
+<link rel="stylesheet" href="assets/vendors/morris/morris.css">
+<link rel="stylesheet" href="assets/vendors/material_icon/material-icons.css" />
+<link rel="stylesheet" href="assets/css/metisMenu.css">
+<link rel="stylesheet" href="assets/css/style1.css" />
+<link rel="stylesheet" href="assets/css/colors/default.css" id="colorSkinCSS">
+</head>
+<body class="crm_body_bg">
+
+<nav class="sidebar">
+    <div class="logox d-flex justify-content-between"></div>
+    <ul id="sidebar_menu">
+        <li class="side_menu_title"><span>Dashboard</span></li>
+        <li class="mm-active">
+            <!-- <a class="has-arrow" href="#" aria-expanded="false">
+                <span>Dashboard</span>
+            </a> -->
+            <ul>
+                <li><a href="<?=base_url('/')?>">Report</a></li>
+                <li><a href="<?=base_url('/kpi')?>">KPI</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+
+<section class="main_content dashboard_part">
+    <div class="container-fluid g-0">
+        <div class="row">
+            <div class="col-lg-12 p-0">
+                <div class="header_iner d-flex justify-content-between align-items-center">
+                    <!-- <div class="sidebar_icon d-lg-none">
+                        <i class="ti-menu"></i>
+                    </div>
+                    <div class="serach_field-area">
+                        <div class="search_inner">
+                            <form action="#">
+                                <div class="search_field">
+                                    <input type="text" placeholder="Search here...">
+                                </div>
+                                <button type="submit"> <img src="img/icon/icon_search.svg" alt> </button>
+                            </form>
                         </div>
                     </div>
-                    <!-- <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        EPS Dashboard
+                    <div class="header_right d-flex justify-content-between align-items-center">
+                        <div class="header_notification_warp d-flex align-items-center">
+                            <li><a href="#"> <img src="img/icon/bell.svg" alt> </a></li>
+                            <li><a href="#"> <img src="img/icon/msg.svg" alt> </a></li>
+                        </div>
+
+                        <div class="profile_info">
+                            <img src="img/client_img.png" alt="#">
+                            <div class="profile_info_iner">
+                                <p>Neurologist </p>
+                                <h5>Dr. Robar Smith</h5>
+                                <div class="profile_info_details">
+                                    <a href="#">My Profile <i class="ti-user"></i></a>
+                                    <a href="#">Settings <i class="ti-settings"></i></a>
+                                    <a href="#">Log Out <i class="ti-shift-left"></i></a>
+                                </div>
+                            </div>
+                        </div>
                     </div> -->
-                </nav>
+                </div>
             </div>
-
-           <!-- pasang argumen buat konten -->
-           <?php $this->renderSection('content'); ?>
-           <!-- end of -->
-        
-
-            <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; eps 2024</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-            </footer>
-
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="asset-admin/js/scripts.js"></script>
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script> -->
-        <!-- <script src="asset-admin/demo/chart-area-demo.js"></script> -->
-        <!-- <script src="asset-admin/demo/chart-bar-demo.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="asset-admin/js/datatables-simple-demo.js"></script>
-    </body>
+    </div>
+
+    <div class="main_content_iner ">
+        <div class="container-fluid p-0">
+            <div class="row justify-content-center">
+                <?php $this->renderSection('content'); ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="footer_part">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer_iner text-center">
+                        <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Dashboard</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</section>
+
+
+
+<script src="assets/js/jquery1-3.4.1.min.js"></script>
+<script src="assets/js/popper1.min.js"></script>
+<script src="assets/js/bootstrap1.min.js"></script>
+<script src="assets/js/metisMenu.js"></script>
+<script src="assets/vendors/count_up/jquery.waypoints.min.js"></script>
+<script src="assets/vendors/chartlist/Chart.min.js"></script>
+<script src="assets/vendors/count_up/jquery.counterup.min.js"></script>
+<script src="assets/vendors/swiper_slider/js/swiper.min.js"></script>
+<script src="assets/vendors/niceselect/js/jquery.nice-select.min.js"></script>
+<script src="assets/vendors/owl_carousel/js/owl.carousel.min.js"></script>
+<script src="assets/vendors/gijgo/gijgo.min.js"></script>
+<script src="assets/vendors/datatable/js/jquery.dataTables.min.js"></script>
+<script src="assets/vendors/datatable/js/dataTables.responsive.min.js"></script>
+<script src="assets/vendors/datatable/js/dataTables.buttons.min.js"></script>
+<script src="assets/vendors/datatable/js/buttons.flash.min.js"></script>
+<script src="assets/vendors/datatable/js/jszip.min.js"></script>
+<script src="assets/vendors/datatable/js/pdfmake.min.js"></script>
+<script src="assets/vendors/datatable/js/vfs_fonts.js"></script>
+<script src="assets/vendors/datatable/js/buttons.html5.min.js"></script>
+<script src="assets/vendors/datatable/js/buttons.print.min.js"></script>
+<script src="assets/js/chart.min.js"></script>
+<script src="assets/vendors/progressbar/jquery.barfiller.js"></script>
+<script src="assets/vendors/tagsinput/tagsinput.js"></script>
+<script src="assets/vendors/text_editor/summernote-bs4.js"></script>
+<script src="assets/vendors/apex_chart/apexcharts.js"></script>
+<script src="assets/js/custom.js"></script>
+<script src="assets/vendors/apex_chart/bar_active_1.js"></script>
+<script src="assets/vendors/apex_chart/apex_chart_list.js"></script>
+
+<script>
+    $(function() {
+        function getData() {
+            $.ajax({
+                type: "POST",
+                url: "http://36.88.42.95:1523/api/eps/getKpis",
+                processData: false,
+                contentType: 'application/json',
+                crossDomain: true,
+                data: JSON.stringify({page: 1, view: 10}),
+                header: {
+                    "content-type": "text/plain;charset=UTF-8",
+                    "accept": "application/json",
+                    "Access-Control-Allow-Origin":"*"
+                },
+                success: function (data) {
+                    console.log('data = ', data)
+                }
+            });
+        };
+        getData()
+    })
+</script>
+
+</body>
 </html>
