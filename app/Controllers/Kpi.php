@@ -16,9 +16,9 @@ class Kpi extends BaseController
             'view' => 10
         );
 
-        $body = json_encode($data);
+        // $body = json_encode($data);
 
-        $response['test'] = $this->perform_http_request('POST', 'http://36.88.42.95:1523/api/eps/getKpis', $body);
+        // $response['test'] = $this->perform_http_request('POST', 'http://36.88.42.95:1523/api/eps/getKpis', $body);
         // $response['data'] = $this->perform_http_request('GET', 'https://jsonplaceholder.typicode.com/posts');
         $arr = '[
             {

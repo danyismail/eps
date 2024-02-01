@@ -28,7 +28,7 @@
         </form>
       </div>
     </div>
-    <?php var_dump($test) ?>
+
     <div class="table-responsive">
     <table class="table table-bordered">
         <thead>
