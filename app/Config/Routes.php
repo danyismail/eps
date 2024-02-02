@@ -6,5 +6,6 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->setAutoRoute(true);
-$routes->get('/', 'Home::getProduct');
-$routes->post('/', 'Home::getProduct');
+$routes->get('/', 'Kpi::index');
+// $routes->get('/', 'Home::getProduct');
+// $routes->post('/', 'Home::getProduct');

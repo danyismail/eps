@@ -37,7 +37,7 @@
                 <span>Dashboard</span>
             </a> -->
             <ul>
-                <li><a href="<?=base_url('/')?>">Report</a></li>
+                <!-- <li><a href="<?=base_url('/')?>">Report</a></li> -->
                 <li><a href="<?=base_url('/kpi')?>">KPI</a></li>
             </ul>
         </li>

@@ -44,12 +44,12 @@
         <tbody>
             <?php foreach($data as $row): ?>
                 <tr>
-                    <td><?=$row['TglEntri']?></td>
-                    <td><?=$row['TglStatus']?></td>
-                    <td><?=$row['Status']?></td>
-                    <td><?=$row['KodeProduk']?></td>
-                    <td><?=$row['Tujuan']?></td>
-                    <td><?=$row['Kpi']?></td>
+                    <td><?=$row['tanggal_entri']?></td>
+                    <td><?=$row['tanggal_status']?></td>
+                    <td><?=$row['status']?></td>
+                    <td><?=$row['kode_produk']?></td>
+                    <td><?=$row['tujuan']?></td>
+                    <td><?=$row['kpi']?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
