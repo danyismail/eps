@@ -33,23 +33,32 @@
     <table class="table table-bordered">
         <thead>
           <tr class="bg-success text-white">
-            <th>Entry Date</th>
-            <th>Status Date</th>
-            <th>Status</th>
-            <th>Product</th>
-            <th>Tujuan</th>
-            <th>Status KPI</th>
+          <th>Entry Date</th>
+          <th>Status Date</th>
+          <th>Status</th>
+          <th>Kode Produk</th>
+          <th>Tujuan</th>
+          <th>KPI</th>
           </tr>
         </thead>
         <tbody>
             <?php foreach($data as $row): ?>
                 <tr>
-                    <td><?=$row['tanggal_entri']?></td>
-                    <td><?=$row['tanggal_status']?></td>
-                    <td><?=$row['status']?></td>
+                <td><?=date("d-m-Y h:m:s", strtotime($row['tanggal_entri']))?></td>
+                    <td><?=date("d-m-Y h:m:s", strtotime($row['tanggal_status']))?></td>
+                    <?php if($row['status'] == "40") {
+                        echo "<td style='color:red;'>gagal</td>";
+                    } elseif ($row['status'] == "52"){
+                      echo "<td style='color:orange;'>tujuan salah</td>";
+                    } else {
+                      echo "<td>sukses</td>";
+                    }
+                    ?>
                     <td><?=$row['kode_produk']?></td>
                     <td><?=$row['tujuan']?></td>
-                    <td><?=$row['kpi']?></td>
+                    <td <?php if($row['kpi'] > 180): ?> style="color:red;" <?php endif; ?>>
+                        <?php echo $row['waktu_respon']?>
+                    </td>
                 </tr>
             <?php endforeach ?>
         </tbody>
