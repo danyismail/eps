@@ -51,7 +51,7 @@
                     } elseif ($row['status'] == "52"){
                       echo "<td style='color:orange;'>tujuan salah</td>";
                     } else {
-                      echo "<td>sukses</td>";
+                      echo "<td style='color:green;'>sukses</td>";
                     }
                     ?>
                     <td><?=$row['kode_produk']?></td>
