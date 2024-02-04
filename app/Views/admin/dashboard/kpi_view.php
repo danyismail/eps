@@ -39,6 +39,7 @@
           <th>Kode Produk</th>
           <th>Tujuan</th>
           <th>KPI</th>
+          <th>Shift</th>
           </tr>
         </thead>
         <tbody>
@@ -59,6 +60,7 @@
                     <td <?php if($row['kpi'] > 180): ?> style="color:red;" <?php endif; ?>>
                         <?php echo $row['waktu_respon']?>
                     </td>
+                    <td><?=$row['shift']?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
