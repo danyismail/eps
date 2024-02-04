@@ -7,54 +7,48 @@ use CodeIgniter\HTTP\IncomingRequest;
 
 class Kpi extends BaseController
 {
-
     use ResponseTrait;
     public function index()
 	{
-        $data = array(
+        $request = request();
+        $client = service('curlrequest');
+
+        $datafilter = array(
             'page' => 1,
             'view' => 10
         );
 
-        $body = json_encode($data);
-
-        $getData = $this->perform_http_request('POST', 'http://36.88.42.95:1523/api/eps/getKpis', $body);
-        $res = json_decode($getData, true);
-        $response['data'] = $res['data'];
-        echo view('admin/dashboard/kpi_view', $response);
-	}
-
-    function perform_http_request($method, $url, $data = false) {
-        $curl = curl_init();
-
-        switch ($method) {
-            case "POST":
-                curl_setopt($curl, CURLOPT_POST, 1);
-
-                if ($data) {
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-                }
-
-                break;
-            case "PUT":
-                curl_setopt($curl, CURLOPT_PUT, 1);
-
-                break;
-            default:
-                if ($data) {
-                    $url = sprintf("%s?%s", $url, http_build_query($data));
-                }
+        if($request->getGet('startDt')) {
+            $datafilter['startDt'] = $request->getGet('startDt');
         }
 
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //If SSL Certificate Not Available, for example, I am calling from http://localhost URL
+        if($request->getGet('endDt')) {
+            $datafilter['endDt'] = $request->getGet('endDt');
+        }
 
-        $result = curl_exec($curl);
+        if($request->getGet('mdn')) {
+            $datafilter['mdn'] = $request->getGet('mdn');
+        }
 
-        curl_close($curl);
+        if($request->getGet('shift')) {
+            $datafilter['shift'] = $request->getGet('shift');
+        }
 
-        return $result;
-    }
+        if($request->getGet('status')) {
+            $datafilter['status'] = $request->getGet('status');
+        };
+
+        $posts_data = $client->request("POST", "http://36.88.42.95:1523/api/eps/getKpis", [
+			"headers" => [
+				"Accept" => "application/json",
+                "Content-Type" => "application/json"
+			],
+			"form_params" => $datafilter
+		]);
+
+        $res = json_decode($posts_data->getBody(), true);
+        $response['data'] = $res['data'] ?? array();
+        echo view('admin/dashboard/kpi_view', $response);
+	}
 
 }
