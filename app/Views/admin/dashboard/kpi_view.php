@@ -24,7 +24,7 @@
                   <select name="shift" class="form-control">
                     <option value="">-- Choose --</option>
                     <option value="pagi" <?=@$_GET['shift'] === "pagi" ? "selected" : ''?>>Pagi</option>
-                    <option value="siang" <?=@$_GET['shift'] === "sore" ? "selected" : ''?>>Sore</option>
+                    <option value="sore" <?=@$_GET['shift'] === "sore" ? "selected" : ''?>>Sore</option>
                     <option value="malam" <?=@$_GET['shift'] === "malam" ? "selected" : ''?>>Malam</option>
                   </select>
                 </div>
