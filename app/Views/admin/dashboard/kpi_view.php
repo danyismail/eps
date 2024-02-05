@@ -14,7 +14,7 @@
                   <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="mdn">MDN</label>
+                  <label for="mdn">Tujuan</label>
                   <input type="text" name="mdn" class="form-control" value="<?=@$_GET['mdn']?>" />
                 </div>
               </div>
@@ -24,7 +24,7 @@
                   <select name="shift" class="form-control">
                     <option value="">-- Choose --</option>
                     <option value="pagi" <?=@$_GET['shift'] === "pagi" ? "selected" : ''?>>Pagi</option>
-                    <option value="siang" <?=@$_GET['shift'] === "siang" ? "selected" : ''?>>Siang</option>
+                    <option value="siang" <?=@$_GET['shift'] === "sore" ? "selected" : ''?>>Sore</option>
                     <option value="malam" <?=@$_GET['shift'] === "malam" ? "selected" : ''?>>Malam</option>
                   </select>
                 </div>
