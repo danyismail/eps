@@ -15,7 +15,7 @@ class Kpi extends BaseController
 
         $datafilter = array(
             'page' => 1,
-            'view' => 10
+            'view' => 1000
         );
 
         if($request->getGet('startDt')) {
