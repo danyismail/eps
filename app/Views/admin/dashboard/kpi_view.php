@@ -64,11 +64,25 @@
                 <td>
                   <?php if($row['status'] == "40") {
                         echo "<span class='text-danger'>GAGAL</span>";
+                <td><?=date("d-m-Y h:m:s", strtotime($row['tanggal_status']))?></td>
+                <td>
+                  <?php if($row['status'] == "40") {
+                        echo "<span class='text-danger'>GAGAL</span>";
                     } elseif ($row['status'] == "52"){
+                        echo "<span class='text-warning'>TUJUAN SALAH</span>";
                         echo "<span class='text-warning'>TUJUAN SALAH</span>";
                     } else {
                         echo "<span class='text-success'>SUKSES</span>";
+                        echo "<span class='text-success'>SUKSES</span>";
                     }
+                  ?>
+                </td>
+                  <td><?=$row['kode_produk']?></td>
+                  <td><?=$row['tujuan']?></td>
+                  <td <?php if($row['kpi'] > 180): ?> style="color:red;" <?php endif; ?>>
+                      <?php echo $row['waktu_respon']?>
+                  </td>
+                  <td><?=$row['shift']?></td>
                   ?>
                 </td>
                   <td><?=$row['kode_produk']?></td>
