@@ -26,8 +26,8 @@ class Kpi extends BaseController
             $datafilter['endDt'] = $request->getGet('endDt');
         }
 
-        if($request->getGet('tujua')) {
-            $datafilter['tujuan'] = $request->getGet('tujuan');
+        if($request->getGet('tujuan')) {
+            $datafilter['mdn'] = $request->getGet('tujuan');
         }
 
         if($request->getGet('shift')) {
@@ -38,7 +38,7 @@ class Kpi extends BaseController
             $datafilter['status'] = $request->getGet('status');
         };
 
-        $posts_data = $client->request("POST", "http://36.88.42.95:1523/api/eps/getKpis", [
+        $posts_data = $client->request("POST", "http://localhost:1523/api/eps/getKpis", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
