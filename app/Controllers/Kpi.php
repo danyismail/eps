@@ -15,7 +15,7 @@ class Kpi extends BaseController
 
         $datafilter = array(
             'page' => 1,
-            'view' => 1000
+            'view' => 200
         );
 
         if($request->getGet('startDt')) {
@@ -26,8 +26,8 @@ class Kpi extends BaseController
             $datafilter['endDt'] = $request->getGet('endDt');
         }
 
-        if($request->getGet('mdn')) {
-            $datafilter['mdn'] = $request->getGet('mdn');
+        if($request->getGet('tujua')) {
+            $datafilter['tujuan'] = $request->getGet('tujuan');
         }
 
         if($request->getGet('shift')) {

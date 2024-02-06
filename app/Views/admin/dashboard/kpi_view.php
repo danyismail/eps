@@ -14,8 +14,8 @@
                   <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
                 </div>
                 <div class="form-group col-md-3">
-                  <label for="mdn">Tujuan</label>
-                  <input type="text" name="mdn" class="form-control" value="<?=@$_GET['mdn']?>" />
+                  <label for="tujuan">Tujuan</label>
+                  <input type="text" name="tujuan" class="form-control" value="<?=@$_GET['tujuan']?>" />
                 </div>
               </div>
               <div class="row">
