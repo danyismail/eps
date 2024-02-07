@@ -39,6 +39,7 @@
             <ul>
                 <!-- <li><a href="<?=base_url('/')?>">Report</a></li> -->
                 <li><a href="<?=base_url('/kpi')?>">KPI</a></li>
+                <li><a href="<?=base_url('/supplier')?>">Saldo Supplier</a></li>
             </ul>
         </li>
     </ul>
