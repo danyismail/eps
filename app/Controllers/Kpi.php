@@ -38,10 +38,10 @@ class Kpi extends BaseController
 
         $response['page'] = $request->getGet('page') ?? 1;
         $response['num_results_on_page'] = 10;
-        $datafilter = array(
-            'page' => $request->getGet('page') ?? 1,
-            'view' => $response['num_results_on_page'],
-        );
+
+        $datafilter['page'] = $request->getGet('page') ?? 1;
+        $datafilter['view'] = $response['num_results_on_page'];
+
         $posts_data = $client->request("POST", "http://36.88.42.95:1523/api/eps/getKpis", [
 			"headers" => [
 				"Accept" => "application/json",
