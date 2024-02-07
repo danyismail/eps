@@ -25,6 +25,43 @@
 <link rel="stylesheet" href="assets/css/metisMenu.css">
 <link rel="stylesheet" href="assets/css/style1.css" />
 <link rel="stylesheet" href="assets/css/colors/default.css" id="colorSkinCSS">
+<style>
+    .pagination {
+        list-style-type: none;
+        padding: 10px 0;
+        display: inline-flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+    }
+    .pagination li {
+        box-sizing: border-box;
+        padding-right: 10px;
+    }
+    .pagination li a {
+        box-sizing: border-box;
+        background-color: #e2e6e6;
+        padding: 8px;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: bold;
+        color: #616872;
+        border-radius: 4px;
+    }
+    .pagination li a:hover {
+        background-color: #d4dada;
+    }
+    .pagination .next a, .pagination .prev a {
+        text-transform: uppercase;
+        font-size: 12px;
+    }
+    .pagination .currentpage a {
+        background-color: #518acb;
+        color: #fff;
+    }
+    .pagination .currentpage a:hover {
+        background-color: #518acb;
+    }
+</style>
 </head>
 <body class="crm_body_bg">
 
@@ -138,30 +175,5 @@
 <script src="assets/js/custom.js"></script>
 <script src="assets/vendors/apex_chart/bar_active_1.js"></script>
 <script src="assets/vendors/apex_chart/apex_chart_list.js"></script>
-
-<script>
-    $(function() {
-        function getData() {
-            $.ajax({
-                type: "POST",
-                url: "http://36.88.42.95:1523/api/eps/getKpis",
-                processData: false,
-                contentType: 'application/json',
-                crossDomain: true,
-                data: JSON.stringify({page: 1, view: 10}),
-                header: {
-                    "content-type": "text/plain;charset=UTF-8",
-                    "accept": "application/json",
-                    "Access-Control-Allow-Origin":"*"
-                },
-                success: function (data) {
-                    console.log('data = ', data)
-                }
-            });
-        };
-        getData()
-    })
-</script>
-
 </body>
 </html>
