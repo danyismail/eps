@@ -8,10 +8,10 @@
 
     <div class="table-responsive">
     <?php 
-      $current_time = time();   
-      $new_time = date("Y-m-d H:i:s", strtotime('+7 hours', $current_time));
+      $nowTime = date("H:i:s", strtotime('+7 hours', time()));
+      $startOfDay = strtotime('today');
     ?>
-    Total pemakaian deposit sampai dengan saat ini : <?php echo $new_time ?>
+    <h4>Total pemakaian deposit hari ini dari pukul : <?php echo date('H:i:s', $startOfDay) ?> sampai : <?php echo $nowTime ?></h4>
     <table class="table table-bordered">
         <thead>
           <tr class="bg-success text-white">
