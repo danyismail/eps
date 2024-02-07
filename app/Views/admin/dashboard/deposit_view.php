@@ -12,6 +12,7 @@
       $startOfDay = strtotime('today');
     ?>
     <h4>Total pemakaian deposit hari ini dari pukul : <?php echo date('H:i:s', $startOfDay) ?> sampai : <?php echo $nowTime ?></h4>
+    <button class="bg-warning" onclick="reload()">REFRESH PAGE</button>
     <table class="table table-bordered">
         <thead>
           <tr class="bg-success text-white">
@@ -37,6 +38,9 @@
     </div>
   </div>
   <script type="text/javascript">
+        function reload(){
+          window.location.reload();
+        }
         // Reload the page every 5 seconds (5000 milliseconds)
         setInterval(function(){
             window.location.reload();
