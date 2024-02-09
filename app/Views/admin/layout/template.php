@@ -130,7 +130,15 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <?php foreach($breadcrumb as $key => $row): ?>
-                            <li class="breadcrumb-item <?=$row['active'] ? 'active' : ''?>" <?=$row['active'] ? 'aria-current="page"' : ''?>><a href="#"><?=$row['label']?></a></li>
+                            <li class="breadcrumb-item <?=$row['active'] ? 'active text-secondary' : ''?>" <?=$row['active'] ? 'aria-current="page"' : ''?>>
+                                <?php
+                                    if($row['active']) {
+                                        echo $row['label'];
+                                    } else {
+                                        echo '<a href="'.$row['url'].'">'.$row['label'].'</a>';
+                                    }
+                                ?>
+                            </li>
                         <?php endforeach ?>
                     </ol>
                 </nav>

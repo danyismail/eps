@@ -11,7 +11,7 @@ class Deposit extends BaseController
     public function index()
 	{
         $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", "http://localhost:1523/api/eps/deposit", [
+        $getDepositToday = $client->request("GET", "http://36.88.42.95:1523/api/eps/deposit", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -22,8 +22,8 @@ class Deposit extends BaseController
         $response['data'] = $res['data'] ?? array();
 
         $response['breadcrumb'] = array(
-            array('label' => 'Home', 'active' => false),
-            array('label' => 'Supplier', 'active' => true)
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Supplier', 'url' => '', 'active' => true)
         );
 
         echo view('admin/dashboard/deposit_view', $response);

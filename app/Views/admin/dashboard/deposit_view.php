@@ -8,11 +8,10 @@
 
     <div class="table-responsive">
     <?php 
-      $nowTime = date("H:i:s", strtotime('+7 hours', time()));
-      $startOfDay = strtotime('today');
+      $current_time = time();   
+      $new_time = date("Y-m-d H:i:s", strtotime('+7 hours', $current_time));
     ?>
-    <h4>Total pemakaian deposit hari ini dari pukul : <?php echo date('H:i:s', $startOfDay) ?> sampai : <?php echo $nowTime ?></h4>
-    <button class="bg-warning" onclick="reload()">REFRESH PAGE</button>
+    Total pemakaian deposit sampai dengan saat ini : <?php echo $new_time ?>
     <table class="table table-bordered">
         <thead>
           <tr class="bg-success text-white">
@@ -38,9 +37,6 @@
     </div>
   </div>
   <script type="text/javascript">
-        function reload(){
-          window.location.reload();
-        }
         // Reload the page every 5 seconds (5000 milliseconds)
         setInterval(function(){
             window.location.reload();

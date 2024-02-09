@@ -55,8 +55,8 @@ class Kpi extends BaseController
         $response['total_pages'] = $res['total'] ?? 0;
 
         $response['breadcrumb'] = array(
-            array('label' => 'Home', 'active' => false),
-            array('label' => 'KPI', 'active' => true)
+            array('label' => 'Home', 'url' => '/supplier', 'active' => false),
+            array('label' => 'KPI', 'url' => '', 'active' => true)
         );
 
         echo view('admin/dashboard/kpi_view', $response);
