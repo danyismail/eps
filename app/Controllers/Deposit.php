@@ -20,6 +20,12 @@ class Deposit extends BaseController
 
         $res = json_decode($getDepositToday->getBody(), true);
         $response['data'] = $res['data'] ?? array();
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'active' => false),
+            array('label' => 'Supplier', 'active' => true)
+        );
+
         echo view('admin/dashboard/deposit_view', $response);
 	}
 

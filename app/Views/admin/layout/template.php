@@ -127,6 +127,13 @@
     <div class="main_content_iner ">
         <div class="container-fluid p-0">
             <div class="row justify-content-center">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <?php foreach($breadcrumb as $key => $row): ?>
+                            <li class="breadcrumb-item <?=$row['active'] ? 'active' : ''?>" <?=$row['active'] ? 'aria-current="page"' : ''?>><a href="#"><?=$row['label']?></a></li>
+                        <?php endforeach ?>
+                    </ol>
+                </nav>
                 <?php $this->renderSection('content'); ?>
             </div>
         </div>
