@@ -77,7 +77,8 @@
                 <!-- <li><a href="<?=base_url('/')?>">Report</a></li> -->
                 <li><a href="<?=base_url('/kpi')?>">KPI</a></li>
                 <li><a href="<?=base_url('/supplier')?>">Saldo Supplier</a></li>
-                <li><a href="<?=base_url('/sales')?>">Sales</a></li>
+                <li><a href="<?=base_url('/sales-periode')?>">Penjualan</a></li>
+                <li><a href="<?=base_url('/sales')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
     </ul>

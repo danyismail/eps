@@ -28,5 +28,4 @@ class Deposit extends BaseController
 
         echo view('admin/dashboard/deposit_view', $response);
 	}
-
 }
