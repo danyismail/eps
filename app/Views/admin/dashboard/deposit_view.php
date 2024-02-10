@@ -7,11 +7,13 @@
     </div>
 
     <div class="table-responsive">
+    <button class="bg-warning text" onclick=f5()>reload</button>
     <?php 
-      $current_time = time();   
-      $new_time = date("Y-m-d H:i:s", strtotime('+7 hours', $current_time));
+      $isToday = time();   
+      $isDate = date("Y-m-d", strtotime('+7 hours', $isToday));
+      $isTime = date("H:i:s", strtotime('+7 hours', $isToday));
     ?>
-    Total pemakaian deposit sampai dengan saat ini : <?php echo $new_time ?>
+    Total pemakaian deposit hari ini  <?php echo $isDate ?> jam 00:00:00 sampai dengan <?php echo $isTime ?>
     <table class="table table-bordered">
         <thead>
           <tr class="bg-success text-white">
@@ -41,5 +43,9 @@
         setInterval(function(){
             window.location.reload();
         }, 60000); // Adjust the interval time as needed
+
+        function f5(){
+            window.location.reload();
+        }
     </script>
 <?php $this->endSection() ?>

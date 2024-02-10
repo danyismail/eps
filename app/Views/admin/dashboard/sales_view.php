@@ -7,12 +7,13 @@
     </div>
 
     <div class="table-responsive">
+    <button class="bg-warning text" onclick=f5()>reload</button>
     <?php 
-      $current_time = time();   
-      $new_date = date("Y-m-d", strtotime('+7 hours', $current_time));
-      $new_time = date("H:i:s", strtotime('+7 hours', $current_time));
+      $isToday = time();   
+      $isDate = date("Y-m-d", strtotime('+7 hours', $isToday));
+      $isTime = date("H:i:s", strtotime('+7 hours', $isToday));
     ?>
-    Total penjualan hari ini  <?php echo $new_date ?> jam 00:00:00 sampai dengan <?php echo $new_time ?>
+    Total penjualan hari ini  <?php echo $isDate ?> jam 00:00:00 sampai dengan <?php echo $isTime ?>
     <table class="table table-bordered">
         <thead>
           <tr class="bg-success text-white">
@@ -20,6 +21,7 @@
           <th>Trx</th>
           <th>Pembelian</th>
           <th>Penjualan</th>
+          <th>Laba</th>
           </tr>
         </thead>
         <tbody>
@@ -29,10 +31,21 @@
                   <td><?=$row['trx']?></td>
                   <td><?=number_format($row['pembelian'])?></td>
                   <td><?=number_format($row['penjualan'])?></td>
+                  <td><?=number_format($row['laba'])?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
       </table>
     </div>
   </div>
+  <script type="text/javascript">
+        // Reload the page every 5 seconds (5000 milliseconds)
+        setInterval(function(){
+            window.location.reload();
+        }, 60000); // Adjust the interval time as needed
+
+        function f5(){
+            window.location.reload();
+        }
+    </script>
 <?php $this->endSection() ?>
