@@ -76,9 +76,13 @@
             <ul>
                 <!-- <li><a href="<?=base_url('/')?>">Report</a></li> -->
                 <li><a href="<?=base_url('/kpi')?>">KPI</a></li>
+                <li><a href="<?=base_url('/amazon-kpi')?>">KPI [Amazon]</a></li>
                 <li><a href="<?=base_url('/supplier')?>">Saldo Supplier</a></li>
+                <li><a href="<?=base_url('/amazon-supplier')?>">Saldo Supplier [Amazon]</a></li>
                 <li><a href="<?=base_url('/sales-periode')?>">Penjualan</a></li>
+                <li><a href="<?=base_url('/amazon-sales-periode')?>">Penjualan [Amazon]</a></li>
                 <li><a href="<?=base_url('/sales')?>">Penjualan Hari Ini</a></li>
+                <li><a href="<?=base_url('/amazon-sales')?>">Penjualan Hari Ini [Amazon]</a></li>
             </ul>
         </li>
     </ul>
