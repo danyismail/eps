@@ -7,7 +7,8 @@
     </div>
 
     <div class="table-responsive">
-    <button class="bg-warning text" onclick=f5()>reload</button>
+    <a href="" onclick=f5()>refresh page...</a>
+    <br>
     <?php 
       $isToday = time();   
       $isDate = date("Y-m-d", strtotime('+7 hours', $isToday));
@@ -16,7 +17,7 @@
     Total pemakaian deposit hari ini  <?php echo $isDate ?> jam 00:00:00 sampai dengan <?php echo $isTime ?>
     <table class="table table-bordered">
         <thead>
-          <tr class="bg-success text-white">
+          <tr class="bg-info text-white">
           <th>Kode Modul</th>
           <th>Label</th>
           <th>Total Transaksi</th>

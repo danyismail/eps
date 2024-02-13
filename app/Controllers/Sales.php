@@ -100,7 +100,7 @@ class Sales extends BaseController
             array('label' => 'Penjualan Amazon', 'url' => '', 'active' => true)
         );
 
-        echo view('admin/dashboard/sales_periode_view', $response);
+        echo view('admin/dashboard/sales_periode_amz', $response);
 	}
 
 }

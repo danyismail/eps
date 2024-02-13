@@ -113,7 +113,7 @@ class Kpi extends BaseController
             array('label' => 'KPI Amazon', 'url' => '', 'active' => true)
         );
 
-        echo view('admin/dashboard/kpi_view', $response);
+        echo view('/admin/dashboard/kpi_view_amz', $response);
 	}
 
 }

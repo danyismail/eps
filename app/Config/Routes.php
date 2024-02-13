@@ -5,12 +5,13 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
-$routes->setAutoRoute(true);
+// $routes->setAutoRoute(true);
 $routes->get('/', 'Kpi::index');
-$routes->get('/amazon-kpi', 'Kpi::get_kpi');
-$routes->get('/supplier', 'Deposit::index');
-$routes->get('/amazon-supplier', 'Deposit::get_deposit');
-$routes->get('/sales', 'Sales::index');
-$routes->get('/amazon-sales', 'Sales::get_sales');
-$routes->get('/sales-periode', 'Sales::salesPeriode');
-$routes->get('/amazon-sales-periode', 'Sales::get_sales_periode');
+$routes->get('/ePS/kpi', 'Kpi::index');
+$routes->get('/AmZ/kpi', 'Kpi::get_kpi');
+$routes->get('/ePS/RekapSpl', 'Deposit::index');
+$routes->get('/AmZ/RekapSpl', 'Deposit::get_deposit');
+$routes->get('/ePS/Rect', 'Sales::index');
+$routes->get('/AmZ/Rect', 'Sales::get_sales');
+$routes->get('/ePS/Rect/periode', 'Sales::salesPeriode');
+$routes->get('/AmZ/Rect/periode', 'Sales::get_sales_periode');
