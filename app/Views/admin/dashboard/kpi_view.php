@@ -43,10 +43,10 @@
       </div>
     </div>
 
-    <div class="table-responsive">
+    <div class="table-responsive bg-white pb-3">
     <table class="table table-bordered">
         <thead>
-          <tr class="bg-success text-white">
+          <tr class="bg-info text-white">
           <th>Entry Date</th>
           <th>Status Date</th>
           <th>Status</th>

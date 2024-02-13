@@ -70,19 +70,29 @@
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span>Dashboard</span></li>
         <li class="mm-active">
-            <!-- <a class="has-arrow" href="#" aria-expanded="false">
-                <span>Dashboard</span>
-            </a> -->
+            <a class="d-flex" href="#" aria-expanded="false">
+                <i class="far fa-circle"></i>
+                <span>Digi Amazon</span>
+                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
+            </a>
             <ul>
-                <!-- <li><a href="<?=base_url('/')?>">Report</a></li> -->
-                <li><a href="<?=base_url('/kpi')?>">KPI</a></li>
                 <li><a href="<?=base_url('/amazon-kpi')?>">KPI [Amazon]</a></li>
-                <li><a href="<?=base_url('/supplier')?>">Saldo Supplier</a></li>
                 <li><a href="<?=base_url('/amazon-supplier')?>">Saldo Supplier [Amazon]</a></li>
-                <li><a href="<?=base_url('/sales-periode')?>">Penjualan</a></li>
                 <li><a href="<?=base_url('/amazon-sales-periode')?>">Penjualan [Amazon]</a></li>
-                <li><a href="<?=base_url('/sales')?>">Penjualan Hari Ini</a></li>
                 <li><a href="<?=base_url('/amazon-sales')?>">Penjualan Hari Ini [Amazon]</a></li>
+            </ul>
+        </li>
+        <li class>
+            <a class="d-flex" href="#" aria-expanded="false">
+                <i class="far fa-circle"></i>
+                <span>Digi Eps</span>
+                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
+            </a>
+            <ul>
+                <li><a href="<?=base_url('/kpi')?>">KPI</a></li>
+                <li><a href="<?=base_url('/supplier')?>">Saldo Supplier</a></li>
+                <li><a href="<?=base_url('/sales-periode')?>">Penjualan</a></li>
+                <li><a href="<?=base_url('/sales')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
     </ul>
@@ -141,7 +151,7 @@
                                     if($row['active']) {
                                         echo $row['label'];
                                     } else {
-                                        echo '<a href="'.$row['url'].'">'.$row['label'].'</a>';
+                                        echo '<a href="'.$row['url'].'" class="text-info">'.$row['label'].'</a>';
                                     }
                                 ?>
                             </li>
