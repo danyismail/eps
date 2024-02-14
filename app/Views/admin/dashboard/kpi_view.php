@@ -38,11 +38,13 @@
                   </select>
                 </div>
               </div>
-            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            <button type="submit" class="btn btn-primary mt-2">Submit</button>
         </form>
       </div>
     </div>
-
+    <div class="card-title">
+      Total KPI tercapai : <?php echo $success; ?> | Total KPI tidak tercapai : <?php echo $failed; ?>
+    </div>
     <div class="table-responsive bg-white pb-3">
     <table class="table table-bordered">
         <thead>

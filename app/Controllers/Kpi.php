@@ -42,7 +42,7 @@ class Kpi extends BaseController
         $datafilter['page'] = $request->getGet('page') ?? 1;
         $datafilter['view'] = $response['num_results_on_page'];
 
-        $posts_data = $client->request("POST", "http://36.88.42.95:1523/api/eps/getKpis", [
+        $posts_data = $client->request("POST", "http://localhost:1523/api/eps/getKpis", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -53,6 +53,8 @@ class Kpi extends BaseController
         $res = json_decode($posts_data->getBody(), true);
         $response['data'] = $res['data'] ?? array();
         $response['total_pages'] = $res['total'] ?? 0;
+        $response['success'] = $res['success'] ?? 0;
+        $response['failed'] = $res['failed'] ?? 0;
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/supplier', 'active' => false),
@@ -107,6 +109,8 @@ class Kpi extends BaseController
         $res = json_decode($posts_data->getBody(), true);
         $response['data'] = $res['data'] ?? array();
         $response['total_pages'] = $res['total'] ?? 0;
+        $response['success'] = $res['success'] ?? 0;
+        $response['failed'] = $res['failed'] ?? 0;
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/supplier', 'active' => false),

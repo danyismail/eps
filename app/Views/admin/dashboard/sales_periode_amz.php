@@ -14,7 +14,7 @@
                   <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
                 </div>
               </div>
-            <button type="submit" class="btn btn-primary mt-4">Submit</button>
+            <button type="submit" class="btn btn-primary mt-1">Submit</button>
         </form>
       </div>
     </div>
@@ -35,9 +35,9 @@
                 <tr>
                   <td><?=$row['ma']?></td>
                   <td><?=$row['trx']?></td>
-                  <td><?=$row['pembelian']?></td>
-                  <td><?=$row['penjualan']?></td>
-                  <td><?=$row['laba']?></td>
+                  <td><?=number_format($row['pembelian'])?></td>
+                  <td><?=number_format($row['penjualan'])?></td>
+                  <td><?=number_format($row['laba'])?></td>
                 </tr>
             <?php endforeach ?>
         </tbody>
