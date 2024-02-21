@@ -42,7 +42,7 @@ class Kpi extends BaseController
         $datafilter['page'] = $request->getGet('page') ?? 1;
         $datafilter['view'] = $response['num_results_on_page'];
 
-        $posts_data = $client->request("POST", "http://localhost:1523/api/eps/getKpis", [
+        $posts_data = $client->request("POST", getenv('API_HOST')."/api/eps/getKpis", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -98,7 +98,7 @@ class Kpi extends BaseController
         $datafilter['page'] = $request->getGet('page') ?? 1;
         $datafilter['view'] = $response['num_results_on_page'];
 
-        $posts_data = $client->request("POST", "http://localhost:1523/api/eps/getKpisProd", [
+        $posts_data = $client->request("POST", getenv('API_HOST')."/api/eps/getKpisProd", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"

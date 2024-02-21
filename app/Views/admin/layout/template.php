@@ -67,9 +67,13 @@
 
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
+    <?php
+        $arrAmazon = array("", "AmZ/kpi", "AmZ/RekapSpl", "AmZ/Rect/periode", "AmZ/Rect");
+        $arrDigi = array("", "ePS/kpi", "ePS/RekapSpl", "ePS/Rect/periode", "ePS/Rect");
+    ?>
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span>Dashboard</span></li>
-        <li class="mm-active">
+        <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
             <a class="d-flex" href="#" aria-expanded="false">
                 <i class="far fa-circle"></i>
                 <span>Digi Amazon</span>
@@ -82,7 +86,7 @@
                 <li><a href="<?=base_url('/AmZ/Rect')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
-        <li class>
+        <li class="<?=array_search(uri_string(), $arrDigi) ? 'mm-active' : ''?>">
             <a class="d-flex" href="#" aria-expanded="false">
                 <i class="far fa-circle"></i>
                 <span>Digi Eps</span>

@@ -11,7 +11,7 @@ class Sales extends BaseController
     public function index()
 	{
         $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", "http://localhost:1523/api/eps/sales", [
+        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/sales", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -32,7 +32,7 @@ class Sales extends BaseController
     public function get_sales()
 	{
         $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", "http://localhost:1523/api/eps/salesProd", [
+        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/salesProd", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -56,10 +56,10 @@ class Sales extends BaseController
         $params = $this->request->getGet();
         $from = $params['startDt'] ?? '';
         $to = $params['endDt'] ?? '';
-        
-        
+
+
         $client = service('curlrequest');
-        $getSalesPeriode = $client->request("GET", "http://localhost:1523/api/eps/salesPeriode?startDate=$from&endDate=$to", [
+        $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/api/eps/salesPeriode?startDate=$from&endDate=$to", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -82,10 +82,10 @@ class Sales extends BaseController
         $params = $this->request->getGet();
         $from = $params['startDt'] ?? '';
         $to = $params['endDt'] ?? '';
-        
-        
+
+
         $client = service('curlrequest');
-        $getSalesPeriode = $client->request("GET", "http://localhost:1523/api/eps/salesPeriodeProd?startDate=$from&endDate=$to", [
+        $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/api/eps/salesPeriodeProd?startDate=$from&endDate=$to", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"

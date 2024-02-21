@@ -11,7 +11,7 @@ class Deposit extends BaseController
     public function index()
 	{
         $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", "http://localhost:1523/api/eps/deposit", [
+        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/deposit", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -32,7 +32,7 @@ class Deposit extends BaseController
     public function get_deposit()
 	{
         $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", "http://localhost:1523/api/eps/depositProd", [
+        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/depositProd", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
