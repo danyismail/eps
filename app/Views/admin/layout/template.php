@@ -68,8 +68,8 @@
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
     <?php
-        $arrAmazon = array("", "AmZ/kpi", "AmZ/RekapSpl", "AmZ/Rect/periode", "AmZ/Rect");
-        $arrDigi = array("", "ePS/kpi", "ePS/RekapSpl", "ePS/Rect/periode", "ePS/Rect");
+        $arrAmazon = array("", "AmZ/kpi", "AmZ/RekapSpl", "AmZ/Rect/periode", "AmZ/Rect", "amz/supplier");
+        $arrDigi = array("", "ePS/kpi", "ePS/RekapSpl", "ePS/Rect/periode", "ePS/Rect", "eps/supplier");
     ?>
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span>Dashboard</span></li>
@@ -84,6 +84,7 @@
                 <li><a class="<?=(uri_string() === 'AmZ/RekapSpl') ? 'active' : ''?>" href="<?=base_url('/AmZ/RekapSpl')?>">Saldo Supplier</a></li>
                 <li><a class="<?=(uri_string() === 'AmZ/Rect/periode') ? 'active' : ''?>" href="<?=base_url('/AmZ/Rect/periode')?>">Penjualan</a></li>
                 <li><a class="<?=(uri_string() === 'AmZ/Rect') ? 'active' : ''?>" href="<?=base_url('/AmZ/Rect')?>">Penjualan Hari Ini</a></li>
+                <li><a class="<?=(uri_string() === 'amz/supplier') ? 'active' : ''?>" href="<?=base_url('/amz/supplier')?>">Supplier</a></li>
             </ul>
         </li>
         <li class="<?=array_search(uri_string(), $arrDigi) ? 'mm-active' : ''?>">
@@ -97,6 +98,7 @@
                 <li><a class="<?=(uri_string() === 'ePS/RekapSpl') ? 'active' : ''?>" href="<?=base_url('/ePS/RekapSpl')?>">Saldo Supplier</a></li>
                 <li><a class="<?=(uri_string() === 'ePS/Rect/periode') ? 'active' : ''?>" href="<?=base_url('/ePS/Rect/periode')?>">Penjualan</a></li>
                 <li><a class="<?=(uri_string() === 'ePS/Rect') ? 'active' : ''?>" href="<?=base_url('/ePS/Rect')?>">Penjualan Hari Ini</a></li>
+                <li><a class="<?=(uri_string() === 'eps/supplier') ? 'active' : ''?>" href="<?=base_url('/eps/supplier')?>">Supplier</a></li>
             </ul>
         </li>
     </ul>
