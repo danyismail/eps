@@ -20,8 +20,9 @@ class Supplier extends BaseController
         $res = json_decode($posts_data->getBody(), true);
         $response['data'] = $res['data'] ?? array();
         $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '', 'active' => false),
-            array('label' => 'Supplier', 'url' => '', 'active' => true)
+            array('label' => 'Finance', 'url' => '', 'active' => false),
+            array('label' => 'Supplier', 'url' => '', 'active' => false),
+            array('label' => 'Amazon', 'url' => '', 'active' => true)
         );
 
         echo view('admin/Finance/Amz/supplier/view', $response);
@@ -46,9 +47,9 @@ class Supplier extends BaseController
 
     public function add() {
         $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '', 'active' => false),
-            array('label' => 'Supplier', 'url' => '/amz/supplier', 'active' => false),
-            array('label' => 'Add', 'url' => '', 'active' => true)
+            array('label' => 'Finance', 'url' => '', 'active' => false),
+            array('label' => 'Supplier', 'url' => '', 'active' => false),
+            array('label' => 'Amazon', 'url' => '', 'active' => true)
         );
         echo view('admin/Finance/Amz/supplier/create', $response);
     }
@@ -85,9 +86,9 @@ class Supplier extends BaseController
         $res = json_decode($getAPI->getBody(), true);
         $response['data'] = $res['data'] ?? array();
         $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '', 'active' => false),
-            array('label' => 'Supplier', 'url' => '/amz/supplier', 'active' => false),
-            array('label' => 'Edit', 'url' => '', 'active' => true)
+            array('label' => 'Finance', 'url' => '', 'active' => false),
+            array('label' => 'Supplier', 'url' => '', 'active' => false),
+            array('label' => 'Amazon', 'url' => '', 'active' => true)
         );
 
         echo view('admin/Finance/Amz/supplier/update', $response);
