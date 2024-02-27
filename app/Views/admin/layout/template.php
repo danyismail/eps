@@ -100,18 +100,7 @@
                 <li><a class="<?=(uri_string() === 'ePS/Rect') ? 'active' : ''?>" href="<?=base_url('/ePS/Rect')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
-        <li class="side_menu_title"><span>Finance</span></li>
-        <li class="<?=array_search(uri_string(), $arrFinance) ? 'mm-active' : ''?>">
-            <a class="d-flex" href="#" aria-expanded="false">
-                <i class="far fa-circle m-0"></i>
-                <span>Supplier</span>
-                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
-            </a>
-            <ul>
-                <li><a class="<?=(uri_string() === 'amz/supplier') ? 'active' : ''?>" href="<?=base_url('/amz/supplier')?>">AMZ</a></li>
-                <li><a class="<?=(uri_string() === 'eps/supplier') ? 'active' : ''?>" href="<?=base_url('/eps/supplier')?>">EPS</a></li>
-            </ul>
-        </li>
+        <li><a class="d-flex" href="<?=base_url('/finance/supplier/amz')?>"><i class="far fa-circle m-0"></i> Finance</a></li>
     </ul>
 </nav>
 
