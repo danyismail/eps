@@ -6,12 +6,11 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-8">
-          <form action="<?=base_url('/amz/supplier/update')?>" method="POST">
+          <form action="<?=base_url('/finance/supplier/amz/create')?>" method="POST">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="formGroupExampleInput">Name</label>
-                <input type="hidden" name="id" value="<?=$data['ID']?>">
-                <input type="text" disabled class="form-control disabled" id="formGroupExampleInput" placeholder="Name" name="name" value="<?=$data['name']?>">
+                <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name" name="name">
               </div>
             </div>
             <div class="form-row mt-3">
@@ -19,8 +18,8 @@
                 <label for="inputState">Status</label>
                 <select id="inputState" class="form-control" name="status">
                   <option value="">-- Choose --</option>
-                  <option <?=$data['status'] === 'active' ? 'selected' : ''?> value="active">Active</option>
-                  <option <?=$data['status'] === 'inactive' ? 'selected' : ''?> value="inactive">Inactive</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
                 </select>
               </div>
             </div>

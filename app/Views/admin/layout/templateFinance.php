@@ -67,39 +67,8 @@
 
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
-    <?php
-        $arrAmazon = array("", "AmZ/kpi", "AmZ/RekapSpl", "AmZ/Rect/periode", "AmZ/Rect");
-        $arrDigi = array("", "ePS/kpi", "ePS/RekapSpl", "ePS/Rect/periode", "ePS/Rect");
-        $arrFinance = array("", "amz/supplier", "eps/supplier");
-    ?>
+    <?php $arrFinance = array("", "finance/supplier/amz", "finance/supplier/eps"); ?>
     <ul id="sidebar_menu">
-        <li class="side_menu_title"><span>Dashboard</span></li>
-        <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
-            <a class="d-flex" href="#" aria-expanded="false">
-                <i class="far fa-circle m-0"></i>
-                <span>Digi Amazon</span>
-                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
-            </a>
-            <ul>
-                <li><a class="<?=(uri_string() === 'AmZ/kpi') ? 'active' : ''?>" href="<?=base_url('/AmZ/kpi')?>">KPI</a></li>
-                <li><a class="<?=(uri_string() === 'AmZ/RekapSpl') ? 'active' : ''?>" href="<?=base_url('/AmZ/RekapSpl')?>">Saldo Supplier</a></li>
-                <li><a class="<?=(uri_string() === 'AmZ/Rect/periode') ? 'active' : ''?>" href="<?=base_url('/AmZ/Rect/periode')?>">Penjualan</a></li>
-                <li><a class="<?=(uri_string() === 'AmZ/Rect') ? 'active' : ''?>" href="<?=base_url('/AmZ/Rect')?>">Penjualan Hari Ini</a></li>
-            </ul>
-        </li>
-        <li class="<?=array_search(uri_string(), $arrDigi) ? 'mm-active' : ''?>">
-            <a class="d-flex" href="#" aria-expanded="false">
-                <i class="far fa-circle m-0"></i>
-                <span>Digi Eps</span>
-                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
-            </a>
-            <ul>
-                <li><a class="<?=(uri_string() === 'ePS/kpi') ? 'active' : ''?>" href="<?=base_url('/ePS/kpi')?>">KPI</a></li>
-                <li><a class="<?=(uri_string() === 'ePS/RekapSpl') ? 'active' : ''?>" href="<?=base_url('/ePS/RekapSpl')?>">Saldo Supplier</a></li>
-                <li><a class="<?=(uri_string() === 'ePS/Rect/periode') ? 'active' : ''?>" href="<?=base_url('/ePS/Rect/periode')?>">Penjualan</a></li>
-                <li><a class="<?=(uri_string() === 'ePS/Rect') ? 'active' : ''?>" href="<?=base_url('/ePS/Rect')?>">Penjualan Hari Ini</a></li>
-            </ul>
-        </li>
         <li class="side_menu_title"><span>Finance</span></li>
         <li class="<?=array_search(uri_string(), $arrFinance) ? 'mm-active' : ''?>">
             <a class="d-flex" href="#" aria-expanded="false">
@@ -108,8 +77,8 @@
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === 'amz/supplier') ? 'active' : ''?>" href="<?=base_url('/amz/supplier')?>">AMZ</a></li>
-                <li><a class="<?=(uri_string() === 'eps/supplier') ? 'active' : ''?>" href="<?=base_url('/eps/supplier')?>">EPS</a></li>
+                <li><a class="<?=(uri_string() === 'finance/supplier/amz') ? 'active' : ''?>" href="<?=base_url('/finance/supplier/amz')?>">Amazon</a></li>
+                <li><a class="<?=(uri_string() === 'finance/supplier/eps') ? 'active' : ''?>" href="<?=base_url('/finance/supplier/eps')?>">EPS</a></li>
             </ul>
         </li>
     </ul>

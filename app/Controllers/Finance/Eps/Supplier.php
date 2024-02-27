@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers\Amz;
+namespace App\Controllers\Finance\Eps;
 use App\Controllers\BaseController;
 
 class Supplier extends BaseController
@@ -10,7 +10,7 @@ class Supplier extends BaseController
         $request = request();
         $client = service('curlrequest');
 
-        $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/amz/supplier", [
+        $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/eps/supplier", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -24,16 +24,33 @@ class Supplier extends BaseController
             array('label' => 'Supplier', 'url' => '', 'active' => true)
         );
 
-        echo view('admin/Amz/supplier/view', $response);
+        echo view('admin/Finance/Eps/supplier/view', $response);
 	}
+
+    public function status() {
+        $request = request();
+        $client = service('curlrequest');
+
+        $dataPost['id'] = $request->getGet('id');
+        $dataPost['status'] = $request->getGet('q');
+
+        $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/eps/supplier/update", [
+			"headers" => [
+				"Accept" => "application/json",
+                "Content-Type" => "application/json"
+			],
+            "form_params" => $dataPost
+		]);
+        return redirect()->to('/finance/supplier/eps');
+    }
 
     public function add() {
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '', 'active' => false),
-            array('label' => 'Supplier', 'url' => '/amz/supplier', 'active' => false),
+            array('label' => 'Supplier', 'url' => '/eps/supplier', 'active' => false),
             array('label' => 'Add', 'url' => '', 'active' => true)
         );
-        echo view('admin/Amz/supplier/create', $response);
+        echo view('admin/Finance/Eps/supplier/create', $response);
     }
 
     public function create() {
@@ -43,31 +60,14 @@ class Supplier extends BaseController
         $dataPost['name'] = $request->getPost('name');
         $dataPost['status'] = $request->getPost('status');
 
-        $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/amz/supplier/create", [
+        $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/eps/supplier/create", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
 			],
             "form_params" => $dataPost
 		]);
-        return redirect()->to('/amz/supplier');
-    }
-
-    public function status() {
-        $request = request();
-        $client = service('curlrequest');
-
-        $dataPost['id'] = $request->getGet('id');
-        $dataPost['status'] = $request->getGet('q');
-
-        $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/amz/supplier/update", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-            "form_params" => $dataPost
-		]);
-        return redirect()->to('/amz/supplier');
+        return redirect()->to('/finance/supplier/eps');
     }
 
     public function edit() {
@@ -76,7 +76,7 @@ class Supplier extends BaseController
 
         $id = $request->getGet('id');
 
-        $getAPI = $client->request("GET", getenv('API_HOST')."/api/finance/amz/supplier/$id", [
+        $getAPI = $client->request("GET", getenv('API_HOST')."/api/finance/eps/supplier/$id", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -86,11 +86,11 @@ class Supplier extends BaseController
         $response['data'] = $res['data'] ?? array();
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '', 'active' => false),
-            array('label' => 'Supplier', 'url' => '/amz/supplier', 'active' => false),
+            array('label' => 'Supplier', 'url' => '/eps/supplier', 'active' => false),
             array('label' => 'Edit', 'url' => '', 'active' => true)
         );
 
-        echo view('admin/Amz/supplier/update', $response);
+        echo view('admin/Finance/Eps/supplier/update', $response);
     }
 
     public function update() {
@@ -100,7 +100,7 @@ class Supplier extends BaseController
         $dataPost['id'] = $request->getPost('id');
         $dataPost['status'] = $request->getPost('status');
 
-        $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/amz/supplier/update", [
+        $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/eps/supplier/update", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -108,7 +108,7 @@ class Supplier extends BaseController
             "form_params" => $dataPost
 		]);
 
-        return redirect()->to('/amz/supplier');
+        return redirect()->to('/finance/supplier/eps');
     }
 
     public function delete() {
@@ -117,8 +117,8 @@ class Supplier extends BaseController
 
         $id = $request->getGet('id');
 
-        $posts_data = $client->request("DELETE", getenv('API_HOST')."/api/finance/amz/supplier/delete/$id");
+        $posts_data = $client->request("DELETE", getenv('API_HOST')."/api/finance/eps/supplier/delete/$id");
 
-        return redirect()->to('/amz/supplier');
+        return redirect()->to('/finance/supplier/eps');
     }
 }
