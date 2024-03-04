@@ -32,3 +32,10 @@ $routes->post('/finance/supplier/amz/create', 'Finance\Amz\Supplier::create');
 $routes->get('/finance/supplier/amz/edit', 'Finance\Amz\Supplier::edit');
 $routes->post('/finance/supplier/amz/update', 'Finance\Amz\Supplier::update');
 $routes->get('/finance/supplier/amz/delete', 'Finance\Amz\Supplier::delete');
+
+$routes->get('/finance/depo/add', 'Finance\Depo::add');
+$routes->get('/finance/depo/add_image/(:num)', 'Finance\Depo::add_image/$1');
+$routes->post('/finance/depo/create', 'Finance\Depo::create');
+$routes->post('/finance/depo/create_upload', 'Finance\Depo::create_upload');
+$routes->get('/finance/depo/cek_pending', 'Finance\Depo::Checkpending');
+$routes->get('/finance/depo/data_transaksi', 'Finance\Depo::DataTransaksi');
