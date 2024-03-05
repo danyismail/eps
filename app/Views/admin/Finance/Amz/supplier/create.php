@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template') ?>
+<?php $this->extend('admin/layout/templateFinance') ?>
 <?php $this->Section('content') ?>
   <div class="pr-5 pl-5 mt-2">
     <div class="table-responsive bg-white p-3">

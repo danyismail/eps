@@ -13,7 +13,7 @@
                 <input type="text" class="form-control" id="formGroupExampleInput" placeholder="PIC" name="pic" required>
               </div>
             </div>
-            <div class="form-row mt-4">
+            <div class="form-row mt-1">
               <div class="form-group col-md-6">
                 <label for="inputState">Supplier</label>
                 <select id="inputState" class="form-control" name="supplier" required>
@@ -24,32 +24,38 @@
                 </select>
               </div>
             </div>
-            <div class="form-group col-md-6 mt-4">
-              <label for="formGroupExampleInput">Nominal Depo</label>
-              <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Nominal Depo" name="nominal_depo" required>
+            <div class="form-row mt-1">
+              <div class="form-group col-md-6">
+                <label for="formGroupExampleInput">Nominal Depo</label>
+                <input type="number" class="form-control" id="formGroupExampleInput" placeholder="Nominal Depo" name="nominal_depo" required>
+              </div>
+              </div>
+              <div class="form-row mt-1">
+              <div class="form-group col-md-6">
+                <label for="formGroupExampleInput">Rekening Asal</label>
+                <div class="form-check ml-10">
+                  <input class="form-check-input" type="radio" name="rekening_asal" id="bank1">
+                  <label class="form-check-label" for="bank1">BCA</label>
+                </div>
+                <div class="form-check ml-10">
+                  <input class="form-check-input" type="radio" name="rekening_asal" id="bank2">
+                  <label class="form-check-label" for="bank2">BNI</label>
+                </div>
+                <div class="form-check ml-10">
+                  <input class="form-check-input" type="radio" name="rekening_asal" id="bank3">
+                  <label class="form-check-label" for="bank3">BRI</label>
+                </div>
+                <div class="form-check ml-10">
+                  <input class="form-check-input" type="radio" name="rekening_asal" id="bank4">
+                  <label class="form-check-label" for="bank4">MANDIRI</label>
+                </div>
+              </div>
             </div>
-            <div class="form-group col-md-6 mt-4">
-              <label for="formGroupExampleInput">Rekening Asal</label>
-              <div class="form-check ml-10">
-                <input class="form-check-input" type="radio" name="rekening_asal" id="flexRadioDefault1" checked>
-                <label class="form-check-label" for="flexRadioDefault1">BCA</label>
+            <div class="form-row mt-1">
+              <div class="form-group col-md-6">
+                <label for="exampleFormControlTextarea1" class="form-label">Rekening Tujuan</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="rekening_tujuan" required></textarea>
               </div>
-              <div class="form-check ml-10">
-                <input class="form-check-input" type="radio" name="rekening_asal" id="bank2">
-                <label class="form-check-label" for="bank2">BNI</label>
-              </div>
-              <div class="form-check ml-10">
-                <input class="form-check-input" type="radio" name="rekening_asal" id="bank3">
-                <label class="form-check-label" for="bank3">BRI</label>
-              </div>
-              <div class="form-check ml-10">
-                <input class="form-check-input" type="radio" name="rekening_asal" id="bank4">
-                <label class="form-check-label" for="bank4">MANDIRI</label>
-              </div>
-            </div>
-            <div class="form-group col-md-6 mt-4">
-              <label for="exampleFormControlTextarea1" class="form-label">Rekening Tujuan</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="rekening_tujuan" required></textarea>
             </div>
             <div class="text-danger mt-2">
               <label for="exampleFormControlTextarea1" class="form-label">Data yang sudah berhasil tersimpan tidak usah di ulang!</label>

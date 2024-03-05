@@ -1,7 +1,8 @@
 <?php $this->extend('admin/layout/templateFinance') ?>
 <?php $this->Section('content') ?>
-  <div class="pr-5 pl-5 mt-2">
+  <div class="mt-2">
     <div class="table-responsive bg-white pb-3 p-2">
+      <a href="<?=base_url('finance/supplier/eps/add')?>" class="btn btn-primary mb-2 float-right">Add Item</a>
       <table class="table table-bordered">
         <thead>
           <tr class="bg-info text-white">

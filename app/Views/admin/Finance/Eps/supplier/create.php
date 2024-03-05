@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template') ?>
+<?php $this->extend('admin/layout/templateFinance') ?>
 <?php $this->Section('content') ?>
   <div class="pr-5 pl-5 mt-2">
     <div class="table-responsive bg-white p-3">
@@ -6,7 +6,7 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-8">
-          <form action="<?=base_url('/finance/supplier/amz/create')?>" method="POST">
+          <form action="<?=base_url('/finance/supplier/eps/create')?>" method="POST">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="formGroupExampleInput">Name</label>

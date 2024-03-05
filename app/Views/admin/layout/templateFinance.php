@@ -7,7 +7,7 @@
 <title>epsxpay.com</title>
 <link rel="icon" href="assets/img/logo.png" type="image/png">
 
-<link rel="stylesheet" href=<?=base_url('assets/css/bootstrap1.min.css')?> />
+<!-- <link rel="stylesheet" href=<?=base_url('assets/css/bootstrap1.min.css')?> /> -->
 <link rel="stylesheet" href=<?=base_url('assets/vendors/themefy_icon/themify-icons.css')?> />
 <link rel="stylesheet" href=<?=base_url('assets/vendors/swiper_slider/css/swiper.min.css')?> />
 <link rel="stylesheet" href=<?=base_url('assets/vendors/select2/css/select2.min.css')?> />
@@ -25,7 +25,10 @@
 <link rel="stylesheet" href=<?=base_url('assets/css/metisMenu.css')?>>
 <link rel="stylesheet" href=<?=base_url('assets/css/style1.css')?> />
 <link rel="stylesheet" href=<?=base_url('assets/css/colors/default.css')?>>
-<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <style>
     .pagination {
         list-style-type: none;
@@ -69,47 +72,48 @@
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
     <?php
-        $arrFinance = array("", "finance/supplier/amz", "finance/supplier/eps");
+        $arrFinance = array("", "finance/supplier/amz", "finance/supplier/eps", "finance/supplier/amz/add", "finance/supplier/eps/add");
         $arrAmazon = array("", "finance/deposit/amz/add", "finance/deposit/amz/cek_pending", "finance/deposit/amz/data_transaksi");
         $arrEps = array("", "finance/deposit/eps/add", "finance/deposit/eps/cek_pending", "finance/deposit/eps/data_transaksi");
     ?>
     <ul id="sidebar_menu">
-        <li class="side_menu_title"><span>Finance</span></li>
-        <li class="<?=array_search(uri_string(), $arrFinance) ? 'mm-active' : ''?>">
-            <a class="d-flex" href="#" aria-expanded="false">
-                <i class="far fa-circle m-0"></i>
-                <span>Supplier</span>
+        <li class="side_menu_title"><span><h2><b>Finance</b></h2></span></li>
+        <!-- <li class="side_menu_title"><span>Supplier</span></li> -->
+        <li class="<?=array_search(uri_string(), $arrFinance) ? 'mm-active' : ''?> side_menu_title">
+            <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
+                <!-- <i class="far fa-circle m-0"></i> -->
+                <span class="p-0">Supplier</span>
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === 'finance/supplier/amz') ? 'active' : ''?>" href="<?=base_url('/finance/supplier/amz')?>">Amazon</a></li>
-                <li><a class="<?=(uri_string() === 'finance/supplier/eps') ? 'active' : ''?>" href="<?=base_url('/finance/supplier/eps')?>">EPS</a></li>
+                <li><a class="<?=(uri_string() === 'finance/supplier/amz') ? 'active' : ''?> text-decoration-none" href="<?=base_url('/finance/supplier/amz')?>">Amazon</a></li>
+                <li><a class="<?=(uri_string() === 'finance/supplier/eps') ? 'active' : ''?> text-decoration-none" href="<?=base_url('/finance/supplier/eps')?>">EPS</a></li>
             </ul>
         </li>
 
         <li class="side_menu_title"><span>Deposit</span></li>
         <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
-            <a class="d-flex" href="#" aria-expanded="false">
+            <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
                 <i class="far fa-circle m-0"></i>
                 <span>Amazon</span>
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === 'finance/deposit/amz/add') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/add')?>">Depo SPL</a></li>
-                <li><a class="<?=(uri_string() === 'finance/deposit/amz/cek_pending') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/cek_pending')?>">Cek Pending</a></li>
-                <li><a class="<?=(uri_string() === 'finance/deposit/amz/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/data_transaksi')?>">Data Transaksi</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/amz/add') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/add')?>">Depo SPL</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/amz/cek_pending') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/cek_pending')?>">Cek Pending</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/amz/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/data_transaksi')?>">Data Transaksi</a></li>
             </ul>
         </li>
         <li class="<?=array_search(uri_string(), $arrEps) ? 'mm-active' : ''?>">
-            <a class="d-flex" href="#" aria-expanded="false">
+            <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
                 <i class="far fa-circle m-0"></i>
                 <span>Eps</span>
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === 'finance/deposit/eps/add') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/add')?>">Depo SPL</a></li>
-                <li><a class="<?=(uri_string() === 'finance/deposit/eps/cek_pending') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/cek_pending')?>">Cek Pending</a></li>
-                <li><a class="<?=(uri_string() === 'finance/deposit/eps/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/data_transaksi')?>">Data Transaksi</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/eps/add') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/add')?>">Depo SPL</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/eps/cek_pending') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/cek_pending')?>">Cek Pending</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/eps/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/data_transaksi')?>">Data Transaksi</a></li>
             </ul>
         </li>
     </ul>
@@ -119,47 +123,14 @@
     <div class="container-fluid g-0">
         <div class="row">
             <div class="col-lg-12 p-0">
-                <div class="header_iner d-flex justify-content-between align-items-center">
-                    <!-- <div class="sidebar_icon d-lg-none">
-                        <i class="ti-menu"></i>
-                    </div>
-                    <div class="serach_field-area">
-                        <div class="search_inner">
-                            <form action="#">
-                                <div class="search_field">
-                                    <input type="text" placeholder="Search here...">
-                                </div>
-                                <button type="submit"> <img src="img/icon/icon_search.svg" alt> </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="header_right d-flex justify-content-between align-items-center">
-                        <div class="header_notification_warp d-flex align-items-center">
-                            <li><a href="#"> <img src="img/icon/bell.svg" alt> </a></li>
-                            <li><a href="#"> <img src="img/icon/msg.svg" alt> </a></li>
-                        </div>
-
-                        <div class="profile_info">
-                            <img src="img/client_img.png" alt="#">
-                            <div class="profile_info_iner">
-                                <p>Neurologist </p>
-                                <h5>Dr. Robar Smith</h5>
-                                <div class="profile_info_details">
-                                    <a href="#">My Profile <i class="ti-user"></i></a>
-                                    <a href="#">Settings <i class="ti-settings"></i></a>
-                                    <a href="#">Log Out <i class="ti-shift-left"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> -->
-                </div>
+                <div class="header_iner d-flex justify-content-between align-items-center"></div>
             </div>
         </div>
     </div>
 
     <div class="main_content_iner ">
         <div class="container-fluid p-0">
-            <div class="row justify-content-center">
+            <div class="rowx justify-content-centerx">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <?php foreach($breadcrumb as $key => $row): ?>
@@ -175,29 +146,15 @@
                         <?php endforeach ?>
                     </ol>
                 </nav>
-                <?php $this->renderSection('content'); ?>
             </div>
+            <?php $this->renderSection('content'); ?>
         </div>
     </div>
-
-    <!-- <div class="footer_part">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="footer_iner text-center">
-                        <p>2020 © Influence - Designed by <a href="#"> <i class="ti-heart"></i> </a><a href="#"> Dashboard</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
 </section>
 
-
-
-<script src=<?=base_url('assets/js/jquery1-3.4.1.min.js')?>></script>
+<!-- <script src=<?=base_url('assets/js/jquery1-3.4.1.min.js')?>></script> -->
 <script src=<?=base_url('assets/js/popper1.min.js')?>></script>
-<script src=<?=base_url('assets/js/bootstrap1.min.js')?>></script>
+<!-- <script src=<?=base_url('assets/js/bootstrap1.min.js')?>></script> -->
 <script src=<?=base_url('assets/js/metisMenu.js')?>></script>
 <script src=<?=base_url('assets/vendors/count_up/jquery.waypoints.min.js')?>></script>
 <script src=<?=base_url('assets/vendors/chartlist/Chart.min.js')?>></script>
@@ -223,8 +180,5 @@
 <script src=<?=base_url('assets/js/custom.js')?>></script>
 <script src=<?=base_url('assets/vendors/apex_chart/bar_active_1.js')?>></script>
 <script src=<?=base_url('assets/vendors/apex_chart/apex_chart_list.js')?>></script>
-<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 </html>
