@@ -20,7 +20,7 @@
                     <td><?=$row['id']?></td>
                     <td><?=$row['name']?></td>
                     <td><?=$row['supplier']?></td>
-                    <td><?=$row['amount']?></td>
+                    <td><?=number_format($row['amount'], 0, ",", ".");?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td>
@@ -60,7 +60,7 @@
                     <td><?=$row['id']?></td>
                     <td><?=$row['name']?></td>
                     <td><?=$row['supplier']?></td>
-                    <td><?=$row['amount']?></td>
+                    <td><?=number_format($row['amount'], 0, ",", ".");?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td><?=$row['reply']?></td>

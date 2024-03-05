@@ -21,7 +21,7 @@
                     <td><?=$row['id']?></td>
                     <td><?=$row['name']?></td>
                     <td><?=$row['supplier']?></td>
-                    <td><?=$row['amount']?></td>
+                    <td><?=number_format($row['amount'], 0, ",", ".");?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td><img src="<?=getenv('API_HOST')."/api/finance/a/image/".$row['id']?>" width="100" alt="" class="load-image"></td>
