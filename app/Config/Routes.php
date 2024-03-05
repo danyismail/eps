@@ -33,9 +33,20 @@ $routes->get('/finance/supplier/amz/edit', 'Finance\Amz\Supplier::edit');
 $routes->post('/finance/supplier/amz/update', 'Finance\Amz\Supplier::update');
 $routes->get('/finance/supplier/amz/delete', 'Finance\Amz\Supplier::delete');
 
-$routes->get('/finance/depo/add', 'Finance\Depo::add');
-$routes->get('/finance/depo/add_image/(:num)', 'Finance\Depo::add_image/$1');
-$routes->post('/finance/depo/create', 'Finance\Depo::create');
-$routes->post('/finance/depo/create_upload', 'Finance\Depo::create_upload');
-$routes->get('/finance/depo/cek_pending', 'Finance\Depo::Checkpending');
-$routes->get('/finance/depo/data_transaksi', 'Finance\Depo::DataTransaksi');
+$routes->get('/finance/deposit/eps/add', 'Finance\Eps\Deposit::add');
+$routes->get('/finance/deposit/eps/add_image/(:num)', 'Finance\Eps\Deposit::add_image/$1');
+$routes->get('/finance/deposit/eps/add_reply/(:num)', 'Finance\Eps\Deposit::add_reply/$1');
+$routes->post('/finance/deposit/eps/create', 'Finance\Eps\Deposit::create');
+$routes->post('/finance/deposit/eps/create_upload', 'Finance\Eps\Deposit::create_upload');
+$routes->post('/finance/deposit/eps/action_reply', 'Finance\Eps\Deposit::action_reply');
+$routes->get('/finance/deposit/eps/cek_pending', 'Finance\Eps\Deposit::Checkpending');
+$routes->get('/finance/deposit/eps/data_transaksi', 'Finance\Eps\Deposit::DataTransaksi');
+
+$routes->get('/finance/deposit/amz/add', 'Finance\Amz\Deposit::add');
+$routes->get('/finance/deposit/amz/add_image/(:num)', 'Finance\Amz\Deposit::add_image/$1');
+$routes->get('/finance/deposit/amz/add_reply/(:num)', 'Finance\Amz\Deposit::add_reply/$1');
+$routes->post('/finance/deposit/amz/create', 'Finance\Amz\Deposit::create');
+$routes->post('/finance/deposit/amz/create_upload', 'Finance\Amz\Deposit::create_upload');
+$routes->post('/finance/deposit/amz/action_reply', 'Finance\Amz\Deposit::action_reply');
+$routes->get('/finance/deposit/amz/cek_pending', 'Finance\Amz\Deposit::Checkpending');
+$routes->get('/finance/deposit/amz/data_transaksi', 'Finance\Amz\Deposit::DataTransaksi');

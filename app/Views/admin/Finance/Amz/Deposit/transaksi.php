@@ -13,7 +13,6 @@
             <th>Rekening Tujuan</th>
             <th>Image</th>
             <th>Reply</th>
-            <th>Action</th>
           </tr>
         </thead>
         <tbody>
@@ -27,9 +26,6 @@
                     <td><?=$row['destination_account']?></td>
                     <td><?=$row['image_upload']?></td>
                     <td><?=$row['reply']?></td>
-                    <td>
-                        <a class="btn btn-default text-info">Reply</a>
-                    </td>
                 </tr>
             <?php endforeach ?>
         </tbody>

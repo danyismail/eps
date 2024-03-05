@@ -6,7 +6,7 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-8">
-          <form action="<?=base_url('/finance/depo/create')?>" method="POST">
+          <form action="<?=base_url('/finance/deposit/eps/create')?>" method="POST">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="formGroupExampleInput">PIC</label>

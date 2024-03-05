@@ -25,7 +25,7 @@
 <link rel="stylesheet" href=<?=base_url('assets/css/metisMenu.css')?>>
 <link rel="stylesheet" href=<?=base_url('assets/css/style1.css')?> />
 <link rel="stylesheet" href=<?=base_url('assets/css/colors/default.css')?>>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"> -->
 <style>
     .pagination {
         list-style-type: none;
@@ -68,7 +68,11 @@
 
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
-    <?php $arrFinance = array("", "finance/supplier/amz", "finance/supplier/eps"); ?>
+    <?php
+        $arrFinance = array("", "finance/supplier/amz", "finance/supplier/eps");
+        $arrAmazon = array("", "finance/deposit/amz/add", "finance/deposit/amz/cek_pending", "finance/deposit/amz/data_transaksi");
+        $arrEps = array("", "finance/deposit/eps/add", "finance/deposit/eps/cek_pending", "finance/deposit/eps/data_transaksi");
+    ?>
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span>Finance</span></li>
         <li class="<?=array_search(uri_string(), $arrFinance) ? 'mm-active' : ''?>">
@@ -82,9 +86,32 @@
                 <li><a class="<?=(uri_string() === 'finance/supplier/eps') ? 'active' : ''?>" href="<?=base_url('/finance/supplier/eps')?>">EPS</a></li>
             </ul>
         </li>
-        <li><a class="d-block" href="<?=base_url('/finance/depo/add')?>">Depo SPL</a></li>
-        <li><a class="d-block" href="<?=base_url('/finance/depo/cek_pending')?>">Cek Pending</a></li>
-        <li><a class="d-block" href="<?=base_url('/finance/depo/data_transaksi')?>">Data Transaksi</a></li>
+
+        <li class="side_menu_title"><span>Deposit</span></li>
+        <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
+            <a class="d-flex" href="#" aria-expanded="false">
+                <i class="far fa-circle m-0"></i>
+                <span>Amazon</span>
+                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
+            </a>
+            <ul>
+                <li><a class="<?=(uri_string() === 'finance/deposit/amz/add') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/add')?>">Depo SPL</a></li>
+                <li><a class="<?=(uri_string() === 'finance/deposit/amz/cek_pending') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/cek_pending')?>">Cek Pending</a></li>
+                <li><a class="<?=(uri_string() === 'finance/deposit/amz/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/data_transaksi')?>">Data Transaksi</a></li>
+            </ul>
+        </li>
+        <li class="<?=array_search(uri_string(), $arrEps) ? 'mm-active' : ''?>">
+            <a class="d-flex" href="#" aria-expanded="false">
+                <i class="far fa-circle m-0"></i>
+                <span>Eps</span>
+                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
+            </a>
+            <ul>
+                <li><a class="<?=(uri_string() === 'finance/deposit/eps/add') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/add')?>">Depo SPL</a></li>
+                <li><a class="<?=(uri_string() === 'finance/deposit/eps/cek_pending') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/cek_pending')?>">Cek Pending</a></li>
+                <li><a class="<?=(uri_string() === 'finance/deposit/eps/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/data_transaksi')?>">Data Transaksi</a></li>
+            </ul>
+        </li>
     </ul>
 </nav>
 
@@ -196,8 +223,8 @@
 <script src=<?=base_url('assets/js/custom.js')?>></script>
 <script src=<?=base_url('assets/vendors/apex_chart/bar_active_1.js')?>></script>
 <script src=<?=base_url('assets/vendors/apex_chart/apex_chart_list.js')?>></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script> -->
 </body>
 </html>
