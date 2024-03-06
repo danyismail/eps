@@ -33,7 +33,7 @@ class Deposit extends BaseController
         $dataPost['name'] = $request->getPost('pic');
         $dataPost['supplier'] = $request->getPost('supplier');
         $dataPost['amount'] = $request->getPost('nominal_depo');
-        $dataPost['origin_account'] = $request->getPost('rekening_asal');
+        $dataPost['origin_account'] = $request->getPost('origin');
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
 
         $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/e/deposit", [
@@ -126,7 +126,7 @@ class Deposit extends BaseController
         $dataPost['name'] = $request->getPost('pic');
         $dataPost['supplier'] = $request->getPost('supplier');
         $dataPost['amount'] = $request->getPost('nominal_depo');
-        $dataPost['origin_account'] = $request->getPost('rekening_asal');
+        $dataPost['origin_account'] = $request->getPost('origin');
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
 
         $file = $this->request->getFile('file');
@@ -174,7 +174,7 @@ class Deposit extends BaseController
         $dataPost['name'] = $request->getPost('pic');
         $dataPost['supplier'] = $request->getPost('supplier');
         $dataPost['amount'] = $request->getPost('nominal_depo');
-        $dataPost['origin_account'] = $request->getPost('rekening_asal');
+        $dataPost['origin_account'] = $request->getPost('origin');
         $dataPost['reply'] = $request->getPost('reply');
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
 

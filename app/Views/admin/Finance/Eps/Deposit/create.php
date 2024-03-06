@@ -34,19 +34,19 @@
               <div class="form-group col-md-6">
                 <label for="formGroupExampleInput">Rekening Asal</label>
                 <div class="form-check ml-10">
-                  <input class="form-check-input" type="radio" name="rekening_asal" id="bank1">
+                  <input class="form-check-input" type="radio" name="origin" value="BCA" id="bank1">
                   <label class="form-check-label" for="bank1">BCA</label>
                 </div>
                 <div class="form-check ml-10">
-                  <input class="form-check-input" type="radio" name="rekening_asal" id="bank2">
+                  <input class="form-check-input" type="radio" name="origin" value="BNI" id="bank2">
                   <label class="form-check-label" for="bank2">BNI</label>
                 </div>
                 <div class="form-check ml-10">
-                  <input class="form-check-input" type="radio" name="rekening_asal" id="bank3">
+                  <input class="form-check-input" type="radio" name="origin" value="BRI" id="bank3">
                   <label class="form-check-label" for="bank3">BRI</label>
                 </div>
                 <div class="form-check ml-10">
-                  <input class="form-check-input" type="radio" name="rekening_asal" id="bank4">
+                  <input class="form-check-input" type="radio" name="origin" value="MANDIRI" id="bank4">
                   <label class="form-check-label" for="bank4">MANDIRI</label>
                 </div>
               </div>
