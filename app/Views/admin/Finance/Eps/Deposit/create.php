@@ -34,7 +34,7 @@
               <div class="form-group col-md-6">
                 <label for="formGroupExampleInput">Rekening Asal</label>
                 <div class="form-check ml-10">
-                  <input class="form-check-input" type="radio" name="origin" value="BCA" id="bank1">
+                  <input class="form-check-input" type="radio" name="origin" value="BCA" id="bank1" checked>
                   <label class="form-check-label" for="bank1">BCA</label>
                 </div>
                 <div class="form-check ml-10">
