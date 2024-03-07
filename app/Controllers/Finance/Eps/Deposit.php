@@ -7,7 +7,7 @@ class Deposit extends BaseController
 {
     public function add() {
         $client = service('curlrequest');
-        $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/amz/supplier", [
+        $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/eps/supplier", [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
