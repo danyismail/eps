@@ -6,9 +6,12 @@
         <thead>
           <tr class="bg-info text-white">
             <th width="10">ID</th>
+            <th width="10">Tanggal Entry</th>
+            <th width="10">Tanggal Status</th>
             <th width="20%">Name</th>
             <th width="10%">Supplier</th>
             <th width="10%">Amount</th>
+            <th width="10%">Status</th>
             <th width="10%">Rekening Asal</th>
             <th>Rekening Tujuan</th>
             <th>Image</th>
@@ -19,9 +22,12 @@
             <?php foreach($data as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
+                    <td><?=date("d-m-Y h:m:s", strtotime($row['created_at']))?></td>
+                    <td><?=date("d-m-Y h:m:s", strtotime($row['updated_at']))?></td>
                     <td><?=$row['name']?></td>
                     <td><?=$row['supplier']?></td>
                     <td><?=number_format($row['amount'], 0, ",", ".");?></td>
+                    <td><?=$row['status']?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td><img src="<?=getenv('API_HOST')."/api/finance/e/image/".$row['id']?>" width="100" alt="" class="load-image"></td>
