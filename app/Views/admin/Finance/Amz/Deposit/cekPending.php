@@ -6,6 +6,7 @@
         <thead>
           <tr class="bg-info text-white">
             <th width="10">ID</th>
+            <th width="10">Tanggal Entry</th>
             <th width="20%">Name</th>
             <th width="10%">Supplier</th>
             <th width="10%">Amount</th>
@@ -18,6 +19,7 @@
             <?php foreach($dataCreated as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
+                    <td><?=date("d-m-Y h:m:s", strtotime($row['created_at']))?></td>
                     <td><?=$row['name']?></td>
                     <td><?=$row['supplier']?></td>
                     <td><?=number_format($row['amount'], 0, ",", ".");?></td>
@@ -44,6 +46,7 @@
         <thead>
           <tr class="bg-info text-white">
             <th width="10">ID</th>
+            <th width="10">Tanggal Entry</th>
             <th width="20%">Name</th>
             <th width="10%">Supplier</th>
             <th width="10%">Amount</th>
@@ -58,6 +61,7 @@
             <?php foreach($dataUpload as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
+                    <td><?=date("d-m-Y h:m:s", strtotime($row['created_at']))?></td>
                     <td><?=$row['name']?></td>
                     <td><?=$row['supplier']?></td>
                     <td><?=number_format($row['amount'], 0, ",", ".");?></td>
