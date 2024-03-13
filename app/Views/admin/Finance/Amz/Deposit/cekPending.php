@@ -19,7 +19,7 @@
             <?php foreach($dataCreated as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
-                    <td><?=date("d-m-Y h:m:s", strtotime($row['created_at']))?></td>
+                    <td><?=$row['created_at']?></td>
                     <td><?=$row['name']?></td>
                     <td><?=$row['supplier']?></td>
                     <td><?=number_format($row['amount'], 0, ",", ".");?></td>
@@ -61,7 +61,7 @@
             <?php foreach($dataUpload as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
-                    <td><?=date("d-m-Y h:m:s", strtotime($row['created_at']))?></td>
+                    <td><?=$row['created_at']?></td>
                     <td><?=$row['name']?></td>
                     <td><?=$row['supplier']?></td>
                     <td><?=number_format($row['amount'], 0, ",", ".");?></td>
