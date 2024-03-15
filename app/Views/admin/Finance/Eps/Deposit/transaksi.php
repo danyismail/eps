@@ -1,18 +1,37 @@
 <?php $this->extend('admin/layout/templateFinance') ?>
 <?php $this->Section('content') ?>
   <div class="mt-1">
-    <div class="table-responsive bg-white pb-3 p-2">
+    <div class="row">
+      <div class="col-md-12">
+        <form method="GET" action="<?=base_url('/finance/deposit/eps/data_transaksi')?>" class="mb-2 mt-2">
+            <div class="row mb-2 mt-2">
+              <div class="form-group col-md-3">
+                <label for="StartDate">Start Date</label>
+                <input type="text" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" />
+              </div>
+              <div class="form-group col-md-3">
+                <label for="endDt">End Date</label>
+                <input type="text" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
+              </div>
+              <div class="form-group col-md-3 pt-2">
+                <button type="submit" class="btn btn-primary mt-4">Submit</button>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div class="bg-white pb-3 p-2 pt-0">
       <table class="table table-bordered">
         <thead>
           <tr class="bg-info text-white">
             <th width="10">ID</th>
-            <th width="10">Tanggal Entry</th>
-            <th width="10">Tanggal Status</th>
-            <th width="20%">Name</th>
-            <th width="10%">Supplier</th>
-            <th width="10%">Amount</th>
-            <th width="10%">Status</th>
-            <th width="10%">Rekening Asal</th>
+            <th width="400">Tanggal Entry</th>
+            <th width="400">Tanggal Status</th>
+            <th width="200">Name</th>
+            <th width="100">Supplier</th>
+            <th width="100">Amount</th>
+            <th width="100">Status</th>
+            <th width="100">Rekening Asal</th>
             <th>Rekening Tujuan</th>
             <th>Image</th>
             <th>Reply</th>

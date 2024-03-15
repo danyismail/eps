@@ -41,6 +41,8 @@ $routes->post('/finance/deposit/eps/create_upload', 'Finance\Eps\Deposit::create
 $routes->post('/finance/deposit/eps/action_reply', 'Finance\Eps\Deposit::action_reply');
 $routes->get('/finance/deposit/eps/cek_pending', 'Finance\Eps\Deposit::Checkpending');
 $routes->get('/finance/deposit/eps/data_transaksi', 'Finance\Eps\Deposit::DataTransaksi');
+$routes->get('/finance/deposit/eps/cancel', 'Finance\Eps\Deposit::Cancel');
+$routes->get('/finance/deposit/eps/delete_deposit/(:num)', 'Finance\Eps\Deposit::DeleteDeposit/$1');
 
 $routes->get('/finance/deposit/amz/add', 'Finance\Amz\Deposit::add');
 $routes->get('/finance/deposit/amz/add_image/(:num)', 'Finance\Amz\Deposit::add_image/$1');
@@ -50,3 +52,5 @@ $routes->post('/finance/deposit/amz/create_upload', 'Finance\Amz\Deposit::create
 $routes->post('/finance/deposit/amz/action_reply', 'Finance\Amz\Deposit::action_reply');
 $routes->get('/finance/deposit/amz/cek_pending', 'Finance\Amz\Deposit::Checkpending');
 $routes->get('/finance/deposit/amz/data_transaksi', 'Finance\Amz\Deposit::DataTransaksi');
+$routes->get('/finance/deposit/amz/cancel', 'Finance\Amz\Deposit::Cancel');
+$routes->get('/finance/deposit/amz/delete_deposit/(:num)', 'Finance\Amz\Deposit::DeleteDeposit/$1');

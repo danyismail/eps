@@ -75,8 +75,14 @@ class Deposit extends BaseController
     }
 
     public function DataTransaksi() {
+        $request = request();
         $client = service('curlrequest');
-        $getData = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/done", [
+
+        $params = "";
+        if($request->getGet('startDt') && $request->getGet('startDt')) {
+            $params = "?startDt=".$request->getGet('startDt')."&endDt=".$request->getGet('endDt');
+        }
+        $getData = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/done".$params, [
 			"headers" => [
 				"Accept" => "application/json",
                 "Content-Type" => "application/json"
@@ -183,6 +189,41 @@ class Deposit extends BaseController
 		]);
 
         return redirect()->to('/finance/deposit/amz/cek_pending');
+    }
+
+    public function DeleteDeposit(int $id) {
+        $client = service('curlrequest');
+        $posts_data = $client->delete(getenv('API_HOST')."/api/finance/a/deposit/$id");
+
+        return redirect()->to('/finance/deposit/amz/cancel');
+    }
+
+    public function Cancel() {
+        $request = request();
+        $client = service('curlrequest');
+
+        $response['data'] = array();
+
+        if($request->getGet('date')) {
+            $params = "?dt=".urlencode(utf8_encode($request->getGet('date')));
+            $getData = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/all".$params, [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/x-www-form-urlencoded"
+                ],
+            ]);
+            $res = json_decode($getData->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Finance', 'url' => '#!', 'active' => false),
+            array('label' => 'Deposit', 'url' => '#!', 'active' => false),
+            array('label' => 'Eps', 'url' => '#!', 'active' => false),
+            array('label' => 'Cancel', 'url' => '', 'active' => true)
+        );
+
+        echo view('admin/Finance/Amz/Deposit/cancel', $response);
     }
 
 }
