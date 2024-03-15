@@ -219,7 +219,7 @@ class Deposit extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Eps', 'url' => '#!', 'active' => false),
+            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
             array('label' => 'Cancel', 'url' => '', 'active' => true)
         );
 
