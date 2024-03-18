@@ -146,7 +146,7 @@ class Sales extends BaseController
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Penjualan Hari Ini Amazon', 'url' => '', 'active' => true)
+            array('label' => 'Sales Today Amazone', 'url' => '', 'active' => true)
         );
 
         echo view('admin/dashboard/sales_view', $response);
@@ -176,7 +176,7 @@ class Sales extends BaseController
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Penjualan Amazon', 'url' => '', 'active' => true)
+            array('label' => 'Sales Amazone', 'url' => '', 'active' => true)
         );
         echo view('admin/dashboard/sales_periode_amz', $response);
 	}

@@ -28,7 +28,7 @@ class Deposit extends BaseController
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Supplier', 'url' => '', 'active' => true)
+            array('label' => 'Supplier EPS', 'url' => '', 'active' => true)
         );
         return view('admin/dashboard/deposit_view', $response);
 	}
@@ -53,7 +53,7 @@ class Deposit extends BaseController
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
+            array('label' => 'Supplier Amazone', 'url' => '', 'active' => true)
         );
         return view('admin/dashboard/deposit_view', $response);
 
@@ -80,7 +80,7 @@ class Deposit extends BaseController
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
+            array('label' => 'Supplier Balance '.$db_conn, 'url' => '', 'active' => true)
         );
         return view('admin/dashboard/deposit_view', $response);
 	}

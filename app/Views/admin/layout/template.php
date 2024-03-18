@@ -106,7 +106,7 @@
         <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
             <a class="d-flex" href="#" aria-expanded="false">
                 <i class="far fa-circle m-0"></i>
-                <span>Digi Amazon</span>
+                <span>Digi Amazone</span>
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
@@ -120,7 +120,7 @@
         <li class="<?=array_search(uri_string(), $arrDigi) ? 'mm-active' : ''?>">
             <a class="d-flex" href="#" aria-expanded="false">
                 <i class="far fa-circle m-0"></i>
-                <span>Digi Eps</span>
+                <span>Digi EPS</span>
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
