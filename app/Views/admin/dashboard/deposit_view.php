@@ -18,7 +18,6 @@
     <table class="table table-bordered">
         <thead>
           <tr class="bg-info text-white">
-          <th>Kode Modul</th>
           <th>Label</th>
           <th>Total Transaksi</th>
           <th>Pemakaian Saldo</th>
@@ -28,7 +27,6 @@
         <tbody>
             <?php foreach($data as $row): ?>
                 <tr>
-                  <td><?=$row['kode_modul']?></td>
                   <td><?=$row['label']?></td>
                   <td><?=$row['total_transaksi']?></td>
                   <td><?=number_format($row['pemakaian_saldo'])?></td>
