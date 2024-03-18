@@ -11,15 +11,20 @@ class Sales extends BaseController
     public function index()
 	{
         $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/sales", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
+        try {
+            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/sales", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
 
-        $res = json_decode($getDepositToday->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+            $res = json_decode($getDepositToday->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
+        }
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
@@ -32,15 +37,21 @@ class Sales extends BaseController
     public function get_sales()
 	{
         $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/salesProd", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
 
-        $res = json_decode($getDepositToday->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+        try {
+            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/salesProd", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($getDepositToday->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
+        }
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
@@ -57,17 +68,22 @@ class Sales extends BaseController
         $from = $params['startDt'] ?? '';
         $to = $params['endDt'] ?? '';
 
-
         $client = service('curlrequest');
-        $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/api/eps/salesPeriode?startDate=$from&endDate=$to", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
 
-        $res = json_decode($getSalesPeriode->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+        try {
+            $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/api/eps/salesPeriode?startDate=$from&endDate=$to", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($getSalesPeriode->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
+        }
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
@@ -83,17 +99,22 @@ class Sales extends BaseController
         $from = $params['startDt'] ?? '';
         $to = $params['endDt'] ?? '';
 
-
         $client = service('curlrequest');
-        $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/api/eps/salesPeriodeProd?startDate=$from&endDate=$to", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
 
-        $res = json_decode($getSalesPeriode->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+        try {
+            $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/api/eps/salesPeriodeProd?startDate=$from&endDate=$to", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($getSalesPeriode->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
+        }
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
@@ -107,15 +128,21 @@ class Sales extends BaseController
     public function sales_replica($db_conn)
 	{
         $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/replica/$db_conn/sales", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
 
-        $res = json_decode($getDepositToday->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+        try {
+            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/replica/$db_conn/sales", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($getDepositToday->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
+        }
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
@@ -124,14 +151,15 @@ class Sales extends BaseController
 
         echo view('admin/dashboard/sales_view', $response);
 	}
-    
+
     public function sales_periode_replica($db_conn)
 	{
+        $params = $this->request->getGet();
+        $from = $params['startDt'] ?? '';
+        $to = $params['endDt'] ?? '';
+        $client = service('curlrequest');
+
         try {
-            $params = $this->request->getGet();
-            $from = $params['startDt'] ?? '';
-            $to = $params['endDt'] ?? '';
-            $client = service('curlrequest');
             $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/api/replica/$db_conn/sales-periode?startDate=$from&endDate=$to", [
                 "headers" => [
                     "Accept" => "application/json",
@@ -141,15 +169,16 @@ class Sales extends BaseController
 
             $res = json_decode($getSalesPeriode->getBody(), true);
             $response['data'] = $res['data'] ?? array();
-
-            $response['breadcrumb'] = array(
-                array('label' => 'Home', 'url' => '/', 'active' => false),
-                array('label' => 'Penjualan Amazon', 'url' => '', 'active' => true)
-            );
-            echo view('admin/dashboard/sales_periode_amz', $response);
-        } catch (\Throwable $th) {
-            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
         }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Penjualan Amazon', 'url' => '', 'active' => true)
+        );
+        echo view('admin/dashboard/sales_periode_amz', $response);
 	}
 
 }

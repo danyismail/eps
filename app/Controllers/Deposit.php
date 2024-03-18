@@ -21,15 +21,16 @@ class Deposit extends BaseController
 
             $res = json_decode($getDepositToday->getBody(), true);
             $response['data'] = $res['data'] ?? array();
-
-            $response['breadcrumb'] = array(
-                array('label' => 'Home', 'url' => '/', 'active' => false),
-                array('label' => 'Supplier', 'url' => '', 'active' => true)
-            );
-            return view('admin/dashboard/deposit_view', $response);
-        } catch (\Throwable $th) {
-            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
         }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Supplier', 'url' => '', 'active' => true)
+        );
+        return view('admin/dashboard/deposit_view', $response);
 	}
 
     public function get_deposit()
@@ -45,15 +46,18 @@ class Deposit extends BaseController
 
             $res = json_decode($getDepositToday->getBody(), true);
             $response['data'] = $res['data'] ?? array();
-
-            $response['breadcrumb'] = array(
-                array('label' => 'Home', 'url' => '/', 'active' => false),
-                array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
-            );
-            return view('admin/dashboard/deposit_view', $response);
-        } catch (\Throwable $th) {
-            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
         }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
+        );
+        return view('admin/dashboard/deposit_view', $response);
+
+
 	}
 
     public function check_supplier_balance($db_conn)
@@ -69,14 +73,15 @@ class Deposit extends BaseController
 
             $res = json_decode($getDepositToday->getBody(), true);
             $response['data'] = $res['data'] ?? array();
-
-            $response['breadcrumb'] = array(
-                array('label' => 'Home', 'url' => '/', 'active' => false),
-                array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
-            );
-            return view('admin/dashboard/deposit_view', $response);
-        } catch (\Throwable $th) {
-            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
         }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
+        );
+        return view('admin/dashboard/deposit_view', $response);
 	}
 }

@@ -7,15 +7,20 @@ class Deposit extends BaseController
 {
     public function add() {
         $client = service('curlrequest');
-        $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/amz/supplier", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
+        try {
+            $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/amz/supplier", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
 
-        $res = json_decode($posts_data->getBody(), true);
-        $response['supplier'] = $res['data'] ?? array();
+            $res = json_decode($posts_data->getBody(), true);
+            $response['supplier'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['supplier'] = array();
+        }
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
@@ -36,52 +41,61 @@ class Deposit extends BaseController
         $dataPost['origin_account'] = $request->getPost('origin');
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
 
-        $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/a/deposit", [
-            "form_params" => $dataPost
-		]);
+        try {
+            $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/a/deposit", [
+                "form_params" => $dataPost
+            ]);
+        } catch (\Exception $e) {
+            exit($e->getMessage());
+        }
+
         return redirect()->to('/finance/deposit/amz/cek_pending');
     }
 
     public function Checkpending() {
+        $client = service('curlrequest');
         try {
-            $client = service('curlrequest');
             $getDataCreated = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/created", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
             ]);
+            $res = json_decode($getDataCreated->getBody(), true);
+            $response['dataCreated'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['dataCreated'] = array();
+        }
 
+        try {
             $getDataUpload = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/uploaded", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
             ]);
-
-            $res = json_decode($getDataCreated->getBody(), true);
-            $response['dataCreated'] = $res['data'] ?? array();
-
             $res2 = json_decode($getDataUpload->getBody(), true);
             $response['dataUpload'] = $res2['data'] ?? array();
-
-            $response['breadcrumb'] = array(
-                array('label' => 'Finance', 'url' => '#!', 'active' => false),
-                array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-                array('label' => 'Amazon', 'url' => '#!', 'active' => false),
-                array('label' => 'Cek Pending', 'url' => '', 'active' => true)
-            );
-            echo view('admin/Finance/Amz/Deposit/cekPending', $response);
-        } catch (\Throwable $th) {
-            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['dataUpload'] = array();
         }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Finance', 'url' => '#!', 'active' => false),
+            array('label' => 'Deposit', 'url' => '#!', 'active' => false),
+            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
+            array('label' => 'Cek Pending', 'url' => '', 'active' => true)
+        );
+        echo view('admin/Finance/Amz/Deposit/cekPending', $response);
     }
 
     public function DataTransaksi() {
-        try {
-            $request = request();
-            $client = service('curlrequest');
+        $request = request();
+        $client = service('curlrequest');
 
+        try {
             $params = "";
             if($request->getGet('startDt') && $request->getGet('startDt')) {
                 $params = "?startDt=".$request->getGet('startDt')."&endDt=".$request->getGet('endDt');
@@ -95,30 +109,36 @@ class Deposit extends BaseController
 
             $res2 = json_decode($getData->getBody(), true);
             $response['data'] = $res2['data'] ?? array();
-
-            $response['breadcrumb'] = array(
-                array('label' => 'Finance', 'url' => '#!', 'active' => false),
-                array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-                array('label' => 'Amazon', 'url' => '#!', 'active' => false),
-                array('label' => 'Data Transaksi', 'url' => '', 'active' => true)
-            );
-            echo view('admin/Finance/Amz/Deposit/transaksi', $response);
-        } catch (\Throwable $th) {
-            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
         }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Finance', 'url' => '#!', 'active' => false),
+            array('label' => 'Deposit', 'url' => '#!', 'active' => false),
+            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
+            array('label' => 'Data Transaksi', 'url' => '', 'active' => true)
+        );
+        echo view('admin/Finance/Amz/Deposit/transaksi', $response);
     }
 
     public function add_image(int $id) {
         $client = service('curlrequest');
-        $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/$id", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
 
-        $res = json_decode($posts_data->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+        try {
+            $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/$id", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+            $res = json_decode($posts_data->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
+        }
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
@@ -149,24 +169,33 @@ class Deposit extends BaseController
         // Create a CURLFile object
         $dataPost['image'] = curl_file_create($tempfile,$type,$filename);
 
-        $response = $client->post(getenv('API_HOST')."/api/finance/a/deposit/$id", [
-            'debug' => true,'multipart' => $dataPost
-		]);
+        try {
+            $response = $client->post(getenv('API_HOST')."/api/finance/a/deposit/$id", [
+                'debug' => true,'multipart' => $dataPost
+            ]);
+        } catch (\Exception $e) {
+            exit($e->getMessage());
+        }
 
         return redirect()->to('/finance/deposit/amz/cek_pending');
     }
 
     public function add_reply(int $id) {
         $client = service('curlrequest');
-        $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/$id", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
 
-        $res = json_decode($posts_data->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+        try {
+            $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/$id", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+            $res = json_decode($posts_data->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
+        }
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
@@ -190,16 +219,25 @@ class Deposit extends BaseController
         $dataPost['reply'] = $request->getPost('reply');
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
 
-        $response = $client->post(getenv('API_HOST')."/api/finance/a/deposit/$id", [
-            'debug' => true,'multipart' => $dataPost
-		]);
+        try {
+            $response = $client->post(getenv('API_HOST')."/api/finance/a/deposit/$id", [
+                'debug' => true,'multipart' => $dataPost
+            ]);
+        } catch (\Exception $e) {
+            exit($e->getMessage());
+        }
 
         return redirect()->to('/finance/deposit/amz/cek_pending');
     }
 
     public function DeleteDeposit(int $id) {
         $client = service('curlrequest');
-        $posts_data = $client->delete(getenv('API_HOST')."/api/finance/a/deposit/$id");
+
+        try {
+            $posts_data = $client->delete(getenv('API_HOST')."/api/finance/a/deposit/$id");
+        } catch (\Exception $e) {
+            exit($e->getMessage());
+        }
 
         return redirect()->to('/finance/deposit/amz/cancel');
     }
@@ -211,15 +249,20 @@ class Deposit extends BaseController
         $response['data'] = array();
 
         if($request->getGet('date')) {
-            $params = "?dt=".urlencode(utf8_encode($request->getGet('date')));
-            $getData = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/all".$params, [
-                "headers" => [
-                    "Accept" => "application/json",
-                    "Content-Type" => "application/x-www-form-urlencoded"
-                ],
-            ]);
-            $res = json_decode($getData->getBody(), true);
-            $response['data'] = $res['data'] ?? array();
+            try {
+                $params = "?dt=".urlencode(utf8_encode($request->getGet('date')));
+                $getData = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/all".$params, [
+                    "headers" => [
+                        "Accept" => "application/json",
+                        "Content-Type" => "application/x-www-form-urlencoded"
+                    ],
+                ]);
+                $res = json_decode($getData->getBody(), true);
+                $response['data'] = $res['data'] ?? array();
+            } catch (\Exception $e) {
+                // exit($e->getMessage());
+                $response['data'] = array();
+            }
         }
 
         $response['breadcrumb'] = array(
