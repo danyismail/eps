@@ -6,6 +6,16 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 // $routes->setAutoRoute(true);
+
+$routes->get('(:any)/ceksaldo', 'Deposit::check_supplier_balance/$1');
+$routes->get('(:any)/penjualan', 'Sales::sales_replica/$1');
+$routes->get('(:any)/penjualan/periode', 'Sales::sales_periode_replica/$1');
+
+$routes->get('/eps/ceksaldo', 'Deposit::check_supplier_balance');
+$routes->get('/eps/laba', 'Sales::laba');
+$routes->get('/eps/laba/periode', 'Sales::labaPeriode');
+
+
 $routes->get('/', 'Kpi::index');
 $routes->get('/ePS/kpi', 'Kpi::index');
 $routes->get('/ePS/RekapSpl', 'Deposit::index');

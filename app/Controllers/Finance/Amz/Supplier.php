@@ -7,25 +7,28 @@ class Supplier extends BaseController
 {
     public function index()
 	{
-        $request = request();
-        $client = service('curlrequest');
+        try {
+            $request = request();
+            $client = service('curlrequest');
 
-        $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/amz/supplier", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
+            $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/amz/supplier", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
 
-        $res = json_decode($posts_data->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
-        $response['breadcrumb'] = array(
-            array('label' => 'Finance', 'url' => '', 'active' => false),
-            array('label' => 'Supplier', 'url' => '', 'active' => false),
-            array('label' => 'Amazon', 'url' => '', 'active' => true)
-        );
-
-        echo view('admin/Finance/Amz/supplier/view', $response);
+            $res = json_decode($posts_data->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+            $response['breadcrumb'] = array(
+                array('label' => 'Finance', 'url' => '', 'active' => false),
+                array('label' => 'Supplier', 'url' => '', 'active' => false),
+                array('label' => 'Amazon', 'url' => '', 'active' => true)
+            );
+            echo view('admin/Finance/Amz/supplier/view', $response);
+        } catch (\Throwable $th) {
+            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        }
 	}
 
     public function status() {

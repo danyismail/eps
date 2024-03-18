@@ -10,43 +10,73 @@ class Deposit extends BaseController
     use ResponseTrait;
     public function index()
 	{
-        $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/deposit", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
+        try {
+            $client = service('curlrequest');
+            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/deposit", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
 
-        $res = json_decode($getDepositToday->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+            $res = json_decode($getDepositToday->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
 
-        $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Supplier', 'url' => '', 'active' => true)
-        );
-
-        echo view('admin/dashboard/deposit_view', $response);
+            $response['breadcrumb'] = array(
+                array('label' => 'Home', 'url' => '/', 'active' => false),
+                array('label' => 'Supplier', 'url' => '', 'active' => true)
+            );
+            return view('admin/dashboard/deposit_view', $response);
+        } catch (\Throwable $th) {
+            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        }
 	}
 
     public function get_deposit()
 	{
-        $client = service('curlrequest');
-        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/depositProd", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
+        try {
+            $client = service('curlrequest');
+            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/depositProd", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
 
-        $res = json_decode($getDepositToday->getBody(), true);
-        $response['data'] = $res['data'] ?? array();
+            $res = json_decode($getDepositToday->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
 
-        $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
-        );
+            $response['breadcrumb'] = array(
+                array('label' => 'Home', 'url' => '/', 'active' => false),
+                array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
+            );
+            return view('admin/dashboard/deposit_view', $response);
+        } catch (\Throwable $th) {
+            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        }
+	}
 
-        echo view('admin/dashboard/deposit_view', $response);
+    public function check_supplier_balance($db_conn)
+	{
+        try {
+            $client = service('curlrequest');
+            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/replica/$db_conn/supplier-balance", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($getDepositToday->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+
+            $response['breadcrumb'] = array(
+                array('label' => 'Home', 'url' => '/', 'active' => false),
+                array('label' => 'Supplier Amazon', 'url' => '', 'active' => true)
+            );
+            return view('admin/dashboard/deposit_view', $response);
+        } catch (\Throwable $th) {
+            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        }
 	}
 }

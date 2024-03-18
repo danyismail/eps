@@ -43,63 +43,70 @@ class Deposit extends BaseController
     }
 
     public function Checkpending() {
-        $client = service('curlrequest');
-        $getDataCreated = $client->request("GET", getenv('API_HOST')."/api/finance/e/deposit/created", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
+        try {
+            $client = service('curlrequest');
+            $getDataCreated = $client->request("GET", getenv('API_HOST')."/api/finance/e/deposit/created", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
 
-        $getDataUpload = $client->request("GET", getenv('API_HOST')."/api/finance/e/deposit/uploaded", [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
+            $getDataUpload = $client->request("GET", getenv('API_HOST')."/api/finance/e/deposit/uploaded", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
 
-        $res = json_decode($getDataCreated->getBody(), true);
-        $response['dataCreated'] = $res['data'] ?? array();
+            $res = json_decode($getDataCreated->getBody(), true);
+            $response['dataCreated'] = $res['data'] ?? array();
 
-        $res2 = json_decode($getDataUpload->getBody(), true);
-        $response['dataUpload'] = $res2['data'] ?? array();
+            $res2 = json_decode($getDataUpload->getBody(), true);
+            $response['dataUpload'] = $res2['data'] ?? array();
 
-        $response['breadcrumb'] = array(
-            array('label' => 'Finance', 'url' => '#!', 'active' => false),
-            array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Eps', 'url' => '#!', 'active' => false),
-            array('label' => 'Cek Pending', 'url' => '', 'active' => true)
-        );
+            $response['breadcrumb'] = array(
+                array('label' => 'Finance', 'url' => '#!', 'active' => false),
+                array('label' => 'Deposit', 'url' => '#!', 'active' => false),
+                array('label' => 'Eps', 'url' => '#!', 'active' => false),
+                array('label' => 'Cek Pending', 'url' => '', 'active' => true)
+            );
 
-        echo view('admin/Finance/Eps/Deposit/cekPending', $response);
+            echo view('admin/Finance/Eps/Deposit/cekPending', $response);
+        } catch (\Throwable $th) {
+            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        }
     }
 
     public function DataTransaksi() {
-        $request = request();
-        $client = service('curlrequest');
+        try {
+            $request = request();
+            $client = service('curlrequest');
 
-        $params = "";
-        if($request->getGet('startDt') && $request->getGet('startDt')) {
-            $params = "?startDt=".$request->getGet('startDt')."&endDt=".$request->getGet('endDt');
+            $params = "";
+            if($request->getGet('startDt') && $request->getGet('startDt')) {
+                $params = "?startDt=".$request->getGet('startDt')."&endDt=".$request->getGet('endDt');
+            }
+            $getData = $client->request("GET", getenv('API_HOST')."/api/finance/e/deposit/done".$params, [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res2 = json_decode($getData->getBody(), true);
+            $response['data'] = $res2['data'] ?? array();
+
+            $response['breadcrumb'] = array(
+                array('label' => 'Finance', 'url' => '#!', 'active' => false),
+                array('label' => 'Deposit', 'url' => '#!', 'active' => false),
+                array('label' => 'Eps', 'url' => '#!', 'active' => false),
+                array('label' => 'Data Transaksi', 'url' => '', 'active' => true)
+            );
+            echo view('admin/Finance/Eps/Deposit/transaksi', $response);
+        } catch (\Throwable $th) {
+            return view('admin/dashboard/error_view', ['message' => 'error occured']);
         }
-        $getData = $client->request("GET", getenv('API_HOST')."/api/finance/e/deposit/done".$params, [
-			"headers" => [
-				"Accept" => "application/json",
-                "Content-Type" => "application/json"
-			],
-		]);
-
-        $res2 = json_decode($getData->getBody(), true);
-        $response['data'] = $res2['data'] ?? array();
-
-        $response['breadcrumb'] = array(
-            array('label' => 'Finance', 'url' => '#!', 'active' => false),
-            array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Eps', 'url' => '#!', 'active' => false),
-            array('label' => 'Data Transaksi', 'url' => '', 'active' => true)
-        );
-
-        echo view('admin/Finance/Eps/Deposit/transaksi', $response);
     }
 
     public function add_image(int $id) {

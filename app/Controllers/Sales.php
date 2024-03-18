@@ -103,4 +103,53 @@ class Sales extends BaseController
         echo view('admin/dashboard/sales_periode_amz', $response);
 	}
 
+
+    public function sales_replica($db_conn)
+	{
+        $client = service('curlrequest');
+        $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/replica/$db_conn/sales", [
+			"headers" => [
+				"Accept" => "application/json",
+                "Content-Type" => "application/json"
+			],
+		]);
+
+        $res = json_decode($getDepositToday->getBody(), true);
+        $response['data'] = $res['data'] ?? array();
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Penjualan Hari Ini Amazon', 'url' => '', 'active' => true)
+        );
+
+        echo view('admin/dashboard/sales_view', $response);
+	}
+    
+    public function sales_periode_replica($db_conn)
+	{
+        try {
+            $params = $this->request->getGet();
+            $from = $params['startDt'] ?? '';
+            $to = $params['endDt'] ?? '';
+            $client = service('curlrequest');
+            $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/api/replica/$db_conn/sales-periode?startDate=$from&endDate=$to", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($getSalesPeriode->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+
+            $response['breadcrumb'] = array(
+                array('label' => 'Home', 'url' => '/', 'active' => false),
+                array('label' => 'Penjualan Amazon', 'url' => '', 'active' => true)
+            );
+            echo view('admin/dashboard/sales_periode_amz', $response);
+        } catch (\Throwable $th) {
+            return view('admin/dashboard/error_view', ['message' => 'error occured']);
+        }
+	}
+
 }

@@ -68,12 +68,41 @@
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
     <?php
+        $pathAmazone = array("", "amazone/ceksaldo", "amazone/penjualan/periode", "amazone/penjualan");
+        $pathEPS = array("", "eps/ceksaldo", "eps/penjualan/periode", "eps/penjualan");
         $arrAmazon = array("", "AmZ/kpi", "AmZ/RekapSpl", "AmZ/Rect/periode", "AmZ/Rect");
         $arrDigi = array("", "ePS/kpi", "ePS/RekapSpl", "ePS/Rect/periode", "ePS/Rect");
         $arrFinance = array("", "amz/supplier", "eps/supplier");
     ?>
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span>Dashboard</span></li>
+
+        <li class="<?=array_search(uri_string(), $pathAmazone) ? 'mm-active' : ''?>">
+            <a class="d-flex" href="#" aria-expanded="false">
+                <i class="far fa-circle m-0"></i>
+                <span>Replica Amazone</span>
+                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
+            </a>
+            <ul>
+                <li><a class="<?=(uri_string() === 'amazone/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/amazone/ceksaldo')?>">Saldo Supplier</a></li>
+                <li><a class="<?=(uri_string() === 'amazone/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/amazone/penjualan/periode')?>">Penjualan</a></li>
+                <li><a class="<?=(uri_string() === 'amazone/penjualan') ? 'active' : ''?>" href="<?=base_url('/amazone/penjualan')?>">Penjualan Hari Ini</a></li>
+            </ul>
+        </li>
+
+        <li class="<?=array_search(uri_string(), $pathEPS) ? 'mm-active' : ''?>">
+            <a class="d-flex" href="#" aria-expanded="false">
+                <i class="far fa-circle m-0"></i>
+                <span>Replica EPS</span>
+                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
+            </a>
+            <ul>
+                <li><a class="<?=(uri_string() === 'eps/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/eps/ceksaldo')?>">Saldo Supplier</a></li>
+                <li><a class="<?=(uri_string() === 'eps/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/eps/penjualan/periode')?>">Penjualan</a></li>
+                <li><a class="<?=(uri_string() === 'eps/penjualan') ? 'active' : ''?>" href="<?=base_url('/eps/penjualan')?>">Penjualan Hari Ini</a></li>
+            </ul>
+        </li>
+
         <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
             <a class="d-flex" href="#" aria-expanded="false">
                 <i class="far fa-circle m-0"></i>
@@ -87,6 +116,7 @@
                 <li><a class="<?=(uri_string() === 'AmZ/Rect') ? 'active' : ''?>" href="<?=base_url('/AmZ/Rect')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
+
         <li class="<?=array_search(uri_string(), $arrDigi) ? 'mm-active' : ''?>">
             <a class="d-flex" href="#" aria-expanded="false">
                 <i class="far fa-circle m-0"></i>
@@ -151,6 +181,7 @@
             <div class="row justify-content-center">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
+                        <?php if (isset($breadcrumb)) {?>
                         <?php foreach($breadcrumb as $key => $row): ?>
                             <li class="breadcrumb-item <?=$row['active'] ? 'active text-secondary' : ''?>" <?=$row['active'] ? 'aria-current="page"' : ''?>>
                                 <?php
@@ -162,6 +193,7 @@
                                 ?>
                             </li>
                         <?php endforeach ?>
+                        <?php } ?>
                     </ol>
                 </nav>
                 <?php $this->renderSection('content'); ?>
