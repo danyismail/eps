@@ -72,30 +72,19 @@
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
     <?php
-        $arrFinance = array("", "finance/supplier/amz", "finance/supplier/eps", "finance/supplier/amz/add", "finance/supplier/eps/add");
+        $arrSupplierAmz = array("", "finance/supplier/amz", "finance/supplier/amz/add");
+        $arrSupplierEps = array("", "finance/supplier/eps", "finance/supplier/eps/add");
         $arrAmazon = array("", "finance/deposit/amz/add", "finance/deposit/amz/cek_pending", "finance/deposit/amz/data_transaksi", "finance/deposit/amz/cancel");
         $arrEps = array("", "finance/deposit/eps/add", "finance/deposit/eps/cek_pending", "finance/deposit/eps/data_transaksi", "finance/deposit/eps/cancel");
     ?>
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span><h2><b>Finance</b></h2></span></li>
-        <!-- <li class="side_menu_title"><span>Supplier</span></li> -->
-        <li class="<?=array_search(uri_string(), $arrFinance) ? 'mm-active' : ''?> side_menu_title">
-            <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
-                <!-- <i class="far fa-circle m-0"></i> -->
-                <span class="p-0">Supplier</span>
-                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
-            </a>
-            <ul>
-                <li><a class="<?=(uri_string() === 'finance/supplier/amz') ? 'active' : ''?> text-decoration-none" href="<?=base_url('/finance/supplier/amz')?>">Amazon</a></li>
-                <li><a class="<?=(uri_string() === 'finance/supplier/eps') ? 'active' : ''?> text-decoration-none" href="<?=base_url('/finance/supplier/eps')?>">EPS</a></li>
-            </ul>
-        </li>
-
-        <li class="side_menu_title"><span>Deposit</span></li>
+        <li class="side_menu_title"><span>Digi Amazone</span></li>
+        <li><a class="text-decoration-none" style="<?=(array_search(uri_string(), $arrSupplierAmz)) ? 'color:#2daab8' : ''?>" href="<?=base_url('/finance/supplier/amz')?>">Supplier</a></li>
         <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
             <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
                 <i class="far fa-circle m-0"></i>
-                <span>Amazon</span>
+                <span>Deposit</span>
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
@@ -105,10 +94,13 @@
                 <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/amz/cancel') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/cancel')?>">Cancel Deposit</a></li>
             </ul>
         </li>
+
+        <li class="side_menu_title"><span>Digi Eps</span></li>
+        <li><a class="text-decoration-none" style="<?=(array_search(uri_string(), $arrSupplierEps)) ? 'color:#2daab8' : ''?>" href="<?=base_url('/finance/supplier/eps')?>">Supplier</a></li>
         <li class="<?=array_search(uri_string(), $arrEps) ? 'mm-active' : ''?>">
             <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
                 <i class="far fa-circle m-0"></i>
-                <span>Eps</span>
+                <span>Deposit</span>
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
