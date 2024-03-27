@@ -3,7 +3,13 @@
   <div class="mt-1">
   <div class="row">
       <div class="col-md-12">
-        <form method="GET" action="<?=base_url('/finance/deposit/amz/data_transaksi')?>" class="mb-2 mt-2">
+          <?php 
+            $currentUri = $_SERVER['REQUEST_URI'];
+            $currentUri = ltrim($currentUri, '/');
+            $uriSegments = explode('/', $currentUri);
+            $path = $uriSegments[1];
+          ?>
+        <form method="GET" action="<?=base_url('/deposit/'.$path.'/data_transaksi')?>" class="mb-2 mt-2">
             <div class="row mb-2 mt-2">
               <div class="form-group col-md-3">
                 <label for="StartDate">Start Date</label>
@@ -49,7 +55,8 @@
                     <td><?=$row['status']?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
-                    <td><img src="<?=getenv('API_HOST')."/api/finance/a/image/".$row['id']?>" width="100" alt="" class="load-image"></td>
+                    <!-- {{prod}}/deposit/de/image/156 -->
+                    <td><img src="<?=getenv('API_HOST')."/deposit/$path/image/".$row['id']?>" width="100" alt="" class="load-image"></td>
                     <td><?=$row['reply']?></td>
                 </tr>
             <?php endforeach ?>
