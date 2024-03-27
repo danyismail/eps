@@ -18,7 +18,6 @@
     <table class="table table-bordered">
         <thead>
           <tr class="bg-info text-white">
-          <th>MA</th>
           <th>Trx</th>
           <th>Pembelian</th>
           <th>Penjualan</th>
@@ -28,7 +27,6 @@
         <tbody>
             <?php foreach($data as $row): ?>
                 <tr>
-                  <td><?=$row['ma']?></td>
                   <td><?=$row['trx']?></td>
                   <td><?=number_format($row['pembelian'])?></td>
                   <td><?=number_format($row['penjualan'])?></td>

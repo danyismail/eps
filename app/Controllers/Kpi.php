@@ -8,7 +8,7 @@ use CodeIgniter\HTTP\IncomingRequest;
 class Kpi extends BaseController
 {
     use ResponseTrait;
-    public function index()
+    public function index($db_conn)
 	{
         $request = request();
         $client = service('curlrequest');
@@ -43,7 +43,7 @@ class Kpi extends BaseController
         $datafilter['view'] = $response['num_results_on_page'];
 
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/api/eps/getKpis", [
+            $posts_data = $client->request("POST", getenv('API_HOST')."/kpi/$db_conn/list", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"

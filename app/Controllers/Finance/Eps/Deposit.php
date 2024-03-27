@@ -104,7 +104,7 @@ class Deposit extends BaseController
             if($request->getGet('startDt') && $request->getGet('startDt')) {
                 $params = "?startDt=".$request->getGet('startDt')."&endDt=".$request->getGet('endDt');
             }
-            $getData = $client->request("GET", getenv('API_HOST')."/api/finance/e/deposit/donex".$params, [
+            $getData = $client->request("GET", getenv('API_HOST')."/api/finance/e/deposit/done".$params, [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"

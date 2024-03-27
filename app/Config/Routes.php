@@ -7,25 +7,13 @@ use CodeIgniter\Router\RouteCollection;
  */
 // $routes->setAutoRoute(true);
 
-$routes->get('(:any)/ceksaldo', 'Deposit::check_supplier_balance/$1');
-$routes->get('(:any)/penjualan', 'Sales::sales_replica/$1');
-$routes->get('(:any)/penjualan/periode', 'Sales::sales_periode_replica/$1');
+$routes->get('(:any)/ceksaldo', 'Deposit::GetSupplierBalance/$1');
+$routes->get('(:any)/penjualan/periode', 'Sales::GetSalesByDate/$1');
+$routes->get('(:any)/penjualan', 'Sales::GetSales/$1');
 
-$routes->get('/eps/ceksaldo', 'Deposit::check_supplier_balance');
-$routes->get('/eps/laba', 'Sales::laba');
-$routes->get('/eps/laba/periode', 'Sales::labaPeriode');
+$routes->get('/', 'Kpi::index/da');
+$routes->get('(:any)/kpi', 'Kpi::index/$1');
 
-
-$routes->get('/', 'Kpi::index');
-$routes->get('/ePS/kpi', 'Kpi::index');
-$routes->get('/ePS/RekapSpl', 'Deposit::index');
-$routes->get('/ePS/Rect', 'Sales::index');
-$routes->get('/ePS/Rect/periode', 'Sales::salesPeriode');
-
-$routes->get('/AmZ/kpi', 'Kpi::get_kpi');
-$routes->get('/AmZ/RekapSpl', 'Deposit::get_deposit');
-$routes->get('/AmZ/Rect', 'Sales::get_sales');
-$routes->get('/AmZ/Rect/periode', 'Sales::get_sales_periode');
 
 $routes->get('/finance/supplier/eps', 'Finance\Eps\Supplier::index');
 $routes->get('/finance/supplier/eps/status', 'Finance\Eps\Supplier::status');

@@ -84,9 +84,9 @@
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === 'amazone/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/amazone/ceksaldo')?>">Saldo Supplier</a></li>
-                <li><a class="<?=(uri_string() === 'amazone/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/amazone/penjualan/periode')?>">Penjualan</a></li>
-                <li><a class="<?=(uri_string() === 'amazone/penjualan') ? 'active' : ''?>" href="<?=base_url('/amazone/penjualan')?>">Penjualan Hari Ini</a></li>
+                <li><a class="<?=(uri_string() === 'ra/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/ra/ceksaldo')?>">Saldo Supplier</a></li>
+                <li><a class="<?=(uri_string() === 'ra/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/ra/penjualan/periode')?>">Penjualan</a></li>
+                <li><a class="<?=(uri_string() === 'ra/penjualan') ? 'active' : ''?>" href="<?=base_url('/ra/penjualan')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
 
@@ -97,9 +97,9 @@
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === 'eps/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/eps/ceksaldo')?>">Saldo Supplier</a></li>
-                <li><a class="<?=(uri_string() === 'eps/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/eps/penjualan/periode')?>">Penjualan</a></li>
-                <li><a class="<?=(uri_string() === 'eps/penjualan') ? 'active' : ''?>" href="<?=base_url('/eps/penjualan')?>">Penjualan Hari Ini</a></li>
+                <li><a class="<?=(uri_string() === 're/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/re/ceksaldo')?>">Saldo Supplier</a></li>
+                <li><a class="<?=(uri_string() === 're/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/re/penjualan/periode')?>">Penjualan</a></li>
+                <li><a class="<?=(uri_string() === 're/penjualan') ? 'active' : ''?>" href="<?=base_url('/re/penjualan')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
 
@@ -110,10 +110,10 @@
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === 'AmZ/kpi') ? 'active' : ''?>" href="<?=base_url('/AmZ/kpi')?>">KPI</a></li>
-                <li><a class="<?=(uri_string() === 'AmZ/RekapSpl') ? 'active' : ''?>" href="<?=base_url('/AmZ/RekapSpl')?>">Saldo Supplier</a></li>
-                <li><a class="<?=(uri_string() === 'AmZ/Rect/periode') ? 'active' : ''?>" href="<?=base_url('/AmZ/Rect/periode')?>">Penjualan</a></li>
-                <li><a class="<?=(uri_string() === 'AmZ/Rect') ? 'active' : ''?>" href="<?=base_url('/AmZ/Rect')?>">Penjualan Hari Ini</a></li>
+                <li><a class="<?=(uri_string() === '/kpi') ? 'active' : ''?>" href="<?=base_url('/da/kpi/list')?>">KPI</a></li>
+                <li><a class="<?=(uri_string() === 'da/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/da/ceksaldo')?>">Saldo Supplier</a></li>
+                <li><a class="<?=(uri_string() === 'da/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/da/penjualan/periode')?>">Penjualan</a></li>
+                <li><a class="<?=(uri_string() === 'da/penjualan') ? 'active' : ''?>" href="<?=base_url('/da/penjualan')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
 

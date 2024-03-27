@@ -3,7 +3,13 @@
   <div class="pr-5 pl-5 mt-2">
     <div class="row">
       <div class="col-md-12">
-        <form method="GET" action="<?=base_url('/AmZ/Rect/periode')?>" class="mb-5">
+        <?php 
+        $currentUri = $_SERVER['REQUEST_URI'];
+        $currentUri = ltrim($currentUri, '/');
+        $uriSegments = explode('/', $currentUri);
+        $path = $uriSegments[0];
+        ?>
+        <form method="GET" action="<?=base_url('/'.$path.'/penjualan/periode')?>" class="mb-5">
               <div class="row mb-4">
                 <div class="form-group col-md-3">
                   <label for="StartDate">Start Date</label>
@@ -23,7 +29,6 @@
     <table class="table table-bordered">
         <thead>
           <tr class="bg-info text-white">
-          <th>MA </th>
           <th>Trx</th>
           <th>Pembelian</th>
           <th>Penjualan</th>
@@ -33,7 +38,6 @@
         <tbody>
             <?php foreach($data as $row): ?>
                 <tr>
-                  <td><?=$row['ma']?></td>
                   <td><?=$row['trx']?></td>
                   <td><?=number_format($row['pembelian'])?></td>
                   <td><?=number_format($row['penjualan'])?></td>

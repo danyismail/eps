@@ -60,11 +60,11 @@ class Deposit extends BaseController
 
 	}
 
-    public function check_supplier_balance($db_conn)
+    public function GetSupplierBalance($db_conn)
 	{
         try {
             $client = service('curlrequest');
-            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/replica/$db_conn/supplier-balance", [
+            $getDepositToday = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn/balance", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
