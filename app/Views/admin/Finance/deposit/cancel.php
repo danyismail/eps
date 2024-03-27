@@ -3,7 +3,13 @@
   <div class="mt-1">
     <div class="row">
       <div class="col-md-12">
-        <form method="GET" action="<?=base_url('/finance/deposit/eps/cancel')?>" class="mb-2 mt-2">
+        <?php 
+        $currentUri = $_SERVER['REQUEST_URI'];
+        $currentUri = ltrim($currentUri, '/');
+        $uriSegments = explode('/', $currentUri);
+        $path = $uriSegments[1];
+        ?>
+        <form method="GET" action="<?=base_url('/deposit/'.$path.'/cancel')?>" class="mb-2 mt-2">
             <div class="row mb-2 mt-2">
               <div class="form-group col-md-3">
                 <label for="date">Search Date</label>

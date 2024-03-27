@@ -1,37 +1,34 @@
 <?php
 
-namespace App\Controllers\Finance\Amz;
+namespace App\Controllers\Finance;
 use App\Controllers\BaseController;
 
 class Deposit extends BaseController
 {
-    public function add() {
+    public function Add($db_conn) {
         $client = service('curlrequest');
         try {
-            $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/amz/supplier", [
+            $posts_data = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
             ]);
-
             $res = json_decode($posts_data->getBody(), true);
             $response['supplier'] = $res['data'] ?? array();
         } catch (\Exception $e) {
-            // exit($e->getMessage());
             $response['supplier'] = array();
         }
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
             array('label' => 'Create', 'url' => '#!', 'active' => true)
         );
-        echo view('admin/Finance/Amz/Deposit/create', $response);
+        echo view('admin/Finance/deposit/create', $response);
     }
 
-    public function create() {
+    public function Create($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
@@ -42,20 +39,20 @@ class Deposit extends BaseController
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
 
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/a/deposit", [
+            $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$db_conn", [
                 "form_params" => $dataPost
             ]);
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
 
-        return redirect()->to('/finance/deposit/amz/cek_pending');
+        return redirect()->to('/deposit/'.$db_conn.'/cek_pending');
     }
 
-    public function Checkpending() {
+    public function CheckPending($db_conn) {
         $client = service('curlrequest');
         try {
-            $getDataCreated = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/created", [
+            $getDataCreated = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/created", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -69,7 +66,7 @@ class Deposit extends BaseController
         }
 
         try {
-            $getDataUpload = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/uploaded", [
+            $getDataUpload = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/uploaded", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -78,20 +75,18 @@ class Deposit extends BaseController
             $res2 = json_decode($getDataUpload->getBody(), true);
             $response['dataUpload'] = $res2['data'] ?? array();
         } catch (\Exception $e) {
-            // exit($e->getMessage());
             $response['dataUpload'] = array();
         }
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
             array('label' => 'Cek Pending', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/Amz/Deposit/cekPending', $response);
+        echo view('admin/Finance/deposit/cekPending', $response);
     }
 
-    public function DataTransaksi() {
+    public function DataTransaksi($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
@@ -100,7 +95,7 @@ class Deposit extends BaseController
             if($request->getGet('startDt') && $request->getGet('startDt')) {
                 $params = "?startDt=".$request->getGet('startDt')."&endDt=".$request->getGet('endDt');
             }
-            $getData = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/done".$params, [
+            $getData = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/done".$params, [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -120,14 +115,14 @@ class Deposit extends BaseController
             array('label' => 'Amazon', 'url' => '#!', 'active' => false),
             array('label' => 'Data Transaksi', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/Amz/Deposit/transaksi', $response);
+        echo view('admin/Finance/deposit/transaksi', $response);
     }
 
-    public function add_image(int $id) {
+    public function GetDepositById(string $db_conn,int $id) {
         $client = service('curlrequest');
 
         try {
-            $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/$id", [
+            $posts_data = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/$id", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -136,21 +131,19 @@ class Deposit extends BaseController
             $res = json_decode($posts_data->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {
-            // exit($e->getMessage());
             $response['data'] = array();
         }
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
             array('label' => 'Cek Pending', 'url' => '', 'active' => false),
             array('label' => 'Upload Image', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/Amz/Deposit/formUpload', $response);
+        echo view('admin/Finance/deposit/formUpload', $response);
     }
 
-    public function create_upload() {
+    public function CreateUpload($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
@@ -170,21 +163,21 @@ class Deposit extends BaseController
         $dataPost['image'] = curl_file_create($tempfile,$type,$filename);
 
         try {
-            $response = $client->post(getenv('API_HOST')."/api/finance/a/deposit/$id", [
+            $response = $client->request("POST",getenv('API_HOST')."/deposit/$db_conn/update/$id", [
                 'debug' => true,'multipart' => $dataPost
             ]);
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
 
-        return redirect()->to('/finance/deposit/amz/cek_pending');
+        return redirect()->to("/deposit/$db_conn/cek_pending");
     }
 
-    public function add_reply(int $id) {
+    public function AddReply(string $db_conn,int $id) {
         $client = service('curlrequest');
 
         try {
-            $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/$id", [
+            $posts_data = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/$id", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -200,14 +193,13 @@ class Deposit extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
             array('label' => 'Cek Pending', 'url' => '', 'active' => false),
             array('label' => 'Reply', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/Amz/Deposit/formReply', $response);
+        echo view('admin/Finance/deposit/formReply', $response);
     }
 
-    public function action_reply() {
+    public function ActionReply($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
@@ -220,29 +212,29 @@ class Deposit extends BaseController
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
 
         try {
-            $response = $client->post(getenv('API_HOST')."/api/finance/a/deposit/$id", [
+            $response = $client->post(getenv('API_HOST')."/deposit/$db_conn/update/$id", [
                 'debug' => true,'multipart' => $dataPost
             ]);
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
 
-        return redirect()->to('/finance/deposit/amz/cek_pending');
+        return redirect()->to('/deposit/'.$db_conn.'/cek_pending');
     }
 
-    public function DeleteDeposit(int $id) {
+    public function DeleteDeposit(string $db_conn,int $id) {
         $client = service('curlrequest');
 
         try {
-            $posts_data = $client->delete(getenv('API_HOST')."/api/finance/a/deposit/$id");
+            $posts_data = $client->delete(getenv('API_HOST')."/deposit/$db_conn/$id");
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
 
-        return redirect()->to('/finance/deposit/amz/cancel');
+        return redirect()->to('/deposit/'.$db_conn.'/cancel');
     }
 
-    public function Cancel() {
+    public function Cancel($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
@@ -251,7 +243,7 @@ class Deposit extends BaseController
         if($request->getGet('date')) {
             try {
                 $params = "?dt=".urlencode(utf8_encode($request->getGet('date')));
-                $getData = $client->request("GET", getenv('API_HOST')."/api/finance/a/deposit/all".$params, [
+                $getData = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/all".$params, [
                     "headers" => [
                         "Accept" => "application/json",
                         "Content-Type" => "application/x-www-form-urlencoded"
@@ -260,7 +252,6 @@ class Deposit extends BaseController
                 $res = json_decode($getData->getBody(), true);
                 $response['data'] = $res['data'] ?? array();
             } catch (\Exception $e) {
-                // exit($e->getMessage());
                 $response['data'] = array();
             }
         }
@@ -268,11 +259,10 @@ class Deposit extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
             array('label' => 'Cancel', 'url' => '', 'active' => true)
         );
 
-        echo view('admin/Finance/Amz/Deposit/cancel', $response);
+        echo view('admin/Finance/deposit/cancel', $response);
     }
 
 }

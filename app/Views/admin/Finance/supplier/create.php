@@ -6,7 +6,13 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-8">
-          <form action="<?=base_url('/finance/supplier/amz/create')?>" method="POST">
+        <?php 
+        $currentUri = $_SERVER['REQUEST_URI'];
+        $currentUri = ltrim($currentUri, '/');
+        $uriSegments = explode('/', $currentUri);
+        $path = $uriSegments[2];
+        ?>
+          <form action="<?=base_url('/supplier/'.$path.'/create')?>" method="POST">
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="formGroupExampleInput">Name</label>

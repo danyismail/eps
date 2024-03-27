@@ -6,7 +6,13 @@
         <div class="col-md-4">
         </div>
         <div class="col-md-8">
-          <form action="<?=base_url('/finance/deposit/amz/create_upload')?>" enctype="multipart/form-data" method="POST">
+          <?php 
+            $currentUri = $_SERVER['REQUEST_URI'];
+            $currentUri = ltrim($currentUri, '/');
+            $uriSegments = explode('/', $currentUri);
+            $path = $uriSegments[1];
+          ?>
+          <form action="<?=base_url('/deposit/'.$path.'/action_upload')?>" enctype="multipart/form-data" method="POST">
             <div class="form-row">
               <div class="form-group col-md-6 mt-4">
                 <label for="formGroupExampleInput">PIC</label>

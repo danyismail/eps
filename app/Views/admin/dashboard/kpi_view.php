@@ -3,7 +3,13 @@
   <div class="pr-5 pl-5 mt-2">
     <div class="row">
       <div class="col-md-12">
-        <form method="GET" action="<?=base_url('/ePS/kpi')?>" class="mb-5">
+        <?php 
+          $currentUri = $_SERVER['REQUEST_URI'];
+          $currentUri = ltrim($currentUri, '/');
+          $uriSegments = explode('/', $currentUri);
+          $path = $uriSegments[0];
+        ?>
+        <form method="GET" action="<?=base_url('/'.$path.'/kpi/list')?>" class="mb-5">
               <div class="row mb-4">
                 <div class="form-group col-md-3">
                   <label for="StartDate">Start Date</label>

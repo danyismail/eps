@@ -2,7 +2,13 @@
 <?php $this->Section('content') ?>
   <div class="mt-2">
     <div class="table-responsive bg-white pb-3 p-2">
-      <a href="<?=base_url('finance/supplier/amz/add')?>" class="btn btn-primary mb-2 float-right">Add Item</a>
+    <?php 
+        $currentUri = $_SERVER['REQUEST_URI'];
+        $currentUri = ltrim($currentUri, '/');
+        $uriSegments = explode('/', $currentUri);
+        $path = $uriSegments[1];
+        ?>
+      <a href="<?=base_url('/supplier/'.$path.'/add')?>" class="btn btn-primary mb-2 float-right">Add Item</a>
       <table class="table table-bordered">
         <thead>
           <tr class="bg-info text-white">
@@ -23,8 +29,8 @@
                         </button>
                     </td>
                     <td>
-                      <a class="btn btn-default text-info" href="<?=base_url('/finance/supplier/amz/status?id='.$row['ID'].'&q=inactive')?>">Non Aktifkan</a> |
-                      <a class="btn btn-default text-info" href="<?=base_url('/finance/supplier/amz/status?id='.$row['ID'].'&q=active')?>">Aktifkan</a>
+                      <a class="btn btn-default text-info" href="<?=base_url('/supplier/'.$path.'/status?id='.$row['ID'].'&q=inactive')?>">Non Aktifkan</a> |
+                      <a class="btn btn-default text-info" href="<?=base_url('/supplier/'.$path.'/status?id='.$row['ID'].'&q=active')?>">Aktifkan</a>
                     </td>
                 </tr>
             <?php endforeach ?>

@@ -16,6 +16,12 @@
           </tr>
         </thead>
         <tbody>
+            <?php 
+            $currentUri = $_SERVER['REQUEST_URI'];
+            $currentUri = ltrim($currentUri, '/');
+            $uriSegments = explode('/', $currentUri);
+            $path = $uriSegments[1];
+            ?>
             <?php foreach($dataCreated as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
@@ -26,7 +32,7 @@
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td>
-                      <a href="<?=base_url('/finance/deposit/amz/add_image/'.$row['id'])?>">Upload Image</a>
+                      <a href="<?=base_url('/deposit/'.$path.'/form_upload/'.$row['id'])?>">Upload Image</a>
                     </td>
                 </tr>
             <?php endforeach ?>
@@ -58,6 +64,12 @@
           </tr>
         </thead>
         <tbody>
+            <?php 
+              $currentUri = $_SERVER['REQUEST_URI'];
+              $currentUri = ltrim($currentUri, '/');
+              $uriSegments = explode('/', $currentUri);
+              $path = $uriSegments[1];
+            ?>
             <?php foreach($dataUpload as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
@@ -68,9 +80,9 @@
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td><?=$row['reply']?></td>
-                    <td><img src="<?=getenv('API_HOST')."/api/finance/a/image/".$row['id']?>" width="100" alt="" class="load-image"></td>
+                    <td><img src="<?=getenv('API_HOST')."/deposit/".$path."/image/".$row['id']?>" width="100" alt="" class="load-image"></td>
                     <td>
-                        <a href="<?=base_url('/finance/deposit/amz/add_reply/'.$row['id'])?>">Upload Bukti</a>
+                        <a href="<?=base_url('/deposit/'.$path.'/add_reply/'.$row['id'])?>">Upload Bukti</a>
                     </td>
                 </tr>
             <?php endforeach ?>

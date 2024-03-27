@@ -1,17 +1,29 @@
 <?php
 
-namespace App\Controllers\Finance\Eps;
+namespace App\Controllers\Finance;
 use App\Controllers\BaseController;
+
+
+/*
+supplier := v1.Group("/supplier")
+	supplier.GET("/:e", h.GetSuppliers)
+	supplier.GET("/:e/active", h.GetActiveSuppliers)
+	supplier.GET("/:e/balance", h.GetSupplierBalance)
+	supplier.GET("/:e/:id", h.GetSupplierById)
+	supplier.POST("/:e/create", h.CreateSupplier)
+	supplier.POST("/:e/update", h.UpdateSupplier)
+	supplier.DELETE("/:e/delete/:id", h.DeleteSupplier)
+ */
 
 class Supplier extends BaseController
 {
-    public function index()
+    public function GetAll($db_conn)
 	{
         $request = request();
         $client = service('curlrequest');
 
         try {
-            $posts_data = $client->request("GET", getenv('API_HOST')."/api/finance/eps/supplier", [
+            $posts_data = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -22,18 +34,16 @@ class Supplier extends BaseController
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {
             $response['data'] = array();
-            // exit($e->getMessage());
         }
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '', 'active' => false),
             array('label' => 'Supplier', 'url' => '', 'active' => false),
-            array('label' => 'Eps', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/Amz/supplier/view', $response);
+        echo view('admin/Finance/supplier/view', $response);
 	}
 
-    public function status() {
+    public function Update($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
@@ -41,7 +51,7 @@ class Supplier extends BaseController
         $dataPost['status'] = $request->getGet('q');
 
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/eps/supplier/update", [
+            $posts_data = $client->request("POST", getenv('API_HOST')."/supplier/$db_conn/update", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -52,19 +62,18 @@ class Supplier extends BaseController
             exit($e->getMessage());
         }
 
-        return redirect()->to('/finance/supplier/eps');
+        return redirect()->to('supplier/'.$db_conn.'/list');
     }
 
-    public function add() {
+    public function Add($db_conn) {
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '', 'active' => false),
             array('label' => 'Supplier', 'url' => '', 'active' => false),
-            array('label' => 'Eps', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/Eps/supplier/create', $response);
+        echo view('admin/Finance/supplier/create', $response);
     }
 
-    public function create() {
+    public function Create($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
@@ -72,7 +81,7 @@ class Supplier extends BaseController
         $dataPost['status'] = $request->getPost('status');
 
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/eps/supplier/create", [
+            $posts_data = $client->request("POST", getenv('API_HOST')."/supplier/$db_conn/create", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -83,17 +92,17 @@ class Supplier extends BaseController
             exit($e->getMessage());
         }
 
-        return redirect()->to('/finance/supplier/eps');
+        return redirect()->to('supplier/'.$db_conn.'/list');
     }
 
-    public function edit() {
+    public function Edit($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
-        try {
-            $id = $request->getGet('id');
+        $id = $request->getGet('id');
 
-            $getAPI = $client->request("GET", getenv('API_HOST')."/api/finance/eps/supplier/$id", [
+        try {
+            $getAPI = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn/$id", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -109,45 +118,23 @@ class Supplier extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '', 'active' => false),
             array('label' => 'Supplier', 'url' => '', 'active' => false),
-            array('label' => 'Eps', 'url' => '', 'active' => true)
         );
 
-        echo view('admin/Finance/Eps/supplier/update', $response);
+        echo view('admin/Finance/Amz/supplier/update', $response);
     }
 
-    public function update() {
+    public function Delete($db_conn) {
         $request = request();
         $client = service('curlrequest');
 
-        $dataPost['id'] = $request->getPost('id');
-        $dataPost['status'] = $request->getPost('status');
+        $id = $request->getGet('id');
 
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/api/finance/eps/supplier/update", [
-                "headers" => [
-                    "Accept" => "application/json",
-                    "Content-Type" => "application/json"
-                ],
-                "form_params" => $dataPost
-            ]);
+            $posts_data = $client->request("DELETE", getenv('API_HOST')."/supplier/$db_conn/$id");
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
 
-        return redirect()->to('/finance/supplier/eps');
-    }
-
-    public function delete() {
-        $request = request();
-        $client = service('curlrequest');
-
-        try {
-            $id = $request->getGet('id');
-            $posts_data = $client->request("DELETE", getenv('API_HOST')."/api/finance/eps/supplier/delete/$id");
-        } catch (\Exception $e) {
-            exit($e->getMessage());
-        }
-
-        return redirect()->to('/finance/supplier/eps');
+        return redirect()->to('/finance/supplier/amz');
     }
 }

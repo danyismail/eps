@@ -110,7 +110,7 @@
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === '/kpi') ? 'active' : ''?>" href="<?=base_url('/da/kpi/list')?>">KPI</a></li>
+                <li><a class="<?=(uri_string() === 'da/kpi/list') ? 'active' : ''?>" href="<?=base_url('/da/kpi/list')?>">KPI</a></li>
                 <li><a class="<?=(uri_string() === 'da/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/da/ceksaldo')?>">Saldo Supplier</a></li>
                 <li><a class="<?=(uri_string() === 'da/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/da/penjualan/periode')?>">Penjualan</a></li>
                 <li><a class="<?=(uri_string() === 'da/penjualan') ? 'active' : ''?>" href="<?=base_url('/da/penjualan')?>">Penjualan Hari Ini</a></li>
@@ -124,13 +124,13 @@
                 <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="<?=(uri_string() === 'ePS/kpi') ? 'active' : ''?>" href="<?=base_url('/ePS/kpi')?>">KPI</a></li>
-                <li><a class="<?=(uri_string() === 'ePS/RekapSpl') ? 'active' : ''?>" href="<?=base_url('/ePS/RekapSpl')?>">Saldo Supplier</a></li>
-                <li><a class="<?=(uri_string() === 'ePS/Rect/periode') ? 'active' : ''?>" href="<?=base_url('/ePS/Rect/periode')?>">Penjualan</a></li>
-                <li><a class="<?=(uri_string() === 'ePS/Rect') ? 'active' : ''?>" href="<?=base_url('/ePS/Rect')?>">Penjualan Hari Ini</a></li>
+            <li><a class="<?=(uri_string() === 'de/kpi/list') ? 'active' : ''?>" href="<?=base_url('/de/kpi/list')?>">KPI</a></li>
+            <li><a class="<?=(uri_string() === 'de/ceksaldo') ? 'active' : ''?>" href="<?=base_url('/de/ceksaldo')?>">Saldo Supplier</a></li>
+                <li><a class="<?=(uri_string() === 'de/penjualan/periode') ? 'active' : ''?>" href="<?=base_url('/de/penjualan/periode')?>">Penjualan</a></li>
+                <li><a class="<?=(uri_string() === 'de/penjualan') ? 'active' : ''?>" href="<?=base_url('/de/penjualan')?>">Penjualan Hari Ini</a></li>
             </ul>
         </li>
-        <li><a class="d-flex" href="<?=base_url('/finance/supplier/amz')?>"><i class="far fa-circle m-0"></i> Finance</a></li>
+        <li><a class="d-flex" href="<?=base_url('/supplier/da/list')?>"><i class="far fa-circle m-0"></i> Finance</a></li>
     </ul>
 </nav>
 

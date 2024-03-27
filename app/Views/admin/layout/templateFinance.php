@@ -80,34 +80,30 @@
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span><h2><b>Finance</b></h2></span></li>
         <li class="side_menu_title"><span>Digi Amazone</span></li>
-        <li><a class="text-decoration-none" style="<?=(array_search(uri_string(), $arrSupplierAmz)) ? 'color:#2daab8' : ''?>" href="<?=base_url('/finance/supplier/amz')?>">Supplier</a></li>
+        <li><a class="text-decoration-none" style="<?=(array_search(uri_string(), $arrSupplierAmz)) ? 'color:#2daab8' : ''?>" href="<?=base_url('/supplier/da/list')?>">Supplier</a></li>
         <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
             <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
-                <i class="far fa-circle m-0"></i>
                 <span>Deposit</span>
-                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/amz/add') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/add')?>">Depo SPL</a></li>
-                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/amz/cek_pending') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/cek_pending')?>">Cek Pending</a></li>
-                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/amz/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/data_transaksi')?>">Data Transaksi</a></li>
-                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/amz/cancel') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/amz/cancel')?>">Cancel Deposit</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/add') ? 'active' : ''?>" href="<?=base_url('/deposit/da/add')?>">Depo SPL</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/cek_pending') ? 'active' : ''?>" href="<?=base_url('/deposit/da/cek_pending')?>">Cek Pending</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/deposit/da/data_transaksi')?>">Data Transaksi</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/cancel') ? 'active' : ''?>" href="<?=base_url('/deposit/da/cancel')?>">Cancel Deposit</a></li>
             </ul>
         </li>
 
         <li class="side_menu_title"><span>Digi Eps</span></li>
-        <li><a class="text-decoration-none" style="<?=(array_search(uri_string(), $arrSupplierEps)) ? 'color:#2daab8' : ''?>" href="<?=base_url('/finance/supplier/eps')?>">Supplier</a></li>
+        <li><a class="text-decoration-none" style="<?=(array_search(uri_string(), $arrSupplierEps)) ? 'color:#2daab8' : ''?>" href="<?=base_url('/supplier/de/list')?>">Supplier</a></li>
         <li class="<?=array_search(uri_string(), $arrEps) ? 'mm-active' : ''?>">
             <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
-                <i class="far fa-circle m-0"></i>
                 <span>Deposit</span>
-                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
-                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/eps/add') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/add')?>">Depo SPL</a></li>
-                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/eps/cek_pending') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/cek_pending')?>">Cek Pending</a></li>
-                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/eps/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/data_transaksi')?>">Data Transaksi</a></li>
-                <li><a class="text-decoration-none <?=(uri_string() === 'finance/deposit/eps/cancel') ? 'active' : ''?>" href="<?=base_url('/finance/deposit/eps/cancel')?>">Cancel Deposit</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/add') ? 'active' : ''?>" href="<?=base_url('/deposit/de/add')?>">Depo SPL</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/cek_pending') ? 'active' : ''?>" href="<?=base_url('/deposit/de/cek_pending')?>">Cek Pending</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/data_transaksi') ? 'active' : ''?>" href="<?=base_url('/deposit/de/data_transaksi')?>">Data Transaksi</a></li>
+                <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/cancel') ? 'active' : ''?>" href="<?=base_url('/deposit/de/cancel')?>">Cancel Deposit</a></li>
             </ul>
         </li>
     </ul>
