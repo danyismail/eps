@@ -112,7 +112,6 @@ class Deposit extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Amazon', 'url' => '#!', 'active' => false),
             array('label' => 'Data Transaksi', 'url' => '', 'active' => true)
         );
         echo view('admin/Finance/deposit/transaksi', $response);
