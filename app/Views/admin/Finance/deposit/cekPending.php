@@ -16,7 +16,7 @@
           </tr>
         </thead>
         <tbody>
-            <?php 
+            <?php
             $currentUri = $_SERVER['REQUEST_URI'];
             $currentUri = ltrim($currentUri, '/');
             $uriSegments = explode('/', $currentUri);
@@ -64,7 +64,7 @@
           </tr>
         </thead>
         <tbody>
-            <?php 
+            <?php
               $currentUri = $_SERVER['REQUEST_URI'];
               $currentUri = ltrim($currentUri, '/');
               $uriSegments = explode('/', $currentUri);
@@ -80,7 +80,7 @@
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td><?=$row['reply']?></td>
-                    <td><img src="<?=getenv('API_HOST')."/deposit/".$path."/image/".$row['id']?>" width="100" alt="" class="load-image"></td>
+                    <td><a href="<?=getenv('API_HOST')."/deposit/$path/image/".$row['id']?>" class="load-image">Show Image</a></td>
                     <td>
                         <a href="<?=base_url('/deposit/'.$path.'/add_reply/'.$row['id'])?>">Upload Bukti</a>
                     </td>
@@ -97,7 +97,7 @@
   </div>
 
   <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body">
           <img src="" alt="" id="imageModal" class="w-100">
@@ -107,8 +107,9 @@
   </div>
 
   <script>
-    $('.load-image').click(function(){
-      $('#imageModal').attr('src', $(this).attr('src'))
+    $('.load-image').click(function(e){
+      e.preventDefault();
+      $('#imageModal').attr('src', $(this).attr('href'))
       $('#myModal').modal('show')
     })
   </script>

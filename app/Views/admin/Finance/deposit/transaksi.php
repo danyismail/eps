@@ -3,7 +3,7 @@
   <div class="mt-1">
   <div class="row">
       <div class="col-md-12">
-          <?php 
+          <?php
             $currentUri = $_SERVER['REQUEST_URI'];
             $currentUri = ltrim($currentUri, '/');
             $uriSegments = explode('/', $currentUri);
@@ -13,11 +13,11 @@
             <div class="row mb-2 mt-2">
               <div class="form-group col-md-3">
                 <label for="StartDate">Start Date</label>
-                <input type="text" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" />
+                <input type="date" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" />
               </div>
               <div class="form-group col-md-3">
                 <label for="endDt">End Date</label>
-                <input type="text" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
+                <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
               </div>
               <div class="form-group col-md-3 pt-2">
                 <button type="submit" class="btn btn-primary mt-4">Submit</button>
@@ -39,7 +39,7 @@
             <th width="100">Status</th>
             <th width="100">Rekening Asal</th>
             <th>Rekening Tujuan</th>
-            <th>Image</th>
+            <th width="200">Image</th>
             <th>Reply</th>
           </tr>
         </thead>
@@ -55,8 +55,7 @@
                     <td><?=$row['status']?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
-                    <!-- {{prod}}/deposit/de/image/156 -->
-                    <td><img src="<?=getenv('API_HOST')."/deposit/$path/image/".$row['id']?>" width="100" alt="" class="load-image"></td>
+                    <td><a href="<?=getenv('API_HOST')."/deposit/$path/image/".$row['id']?>" class="load-image">Show Image</a></td>
                     <td><?=$row['reply']?></td>
                 </tr>
             <?php endforeach ?>
@@ -71,7 +70,7 @@
   </div>
 
   <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body">
           <img src="" alt="" id="imageModal" class="w-100">
@@ -81,8 +80,9 @@
   </div>
 
   <script>
-    $('.load-image').click(function(){
-      $('#imageModal').attr('src', $(this).attr('src'))
+    $('.load-image').click(function(e){
+      e.preventDefault();
+      $('#imageModal').attr('src', $(this).attr('href'))
       $('#myModal').modal('show')
     })
   </script>

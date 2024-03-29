@@ -72,10 +72,10 @@
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
     <?php
-        $arrSupplierAmz = array("", "finance/supplier/amz", "finance/supplier/amz/add");
-        $arrSupplierEps = array("", "finance/supplier/eps", "finance/supplier/eps/add");
-        $arrAmazon = array("", "finance/deposit/amz/add", "finance/deposit/amz/cek_pending", "finance/deposit/amz/data_transaksi", "finance/deposit/amz/cancel");
-        $arrEps = array("", "finance/deposit/eps/add", "finance/deposit/eps/cek_pending", "finance/deposit/eps/data_transaksi", "finance/deposit/eps/cancel");
+        $arrSupplierAmz = array("", "supplier/da/list", "supplier/da/add");
+        $arrSupplierEps = array("", "supplier/de/list", "supplier/de/add");
+        $arrAmazon = array("", "deposit/da/add", "deposit/da/cek_pending", "deposit/da/data_transaksi", "deposit/da/cancel");
+        $arrEps    = array("", "deposit/de/add", "deposit/de/cek_pending", "deposit/de/data_transaksi", "deposit/de/cancel");
     ?>
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span><h2><b>Finance</b></h2></span></li>
@@ -84,6 +84,7 @@
         <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
             <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
                 <span>Deposit</span>
+                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
                 <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/add') ? 'active' : ''?>" href="<?=base_url('/deposit/da/add')?>">Depo SPL</a></li>
@@ -98,6 +99,7 @@
         <li class="<?=array_search(uri_string(), $arrEps) ? 'mm-active' : ''?>">
             <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
                 <span>Deposit</span>
+                <i class="fas fa-chevron-right"  style="margin-left: auto;"></i>
             </a>
             <ul>
                 <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/add') ? 'active' : ''?>" href="<?=base_url('/deposit/de/add')?>">Depo SPL</a></li>

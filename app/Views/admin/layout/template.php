@@ -68,11 +68,10 @@
 <nav class="sidebar">
     <div class="logox d-flex justify-content-between"></div>
     <?php
-        $pathAmazone = array("", "amazone/ceksaldo", "amazone/penjualan/periode", "amazone/penjualan");
-        $pathEPS = array("", "eps/ceksaldo", "eps/penjualan/periode", "eps/penjualan");
-        $arrAmazon = array("", "AmZ/kpi", "AmZ/RekapSpl", "AmZ/Rect/periode", "AmZ/Rect");
-        $arrDigi = array("", "ePS/kpi", "ePS/RekapSpl", "ePS/Rect/periode", "ePS/Rect");
-        $arrFinance = array("", "amz/supplier", "eps/supplier");
+        $pathAmazone = array("", "ra/ceksaldo", "ra/penjualan/periode", "ra/penjualan");
+        $pathEPS = array("", "re/ceksaldo", "re/penjualan/periode", "re/penjualan");
+        $arrAmazon = array("", "da/kpi/list", "da/ceksaldo", "da/penjualan/periode", "da/penjualan");
+        $arrDigi = array("", "de/kpi/list", "de/ceksaldo", "de/penjualan/periode", "de/penjualan");
     ?>
     <ul id="sidebar_menu">
         <li class="side_menu_title"><span>Dashboard</span></li>

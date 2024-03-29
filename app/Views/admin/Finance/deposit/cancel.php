@@ -3,7 +3,7 @@
   <div class="mt-1">
     <div class="row">
       <div class="col-md-12">
-        <?php 
+        <?php
         $currentUri = $_SERVER['REQUEST_URI'];
         $currentUri = ltrim($currentUri, '/');
         $uriSegments = explode('/', $currentUri);
@@ -62,21 +62,4 @@
       </table>
     </div>
   </div>
-
-  <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <img src="" alt="" id="imageModal" class="w-100">
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    $('.load-image').click(function(){
-      $('#imageModal').attr('src', $(this).attr('src'))
-      $('#myModal').modal('show')
-    })
-  </script>
 <?php $this->endSection() ?>
