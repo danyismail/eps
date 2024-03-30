@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Finance;
 use App\Controllers\BaseController;
+use CodeIgniter\Debug\Timer;
 
 class Deposit extends BaseController
 {
@@ -28,6 +29,17 @@ class Deposit extends BaseController
         echo view('admin/Finance/deposit/create', $response);
     }
 
+    public function DirectPaymentForm() {
+        $client = service('curlrequest');
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Finance', 'url' => '#!', 'active' => false),
+            array('label' => 'Deposit', 'url' => '#!', 'active' => false),
+            array('label' => 'Direct Payment', 'url' => '#!', 'active' => true)
+        );
+        echo view('admin/Finance/deposit/direct', $response);
+    }
+
     public function Create($db_conn) {
         $request = request();
         $client = service('curlrequest');
@@ -37,7 +49,6 @@ class Deposit extends BaseController
         $dataPost['amount'] = $request->getPost('nominal_depo');
         $dataPost['origin_account'] = $request->getPost('origin');
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
-
         try {
             $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$db_conn", [
                 "form_params" => $dataPost
@@ -47,6 +58,32 @@ class Deposit extends BaseController
         }
 
         return redirect()->to('/deposit/'.$db_conn.'/cek_pending');
+    }
+
+    public function CreateDirect() {
+        $timer = new Timer();
+
+        $request = request();
+        $client = service('curlrequest');
+
+        $dataPost['name'] = $request->getPost('pic');
+        $dataPost['supplier'] = 'DIRECT PAYMENT';
+        $dataPost['amount'] = $request->getPost('nominal_depo');
+        $dataPost['origin_account'] = $request->getPost('origin');
+        $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
+        $dataPost['payment_purpose'] = $request->getPost('payment_purpose');
+        $dataPost['database'] = $request->getPost('database');
+        $database = $dataPost['database']; 
+
+        try {
+            $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$database", [
+                "form_params" => $dataPost
+            ]);
+        } catch (\Exception $e) {
+            exit($e->getMessage());
+        }
+
+        return redirect()->to('/deposit/'.$database.'/cek_pending');
     }
 
     public function CheckPending($db_conn) {
@@ -102,8 +139,8 @@ class Deposit extends BaseController
                 ],
             ]);
 
-            $res2 = json_decode($getData->getBody(), true);
-            $response['data'] = $res2['data'] ?? array();
+            $result = json_decode($getData->getBody(), true);
+            $response['data'] = $result['data'] ?? array();
         } catch (\Exception $e) {
             // exit($e->getMessage());
             $response['data'] = array();

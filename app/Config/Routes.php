@@ -23,6 +23,10 @@ $routes->get('/supplier/(:any)/delete', 'Finance\Supplier::Delete/$1');
 
 $routes->get('/deposit/(:any)/add', 'Finance\Deposit::Add/$1');
 $routes->post('/deposit/(:any)/create', 'Finance\Deposit::Create/$1');
+
+$routes->get('/direct', 'Finance\Deposit::DirectPaymentForm');
+$routes->post('/direct/create', 'Finance\Deposit::CreateDirect');
+
 $routes->get('/deposit/(:any)/cek_pending', 'Finance\Deposit::CheckPending/$1');
 $routes->get('/deposit/(:any)/data_transaksi', 'Finance\Deposit::DataTransaksi/$1');
 $routes->get('/deposit/(:any)/form_upload/(:num)', 'Finance\Deposit::GetDepositById/$1/$2');

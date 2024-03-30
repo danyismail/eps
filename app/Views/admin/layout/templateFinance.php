@@ -108,6 +108,7 @@
                 <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/cancel') ? 'active' : ''?>" href="<?=base_url('/deposit/de/cancel')?>">Cancel Deposit</a></li>
             </ul>
         </li>
+        <li><a class="text-decoration-none" style="<?=(array_search(uri_string(), $arrSupplierAmz)) ? 'color:#2daab8' : ''?>" href="<?=base_url('/direct')?>">Direct Payment</a></li>
     </ul>
 </nav>
 

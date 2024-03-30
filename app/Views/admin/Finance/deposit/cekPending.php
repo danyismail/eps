@@ -88,7 +88,7 @@
             <?php endforeach ?>
             <?php if(count($dataUpload) === 0) { ?>
               <tr>
-                <td colspan="9" class="text-center">Tidak Ada Data</td>
+                <td colspan="10" class="text-center">Tidak Ada Data</td>
               </tr>
             <?php } ?>
         </tbody>
