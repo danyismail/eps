@@ -49,7 +49,7 @@
                     <td><?=number_format($row['amount'], 0, ",", ".");?></td>
                     <td><?=$row['status']?></td>
                     <td>
-                      <a href="<?=base_url('/finance/deposit/eps/delete_deposit/'.$row['id'])?>" onclick="return confirm('Yakin akan menghapus data ini?');">Edit Status</a>
+                      <a href="<?=base_url('/deposit/'.$path.'/delete_deposit/'.$row['id'])?>" onclick="return confirm('Yakin akan menghapus data ini?');">Edit Status</a> 
                     </td>
                 </tr>
             <?php endforeach ?>

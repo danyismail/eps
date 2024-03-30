@@ -262,7 +262,7 @@ class Deposit extends BaseController
         $client = service('curlrequest');
 
         try {
-            $posts_data = $client->delete(getenv('API_HOST')."/deposit/$db_conn/$id");
+            $posts_data = $client->get(getenv('API_HOST')."/deposit/$db_conn/delete/$id");
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
