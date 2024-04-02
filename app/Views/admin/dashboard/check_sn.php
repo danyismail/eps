@@ -65,7 +65,7 @@
           <tr class="bg-info text-white">
             <th>No</th>
             <th>SN Tujuan</th>
-            <th>Total</th>
+            <th>Tujuan</th>
             <th>Total</th>
           </tr>
         </thead>
