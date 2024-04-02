@@ -26,7 +26,7 @@ class Deposit extends BaseController
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
             array('label' => 'Create', 'url' => '#!', 'active' => true)
         );
-        echo view('admin/Finance/deposit/create', $response);
+        echo view('admin/finance/deposit/create', $response);
     }
 
     public function DirectPaymentForm() {
@@ -37,7 +37,7 @@ class Deposit extends BaseController
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
             array('label' => 'Direct Payment', 'url' => '#!', 'active' => true)
         );
-        echo view('admin/Finance/deposit/direct', $response);
+        echo view('admin/finance/deposit/direct', $response);
     }
 
     public function Create($db_conn) {
@@ -120,7 +120,7 @@ class Deposit extends BaseController
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
             array('label' => 'Cek Pending', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/deposit/cekPending', $response);
+        echo view('admin/finance/deposit/cek_pending', $response);
     }
 
     public function DataTransaksi($db_conn) {
@@ -151,7 +151,7 @@ class Deposit extends BaseController
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
             array('label' => 'Data Transaksi', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/deposit/transaksi', $response);
+        echo view('admin/finance/deposit/transaksi', $response);
     }
 
     public function GetDepositById(string $db_conn,int $id) {
@@ -176,7 +176,7 @@ class Deposit extends BaseController
             array('label' => 'Cek Pending', 'url' => '', 'active' => false),
             array('label' => 'Upload Image', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/deposit/formUpload', $response);
+        echo view('admin/finance/deposit/form_upload', $response);
     }
 
     public function CreateUpload($db_conn) {
@@ -232,7 +232,7 @@ class Deposit extends BaseController
             array('label' => 'Cek Pending', 'url' => '', 'active' => false),
             array('label' => 'Reply', 'url' => '', 'active' => true)
         );
-        echo view('admin/Finance/deposit/formReply', $response);
+        echo view('admin/finance/deposit/form_reply', $response);
     }
 
     public function ActionReply($db_conn) {
@@ -298,7 +298,7 @@ class Deposit extends BaseController
             array('label' => 'Cancel', 'url' => '', 'active' => true)
         );
 
-        echo view('admin/Finance/deposit/cancel', $response);
+        echo view('admin/finance/deposit/cancel', $response);
     }
 
 }

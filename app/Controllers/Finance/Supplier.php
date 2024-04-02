@@ -40,7 +40,7 @@ class Supplier extends BaseController
             array('label' => 'Finance', 'url' => '', 'active' => false),
             array('label' => 'Supplier', 'url' => '', 'active' => false),
         );
-        echo view('admin/Finance/supplier/view', $response);
+        echo view('admin/finance/supplier/view', $response);
 	}
 
     public function Update($db_conn) {
@@ -70,7 +70,7 @@ class Supplier extends BaseController
             array('label' => 'Finance', 'url' => '', 'active' => false),
             array('label' => 'Supplier', 'url' => '', 'active' => false),
         );
-        echo view('admin/Finance/supplier/create', $response);
+        echo view('admin/finance/supplier/create', $response);
     }
 
     public function Create($db_conn) {
@@ -95,46 +95,46 @@ class Supplier extends BaseController
         return redirect()->to('supplier/'.$db_conn.'/list');
     }
 
-    public function Edit($db_conn) {
-        $request = request();
-        $client = service('curlrequest');
+    // public function Edit($db_conn) {
+    //     $request = request();
+    //     $client = service('curlrequest');
 
-        $id = $request->getGet('id');
+    //     $id = $request->getGet('id');
 
-        try {
-            $getAPI = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn/$id", [
-                "headers" => [
-                    "Accept" => "application/json",
-                    "Content-Type" => "application/json"
-                ],
-            ]);
-            $res = json_decode($getAPI->getBody(), true);
-            $response['data'] = $res['data'] ?? array();
-        } catch (\Exception $e) {
-            // exit($e->getMessage());
-            $response['data'] = array();
-        }
+    //     try {
+    //         $getAPI = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn/$id", [
+    //             "headers" => [
+    //                 "Accept" => "application/json",
+    //                 "Content-Type" => "application/json"
+    //             ],
+    //         ]);
+    //         $res = json_decode($getAPI->getBody(), true);
+    //         $response['data'] = $res['data'] ?? array();
+    //     } catch (\Exception $e) {
+    //         // exit($e->getMessage());
+    //         $response['data'] = array();
+    //     }
 
-        $response['breadcrumb'] = array(
-            array('label' => 'Finance', 'url' => '', 'active' => false),
-            array('label' => 'Supplier', 'url' => '', 'active' => false),
-        );
+    //     $response['breadcrumb'] = array(
+    //         array('label' => 'Finance', 'url' => '', 'active' => false),
+    //         array('label' => 'Supplier', 'url' => '', 'active' => false),
+    //     );
 
-        echo view('admin/Finance/Amz/supplier/update', $response);
-    }
+    //     echo view('admin/finance/Amz/supplier/update', $response);
+    // }
 
-    public function Delete($db_conn) {
-        $request = request();
-        $client = service('curlrequest');
+    // public function Delete($db_conn) {
+    //     $request = request();
+    //     $client = service('curlrequest');
 
-        $id = $request->getGet('id');
+    //     $id = $request->getGet('id');
 
-        try {
-            $posts_data = $client->request("DELETE", getenv('API_HOST')."/supplier/$db_conn/$id");
-        } catch (\Exception $e) {
-            exit($e->getMessage());
-        }
+    //     try {
+    //         $posts_data = $client->request("DELETE", getenv('API_HOST')."/supplier/$db_conn/$id");
+    //     } catch (\Exception $e) {
+    //         exit($e->getMessage());
+    //     }
 
-        return redirect()->to('/finance/supplier/amz');
-    }
+    //     return redirect()->to('/finance/supplier/amz');
+    // }
 }
