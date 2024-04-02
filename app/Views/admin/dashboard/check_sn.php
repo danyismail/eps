@@ -1,11 +1,9 @@
 <?php $this->extend('admin/layout/template') ?>
 <?php $this->Section('content') ?>
 
-
-<!-- Example single danger button -->
 <div class="dropdown">
   <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Pilih Database
+    Pilih Database 
   </button>
     <div class="dropdown-menu">
         <a class="dropdown-item" href="<?=base_url('/sn/ra/list')?>">Replica Amazone</a>
@@ -14,9 +12,11 @@
         <a class="dropdown-item" href="<?=base_url('/sn/de/list')?>">Digipos EPS</a>
     </div>
 </div>
+
 <div class="mt-3">
     <span class="badge badge-pill badge-danger">SN Null</span>
 </div>
+
   <div class="mt-1">
     <div class="table-responsive bg-white pb-3 p-2">
       <table class="table table-bordered">
@@ -48,7 +48,7 @@
             <?php endforeach ?>
             <?php if(count($nullableSN) === 0) { ?>
               <tr>
-                <td colspan="7" class="text-center">Tidak Ada Data</td>
+                <td colspan="8" class="text-center">Tidak Ada Data</td>
               </tr>
             <?php } ?>
         </tbody>
@@ -83,7 +83,7 @@
             <?php endforeach ?>
             <?php if(count($duplicateSN) === 0) { ?>
               <tr>
-                <td colspan="10" class="text-center">Tidak Ada Data</td>
+                <td colspan="4" class="text-center">Tidak Ada Data</td>
               </tr>
             <?php } ?>
         </tbody>
