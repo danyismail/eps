@@ -25,6 +25,12 @@
 <link rel="stylesheet" href=<?=base_url('assets/css/metisMenu.css')?>>
 <link rel="stylesheet" href=<?=base_url('assets/css/style1.css')?> />
 <link rel="stylesheet" href=<?=base_url('assets/css/colors/default.css')?>>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
     .pagination {
         list-style-type: none;
@@ -130,6 +136,7 @@
             </ul>
         </li>
         <li><a class="d-flex" href="<?=base_url('/supplier/da/list')?>"><i class="far fa-circle m-0"></i> Finance</a></li>
+        <li><a class="d-flex" href="<?=base_url('/sn/da/list')?>"><i class="far fa-circle m-0"></i> Check SN</a></li>
     </ul>
 </nav>
 

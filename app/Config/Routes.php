@@ -35,3 +35,5 @@ $routes->post('/deposit/(:any)/action_upload', 'Finance\Deposit::CreateUpload/$1
 $routes->post('/deposit/(:any)/action_reply', 'Finance\Deposit::ActionReply/$1');
 $routes->get('/deposit/(:any)/cancel', 'Finance\Deposit::Cancel/$1');
 $routes->get('/deposit/(:any)/delete_deposit/(:num)', 'Finance\Deposit::DeleteDeposit/$1/$2');
+
+$routes->get('/sn/(:any)/list', 'SN::CheckSN/$1');
