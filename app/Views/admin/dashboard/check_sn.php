@@ -28,6 +28,7 @@
             <th>Tujuan</th>
             <th>Tgl Entri</th>
             <th>Tgl Status</th>
+            <th>SN</th>
             <th>Selisih Waktu</th>
           </tr>
         </thead>
@@ -39,8 +40,9 @@
                     <td><?=$row['kode_reseller']?></td>
                     <td><?=$row['kode_produk']?></td>
                     <td><?=$row['tujuan']?></td>
-                    <td><?=date("d-m-Y h:m:s", strtotime($row['tgl_entri']))?></td>
-                    <td><?=date("d-m-Y h:m:s", strtotime($row['tgl_status']))?></td>
+                    <td><?=$row['tgl_entri']?></td>
+                    <td><?=$row['tgl_status']?></td>
+                    <td><?=$row['sn']?></td>
                     <td><?=$row['selisih_waktu']?></td>
                 </tr>
             <?php endforeach ?>
