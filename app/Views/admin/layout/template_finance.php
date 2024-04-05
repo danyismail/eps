@@ -88,7 +88,7 @@
     ?>
         <ul id="sidebar_menu">
             <li class="side_menu_title"><span>
-                    <h2><b>Finance</b></h2>
+                    <h2><b>Finance [testing]</b></h2>
                 </span></li>
             <li class="side_menu_title"><span>Digi Amazone</span></li>
             <li><a class="text-decoration-none"

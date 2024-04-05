@@ -89,7 +89,7 @@
         $arrDigi = array("", "de/kpi/list", "de/ceksaldo", "de/penjualan/periode", "de/penjualan");
     ?>
         <ul id="sidebar_menu">
-            <li class="side_menu_title"><span>Dashboard</span></li>
+            <li class="side_menu_title"><span>Dashboard [testing]</span></li>
 
             <li class="<?=array_search(uri_string(), $pathAmazone) ? 'mm-active' : ''?>">
                 <a class="d-flex" href="#" aria-expanded="false">
