@@ -29,6 +29,7 @@
                     <th>Tujuan</th>
                     <th>Tgl Entri</th>
                     <th>Tgl Status</th>
+                    <th>Supplier</th>
                     <th>SN</th>
                     <th>Selisih Waktu</th>
                 </tr>
@@ -43,6 +44,7 @@
                     <td><?=$row['tujuan']?></td>
                     <td><?=$row['tgl_entri']?></td>
                     <td><?=$row['tgl_status']?></td>
+                    <td><?=$row['supplier']?></td>
                     <td><?=$row['sn']?></td>
                     <td><?=$row['selisih_waktu']?></td>
                 </tr>
