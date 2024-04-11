@@ -41,24 +41,10 @@ class SN extends BaseController
         }
         $useDB = CheckDB($db_conn);
         $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '/sn/de/list', 'active' => false),
+            array('label' => 'Home', 'url' => '/', 'active' => false),
             array('label' => 'Check SN', 'url' => '', 'active' => false),
             array('label' =>  $useDB, 'url' => '', 'active' => true)
         );
         echo view('admin/dashboard/check_sn', $response);
 	}
-}
-
-function CheckDB($currentDB){
-  $selected = "";
-  switch ($currentDB) {
-    case "ra":
-        return $selected = "Replica Amazon";
-    case "re":
-      return $selected =  "Replica EPS";
-    case "da":
-      return $selected =  "Digipos Amazon";
-    case "de":
-      return $selected =  "Digipos EPS";
-}
 }

@@ -37,3 +37,5 @@ $routes->get('/deposit/(:any)/cancel', 'Finance\Deposit::Cancel/$1');
 $routes->get('/deposit/(:any)/delete_deposit/(:num)', 'Finance\Deposit::DeleteDeposit/$1/$2');
 
 $routes->get('/sn/(:any)/list', 'SN::CheckSN/$1');
+
+$routes->get('/reseller/(:any)/laba', 'Reseller::GetLaba/$1');
