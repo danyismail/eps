@@ -161,6 +161,8 @@
             <li><a class="d-flex" href="<?=base_url('/supplier/da/list')?>"><i class="far fa-circle m-0"></i>
                     Finance</a></li>
             <li><a class="d-flex" href="<?=base_url('/sn/ra/list')?>"><i class="far fa-circle m-0"></i> Check SN</a>
+            <li><a class="d-flex" href="<?=base_url('/reseller/ra/laba')?>"><i class="far fa-circle m-0"></i> Laba
+                    Reseller</a>
             </li>
         </ul>
     </nav>
