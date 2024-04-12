@@ -44,6 +44,9 @@
         </div>
     </div>
     <div class="table-responsive bg-white pb-3">
+        <?php if($data){ ?>
+        <h5>NAMA RESELLER : <?=$data[0]['nama']?></h5>
+        <?php } ?>
         <table class="table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
