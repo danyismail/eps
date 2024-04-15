@@ -28,8 +28,12 @@
     <link rel="stylesheet" href=<?=base_url('assets/css/colors/default.css')?>>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script> -->
+<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+=======
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+>>>>>>> 4d18ffa (update eps)
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -88,14 +92,22 @@
         <div class="logox d-flex justify-content-between"></div>
         <?php $arrListMenu = array("", "deposit/add", "deposit/cek_pending", "deposit/data_transaksi", "deposit/cancel"); ?>
         <ul id="sidebar_menu">
+<<<<<<< HEAD
             <li class="side_menu_title"><span>Finance [testing]</span></li>
             <li><a class="d-flex <?=(uri_string() === 'supplier') ? 'active-single' : ''?>" href="<?=base_url('/supplier')?>"><i class="far fa-circle m-0"></i> Supplier</a></li>
             <li class="<?=array_search(uri_string(), $arrListMenu) ? 'mm-active' : ''?>">
+=======
+            <li class="side_menu_title"><span><h2><b>Finance [testing]</b></h2></span></li>
+
+            <li><a class="d-flex" href="<?=base_url('/supplier')?>"><i class="far fa-circle m-0"></i> Supplier</a></li>
+            <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
+>>>>>>> 4d18ffa (update eps)
                 <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
                     <i class="far fa-circle m-0"></i> <span>Deposit</span>
                     <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                 </a>
                 <ul>
+<<<<<<< HEAD
                     <li><a class="text-decoration-none <?=(uri_string() === 'deposit/add') ? 'active' : ''?>"
                             href="<?=base_url('/deposit/add')?>">Depo SPL</a></li>
                     <li><a class="text-decoration-none <?=(uri_string() === 'deposit/cek_pending') ? 'active' : ''?>"
@@ -108,6 +120,18 @@
             </li>
             <li><a class="text-decoration-none d-flex <?=(uri_string() === 'direct') ? 'active-single' : ''?>"
                     href="<?=base_url('/direct')?>"><i class="far fa-circle m-0"></i> Direct Payment</a></li>
+=======
+                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/add') ? 'active' : ''?>"
+                            href="<?=base_url('/deposit/add')?>">Depo SPL</a></li>
+                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/cek_pending') ? 'active' : ''?>"
+                            href="<?=base_url('/deposit/cek_pending')?>">Cek Pending</a></li>
+                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/data_transaksi') ? 'active' : ''?>"
+                            href="<?=base_url('/deposit/data_transaksi')?>">Data Transaksi</a></li>
+                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/cancel') ? 'active' : ''?>"
+                            href="<?=base_url('/deposit/cancel')?>">Cancel Deposit</a></li>
+                </ul>
+            </li>
+>>>>>>> 4d18ffa (update eps)
         </ul>
     </nav>
 

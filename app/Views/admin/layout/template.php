@@ -89,8 +89,88 @@
         <?php $pathArray = array("", "kpi"); ?>
         <ul id="sidebar_menu">
             <li class="side_menu_title"><span>Dashboard [testing]</span></li>
+<<<<<<< HEAD
             <li><a class="d-flex <?=array_search(uri_string(), $pathArray) ? 'active-single' : ''?>" href="<?=base_url('/kpi')?>"><i class="far fa-circle m-0"></i> KPI</a></li>
             <li><a class="d-flex <?=(uri_string() === 'ceksaldo') ? 'active-single' : ''?>" href="<?=base_url('/ceksaldo')?>"><i class="far fa-circle m-0"></i> Saldo Supplier</a>
+=======
+            <li><a class="d-flex" href="<?=base_url('/kpi')?>"><i class="far fa-circle m-0"></i> KPI</a></li>
+            <li><a class="d-flex" href="<?=base_url('/ceksaldo')?>"><i class="far fa-circle m-0"></i> Saldo Supplier</a></li>
+            <li><a class="d-flex" href="<?=base_url('/penjualan/periode')?>"><i class="far fa-circle m-0"></i> Penjualan</a></li>
+            <li><a class="d-flex" href="<?=base_url('/penjualan')?>"><i class="far fa-circle m-0"></i> Penjualan Hari Ini</a></li>
+
+            <!-- <li class="<?=array_search(uri_string(), $pathAmazone) ? 'mm-active' : ''?>">
+                <a class="d-flex" href="#" aria-expanded="false">
+                    <i class="far fa-circle m-0"></i>
+                    <span>Replica Amazone</span>
+                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                </a>
+                <ul>
+                    <li><a class="<?=(uri_string() === 'ra/ceksaldo') ? 'active' : ''?>"
+                            href="<?=base_url('/ra/ceksaldo')?>">Saldo Supplier</a></li>
+                    <li><a class="<?=(uri_string() === 'ra/penjualan/periode') ? 'active' : ''?>"
+                            href="<?=base_url('/ra/penjualan/periode')?>">Penjualan</a></li>
+                    <li><a class="<?=(uri_string() === 'ra/penjualan') ? 'active' : ''?>"
+                            href="<?=base_url('/ra/penjualan')?>">Penjualan Hari Ini</a></li>
+                </ul>
+            </li>
+
+            <li class="<?=array_search(uri_string(), $pathEPS) ? 'mm-active' : ''?>">
+                <a class="d-flex" href="#" aria-expanded="false">
+                    <i class="far fa-circle m-0"></i>
+                    <span>Replica EPS</span>
+                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                </a>
+                <ul>
+                    <li><a class="<?=(uri_string() === 're/ceksaldo') ? 'active' : ''?>"
+                            href="<?=base_url('/re/ceksaldo')?>">Saldo Supplier</a></li>
+                    <li><a class="<?=(uri_string() === 're/penjualan/periode') ? 'active' : ''?>"
+                            href="<?=base_url('/re/penjualan/periode')?>">Penjualan</a></li>
+                    <li><a class="<?=(uri_string() === 're/penjualan') ? 'active' : ''?>"
+                            href="<?=base_url('/re/penjualan')?>">Penjualan Hari Ini</a></li>
+                </ul>
+            </li>
+
+            <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
+                <a class="d-flex" href="#" aria-expanded="false">
+                    <i class="far fa-circle m-0"></i>
+                    <span>Digi Amazone</span>
+                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                </a>
+                <ul>
+                    <li><a class="<?=(uri_string() === 'da/kpi/list') ? 'active' : ''?>"
+                            href="<?=base_url('/da/kpi/list')?>">KPI</a></li>
+                    <li><a class="<?=(uri_string() === 'da/ceksaldo') ? 'active' : ''?>"
+                            href="<?=base_url('/da/ceksaldo')?>">Saldo Supplier</a></li>
+                    <li><a class="<?=(uri_string() === 'da/penjualan/periode') ? 'active' : ''?>"
+                            href="<?=base_url('/da/penjualan/periode')?>">Penjualan</a></li>
+                    <li><a class="<?=(uri_string() === 'da/penjualan') ? 'active' : ''?>"
+                            href="<?=base_url('/da/penjualan')?>">Penjualan Hari Ini</a></li>
+                </ul>
+            </li>
+
+            <li class="<?=array_search(uri_string(), $arrDigi) ? 'mm-active' : ''?>">
+                <a class="d-flex" href="#" aria-expanded="false">
+                    <i class="far fa-circle m-0"></i>
+                    <span>Digi EPS</span>
+                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
+                </a>
+                <ul>
+                    <li><a class="<?=(uri_string() === 'de/kpi/list') ? 'active' : ''?>"
+                            href="<?=base_url('/de/kpi/list')?>">KPI</a></li>
+                    <li><a class="<?=(uri_string() === 'de/ceksaldo') ? 'active' : ''?>"
+                            href="<?=base_url('/de/ceksaldo')?>">Saldo Supplier</a></li>
+                    <li><a class="<?=(uri_string() === 'de/penjualan/periode') ? 'active' : ''?>"
+                            href="<?=base_url('/de/penjualan/periode')?>">Penjualan</a></li>
+                    <li><a class="<?=(uri_string() === 'de/penjualan') ? 'active' : ''?>"
+                            href="<?=base_url('/de/penjualan')?>">Penjualan Hari Ini</a></li>
+                </ul>
+            </li> -->
+            <li><a class="d-flex" href="<?=base_url('/supplier/da/list')?>"><i class="far fa-circle m-0"></i>
+                    Finance</a></li>
+            <li><a class="d-flex" href="<?=base_url('/sn/ra/list')?>"><i class="far fa-circle m-0"></i> Check SN</a>
+            <li><a class="d-flex" href="<?=base_url('/reseller/ra/laba')?>"><i class="far fa-circle m-0"></i> Laba
+                    Reseller</a>
+>>>>>>> 4d18ffa (update eps)
             </li>
             <li><a class="d-flex <?=(uri_string() === 'penjualan/periode') ? 'active-single' : ''?>" href="<?=base_url('/penjualan/periode')?>"><i class="far fa-circle m-0"></i>
                     Penjualan</a></li>
