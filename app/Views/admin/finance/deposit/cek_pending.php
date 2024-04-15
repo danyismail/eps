@@ -1,6 +1,19 @@
 <?php $this->extend('admin/layout/template_finance') ?>
 <?php $this->Section('content') ?>
 <div class="mt-1">
+    <form method="GET" action="<?=base_url('deposit/cek_pending')?>" class="mb-5">
+        <div class="row">
+            <div class="form-group col-md-3">
+                <label for="db">Pilih Database</label>
+                <select name="db" class="form-control">
+                    <option value="">-- Choose --</option>
+                    <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
+                    <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
     <div class="table-responsive bg-white pb-3 p-2">
         <table class="table table-bordered">
             <thead>
@@ -16,12 +29,6 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-            $currentUri = $_SERVER['REQUEST_URI'];
-            $currentUri = ltrim($currentUri, '/');
-            $uriSegments = explode('/', $currentUri);
-            $path = $uriSegments[1];
-            ?>
                 <?php foreach($dataCreated as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
@@ -32,7 +39,7 @@
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td>
-                        <a href="<?=base_url('/deposit/'.$path.'/form_upload/'.$row['id'])?>">Upload Image</a>
+                        <a href="<?=base_url('/deposit/'.$pathDB.'/form_upload/'.$row['id'])?>">Upload Image</a>
                     </td>
                 </tr>
                 <?php endforeach ?>
@@ -64,12 +71,6 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
-              $currentUri = $_SERVER['REQUEST_URI'];
-              $currentUri = ltrim($currentUri, '/');
-              $uriSegments = explode('/', $currentUri);
-              $path = $uriSegments[1];
-            ?>
                 <?php foreach($dataUpload as $row): ?>
                 <tr>
                     <td><?=$row['id']?></td>
@@ -80,10 +81,10 @@
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td><?=$row['reply']?></td>
-                    <td><a href="<?=getenv('API_HOST')."/deposit/$path/image/".$row['id']?>" class="load-image">Show
+                    <td><a href="<?=getenv('API_HOST')."/deposit/$pathDB/image/".$row['id']?>" class="load-image">Show
                             Image</a></td>
                     <td>
-                        <a href="<?=base_url('/deposit/'.$path.'/add_reply/'.$row['id'])?>">Upload Bukti</a>
+                        <a href="<?=base_url('/deposit/'.$pathDB.'/add_reply/'.$row['id'])?>">Upload Bukti</a>
                     </td>
                 </tr>
                 <?php endforeach ?>

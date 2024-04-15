@@ -90,8 +90,12 @@
     ?>
         <ul id="sidebar_menu">
             <li class="side_menu_title"><span>Dashboard [testing]</span></li>
+            <li><a class="d-flex" href="<?=base_url('/kpi')?>"><i class="far fa-circle m-0"></i> KPI</a></li>
+            <li><a class="d-flex" href="<?=base_url('/ceksaldo')?>"><i class="far fa-circle m-0"></i> Saldo Supplier</a></li>
+            <li><a class="d-flex" href="<?=base_url('/penjualan/periode')?>"><i class="far fa-circle m-0"></i> Penjualan</a></li>
+            <li><a class="d-flex" href="<?=base_url('/penjualan')?>"><i class="far fa-circle m-0"></i> Penjualan Hari Ini</a></li>
 
-            <li class="<?=array_search(uri_string(), $pathAmazone) ? 'mm-active' : ''?>">
+            <!-- <li class="<?=array_search(uri_string(), $pathAmazone) ? 'mm-active' : ''?>">
                 <a class="d-flex" href="#" aria-expanded="false">
                     <i class="far fa-circle m-0"></i>
                     <span>Replica Amazone</span>
@@ -157,7 +161,7 @@
                     <li><a class="<?=(uri_string() === 'de/penjualan') ? 'active' : ''?>"
                             href="<?=base_url('/de/penjualan')?>">Penjualan Hari Ini</a></li>
                 </ul>
-            </li>
+            </li> -->
             <li><a class="d-flex" href="<?=base_url('/supplier/da/list')?>"><i class="far fa-circle m-0"></i>
                     Finance</a></li>
             <li><a class="d-flex" href="<?=base_url('/sn/ra/list')?>"><i class="far fa-circle m-0"></i> Check SN</a>

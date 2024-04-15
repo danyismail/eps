@@ -6,13 +6,7 @@
             <div class="col-md-4">
             </div>
             <div class="col-md-8">
-                <?php 
-                  $currentUri = $_SERVER['REQUEST_URI'];
-                  $currentUri = ltrim($currentUri, '/');
-                  $uriSegments = explode('/', $currentUri);
-                  $path = $uriSegments[1];
-                ?>
-                <form action="<?=base_url('/deposit/'.$path.'/action_reply')?>" enctype="multipart/form-data"
+                <form action="<?=base_url('/deposit/'.$pathDB.'/action_reply')?>" enctype="multipart/form-data"
                     method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-6 mt-4">
@@ -58,7 +52,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-6 mt-4">
                             <label for="formGroupExampleInput">Upload Gambar</label>
-                            <div><img src="<?=getenv('API_HOST')."/api/finance/e/image/".$data['id']?>" width="200"
+                            <div><img src="<?=getenv('API_HOST')."/deposit/$pathDB/image/".$data['id']?>" width="200"
                                     alt=""></div>
                         </div>
                     </div>

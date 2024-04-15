@@ -3,14 +3,16 @@
 <div class="mt-1">
     <div class="row">
         <div class="col-md-12">
-            <?php
-              $currentUri = $_SERVER['REQUEST_URI'];
-              $currentUri = ltrim($currentUri, '/');
-              $uriSegments = explode('/', $currentUri);
-              $path = $uriSegments[1];
-            ?>
-            <form method="GET" action="<?=base_url('/deposit/'.$path.'/data_transaksi')?>" class="mb-2 mt-2">
+            <form method="GET" action="<?=base_url('/deposit/data_transaksi')?>" class="mb-2 mt-2">
                 <div class="row mb-2 mt-2">
+                    <div class="form-group col-md-3">
+                        <label for="db">Pilih Database</label>
+                        <select name="db" class="form-control">
+                            <option value="">-- Choose --</option>
+                            <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
+                            <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                        </select>
+                    </div>
                     <div class="form-group col-md-3">
                         <label for="StartDate">Start Date</label>
                         <input type="date" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" />
@@ -55,7 +57,7 @@
                     <td><?=$row['status']?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
-                    <td><a href="<?=getenv('API_HOST')."/deposit/$path/image/".$row['id']?>" class="load-image">Show
+                    <td><a href="<?=getenv('API_HOST')."/deposit/$pathDB/image/".$row['id']?>" class="load-image">Show
                             Image</a></td>
                     <td><?=$row['reply']?></td>
                 </tr>

@@ -27,7 +27,8 @@
     <link rel="stylesheet" href=<?=base_url('assets/css/style1.css')?> />
     <link rel="stylesheet" href=<?=base_url('assets/css/colors/default.css')?>>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <style>
@@ -87,53 +88,25 @@
         $arrEps    = array("", "deposit/de/add", "deposit/de/cek_pending", "deposit/de/data_transaksi", "deposit/de/cancel");
     ?>
         <ul id="sidebar_menu">
-            <li class="side_menu_title"><span>
-                    <h2><b>Finance [testing]</b></h2>
-                </span></li>
-            <li class="side_menu_title"><span>Digi Amazone</span></li>
-            <li><a class="text-decoration-none"
-                    style="<?=(array_search(uri_string(), $arrSupplierAmz)) ? 'color:#2daab8' : ''?>"
-                    href="<?=base_url('/supplier/da/list')?>">Supplier</a></li>
+            <li class="side_menu_title"><span><h2><b>Finance [testing]</b></h2></span></li>
+
+            <li><a class="d-flex" href="<?=base_url('/supplier')?>"><i class="far fa-circle m-0"></i> Supplier</a></li>
             <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
                 <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
-                    <span>Deposit</span>
+                    <i class="far fa-circle m-0"></i> <span>Deposit</span>
                     <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                 </a>
                 <ul>
                     <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/add') ? 'active' : ''?>"
-                            href="<?=base_url('/deposit/da/add')?>">Depo SPL</a></li>
+                            href="<?=base_url('/deposit/add')?>">Depo SPL</a></li>
                     <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/cek_pending') ? 'active' : ''?>"
-                            href="<?=base_url('/deposit/da/cek_pending')?>">Cek Pending</a></li>
+                            href="<?=base_url('/deposit/cek_pending')?>">Cek Pending</a></li>
                     <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/data_transaksi') ? 'active' : ''?>"
-                            href="<?=base_url('/deposit/da/data_transaksi')?>">Data Transaksi</a></li>
+                            href="<?=base_url('/deposit/data_transaksi')?>">Data Transaksi</a></li>
                     <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/cancel') ? 'active' : ''?>"
-                            href="<?=base_url('/deposit/da/cancel')?>">Cancel Deposit</a></li>
+                            href="<?=base_url('/deposit/cancel')?>">Cancel Deposit</a></li>
                 </ul>
             </li>
-
-            <li class="side_menu_title"><span>Digi Eps</span></li>
-            <li><a class="text-decoration-none"
-                    style="<?=(array_search(uri_string(), $arrSupplierEps)) ? 'color:#2daab8' : ''?>"
-                    href="<?=base_url('/supplier/de/list')?>">Supplier</a></li>
-            <li class="<?=array_search(uri_string(), $arrEps) ? 'mm-active' : ''?>">
-                <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
-                    <span>Deposit</span>
-                    <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
-                </a>
-                <ul>
-                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/add') ? 'active' : ''?>"
-                            href="<?=base_url('/deposit/de/add')?>">Depo SPL</a></li>
-                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/cek_pending') ? 'active' : ''?>"
-                            href="<?=base_url('/deposit/de/cek_pending')?>">Cek Pending</a></li>
-                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/data_transaksi') ? 'active' : ''?>"
-                            href="<?=base_url('/deposit/de/data_transaksi')?>">Data Transaksi</a></li>
-                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/de/cancel') ? 'active' : ''?>"
-                            href="<?=base_url('/deposit/de/cancel')?>">Cancel Deposit</a></li>
-                </ul>
-            </li>
-            <li><a class="text-decoration-none"
-                    style="<?=(array_search(uri_string(), $arrSupplierAmz)) ? 'color:#2daab8' : ''?>"
-                    href="<?=base_url('/direct')?>">Direct Payment</a></li>
         </ul>
     </nav>
 
