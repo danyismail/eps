@@ -43,11 +43,27 @@
             </form>
         </div>
     </div>
-    <div class="table-responsive bg-white pb-3">
-        <?php if($data){ ?>
-        <h5>NAMA RESELLER : <?=$data[0]['nama']?></h5>
-        <?php } ?>
-        <table class="table table-bordered">
+    <div class="table-responsive-sm">
+        <table class=" table table-bordered">
+            <tr>
+                <td>Reseller</td>
+                <td><?=$data2['nama']?></td>
+            </tr>
+            <tr>
+                <td>Total Transaksi</td>
+                <td><?=number_format($data2['trx'],0, '.', '.')?></td>
+            </tr>
+            <tr>
+                <td>Total Laba</td>
+                <td><?=number_format($data2['laba'],0, '.', '.')?></td>
+            </tr>
+            <?php if(count($data) === 0) { ?>
+            <tr>
+                <td colspan="3" class="text-center">Tidak Ada Data</td>
+            </tr>
+            <?php } ?>
+        </table>
+        <table class=" table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
                     <th>Kode Produk</th>
@@ -59,13 +75,13 @@
                 <?php foreach($data as $row): ?>
                 <tr>
                     <td><?=$row['kode_produk']?></td>
-                    <td><?=number_format($row['trx'])?></td>
-                    <td><?=number_format($row['laba'])?></td>
+                    <td><?=number_format($row['trx'],0, '.', '.')?></td>
+                    <td><?=number_format($row['laba'],0, '.', '.')?></td>
                 </tr>
                 <?php endforeach ?>
                 <?php if(count($data) === 0) { ?>
                 <tr>
-                    <td colspan="8" class="text-center">Tidak Ada Data</td>
+                    <td colspan="3" class="text-center">Tidak Ada Data</td>
                 </tr>
                 <?php } ?>
             </tbody>

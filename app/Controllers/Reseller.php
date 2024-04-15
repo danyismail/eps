@@ -12,6 +12,8 @@ class Reseller extends BaseController
 	{
         $request = request();
         $client = service('curlrequest');
+        $from = '';
+        $to = '';
         $id = '';
 
         // dd($request->getGet('startDt'));
@@ -39,6 +41,15 @@ class Reseller extends BaseController
 
         } catch (\Exception $e) {
             $response['data'] = array();
+        }
+
+        try {
+            $makeRequest = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/sum?startDt=$from&&endDt=$to&&id=$id", [
+            ]);
+            $res2 = json_decode($makeRequest->getBody(), true);
+            $response['data2'] = $res2['data'] ?? array();
+        } catch (\Exception $e) {
+            $response['data2'] = array();
         }
         $useDB = CheckDB($db_conn);
         $response['breadcrumb'] = array(
