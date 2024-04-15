@@ -3,27 +3,20 @@
 namespace App\Controllers\Finance;
 use App\Controllers\BaseController;
 
-
-/*
-supplier := v1.Group("/supplier")
-	supplier.GET("/:e", h.GetSuppliers)
-	supplier.GET("/:e/active", h.GetActiveSuppliers)
-	supplier.GET("/:e/balance", h.GetSupplierBalance)
-	supplier.GET("/:e/:id", h.GetSupplierById)
-	supplier.POST("/:e/create", h.CreateSupplier)
-	supplier.POST("/:e/update", h.UpdateSupplier)
-	supplier.DELETE("/:e/delete/:id", h.DeleteSupplier)
- */
-
 class Supplier extends BaseController
 {
-    public function GetAll($db_conn)
+    public function GetAll()
 	{
         $request = request();
         $client = service('curlrequest');
 
+        $pathDB = 'da';
+        if($request->getGet('db')) {
+            $pathDB = $request->getGet('db');
+        };
+
         try {
-            $posts_data = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn", [
+            $posts_data = $client->request("GET", getenv('API_HOST')."/supplier/$pathDB", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -38,20 +31,25 @@ class Supplier extends BaseController
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '', 'active' => false),
-            array('label' => 'Supplier', 'url' => '', 'active' => false),
+            array('label' => 'Supplier '.CheckDB($pathDB), 'url' => '', 'active' => false),
         );
         echo view('admin/finance/supplier/view', $response);
 	}
 
-    public function Update($db_conn) {
+    public function Update() {
         $request = request();
         $client = service('curlrequest');
 
         $dataPost['id'] = $request->getGet('id');
         $dataPost['status'] = $request->getGet('q');
 
+        $pathDB = 'da';
+        if($request->getGet('db')) {
+            $pathDB = $request->getGet('db');
+        };
+
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/supplier/$db_conn/update", [
+            $posts_data = $client->request("POST", getenv('API_HOST')."/supplier/$pathDB/update", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -62,10 +60,10 @@ class Supplier extends BaseController
             exit($e->getMessage());
         }
 
-        return redirect()->to('supplier/'.$db_conn.'/list');
+        return redirect()->to('supplier?db='.$pathDB);
     }
 
-    public function Add($db_conn) {
+    public function Add() {
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '', 'active' => false),
             array('label' => 'Supplier', 'url' => '', 'active' => false),
@@ -73,15 +71,20 @@ class Supplier extends BaseController
         echo view('admin/finance/supplier/create', $response);
     }
 
-    public function Create($db_conn) {
+    public function Create() {
         $request = request();
         $client = service('curlrequest');
 
         $dataPost['name'] = $request->getPost('name');
         $dataPost['status'] = $request->getPost('status');
 
+        $pathDB = 'da';
+        if($request->getPost('db')) {
+            $pathDB = $request->getPost('db');
+        };
+
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/supplier/$db_conn/create", [
+            $posts_data = $client->request("POST", getenv('API_HOST')."/supplier/$pathDB/create", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -92,7 +95,7 @@ class Supplier extends BaseController
             exit($e->getMessage());
         }
 
-        return redirect()->to('supplier/'.$db_conn.'/list');
+        return redirect()->to('supplier?db='.$pathDB);
     }
 
     public function Edit($db_conn) {

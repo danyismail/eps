@@ -6,13 +6,17 @@
             <div class="col-md-4">
             </div>
             <div class="col-md-8">
-                <?php 
-                  $currentUri = $_SERVER['REQUEST_URI'];
-                  $currentUri = ltrim($currentUri, '/');
-                  $uriSegments = explode('/', $currentUri);
-                  $path = $uriSegments[2];
-                ?>
-                <form action="<?=base_url('/supplier/'.$path.'/create')?>" method="POST">
+                <form action="<?=base_url('/supplier/create')?>" method="POST">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="db">Pilih Database</label>
+                            <select name="db" class="form-control">
+                                <option value="">-- Choose --</option>
+                                <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
+                                <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                            </select>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="formGroupExampleInput">Name</label>

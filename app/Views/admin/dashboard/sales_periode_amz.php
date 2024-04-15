@@ -3,13 +3,19 @@
 <div class="pr-5 pl-5 mt-2">
     <div class="row">
         <div class="col-md-12">
-            <?php 
-              $currentUri = $_SERVER['REQUEST_URI'];
-              $currentUri = ltrim($currentUri, '/');
-              $uriSegments = explode('/', $currentUri);
-              $path = $uriSegments[0];
-            ?>
-            <form method="GET" action="<?=base_url('/'.$path.'/penjualan/periode')?>" class="mb-5">
+            <form method="GET" action="<?=base_url('/penjualan/periode')?>" class="mb-5">
+                <div class="row mb-4">
+                    <div class="form-group col-md-3">
+                        <label for="db">Pilih Database</label>
+                        <select name="db" class="form-control">
+                            <option value="">-- Choose --</option>
+                            <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica Amazone</option>
+                            <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS</option>
+                            <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
+                            <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                        </select>
+                    </div>
+                </div>
                 <div class="row mb-4">
                     <div class="form-group col-md-3">
                         <label for="StartDate">Start Date</label>

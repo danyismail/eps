@@ -1,7 +1,7 @@
 <?php $this->extend('admin/layout/template') ?>
 <?php $this->Section('content') ?>
 <div class="pr-5 pl-5 mt-2">
-    <form method="GET" action="<?=base_url('/penjualan')?>" class="mb-5">
+    <form method="GET" action="<?=base_url('/ceksaldo')?>" class="mb-5">
         <div class="row">
             <div class="form-group col-md-3">
                 <label for="db">Pilih Database</label>
@@ -21,27 +21,27 @@
         <a href="" onclick=f5()>refresh page...</a>
         <br>
         <?php
-          $isToday = time();
-          $isDate = date("Y-m-d", strtotime('+7 hours', $isToday));
-          $isTime = date("H:i:s", strtotime('+7 hours', $isToday));
-        ?>
-        Total penjualan hari ini <?php echo $isDate ?> jam 00:00:00 sampai dengan <?php echo $isTime ?>
+      $isToday = time();
+      $isDate = date("Y-m-d", strtotime('+7 hours', $isToday));
+      $isTime = date("H:i:s", strtotime('+7 hours', $isToday));
+    ?>
+        Total pemakaian deposit hari ini <?php echo $isDate ?> jam 00:00:00 sampai dengan <?php echo $isTime ?>
         <table class="table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
-                    <th>Trx</th>
-                    <th>Pembelian</th>
-                    <th>Penjualan</th>
-                    <th>Laba</th>
+                    <th>Label</th>
+                    <th>Total Transaksi</th>
+                    <th>Pemakaian Saldo</th>
+                    <th>Saldo Sekarang</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($data as $row): ?>
                 <tr>
-                    <td><?=$row['trx']?></td>
-                    <td><?=number_format($row['pembelian'])?></td>
-                    <td><?=number_format($row['penjualan'])?></td>
-                    <td><?=number_format($row['laba'])?></td>
+                    <td><?=$row['label']?></td>
+                    <td><?=$row['total_transaksi']?></td>
+                    <td><?=number_format($row['pemakaian_saldo'])?></td>
+                    <td><?=number_format($row['saldo_sekarang'])?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

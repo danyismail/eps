@@ -13,6 +13,7 @@ class Kpi extends BaseController
         $request = request();
         $client = service('curlrequest');
 
+        $pathDB = 'da';
         $datafilter = array();
         if($request->getGet('startDt')) {
             $datafilter['startDt'] = $request->getGet('startDt');
@@ -34,67 +35,9 @@ class Kpi extends BaseController
             $datafilter['status'] = $request->getGet('status');
         };
 
-        $response['queryString'] = http_build_query($datafilter);
-
-        $response['page'] = $request->getGet('page') ?? 1;
-        $response['num_results_on_page'] = 10;
-
-        $datafilter['page'] = $request->getGet('page') ?? 1;
-        $datafilter['view'] = $response['num_results_on_page'];
-
-        try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/kpi/da/list", [
-                "headers" => [
-                    "Accept" => "application/json",
-                    "Content-Type" => "application/json"
-                ],
-                "form_params" => $datafilter
-            ]);
-            $res = json_decode($posts_data->getBody(), true);
-            $response['data'] = $res['data'] ?? array();
-            $response['total_pages'] = $res['total'] ?? 0;
-            $response['success'] = $res['success'] ?? 0;
-            $response['failed'] = $res['failed'] ?? 0;
-
-        } catch (\Exception $e) {
-            $response['data'] = array();
-            $response['total_pages'] = 0;
-            $response['success'] = 0;
-            $response['failed'] = 0;
-        }
-
-        $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '/supplier', 'active' => false),
-            array('label' => 'KPI', 'url' => '', 'active' => true)
-        );
-        echo view('admin/dashboard/kpi_home', $response);
-
-	}
-
-    public function GetAll($db_conn)
-	{
-        $request = request();
-        $client = service('curlrequest');
-
-        $datafilter = array();
-        if($request->getGet('startDt')) {
-            $datafilter['startDt'] = $request->getGet('startDt');
-        }
-
-        if($request->getGet('endDt')) {
-            $datafilter['endDt'] = $request->getGet('endDt');
-        }
-
-        if($request->getGet('tujuan')) {
-            $datafilter['mdn'] = $request->getGet('tujuan');
-        }
-
-        if($request->getGet('shift')) {
-            $datafilter['shift'] = $request->getGet('shift');
-        }
-
-        if($request->getGet('status')) {
-            $datafilter['status'] = $request->getGet('status');
+        if($request->getGet('db')) {
+            $datafilter['db'] = $request->getGet('db');
+            $pathDB = $request->getGet('db');
         };
 
         $response['queryString'] = http_build_query($datafilter);
@@ -106,14 +49,13 @@ class Kpi extends BaseController
         $datafilter['view'] = $response['num_results_on_page'];
 
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/kpi/$db_conn/list", [
+            $posts_data = $client->request("POST", getenv('API_HOST')."/kpi/$pathDB/list", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
                 "form_params" => $datafilter
             ]);
-
             $res = json_decode($posts_data->getBody(), true);
             $response['data'] = $res['data'] ?? array();
             $response['total_pages'] = $res['total'] ?? 0;
@@ -129,9 +71,9 @@ class Kpi extends BaseController
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/supplier', 'active' => false),
-            array('label' => 'KPI', 'url' => '', 'active' => true)
+            array('label' => 'KPI', 'url' => '', 'active' => false),
+            array('label' => CheckDB($pathDB), 'url' => '', 'active' => true)
         );
-
-        echo view('/admin/dashboard/kpi_view', $response);
+        echo view('admin/dashboard/kpi_view', $response);
 	}
 }

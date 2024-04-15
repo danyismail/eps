@@ -6,20 +6,7 @@ use CodeIgniter\Debug\Timer;
 
 class Deposit extends BaseController
 {
-    public function Add($db_conn) {
-        $client = service('curlrequest');
-        try {
-            $posts_data = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn", [
-                "headers" => [
-                    "Accept" => "application/json",
-                    "Content-Type" => "application/json"
-                ],
-            ]);
-            $res = json_decode($posts_data->getBody(), true);
-            $response['supplier'] = $res['data'] ?? array();
-        } catch (\Exception $e) {
-            $response['supplier'] = array();
-        }
+    public function Add() {
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
@@ -40,7 +27,7 @@ class Deposit extends BaseController
         echo view('admin/finance/deposit/direct', $response);
     }
 
-    public function Create($db_conn) {
+    public function Create() {
         $request = request();
         $client = service('curlrequest');
 
@@ -49,15 +36,22 @@ class Deposit extends BaseController
         $dataPost['amount'] = $request->getPost('nominal_depo');
         $dataPost['origin_account'] = $request->getPost('origin');
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
+        $pathDB = $request->getPost('db');
+
+        // $pathDB = 'da';
+        // if($request->getPost('db')) {
+        //     $pathDB = $request->getPost('db');
+        // };
+
         try {
-            $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$db_conn", [
+            $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$pathDB", [
                 "form_params" => $dataPost
             ]);
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
 
-        return redirect()->to('/deposit/'.$db_conn.'/cek_pending');
+        return redirect()->to('/deposit/cek_pending');
     }
 
     public function CreateDirect() {
@@ -73,7 +67,7 @@ class Deposit extends BaseController
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
         $dataPost['payment_purpose'] = $request->getPost('payment_purpose');
         $dataPost['database'] = $request->getPost('database');
-        $database = $dataPost['database']; 
+        $database = $dataPost['database'];
 
         try {
             $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$database", [
@@ -86,10 +80,18 @@ class Deposit extends BaseController
         return redirect()->to('/deposit/'.$database.'/cek_pending');
     }
 
-    public function CheckPending($db_conn) {
+    public function CheckPending() {
+        $request = request();
         $client = service('curlrequest');
+
+        $pathDB = 'da';
+        if($request->getGet('db')) {
+            $pathDB = $request->getGet('db');
+        };
+        $response['pathDB'] = $pathDB;
+
         try {
-            $getDataCreated = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/created", [
+            $getDataCreated = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/created", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -103,7 +105,7 @@ class Deposit extends BaseController
         }
 
         try {
-            $getDataUpload = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/uploaded", [
+            $getDataUpload = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/uploaded", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -118,21 +120,27 @@ class Deposit extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Cek Pending', 'url' => '', 'active' => true)
+            array('label' => 'Cek Pending '. CheckDB($pathDB), 'url' => '', 'active' => true)
         );
         echo view('admin/finance/deposit/cek_pending', $response);
     }
 
-    public function DataTransaksi($db_conn) {
+    public function DataTransaksi() {
         $request = request();
         $client = service('curlrequest');
+
+        $pathDB = 'da';
+        if($request->getGet('db')) {
+            $pathDB = $request->getGet('db');
+        };
+        $response['pathDB'] = $pathDB;
 
         try {
             $params = "";
             if($request->getGet('startDt') && $request->getGet('startDt')) {
                 $params = "?startDt=".$request->getGet('startDt')."&endDt=".$request->getGet('endDt');
             }
-            $getData = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/done".$params, [
+            $getData = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/done".$params, [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
@@ -149,7 +157,7 @@ class Deposit extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Data Transaksi', 'url' => '', 'active' => true)
+            array('label' => 'Data Transaksi '. CheckDB($pathDB), 'url' => '', 'active' => true)
         );
         echo view('admin/finance/deposit/transaksi', $response);
     }
@@ -174,7 +182,7 @@ class Deposit extends BaseController
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
             array('label' => 'Cek Pending', 'url' => '', 'active' => false),
-            array('label' => 'Upload Image', 'url' => '', 'active' => true)
+            array('label' => 'Upload Image '. CheckDB($db_conn), 'url' => '', 'active' => true)
         );
         echo view('admin/finance/deposit/form_upload', $response);
     }
@@ -212,6 +220,8 @@ class Deposit extends BaseController
     public function AddReply(string $db_conn,int $id) {
         $client = service('curlrequest');
 
+        $response['pathDB'] = $db_conn;
+
         try {
             $posts_data = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/$id", [
                 "headers" => [
@@ -230,7 +240,7 @@ class Deposit extends BaseController
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
             array('label' => 'Cek Pending', 'url' => '', 'active' => false),
-            array('label' => 'Reply', 'url' => '', 'active' => true)
+            array('label' => 'Reply '.CheckDB($db_conn), 'url' => '', 'active' => true)
         );
         echo view('admin/finance/deposit/form_reply', $response);
     }
@@ -255,7 +265,7 @@ class Deposit extends BaseController
             exit($e->getMessage());
         }
 
-        return redirect()->to('/deposit/'.$db_conn.'/cek_pending');
+        return redirect()->to('/deposit/cek_pending?db='.$db_conn);
     }
 
     public function DeleteDeposit(string $db_conn,int $id) {
@@ -267,19 +277,24 @@ class Deposit extends BaseController
             exit($e->getMessage());
         }
 
-        return redirect()->to('/deposit/'.$db_conn.'/cancel');
+        return redirect()->to('/deposit/cancel');
     }
 
-    public function Cancel($db_conn) {
+    public function Cancel() {
         $request = request();
         $client = service('curlrequest');
 
+        $pathDB = 'da';
+        if($request->getGet('db')) {
+            $pathDB = $request->getGet('db');
+        };
+        $response['pathDB'] = $pathDB;
         $response['data'] = array();
 
         if($request->getGet('date')) {
             try {
                 $params = "?dt=".urlencode(utf8_encode($request->getGet('date')));
-                $getData = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/all".$params, [
+                $getData = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/all".$params, [
                     "headers" => [
                         "Accept" => "application/json",
                         "Content-Type" => "application/x-www-form-urlencoded"
@@ -299,6 +314,30 @@ class Deposit extends BaseController
         );
 
         echo view('admin/finance/deposit/cancel', $response);
+    }
+
+    public function getSupplier() {
+        $request = request();
+        $client = service('curlrequest');
+
+        $pathDB = 'da';
+        if($request->getPost('db')) {
+            $pathDB = $request->getPost('db');
+        };
+
+        try {
+            $posts_data = $client->request("GET", getenv('API_HOST')."/supplier/$pathDB", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+            $res = json_decode($posts_data->getBody(), true);
+            $response['supplier'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            $response['supplier'] = array();
+        }
+        echo json_encode($response);
     }
 
 }
