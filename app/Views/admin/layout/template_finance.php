@@ -90,7 +90,7 @@
     ?>
         <ul id="sidebar_menu">
             <li class="side_menu_title"><span>
-                    <h2><b>Finance</b></h2>
+                    <span>Finance</span>
                 </span></li>
 
             <li><a class="d-flex" href="<?=base_url('/supplier')?>"><i class="far fa-circle m-0"></i> Supplier</a></li>
