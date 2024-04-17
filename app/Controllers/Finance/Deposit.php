@@ -214,7 +214,7 @@ class Deposit extends BaseController
             exit($e->getMessage());
         }
 
-        return redirect()->to("/deposit/$db_conn/cek_pending");
+        return redirect()->to("/deposit/cek_pending");
     }
 
     public function AddReply(string $db_conn,int $id) {
