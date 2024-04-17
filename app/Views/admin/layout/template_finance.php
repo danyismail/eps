@@ -75,6 +75,10 @@
     .pagination .currentpage a:hover {
         background-color: #518acb;
     }
+
+    .active-single {
+        color: #2daab8 !important;
+    }
     </style>
 </head>
 
@@ -82,34 +86,31 @@
 
     <nav class="sidebar">
         <div class="logox d-flex justify-content-between"></div>
-        <?php
-        $arrSupplierAmz = array("", "supplier/da/list", "supplier/da/add");
-        $arrSupplierEps = array("", "supplier/de/list", "supplier/de/add");
-        $arrAmazon = array("", "deposit/da/add", "deposit/da/cek_pending", "deposit/da/data_transaksi", "deposit/da/cancel");
-        $arrEps    = array("", "deposit/de/add", "deposit/de/cek_pending", "deposit/de/data_transaksi", "deposit/de/cancel");
-    ?>
+        <?php $arrListMenu = array("", "deposit/add", "deposit/cek_pending", "deposit/data_transaksi", "deposit/cancel"); ?>
         <ul id="sidebar_menu">
             <li class="side_menu_title"><span>
                     <span>Finance</span>
                 </span></li>
 
-            <li><a class="d-flex" href="<?=base_url('/supplier')?>"><i class="far fa-circle m-0"></i> Supplier</a></li>
-            <li class="<?=array_search(uri_string(), $arrAmazon) ? 'mm-active' : ''?>">
+            <li><a class="d-flex <?=(uri_string() === 'supplier') ? 'active-single' : ''?>" href="<?=base_url('/supplier')?>"><i class="far fa-circle m-0"></i> Supplier</a></li>
+            <li class="<?=array_search(uri_string(), $arrListMenu) ? 'mm-active' : ''?>">
                 <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
                     <i class="far fa-circle m-0"></i> <span>Deposit</span>
                     <i class="fas fa-chevron-right" style="margin-left: auto;"></i>
                 </a>
                 <ul>
-                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/add') ? 'active' : ''?>"
+                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/add') ? 'active' : ''?>"
                             href="<?=base_url('/deposit/add')?>">Depo SPL</a></li>
-                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/cek_pending') ? 'active' : ''?>"
+                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/cek_pending') ? 'active' : ''?>"
                             href="<?=base_url('/deposit/cek_pending')?>">Cek Pending</a></li>
-                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/data_transaksi') ? 'active' : ''?>"
+                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/data_transaksi') ? 'active' : ''?>"
                             href="<?=base_url('/deposit/data_transaksi')?>">Data Transaksi</a></li>
-                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/da/cancel') ? 'active' : ''?>"
+                    <li><a class="text-decoration-none <?=(uri_string() === 'deposit/cancel') ? 'active' : ''?>"
                             href="<?=base_url('/deposit/cancel')?>">Cancel Deposit</a></li>
                 </ul>
             </li>
+            <li><a class="text-decoration-none d-flex <?=(uri_string() === 'direct') ? 'active-single' : ''?>"
+                    href="<?=base_url('/direct')?>"><i class="far fa-circle m-0"></i> Direct Payment</a></li>
         </ul>
     </nav>
 
