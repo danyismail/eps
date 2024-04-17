@@ -75,6 +75,10 @@
     .pagination .currentpage a:hover {
         background-color: #518acb;
     }
+
+    .active-single {
+        color: #2daab8 !important;
+    }
     </style>
 </head>
 
@@ -82,24 +86,19 @@
 
     <nav class="sidebar">
         <div class="logox d-flex justify-content-between"></div>
-        <?php
-        $pathAmazone = array("", "ra/ceksaldo", "ra/penjualan/periode", "ra/penjualan");
-        $pathEPS = array("", "re/ceksaldo", "re/penjualan/periode", "re/penjualan");
-        $arrAmazon = array("", "da/kpi/list", "da/ceksaldo", "da/penjualan/periode", "da/penjualan");
-        $arrDigi = array("", "de/kpi/list", "de/ceksaldo", "de/penjualan/periode", "de/penjualan");
-    ?>
+        <?php $pathArray = array("", "kpi"); ?>
         <ul id="sidebar_menu">
             <li class="side_menu_title"><span>Dashboard</span></li>
-            <li><a class="d-flex" href="<?=base_url('/kpi')?>"><i class="far fa-circle m-0"></i> KPI</a></li>
-            <li><a class="d-flex" href="<?=base_url('/ceksaldo')?>"><i class="far fa-circle m-0"></i> Saldo Supplier</a>
+            <li><a class="d-flex <?=array_search(uri_string(), $pathArray) ? 'active-single' : ''?>" href="<?=base_url('/kpi')?>"><i class="far fa-circle m-0"></i> KPI</a></li>
+            <li><a class="d-flex <?=(uri_string() === 'ceksaldo') ? 'active-single' : ''?>" href="<?=base_url('/ceksaldo')?>"><i class="far fa-circle m-0"></i> Saldo Supplier</a>
             </li>
-            <li><a class="d-flex" href="<?=base_url('/penjualan/periode')?>"><i class="far fa-circle m-0"></i>
+            <li><a class="d-flex <?=(uri_string() === 'penjualan/periode') ? 'active-single' : ''?>" href="<?=base_url('/penjualan/periode')?>"><i class="far fa-circle m-0"></i>
                     Penjualan</a></li>
-            <li><a class="d-flex" href="<?=base_url('/penjualan')?>"><i class="far fa-circle m-0"></i> Penjualan Hari
+            <li><a class="d-flex <?=(uri_string() === 'penjualan') ? 'active-single' : ''?>" href="<?=base_url('/penjualan')?>"><i class="far fa-circle m-0"></i> Penjualan Hari
                     Ini</a></li>
             <li><a class="d-flex" href="<?=base_url('/supplier')?>"><i class="far fa-circle m-0"></i>Finance</a></li>
-            <li><a class="d-flex" href="<?=base_url('/sn/ra/list')?>"><i class="far fa-circle m-0"></i> Check SN</a>
-            <li><a class="d-flex" href="<?=base_url('/reseller/ra/laba')?>"><i class="far fa-circle m-0"></i> Laba
+            <li><a class="d-flex <?=(uri_string() === 'sn/ra/list') ? 'active-single' : ''?>" href="<?=base_url('/sn/ra/list')?>"><i class="far fa-circle m-0"></i> Check SN</a>
+            <li><a class="d-flex <?=(uri_string() === 'reseller/ra/laba') ? 'active-single' : ''?>" href="<?=base_url('/reseller/ra/laba')?>"><i class="far fa-circle m-0"></i> Laba
                     Reseller</a></li>
         </ul>
     </nav>
