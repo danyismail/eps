@@ -77,7 +77,7 @@ class Deposit extends BaseController
             exit($e->getMessage());
         }
         
-        return redirect()->to('/deposit/cek_pending?db='.$db_conn);
+        return redirect()->to('/deposit/cek_pending?db='.$database);
     }
 
     public function CheckPending() {
