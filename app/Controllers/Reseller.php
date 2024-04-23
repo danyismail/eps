@@ -38,7 +38,7 @@ class Reseller extends BaseController
             $response['total_pages'] = $res['total'] ?? 0;
             $response['success'] = $res['success'] ?? 0;
             $response['failed'] = $res['failed'] ?? 0;
-            $getReseller = $client->request("GET", getenv('API_HOST')."/reseller/ra/list", [
+            $getReseller = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/list", [
                 "headers" => [
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
