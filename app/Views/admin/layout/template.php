@@ -214,6 +214,10 @@
     <script src=<?=base_url('assets/js/custom.js')?>></script>
     <script src=<?=base_url('assets/vendors/apex_chart/bar_active_1.js')?>></script>
     <script src=<?=base_url('assets/vendors/apex_chart/apex_chart_list.js')?>></script>
+    <script src="<?=base_url('assets/vendors/select2/js/select2.min.js')?>"></script>
+    <script>
+      $("#singleSelect").select2();
+    </script>
 </body>
 
 </html>

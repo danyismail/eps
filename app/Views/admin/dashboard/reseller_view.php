@@ -33,10 +33,15 @@
                         <label for="endDt">End Date</label>
                         <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
                     </div>
-                    <div class="form-group col-md-3">
-                        <label for="id">Kode Reseller</label> <label class="text-danger">*wajib input kode
-                            reseller</label>
-                        <input type=" text" name="id" class="form-control" value="<?=@$_GET['id']?>" />
+                    <div class="form-group col-md-6">
+                        <label for="id">Kode Reseller</label> <span class="text-danger">*wajib input kode reseller</span>
+                        <select id="singleSelect" class="js-states form-control" name="id">
+                            <?php foreach($reseller as $row): ?>
+                                <option value="<?=$row['kode']?>" <?=@$_GET['id'] === $row['kode'] ? 'selected' : ''?>>
+                                    <?=$row['kode']?> - <?=$row['nama']?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-info mt-2">Submit</button>
