@@ -72,7 +72,7 @@
         <div class="logox d-flex justify-content-between"></div>
         <?php $pathArray = array("", "kpi"); ?>
         <ul id="sidebar_menu">
-            <li class="side_menu_title"><span>Dashboard</span></li>
+            <li class="side_menu_title"><span>Dashboard [testing]</span></li>
             <li><a class="d-flex <?=array_search(uri_string(), $pathArray) ? 'active-single' : ''?>" href="<?=base_url('/kpi')?>"><i class="far fa-circle m-0"></i> KPI</a></li>
             <li><a class="d-flex <?=(uri_string() === 'ceksaldo') ? 'active-single' : ''?>" href="<?=base_url('/ceksaldo')?>"><i class="far fa-circle m-0"></i> Saldo Supplier</a>
             </li>

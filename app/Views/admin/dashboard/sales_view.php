@@ -1,21 +1,18 @@
-<?php $this->extend('admin/layout/template') ?>
+<?php $this->extend('admin/layout/template_new') ?>
 <?php $this->Section('content') ?>
 <div class="pr-5 pl-5 mt-2">
-    <form method="GET" action="<?=base_url('/penjualan')?>" class="mb-5">
-        <div class="row">
-            <div class="form-group col-md-3">
-                <label for="db">Pilih Database</label>
-                <select name="db" class="form-control">
-                    <option value="">-- Choose --</option>
-                    <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica Amazone</option>
-                    <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS</option>
-                    <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                    <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
-                </select>
-            </div>
+    <div class="row mb-3">
+        <div class="form-group col-md-3">
+            <label for="db">Pilih Database</label>
+            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                <option value="">Select...</option>
+                <option value="<?=base_url('penjualan?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica Amazone</option>
+                <option value="<?=base_url('penjualan?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS</option>
+                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
+                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+            </select>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 
     <div class="table-responsive">
         <a href="" onclick=f5()>refresh page...</a>

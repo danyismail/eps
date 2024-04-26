@@ -1,17 +1,17 @@
-<?php $this->extend('admin/layout/template') ?>
+<?php $this->extend('admin/layout/template_new') ?>
 <?php $this->Section('content') ?>
 
 <div class="pr-5 pl-5 mt-2">
-    <div class="dropdown">
-        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            Pilih Database
-        </button>
-        <div class="dropdown-menu">
-            <a class="dropdown-item" href="<?=base_url('/reseller/ra/laba')?>">Replica Amazone</a>
-            <a class="dropdown-item" href="<?=base_url('/reseller/re/laba')?>">Replica EPS</a>
-            <a class="dropdown-item" href="<?=base_url('/reseller/da/laba')?>">Digipos Amazone</a>
-            <a class="dropdown-item" href="<?=base_url('/reseller/de/laba')?>">Digipos EPS</a>
+    <div class="row mb-3">
+        <div class="form-group col-md-3">
+            <label for="db">Pilih Database</label>
+            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                <option value="">Select...</option>
+                <option value="<?=base_url('reseller/ra/laba')?>" <?=(uri_string() === 'reseller/ra/laba') ? 'selected' : ''?>>Replica Amazone</option>
+                <option value="<?=base_url('reseller/re/laba')?>" <?=(uri_string() === 'reseller/re/laba') ? 'selected' : ''?>>Replica EPS</option>
+                <option value="<?=base_url('reseller/da/laba')?>" <?=(uri_string() === 'reseller/da/laba') ? 'selected' : ''?>>Digipos Amazone</option>
+                <option value="<?=base_url('reseller/de/laba')?>" <?=(uri_string() === 'reseller/de/laba') ? 'selected' : ''?>>Digipos EPS</option>
+            </select>
         </div>
     </div>
     <div class="mt-3"></div>
@@ -33,7 +33,7 @@
                         <label for="endDt">End Date</label>
                         <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
                     </div>
-                    <div class="form-group col-md-6">
+                    <div class="form-group col-md-4">
                         <label for="id">Kode Reseller</label> <span class="text-danger">*wajib input kode reseller</span>
                         <select id="singleSelect" class="js-states form-control" name="id">
                             <?php foreach($reseller as $row): ?>
@@ -68,7 +68,7 @@
             </tr>
             <?php } ?>
         </table>
-        <table class=" table table-bordered">
+        <table class=" table table-bordered table-responsive" id="datatablesSimple">
             <thead>
                 <tr class="bg-info text-white">
                     <th>Kode Produk</th>

@@ -1,10 +1,10 @@
-<?php $this->extend('admin/layout/template') ?>
+<?php $this->extend('admin/layout/template_new') ?>
 <?php $this->Section('content') ?>
 <div class="pr-5 pl-5 mt-2">
     <div class="row">
         <div class="col-md-12">
             <form method="GET" action="<?=base_url('/penjualan/periode')?>" class="mb-5">
-                <div class="row mb-4">
+                <div class="row mb-2">
                     <div class="form-group col-md-3">
                         <label for="db">Pilih Database</label>
                         <select name="db" class="form-control">
