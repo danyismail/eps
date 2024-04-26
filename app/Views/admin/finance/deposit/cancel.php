@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template_finance') ?>
+<?php $this->extend('admin/layout/template_finance_new') ?>
 <?php $this->Section('content') ?>
 <div class="mt-1">
     <div class="row">
@@ -24,16 +24,16 @@
             </form>
         </div>
     </div>
-    <div class="bg-white pb-3 p-2 pt-0">
-        <table class="table table-bordered">
+    <div class="bg-white">
+        <table class="table table-bordered" id="datatablesSimple">
             <thead>
                 <tr class="bg-info text-white">
                     <th width="10">ID</th>
-                    <th width="150">Tanggal Entry</th>
-                    <th width="150">Tanggal Status</th>
+                    <th width="150" class="text-nowrap">Tanggal Entry</th>
+                    <th width="150" class="text-nowrap">Tanggal Status</th>
                     <th width="200">PIC</th>
                     <th width="100">Supplier</th>
-                    <th width="100">Rekening Asal</th>
+                    <th width="100" class="text-nowrap">Rekening Asal</th>
                     <th width="100">Amount</th>
                     <th width="100">Status</th>
                     <th width="100">Opsi</th>
@@ -56,11 +56,11 @@
                     </td>
                 </tr>
                 <?php endforeach ?>
-                <?php if(count($data) === 0) { ?>
+                <!-- <?php if(count($data) === 0) { ?>
                 <tr>
-                    <td colspan="8" class="text-center">Tidak Ada Data</td>
+                    <td colspan="9" class="text-center">Tidak Ada Data</td>
                 </tr>
-                <?php } ?>
+                <?php } ?> -->
             </tbody>
         </table>
     </div>

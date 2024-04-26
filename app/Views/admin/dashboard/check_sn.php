@@ -1,37 +1,37 @@
-<?php $this->extend('admin/layout/template') ?>
+<?php $this->extend('admin/layout/template_new') ?>
 <?php $this->Section('content') ?>
 
-<div class="dropdown">
-    <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        Pilih Database
-    </button>
-    <div class="dropdown-menu">
-        <a class="dropdown-item" href="<?=base_url('/sn/ra/list')?>">Replica Amazone</a>
-        <a class="dropdown-item" href="<?=base_url('/sn/re/list')?>">Replica EPS</a>
-        <a class="dropdown-item" href="<?=base_url('/sn/da/list')?>">Digipos Amazone</a>
-        <a class="dropdown-item" href="<?=base_url('/sn/de/list')?>">Digipos EPS</a>
-    </div>
-</div>
-
-<div class="mt-3">
+<!-- <div class="mt-3">
     <span class="badge badge-pill badge-danger">SN Null</span>
-</div>
+</div> -->
 
 <div class="mt-1">
-    <div class="table-responsive bg-white pb-3 p-2">
+    <div class="row mb-3">
+        <div class="form-group col-md-3">
+            <label for="db">Pilih Database</label>
+            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                <option value="">Select...</option>
+                <option value="<?=base_url('sn/ra/list')?>" <?=(uri_string() === 'sn/ra/list') ? 'selected' : ''?>>Replica Amazone</option>
+                <option value="<?=base_url('sn/re/list')?>" <?=(uri_string() === 'sn/re/list') ? 'selected' : ''?>>Replica EPS</option>
+                <option value="<?=base_url('sn/da/list')?>" <?=(uri_string() === 'sn/da/list') ? 'selected' : ''?>>Digipos Amazone</option>
+                <option value="<?=base_url('sn/de/list')?>" <?=(uri_string() === 'sn/de/list') ? 'selected' : ''?>>Digipos EPS</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="table-responsive bg-white">
         <table class="table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
                     <th>No</th>
-                    <th>Kode Reseller</th>
-                    <th>Kode Produk</th>
+                    <th class="text-nowrap">Kode Reseller</th>
+                    <th class="text-nowrap">Kode Produk</th>
                     <th>Tujuan</th>
-                    <th>Tgl Entri</th>
-                    <th>Tgl Status</th>
+                    <th class="text-nowrap">Tgl Entri</th>
+                    <th class="text-nowrap">Tgl Status</th>
                     <th>Supplier</th>
                     <th>SN</th>
-                    <th>Selisih Waktu</th>
+                    <th class="text-nowrap">Selisih Waktu</th>
                 </tr>
             </thead>
             <tbody>
@@ -59,17 +59,13 @@
     </div>
 </div>
 
-<div class="mt-3">
-    <span class="badge badge-pill badge-danger">SN Duplikat</span>
-</div>
-
 <div class="mt-1">
-    <div class="table-responsive bg-white pb-3 p-2">
+    <div class="table-responsive bg-white mt-4">
         <table class="table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
                     <th>No</th>
-                    <th>SN Tujuan</th>
+                    <th class="text-nowrap">SN Tujuan</th>
                     <th>Tujuan</th>
                     <th>Total</th>
                 </tr>

@@ -1,30 +1,27 @@
-<?php $this->extend('admin/layout/template_finance') ?>
+<?php $this->extend('admin/layout/template_finance_new') ?>
 <?php $this->Section('content') ?>
 <div class="mt-1">
-    <form method="GET" action="<?=base_url('deposit/cek_pending')?>" class="mb-5">
-        <div class="row">
-            <div class="form-group col-md-3">
-                <label for="db">Pilih Database</label>
-                <select name="db" class="form-control">
-                    <option value="">-- Choose --</option>
-                    <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                    <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+    <div class="bg-white pb-3 p-2">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="db">Pilih Database</label>  
+                <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="">Select...</option>
+                    <option value="cek_pending?db=da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
+                    <option value="cek_pending?db=de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
                 </select>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-    <div class="table-responsive bg-white pb-3 p-2">
-        <table class="table table-bordered">
+        <table class="table table-bordered table-responsive">
             <thead>
                 <tr class="bg-info text-white">
                     <th width="10">ID</th>
-                    <th width="15%">Tanggal Entry</th>
+                    <th width="15%" class="text-nowrap">Tanggal Entry</th>
                     <th width="20%">Name</th>
                     <th width="10%">Supplier</th>
                     <th width="10%">Amount</th>
-                    <th width="10%">Rekening Asal</th>
-                    <th>Rekening Tujuan</th>
+                    <th width="10%" class="text-nowrap">Rekening Asal</th>
+                    <th class="text-nowrap">Rekening Tujuan</th>
                     <th width="10%">Action</th>
                 </tr>
             </thead>
@@ -45,7 +42,7 @@
                 <?php endforeach ?>
                 <?php if(count($dataCreated) === 0) { ?>
                 <tr>
-                    <td colspan="7" class="text-center">Tidak Ada Data</td>
+                    <td colspan="8" class="text-center">Tidak Ada Data</td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -59,12 +56,12 @@
             <thead>
                 <tr class="bg-info text-white">
                     <th width="10">ID</th>
-                    <th width="15%">Tanggal Entry</th>
+                    <th width="15%" class="text-nowrap">Tanggal Entry</th>
                     <th width="20%">Name</th>
                     <th width="10%">Supplier</th>
                     <th width="10%">Amount</th>
-                    <th width="10%">Rekening Asal</th>
-                    <th>Rekening Tujuan</th>
+                    <th width="10%" class="text-nowrap">Rekening Asal</th>
+                    <th class="text-nowrap">Rekening Tujuan</th>
                     <th>Reply</th>
                     <th>Image</th>
                     <th width="10%">Action</th>

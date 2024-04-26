@@ -1,14 +1,14 @@
-<?php $this->extend('admin/layout/template_finance') ?>
+<?php $this->extend('admin/layout/template_finance_new') ?>
 <?php $this->Section('content') ?>
-<div class="pr-5 pl-5 mt-2">
+<div class="pl-md-5 mt-2">
     <div class="table-responsive bg-white p-3">
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-9 col-sm-12">
                 <form action="<?=base_url('/deposit/create')?>" method="POST">
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-7 col-sm-12">
                             <label for="db">Pilih Database</label>
                             <select name="db" class="form-control" id="selectDB">
                                 <option value="">-- Choose --</option>
@@ -18,14 +18,14 @@
                         </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-7">
                             <label for="formGroupExampleInput">PIC</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="PIC"
                                 name="pic" required>
                         </div>
                     </div>
                     <div class="form-row mt-1">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-7">
                             <label for="inputSupplier">Supplier</label>
                             <select id="inputSupplier" class="form-control" name="supplier" required>
                                 <option value="">-- Choose --</option>
@@ -33,14 +33,14 @@
                         </div>
                     </div>
                     <div class="form-row mt-1">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-7">
                             <label for="formGroupExampleInput">Nominal Depo</label>
                             <input type="number" class="form-control" id="formGroupExampleInput"
                                 placeholder="Nominal Depo" name="nominal_depo" required>
                         </div>
                     </div>
                     <div class="form-row mt-1">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-7">
                             <label for="formGroupExampleInput">Rekening Asal</label>
                             <div class="form-check ml-10">
                                 <input class="form-check-input" type="radio" name="origin" value="BCA" id="bank1"
@@ -62,7 +62,7 @@
                         </div>
                     </div>
                     <div class="form-row mt-1">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-7">
                             <label for="exampleFormControlTextarea1" class="form-label">Rekening Tujuan</label>
                             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
                                 name="rekening_tujuan" required></textarea>
@@ -80,7 +80,6 @@
 </div>
 <script>
     $(function() {
-
         $('#selectDB').change(function(){
             let val = $(this).val();
             loadData(val)
