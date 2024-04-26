@@ -71,7 +71,7 @@
         <div class="logox d-flex justify-content-between"></div>
         <?php $arrListMenu = array("", "deposit/add", "deposit/cek_pending", "deposit/data_transaksi", "deposit/cancel"); ?>
         <ul id="sidebar_menu">
-            <li class="side_menu_title"><span>Finance [testing]</span></li>
+            <li class="side_menu_title"><span>Finance</span></li>
             <li><a class="d-flex <?=(uri_string() === 'supplier') ? 'active-single' : ''?>" href="<?=base_url('/supplier')?>"><i class="far fa-circle m-0"></i> Supplier</a></li>
             <li class="<?=array_search(uri_string(), $arrListMenu) ? 'mm-active' : ''?>">
                 <a class="d-flex text-decoration-none" href="#" aria-expanded="false">
