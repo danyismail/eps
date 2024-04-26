@@ -1,10 +1,10 @@
-<?php $this->extend('admin/layout/template') ?>
+<?php $this->extend('admin/layout/template_new') ?>
 <?php $this->Section('content') ?>
-<div class="pr-5 pl-5 mt-2">
+<div class="mt-2">
     <div class="row">
         <div class="col-md-12">
             <form method="GET" action="<?=base_url('/kpi')?>" class="mb-5">
-                <div class="row mb-4">
+                <div class="row mb-2">
                     <div class="form-group col-md-3">
                         <label for="db">Pilih Database</label>
                         <select name="db" class="form-control">
@@ -16,19 +16,9 @@
                 </div>
                 <div class="row mb-4">
                     <div class="form-group col-md-3">
-                        <label for="StartDate">Start Date</label>
-                        <input type="date" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" />
-                    </div>
-                    <div class="form-group col-md-3">
-                        <label for="endDt">End Date</label>
-                        <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
-                    </div>
-                    <div class="form-group col-md-3">
                         <label for="tujuan">Tujuan</label>
                         <input type="text" name="tujuan" class="form-control" value="<?=@$_GET['tujuan']?>" />
                     </div>
-                </div>
-                <div class="row">
                     <div class="form-group col-md-3">
                         <label for="shift">Shift</label>
                         <select name="shift" class="form-control">
@@ -47,6 +37,15 @@
                             <option value="20" <?=@$_GET['status'] === "20" ? "selected" : ''?>>Sukses</option>
                         </select>
                     </div>
+                    <div class="col-md-3"></div>
+                    <div class="form-group col-md-3 mt-2">
+                        <label for="StartDate">Start Date</label>
+                        <input type="date" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" />
+                    </div>
+                    <div class="form-group col-md-3 mt-2">
+                        <label for="endDt">End Date</label>
+                        <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary mt-2">Submit</button>
             </form>
@@ -59,10 +58,10 @@
         <table class="table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
-                    <th>Entry Date</th>
-                    <th>Status Date</th>
+                    <th class="text-nowrap">Entry Date</th>
+                    <th class="text-nowrap">Status Date</th>
                     <th>Status</th>
-                    <th>Kode Produk</th>
+                    <th class="text-nowrap">Kode Produk</th>
                     <th>Tujuan</th>
                     <th>KPI</th>
                     <th>Shift</th>

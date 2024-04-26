@@ -1,23 +1,22 @@
-<?php $this->extend('admin/layout/template_finance') ?>
+<?php $this->extend('admin/layout/template_finance_new') ?>
 <?php $this->Section('content') ?>
 <div class="mt-2">
-    <form method="GET" action="<?=base_url('/supplier')?>" class="mb-5">
-        <div class="row">
-            <div class="form-group col-md-3">
+    <div class="table-responsive bg-white pb-3 p-2">
+        <div class="row mb-3">
+            <div class="col-md-3">
                 <label for="db">Pilih Database</label>
-                <select name="db" class="form-control">
-                    <option value="">-- Choose --</option>
-                    <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                    <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                    <option value="">Select...</option>
+                    <option value="<?=base_url('supplier?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
+                    <option value="<?=base_url('supplier?db=de')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
                 </select>
             </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-    <div class="table-responsive bg-white pb-3 p-2">
-        <a href="<?=base_url('/supplier/add')?>" class="btn btn-primary mb-2 float-right">Add Item</a>
-        <table class="table table-bordered">
+        
+        <div class="mb-3">
+            <a href="<?=base_url('/supplier/add')?>" class="btn btn-primary mb-2 float-rightx">Add Item</a>
+        </div>
+        <table id="datatablesSimple">
             <thead>
                 <tr class="bg-info text-white">
                     <th width="10">ID</th>

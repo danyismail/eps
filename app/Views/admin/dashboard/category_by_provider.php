@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template') ?>
+<?php $this->extend('admin/layout/template_new') ?>
 <!-- declare section with name content-->
 <?php $this->Section('content') ?>
 <div id="layoutSidenav_content">

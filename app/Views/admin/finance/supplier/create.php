@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template_finance') ?>
+<?php $this->extend('admin/layout/template_finance_new') ?>
 <?php $this->Section('content') ?>
 <div class="pr-5 pl-5 mt-2">
     <div class="table-responsive bg-white p-3">
@@ -17,7 +17,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-row">
+                    <div class="form-row mt-3">
                         <div class="form-group col-md-6">
                             <label for="formGroupExampleInput">Name</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Name"
