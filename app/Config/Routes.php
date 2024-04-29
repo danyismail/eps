@@ -41,3 +41,4 @@ $routes->post('/direct/create', 'Finance\Deposit::CreateDirect');
 $routes->get('/sn/(:any)/list', 'SN::CheckSN/$1');
 
 $routes->get('/reseller/(:any)/laba', 'Reseller::GetLaba/$1');
+$routes->get('/reseller/(:any)/harian', 'Reseller::GetLabaHarian/$1');

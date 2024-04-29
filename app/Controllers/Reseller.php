@@ -69,4 +69,26 @@ class Reseller extends BaseController
         );
         echo view('admin/dashboard/reseller_view', $response);
 	}
+
+    public function GetLabaHarian($db_conn)
+	{
+        $client = service('curlrequest');
+
+        try {
+            $getLabaHarian = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/laba/hourly", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+            $resultHarian = json_decode($getLabaHarian->getBody(), true);
+            $response['labaHarian'] = $resultHarian['data'] ?? array(); 
+            // dd($response['labaHarian']);
+        } catch (\Exception $e) {
+            dd($e);
+            $response['labaHarian'] = array();
+        }
+
+        echo view('admin/dashboard/check_laba_harian', $response);
+	}
 }
