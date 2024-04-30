@@ -1,31 +1,46 @@
 <?php $this->extend('admin/layout/template_new') ?>
 <?php $this->Section('content') ?>
-<div class="bg-white mb-3 mt-3">
-    <table class="table table-bordered table-responsive">
+<div class="bg-white mb-3 mt-3 table-responsive">
+    <table class="table">
         <thead>
-            <?php foreach ($labaHarian as $group) { ?>
-                <th class="text-center"><?=$group[0]['tanggal']?></th>
-            <?php } ?>
+            <tr>
+                <th width="1%"></th>
+                <?php foreach ($labaHarian as $group) { ?>
+                <th scope="col" class="text-center"><?=$group[0]['tanggal']?></th>
+                <?php } ?>
+            </tr>
         </thead>
         <tbody>
-            <?php foreach ($labaHarian as $group) { ?>
+            <tr>
                 <td>
-                    <table>
+                    <table class="table table-bordered">
                         <thead>
                             <th>Jam</th>
+                        </thead>
+                        <?php for($i=1; $i<=24; $i++){ ?>
+                        <tbody>
+                            <td><?=$i == 24 ? '00' : $i?></td>
+                        </tbody>
+                        <?php } ?>
+                    </table>
+                </td>
+                <?php foreach ($labaHarian as $group) { ?>
+                <td>
+                    <table class="table table-bordered">
+                        <thead>
                             <th>Trx</th>
                             <th>Laba</th>
                         </thead>
                         <?php foreach ($group as $item) { ?>
-                            <tbody>
-                                <td><?=$item['jam']?></td>
-                                <td><?=$item['trx']?></td>
-                                <td><?=$item['laba']?></td>
-                            </tbody>
+                        <tbody>
+                            <td><?=$item['trx']?></td>
+                            <td><?=$item['laba']?></td>
+                        </tbody>
                         <?php } ?>
                     </table>
                 </td>
-            <?php } ?>
+                <?php } ?>
+            </tr>
         </tbody>
     </table>
 </div>
