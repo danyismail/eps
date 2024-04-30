@@ -1,24 +1,48 @@
 <?php $this->extend('admin/layout/template_new') ?>
 <?php $this->Section('content') ?>
-<div class="table-responsive bg-white pb-3">
-    <?php
-        foreach ($labaHarian as $group) {
-            echo "<h3>" . $group[0]['tanggal'] . "</h3>";
-            echo "<table class=table table-bordered>";
-            echo "<th>Jam</th><th>Trx</th><th>Laba</th></tr>";
-            foreach ($group as $item) {
-                echo "<tr>";
-                if($item['jam'] === 0){
-                    $item['jam'] = '00';
-                }
-                echo "<td>" . $item['jam']  . "</td>";
-                echo "<td>" . $item['trx'] . "</td>";
-                echo "<td>" . $item['laba'] . "</td>";
-                echo "</tr>";
-            }
-            echo "</table>";
-        }
-    ?>
+<div class="bg-white mb-3 mt-3 table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th width="1%"></th>
+                <?php foreach ($labaHarian as $group) { ?>
+                    <th scope="col" class="text-center"><?=$group[0]['tanggal']?></th>
+                <?php } ?>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>Jam</th>
+                        </thead>
+                        <?php for($i=1; $i<=24; $i++){ ?>
+                            <tbody>
+                                <td><?=$i == 24 ? '00' : $i?></td>
+                            </tbody>
+                        <?php } ?>
+                    </table>
+                </td>
+                <?php foreach ($labaHarian as $group) { ?>
+                    <td>
+                        <table class="table table-bordered">
+                            <thead>
+                                <th>Trx</th>
+                                <th>Laba</th>
+                            </thead>
+                            <?php foreach ($group as $item) { ?>
+                                <tbody>
+                                    <td><?=$item['trx']?></td>
+                                    <td><?=$item['laba']?></td>
+                                </tbody>
+                            <?php } ?>
+                        </table>
+                    </td>
+                <?php } ?>
+            </tr>
+        </tbody>
+    </table>
 </div>
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModal" aria-hidden="true">
     <div class="modal-dialog modal-lg">
