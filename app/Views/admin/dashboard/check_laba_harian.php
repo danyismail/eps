@@ -1,6 +1,23 @@
 <?php $this->extend('admin/layout/template_new') ?>
 <?php $this->Section('content') ?>
 <div class="bg-white mb-3 mt-3 table-responsive">
+    <div class="row mb-3">
+        <div class="form-group col-md-3">
+            <label for="db">Pilih Database</label>
+            <select class="form-control"
+                onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+                <option value="">Select...</option>
+                <option value="<?=base_url('reseller/ra/harian')?>" <?=(uri_string() === 'reseller/ra/harian') ? 'selected' : ''?>>
+                    Replica Amazone</option>
+                <option value="<?=base_url('reseller/re/harian')?>" <?=(uri_string() === 'reseller/re/harian') ? 'selected' : ''?>>
+                    Replica EPS</option>
+                <option value="<?=base_url('reseller/da/harian')?>" <?=(uri_string() === 'reseller/da/harian') ? 'selected' : ''?>>
+                    Digipos Amazone</option>
+                <option value="<?=base_url('reseller/de/harian')?>" <?=(uri_string() === 'reseller/de/harian') ? 'selected' : ''?>>
+                    Digipos EPS</option>
+            </select>
+        </div>
+    </div>
     <table class="table">
         <thead>
             <tr>
