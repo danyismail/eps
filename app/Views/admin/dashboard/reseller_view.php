@@ -49,7 +49,7 @@
         </div>
     </div>
     <div class="table-responsive-sm">
-        <table class=" table table-bordered">
+        <table class="table table-bordered">
             <tr>
                 <td>Reseller</td>
                 <td><?=$data2['nama']?></td>
@@ -68,10 +68,10 @@
             </tr>
             <?php } ?>
         </table>
-        <table class=" table table-bordered table-responsive" id="datatablesSimple">
+        <table class="table" id="datatablesSimple">
             <thead>
                 <tr class="bg-info text-white">
-                    <th>Kode Produk</th>
+                    <th width="40%">Kode Produk</th>
                     <th>Trx</th>
                     <th>Laba</th>
                 </tr>
@@ -84,11 +84,6 @@
                     <td><?=number_format($row['laba'],0, '.', '.')?></td>
                 </tr>
                 <?php endforeach ?>
-                <?php if(count($data) === 0) { ?>
-                <tr>
-                    <td colspan="3" class="text-center">Tidak Ada Data</td>
-                </tr>
-                <?php } ?>
             </tbody>
         </table>
     </div>

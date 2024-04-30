@@ -51,8 +51,8 @@
 </div>
 
 <div class="mt-1">
-    <div class="table-responsive bg-white pb-3 p-2">
-        <table class="table table-bordered">
+    <div class="bg-white pb-3 p-2">
+        <table class="table table-bordered table-responsive">
             <thead>
                 <tr class="bg-info text-white">
                     <th width="10">ID</th>
