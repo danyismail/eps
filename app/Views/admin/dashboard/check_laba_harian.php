@@ -12,7 +12,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>
+                <td style="padding-left: 0; padding-right:0">
                     <table class="table table-bordered">
                         <thead>
                             <th>Jam</th>
@@ -39,6 +39,20 @@
                         <?php } ?>
                     </table>
                 </td>
+                    <td style="padding-left: 0; padding-right:0">
+                        <table class="table table-borderedx">
+                            <thead>
+                                <th>Trx</th>
+                                <th style="border-right: 1px solid #ddd">Laba</th>
+                            </thead>
+                            <?php foreach ($group as $item) { ?>
+                                <tbody>
+                                    <td><?=$item['trx']?></td>
+                                    <td style="border-right: 1px solid #ddd"><?=$item['laba']?></td>
+                                </tbody>
+                            <?php } ?>
+                        </table>
+                    </td>
                 <?php } ?>
             </tr>
         </tbody>

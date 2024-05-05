@@ -28,9 +28,8 @@
             </form>
         </div>
     </div>
-    <div class="bg-white">
-        <!-- <table class="table table-bordered table-responsive"> -->
-        <table class="table table-bordered table-responsive" id="datatablesSimple">
+    <div class="bg-white table-responsive"> 
+        <table class="table table-bordered" id="datatablesSimple">
             <thead>
                 <tr class="bg-info text-white">
                     <th width="10">ID</th>
@@ -89,7 +88,8 @@
 
 <script>
 function getImage(image) {
-    $('#imageModal').attr('src', image)
+    let urlImage = "<?=getenv('API_HOST')?>" + image
+    $('#imageModal').attr('src', urlImage)
     $('#myModal').modal('show')
 }
 </script>

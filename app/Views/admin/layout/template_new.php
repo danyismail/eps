@@ -108,6 +108,7 @@
                         $pathCheckSNArray = array("", "sn/ra/list", "sn/re/list", "sn/da/list", "sn/de/list");
                         $pathLabaResselerArray = array("", "reseller/ra/laba", "reseller/re/laba", "reseller/da/laba", "reseller/de/laba");
                         $pathLabaHarianArray = array("", "reseller/ra/harian", "reseller/re/harian", "reseller/da/harian", "reseller/de/harian");
+                        $pathLabaRugiArray = array("", "reseller/ra/labarugi", "reseller/re/labarugi", "reseller/da/labarugi", "reseller/de/labarugi");
                     ?>
                 <div class="sb-sidenav-menu">
                     <div class="nav">
@@ -151,6 +152,11 @@
                             href="<?=base_url('/reseller/ra/harian')?>">
                             <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Laba Harian
+                        </a>
+                        <a class="nav-link <?=(uri_string() === 'reseller/labarugi') ? 'active-single' : ''?>"
+                            href="<?=base_url('/reseller/labarugi')?>">
+                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                            Laba Rugi
                         </a>
                     </div>
                 </div>
