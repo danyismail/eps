@@ -28,7 +28,7 @@
             </form>
         </div>
     </div>
-    <div class="bg-white table-responsive"> 
+    <div class="bg-white table-responsive">
         <table class="table table-bordered" id="datatablesSimple">
             <thead>
                 <tr class="bg-info text-white">
@@ -60,8 +60,7 @@
                     <td><?=$row['status']?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
-                    <td><a href="javascript:void(0)" onclick="getImage('<?=getenv('API_HOST').$getImage?>')"
-                            class="load-image">Show
+                    <td><a href="javascript:void(0)" onclick="getImage('<?=$getImage?>')" class="load-image">Show
                             Image</a></td>
                     <td><?=$row['reply']?></td>
                 </tr>
