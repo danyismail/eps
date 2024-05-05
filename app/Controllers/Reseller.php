@@ -83,12 +83,51 @@ class Reseller extends BaseController
             ]);
             $resultHarian = json_decode($getLabaHarian->getBody(), true);
             $response['labaHarian'] = $resultHarian['data'] ?? array(); 
-            // dd($response['labaHarian']);
         } catch (\Exception $e) {
-            dd($e);
             $response['labaHarian'] = array();
         }
 
         echo view('admin/dashboard/check_laba_harian', $response);
+	}
+
+    public function Labarugi()
+	{
+        $request = request();
+        $client = service('curlrequest');
+
+        $pathDB = 'ra';
+        $datafilter = array();
+        if($request->getGet('startDt')) {
+            $datafilter['startDt'] = $request->getGet('startDt');
+        }
+
+        if($request->getGet('endDt')) {
+            $datafilter['endDt'] = $request->getGet('endDt');
+        }
+
+        if($request->getGet('db')) {
+            $datafilter['db'] = $request->getGet('db');
+            $pathDB = $request->getGet('db');
+        };
+
+        $response['pathDB'] = $pathDB; 
+
+        try {
+            $getLabaHarian = $client->request("GET", getenv('API_HOST')."/reseller/$pathDB/labarugi", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+                "form_params" => $datafilter
+            ]);
+            $resultHarian = json_decode($getLabaHarian->getBody(), true);
+            $response['labarugi'] = $resultHarian['data'] ?? array(); 
+            // dd($response['labarugi']);
+        } catch (\Exception $e) {
+            // dd($e);
+            $response['labarugi'] = array();
+        }
+
+        echo view('admin/dashboard/check_laba_rugi', $response);
 	}
 }
