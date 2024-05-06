@@ -34,6 +34,7 @@
         <table class="table table-bordered " id="datatablesSimple">
             <thead>
                 <tr class="bg-info text-white">
+                    <th width="1">No</th>
                     <th width="10">Nama</th>
                     <th width="400" class="text-nowrap">Trx</th>
                     <th width="400" class="text-nowrap">Laba</th>
@@ -41,8 +42,12 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($labarugi as $row): ?>
+                <?php 
+                    $no=1;
+                    foreach($labarugi as $row):
+                ?>
                 <tr>
+                    <td><?=$no++?></td>
                     <td><?=$row['nama']?></td>
                     <td><?=$row['trx']?></td>
                     <td><?=$row['laba']?></td>

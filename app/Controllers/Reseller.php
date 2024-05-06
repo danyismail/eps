@@ -108,7 +108,6 @@ class Reseller extends BaseController
         }
 
         if($request->getGet('db')) {
-            $datafilter['db'] = $request->getGet('db');
             $pathDB = $request->getGet('db');
         };
 
@@ -116,17 +115,12 @@ class Reseller extends BaseController
 
         try {
             $getLabaHarian = $client->request("GET", getenv('API_HOST')."/reseller/$pathDB/labarugi", [
-                "headers" => [
-                    "Accept" => "application/json",
-                    "Content-Type" => "application/json"
-                ],
-                "form_params" => $datafilter
+                "query" => $datafilter
             ]);
+
             $resultHarian = json_decode($getLabaHarian->getBody(), true);
             $response['labarugi'] = $resultHarian['data'] ?? array(); 
-            // dd($response['labarugi']);
         } catch (\Exception $e) {
-            // dd($e);
             $response['labarugi'] = array();
         }
 
