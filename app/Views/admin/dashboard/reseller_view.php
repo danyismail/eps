@@ -62,19 +62,19 @@
             </tr>
             <tr>
                 <td>Total Transaksi</td>
-                <td><?=number_format(@$data2['trx'],0, '.', '.')?></td>
+                <td><?=FormatNumber(@$data2['trx'])?></td>
             </tr>
             <tr>
                 <td>Total Penjualan</td>
-                <td><?=number_format(@$data2['jual'],0, '.', '.')?></td>
+                <td><?=FormatNumber(@$data2['jual'])?></td>
             </tr>
             <tr>
                 <td>Total Pembelian</td>
-                <td><?=number_format(@$data2['beli'],0, '.', '.')?></td>
+                <td><?=FormatNumber(@$data2['beli'])?></td>
             </tr>
             <tr>
                 <td>Total Laba</td>
-                <td><?=number_format(@$data2['laba'],0, '.', '.')?></td>
+                <td><?=FormatNumber(@$data2['laba'])?></td>
             </tr>
             <?php if(count($data) === 0) { ?>
             <tr>

@@ -19,5 +19,11 @@ if (!function_exists('CheckDB')) {
     }
 }
 
+if (!function_exists('FormatNumber')) {
+  function FormatNumber($num) {
+    return number_format($num,0, '.', '.');
+  }
+}
+
 
 ?>
