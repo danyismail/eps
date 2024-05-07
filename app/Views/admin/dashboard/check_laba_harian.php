@@ -23,13 +23,13 @@
             <tr>
                 <th width="1%"></th>
                 <?php foreach ($labaHarian as $group) { ?>
-                    <th scope="col" class="text-center"><?=$group[0]['tanggal']?></th>
+                    <th scope="col" class="text-center" style="border-right:1px solid #ddd"><?=$group[0]['tanggal']?></th>
                 <?php } ?>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td style="padding-left: 0; padding-right:0">
+                <td style="padding: 0;">
                     <table class="table table-bordered">
                         <thead>
                             <th>Jam</th>
@@ -41,19 +41,31 @@
                         <?php } ?>
                     </table>
                 </td>
-                <?php foreach ($labaHarian as $group) { ?>
-                    <td style="padding-left: 0; padding-right:0">
-                        <table class="table table-borderedx">
+                <?php
+                    foreach ($labaHarian as $group) { ?>
+                    <td style="padding: 0;">
+                        <table class="table">
                             <thead>
                                 <th>Trx</th>
                                 <th style="border-right: 1px solid #ddd">Laba</th>
                             </thead>
-                            <?php foreach ($group as $item) { ?>
+                            <?php 
+                            foreach ($group as $item) { ?>
                                 <tbody>
-                                    <td><?=$item['trx']?></td>
+                                    <td style="border-left: 1px solid #ddd"><?=$item['trx']?></td>
                                     <td style="border-right: 1px solid #ddd"><?=$item['laba']?></td>
                                 </tbody>
                             <?php } ?>
+
+                            <?php 
+                                if(count($group) < 24) { 
+                                    for($i=1; $i <= 24 - count($group); $i++) {
+                            ?>
+                                <tbody>
+                                    <td style="border-left: 1px solid #ddd">&nbsp;</td>
+                                    <td style="border-right: 1px solid #ddd">&nbsp;</td>
+                                </tbody>
+                            <?php } } ?>
                         </table>
                     </td>
                 <?php } ?>
