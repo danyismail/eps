@@ -28,7 +28,7 @@
             </form>
         </div>
     </div>
-    <div class="bg-white table-responsive">
+    <div class="bg-white table-responsive"> 
         <table class="table table-bordered" id="datatablesSimple">
             <thead>
                 <tr class="bg-info text-white">

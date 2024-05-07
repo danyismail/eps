@@ -83,9 +83,7 @@ class Reseller extends BaseController
             ]);
             $resultHarian = json_decode($getLabaHarian->getBody(), true);
             $response['labaHarian'] = $resultHarian['data'] ?? array(); 
-            // dd($response['labaHarian']);
         } catch (\Exception $e) {
-            dd($e);
             $response['labaHarian'] = array();
         }
 

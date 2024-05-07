@@ -52,15 +52,15 @@
         <table class="table table-bordered">
             <tr>
                 <td>Reseller</td>
-                <td><?=$data2['nama']?></td>
+                <td><?=@$data2['nama']?></td>
             </tr>
             <tr>
                 <td>Total Transaksi</td>
-                <td><?=number_format($data2['trx'],0, '.', '.')?></td>
+                <td><?=number_format(@$data2['trx'],0, '.', '.')?></td>
             </tr>
             <tr>
                 <td>Total Laba</td>
-                <td><?=number_format($data2['laba'],0, '.', '.')?></td>
+                <td><?=number_format(@$data2['laba'],0, '.', '.')?></td>
             </tr>
             <?php if(count($data) === 0) { ?>
             <tr>
