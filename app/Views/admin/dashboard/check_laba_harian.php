@@ -7,13 +7,17 @@
             <select class="form-control"
                 onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select...</option>
-                <option value="<?=base_url('reseller/ra/harian')?>" <?=(uri_string() === 'reseller/ra/harian') ? 'selected' : ''?>>
+                <option value="<?=base_url('reseller/ra/harian')?>"
+                    <?=(uri_string() === 'reseller/ra/harian') ? 'selected' : ''?>>
                     Replica Amazone</option>
-                <option value="<?=base_url('reseller/re/harian')?>" <?=(uri_string() === 'reseller/re/harian') ? 'selected' : ''?>>
+                <option value="<?=base_url('reseller/re/harian')?>"
+                    <?=(uri_string() === 'reseller/re/harian') ? 'selected' : ''?>>
                     Replica EPS</option>
-                <option value="<?=base_url('reseller/da/harian')?>" <?=(uri_string() === 'reseller/da/harian') ? 'selected' : ''?>>
+                <option value="<?=base_url('reseller/da/harian')?>"
+                    <?=(uri_string() === 'reseller/da/harian') ? 'selected' : ''?>>
                     Digipos Amazone</option>
-                <option value="<?=base_url('reseller/de/harian')?>" <?=(uri_string() === 'reseller/de/harian') ? 'selected' : ''?>>
+                <option value="<?=base_url('reseller/de/harian')?>"
+                    <?=(uri_string() === 'reseller/de/harian') ? 'selected' : ''?>>
                     Digipos EPS</option>
             </select>
         </div>
@@ -23,7 +27,7 @@
             <tr>
                 <th width="1%"></th>
                 <?php foreach ($labaHarian as $group) { ?>
-                    <th scope="col" class="text-center" style="border-right:1px solid #ddd"><?=$group[0]['tanggal']?></th>
+                <th scope="col" class="text-center" style="border-right:1px solid #ddd"><?=$group[0]['tanggal']?></th>
                 <?php } ?>
             </tr>
         </thead>
@@ -35,39 +39,39 @@
                             <th>Jam</th>
                         </thead>
                         <?php for($i=1; $i<=24; $i++){ ?>
-                            <tbody>
-                                <td><?=$i == 24 ? '00' : $i?></td>
-                            </tbody>
+                        <tbody>
+                            <td><?=$i == 24 ? '00' : $i?></td>
+                        </tbody>
                         <?php } ?>
                     </table>
                 </td>
                 <?php
                     foreach ($labaHarian as $group) { ?>
-                    <td style="padding: 0;">
-                        <table class="table">
-                            <thead>
-                                <th>Trx</th>
-                                <th style="border-right: 1px solid #ddd">Laba</th>
-                            </thead>
-                            <?php 
+                <td style="padding: 0;">
+                    <table class="table">
+                        <thead>
+                            <th>Trx</th>
+                            <th style="border-right: 1px solid #ddd">Laba</th>
+                        </thead>
+                        <?php 
                             foreach ($group as $item) { ?>
-                                <tbody>
-                                    <td style="border-left: 1px solid #ddd"><?=$item['trx']?></td>
-                                    <td style="border-right: 1px solid #ddd"><?=$item['laba']?></td>
-                                </tbody>
-                            <?php } ?>
+                        <tbody>
+                            <td style="border-left: 1px solid #ddd"><?=FormatNumber($item['trx'])?></td>
+                            <td style="border-right: 1px solid #ddd"><?=FormatNumber($item['laba'])?></td>
+                        </tbody>
+                        <?php } ?>
 
-                            <?php 
+                        <?php 
                                 if(count($group) < 24) { 
                                     for($i=1; $i <= 24 - count($group); $i++) {
                             ?>
-                                <tbody>
-                                    <td style="border-left: 1px solid #ddd">&nbsp;</td>
-                                    <td style="border-right: 1px solid #ddd">&nbsp;</td>
-                                </tbody>
-                            <?php } } ?>
-                        </table>
-                    </td>
+                        <tbody>
+                            <td style="border-left: 1px solid #ddd">&nbsp;</td>
+                            <td style="border-right: 1px solid #ddd">&nbsp;</td>
+                        </tbody>
+                        <?php } } ?>
+                    </table>
+                </td>
                 <?php } ?>
             </tr>
         </tbody>

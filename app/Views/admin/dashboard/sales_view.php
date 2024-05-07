@@ -4,12 +4,17 @@
     <div class="row mb-3">
         <div class="form-group col-md-3">
             <label for="db">Pilih Database</label>
-            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+            <select class="form-control"
+                onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select...</option>
-                <option value="<?=base_url('penjualan?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica Amazone</option>
-                <option value="<?=base_url('penjualan?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS</option>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                <option value="<?=base_url('penjualan?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica
+                    Amazone</option>
+                <option value="<?=base_url('penjualan?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica
+                    EPS</option>
+                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos
+                    Amazone</option>
+                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos
+                    EPS</option>
             </select>
         </div>
     </div>
@@ -36,9 +41,9 @@
                 <?php foreach($data as $row): ?>
                 <tr>
                     <td><?=$row['trx']?></td>
-                    <td><?=number_format($row['pembelian'])?></td>
-                    <td><?=number_format($row['penjualan'])?></td>
-                    <td><?=number_format($row['laba'])?></td>
+                    <td><?=FormatNumber($row['pembelian'])?></td>
+                    <td><?=FormatNumber($row['penjualan'])?></td>
+                    <td><?=FormatNumber($row['laba'])?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

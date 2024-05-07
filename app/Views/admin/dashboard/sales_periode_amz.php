@@ -45,9 +45,9 @@
                 <?php foreach($data as $row): ?>
                 <tr>
                     <td><?=$row['trx']?></td>
-                    <td><?=number_format($row['pembelian'])?></td>
-                    <td><?=number_format($row['penjualan'])?></td>
-                    <td><?=number_format($row['laba'])?></td>
+                    <td><?=FormatNumber($row['pembelian'])?></td>
+                    <td><?=FormatNumber($row['penjualan'])?></td>
+                    <td><?=FormatNumber($row['laba'])?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>
