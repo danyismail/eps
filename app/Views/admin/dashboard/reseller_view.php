@@ -5,12 +5,17 @@
     <div class="row mb-3">
         <div class="form-group col-md-3">
             <label for="db">Pilih Database</label>
-            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+            <select class="form-control"
+                onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select...</option>
-                <option value="<?=base_url('reseller/ra/laba')?>" <?=(uri_string() === 'reseller/ra/laba') ? 'selected' : ''?>>Replica Amazone</option>
-                <option value="<?=base_url('reseller/re/laba')?>" <?=(uri_string() === 'reseller/re/laba') ? 'selected' : ''?>>Replica EPS</option>
-                <option value="<?=base_url('reseller/da/laba')?>" <?=(uri_string() === 'reseller/da/laba') ? 'selected' : ''?>>Digipos Amazone</option>
-                <option value="<?=base_url('reseller/de/laba')?>" <?=(uri_string() === 'reseller/de/laba') ? 'selected' : ''?>>Digipos EPS</option>
+                <option value="<?=base_url('reseller/ra/laba')?>"
+                    <?=(uri_string() === 'reseller/ra/laba') ? 'selected' : ''?>>Replica Amazone</option>
+                <option value="<?=base_url('reseller/re/laba')?>"
+                    <?=(uri_string() === 'reseller/re/laba') ? 'selected' : ''?>>Replica EPS</option>
+                <option value="<?=base_url('reseller/da/laba')?>"
+                    <?=(uri_string() === 'reseller/da/laba') ? 'selected' : ''?>>Digipos Amazone</option>
+                <option value="<?=base_url('reseller/de/laba')?>"
+                    <?=(uri_string() === 'reseller/de/laba') ? 'selected' : ''?>>Digipos EPS</option>
             </select>
         </div>
     </div>
@@ -34,12 +39,13 @@
                         <input type="date" name="endDt" class="form-control" value="<?=@$_GET['endDt']?>" />
                     </div>
                     <div class="form-group col-md-4">
-                        <label for="id">Kode Reseller</label> <span class="text-danger">*wajib input kode reseller</span>
+                        <label for="id">Kode Reseller</label> <span class="text-danger">*wajib input kode
+                            reseller</span>
                         <select id="singleSelect" class="js-states form-control" name="id">
                             <?php foreach($reseller as $row): ?>
-                                <option value="<?=$row['kode']?>" <?=@$_GET['id'] === $row['kode'] ? 'selected' : ''?>>
-                                    <?=$row['kode']?> - <?=$row['nama']?>
-                                </option>
+                            <option value="<?=$row['kode']?>" <?=@$_GET['id'] === $row['kode'] ? 'selected' : ''?>>
+                                <?=$row['kode']?> - <?=$row['nama']?>
+                            </option>
                             <?php endforeach; ?>
                         </select>
                     </div>
@@ -57,6 +63,14 @@
             <tr>
                 <td>Total Transaksi</td>
                 <td><?=number_format(@$data2['trx'],0, '.', '.')?></td>
+            </tr>
+            <tr>
+                <td>Total Penjualan</td>
+                <td><?=number_format(@$data2['jual'],0, '.', '.')?></td>
+            </tr>
+            <tr>
+                <td>Total Pembelian</td>
+                <td><?=number_format(@$data2['beli'],0, '.', '.')?></td>
             </tr>
             <tr>
                 <td>Total Laba</td>
