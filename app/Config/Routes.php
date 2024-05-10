@@ -14,6 +14,7 @@ $routes->get('/', 'Kpi::index');
 $routes->get('/kpi', 'Kpi::index');
 $routes->get('/ceksaldo', 'Ceksaldo::index');
 $routes->get('/penjualan', 'Penjualan::index');
+$routes->get('/penjualan/pph', 'Penjualan::GetPPH');
 $routes->get('/penjualan/periode', 'Penjualan::periode');
 
 $routes->get('/supplier', 'Finance\Supplier::GetAll');
