@@ -35,6 +35,8 @@
                     <th>Pembelian</th>
                     <th>Penjualan</th>
                     <th>Laba</th>
+                    <th>PPH 22</th>
+                    <th>Laba Net</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,6 +46,8 @@
                     <td><?=FormatNumber($row['pembelian'])?></td>
                     <td><?=FormatNumber($row['penjualan'])?></td>
                     <td><?=FormatNumber($row['laba'])?></td>
+                    <td><?=FormatNumberWithComma($row['pph'])?></td>
+                    <td><?=FormatNumberWithComma($row['laba_net'])?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

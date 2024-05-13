@@ -133,11 +133,6 @@
                             <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Penjualan Hari Ini
                         </a>
-                        <a class="nav-link <?=(uri_string() === 'penjualan/pph') ? 'active-single' : ''?>"
-                            href="<?=base_url('/penjualan/pph')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            PPH
-                        </a>
                         <a class="nav-link <?=(uri_string() === 'supplier') ? 'active-single' : ''?>"
                             href="<?=base_url('/supplier')?>">
                             <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
