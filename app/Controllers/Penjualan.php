@@ -100,7 +100,7 @@ class Penjualan extends BaseController
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
-                "form_params" => $datafilter
+                "query" => $datafilter
             ]);
 
             $res = json_decode($getSalesPeriode->getBody(), true);
