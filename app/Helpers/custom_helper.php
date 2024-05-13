@@ -25,5 +25,9 @@ if (!function_exists('FormatNumber')) {
   }
 }
 
-
+if (!function_exists('FormatNumberWithComma')) {
+  function FormatNumberWithComma($num) {
+    return number_format($num, 2, ',', '.');
+  }
+}
 ?>
