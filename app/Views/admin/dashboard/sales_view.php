@@ -40,7 +40,7 @@
             <tbody>
                 <?php foreach($data as $row): ?>
                 <tr>
-                    <td><?=$row['trx']?></td>
+                    <td><?=FormatNumber($row['trx'])?></td>
                     <td><?=FormatNumber($row['pembelian'])?></td>
                     <td><?=FormatNumber($row['penjualan'])?></td>
                     <td><?=FormatNumber($row['laba'])?></td>
