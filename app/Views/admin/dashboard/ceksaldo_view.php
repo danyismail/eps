@@ -9,16 +9,21 @@
         $isTime = date("H:i:s", strtotime('+7 hours', $isToday));
     ?>
     <p>Total pemakaian deposit hari ini <?php echo $isDate ?> jam 00:00:00 sampai dengan <?php echo $isTime ?></p>
-    
+
     <div class="row mb-3 border-top border-light pt-2">
         <div class="form-group col-md-3">
             <label for="db">Pilih Database</label>
-            <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
+            <select class="form-control"
+                onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select...</option>
-                <option value="<?=base_url('ceksaldo?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica Amazone</option>
-                <option value="<?=base_url('ceksaldo?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS</option>
-                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                <option value="<?=base_url('ceksaldo?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica
+                    Amazone</option>
+                <option value="<?=base_url('ceksaldo?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS
+                </option>
+                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos
+                    Amazone</option>
+                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS
+                </option>
             </select>
         </div>
     </div>
@@ -38,8 +43,8 @@
                 <tr>
                     <td><?=$row['label']?></td>
                     <td><?=$row['total_transaksi']?></td>
-                    <td><?=number_format($row['pemakaian_saldo'])?></td>
-                    <td><?=number_format($row['saldo_sekarang'])?></td>
+                    <td><?=FormatNumber($row['pemakaian_saldo'])?></td>
+                    <td><?=FormatNumber($row['saldo_sekarang'])?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

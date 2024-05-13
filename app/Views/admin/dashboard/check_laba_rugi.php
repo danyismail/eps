@@ -49,9 +49,9 @@
                 <tr>
                     <td><?=$no++?></td>
                     <td><?=$row['nama']?></td>
-                    <td><?=$row['trx']?></td>
-                    <td><?=$row['laba']?></td>
-                    <td><?=$row['rugi']?></td>
+                    <td><?=FormatNumber($row['trx'])?></td>
+                    <td><?=FormatNumber($row['laba'])?></td>
+                    <td><?=FormatNumber($row['rugi'])?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

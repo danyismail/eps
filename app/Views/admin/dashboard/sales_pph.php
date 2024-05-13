@@ -7,13 +7,17 @@
             <select class="form-control"
                 onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select...</option>
-                <option value="<?=base_url('penjualan?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica
+                <option value="<?=base_url('penjualan/pph?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>
+                    Replica
                     Amazone</option>
-                <option value="<?=base_url('penjualan?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica
+                <option value="<?=base_url('penjualan/pph?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>
+                    Replica
                     EPS</option>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos
-                    Amazone</option>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos
+                <option value="<?=base_url('penjualan/pph?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>
+                    Digipos
+                    Amazone</option>/pph
+                <option value="<?=base_url('penjualan/pph?db=de')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
+                    Digipos
                     EPS</option>
             </select>
         </div>
@@ -27,7 +31,7 @@
           $isDate = date("Y-m-d", strtotime('+7 hours', $isToday));
           $isTime = date("H:i:s", strtotime('+7 hours', $isToday));
         ?>
-        Total penjualan hari ini <?php echo $isDate ?> jam 00:00:00 sampai dengan <?php echo $isTime ?>
+        Perhitungan pph22 hari ini : <?php echo $isDate ?> jam 00:00:00 sampai dengan <?php echo $isTime ?>
         <table class="table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
@@ -35,15 +39,17 @@
                     <th>Pembelian</th>
                     <th>Penjualan</th>
                     <th>Laba</th>
+                    <th>PPH 22</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach($data as $row): ?>
                 <tr>
-                    <td><?=FormatNumber($row['trx'])?></td>
+                    <td><?=$row['trx']?></td>
                     <td><?=FormatNumber($row['pembelian'])?></td>
                     <td><?=FormatNumber($row['penjualan'])?></td>
                     <td><?=FormatNumber($row['laba'])?></td>
+                    <td><?=FormatNumber($row['pph'])?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>

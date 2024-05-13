@@ -40,6 +40,40 @@ class Penjualan extends BaseController
         echo view('admin/dashboard/sales_view', $response);
 	}
 
+    public function GetPPH()
+	{
+        $request = request();
+        $client = service('curlrequest');
+
+        $pathDB = 'ra';
+        if($request->getGet('db')) {
+            $pathDB = $request->getGet('db');
+        };
+
+        try {
+            $getPPHToday = $client->request("GET", getenv('API_HOST')."/sales/$pathDB/pph", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($getPPHToday->getBody(), true);
+            // dd($pathDB);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            // exit($e->getMessage());
+            $response['data'] = array();
+        }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Sales PPH '.CheckDB($pathDB), 'url' => '', 'active' => true)
+        );
+
+        echo view('admin/dashboard/sales_pph', $response);
+	}
+
     public function periode()
 	{
         $request = request();
@@ -66,7 +100,7 @@ class Penjualan extends BaseController
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
-                "form_params" => $datafilter
+                "query" => $datafilter
             ]);
 
             $res = json_decode($getSalesPeriode->getBody(), true);
