@@ -1,0 +1,13 @@
+CRITICAL - 2024-04-24 10:27:27 --> ErrorException: Undefined variable: pathArray
+in APPPATH/Views/admin/layout/template_new.php on line 46.
+ 1 APPPATH/Views/admin/layout/template_new.php(46): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: pathArray', '/Users/babayhalimi/AKU/Project/Eps/eps-web/app/Views/admin/layout/template_new.php', 46, [...])
+ 2 SYSTEMPATH/View/View.php(228): include('/Users/babayhalimi/AKU/Project/Eps/eps-web/app/Views/admin/layout/template_new.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/View/View.php(244): CodeIgniter\View\View->render('admin/layout/template_new', [], true)
+ 5 SYSTEMPATH/Common.php(1178): CodeIgniter\View\View->render('admin/dashboard/kpi_view', [], true)
+ 6 APPPATH/Controllers/Kpi.php(77): view('admin/dashboard/kpi_view', [...])
+ 7 SYSTEMPATH/CodeIgniter.php(941): App\Controllers\Kpi->index()
+ 8 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Kpi))
+ 9 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/babayhalimi/AKU/Project/Eps/eps-web/public/index.php')

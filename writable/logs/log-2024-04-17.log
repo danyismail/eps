@@ -1,0 +1,12 @@
+CRITICAL - 2024-04-17 07:22:22 --> ErrorException: Undefined variable: supplier
+in APPPATH/Views/admin/finance/deposit/create.php on line 28.
+ 1 APPPATH/Views/admin/finance/deposit/create.php(28): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: supplier', '/Users/babayhalimi/AKU/Project/Eps/eps-web/app/Views/admin/finance/deposit/create.php', 28, [...])
+ 2 SYSTEMPATH/View/View.php(228): include('/Users/babayhalimi/AKU/Project/Eps/eps-web/app/Views/admin/finance/deposit/create.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1178): CodeIgniter\View\View->render('admin/finance/deposit/create', [], true)
+ 5 APPPATH/Controllers/Finance/Deposit.php(16): view('admin/finance/deposit/create', [...])
+ 6 SYSTEMPATH/CodeIgniter.php(941): App\Controllers\Finance\Deposit->Add()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Finance\Deposit))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/babayhalimi/AKU/Project/Eps/eps-web/public/index.php')

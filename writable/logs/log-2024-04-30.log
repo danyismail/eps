@@ -1,0 +1,10 @@
+CRITICAL - 2024-04-30 03:00:33 --> ParseError: syntax error, unexpected '?>'
+in APPPATH/Views/admin/dashboard/check_laba_harian.php on line 35.
+ 1 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH/Common.php(1178): CodeIgniter\View\View->render('admin/dashboard/check_laba_harian', [], true)
+ 3 APPPATH/Controllers/Reseller.php(92): view('admin/dashboard/check_laba_harian', [...])
+ 4 SYSTEMPATH/CodeIgniter.php(941): App\Controllers\Reseller->GetLabaHarian('ra')
+ 5 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reseller))
+ 6 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH/Commands/Server/rewrite.php(47): require_once('/Users/babayhalimi/AKU/Project/Eps/eps-web/public/index.php')
