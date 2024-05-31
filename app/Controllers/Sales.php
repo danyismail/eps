@@ -14,6 +14,7 @@ class Sales extends BaseController
         try {
             $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/sales", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -42,6 +43,7 @@ class Sales extends BaseController
         try {
             $getDepositToday = $client->request("GET", getenv('API_HOST')."/sales/$db_conn", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -72,6 +74,7 @@ class Sales extends BaseController
         try {
             $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/sales/$db_conn/periode?startDate=$from&endDate=$to", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -88,7 +91,7 @@ class Sales extends BaseController
             array('label' => 'Home', 'url' => '/', 'active' => false),
             array('label' => 'Sales '.$db_conn, 'url' => '', 'active' => true)
         );
-        echo view('admin/dashboard/sales_periode_amz', $response);
+        echo view('admin/dashboard/sales_periode_view', $response);
 	}
 
 }

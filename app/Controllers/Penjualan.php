@@ -30,6 +30,7 @@ class Penjualan extends BaseController
         try {
             $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/sales/$pathDB/periode", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -75,6 +76,7 @@ class Penjualan extends BaseController
         try {
             $getSalesPeriode = $client->request("GET", getenv('API_HOST')."/sales/$pathDB/periode", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -93,7 +95,7 @@ class Penjualan extends BaseController
             array('label' => 'Penjualan', 'url' => '', 'active' => false),
             array('label' => CheckDB($pathDB), 'url' => '', 'active' => true)
         );
-        echo view('admin/dashboard/sales_periode_amz', $response);
+        echo view('admin/dashboard/sales_periode_view', $response);
 	}
 
 }

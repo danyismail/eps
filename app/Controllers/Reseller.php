@@ -32,6 +32,9 @@ class Reseller extends BaseController
 
         try {
             $makeRequest = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/laba?startDt=$from&&endDt=$to&&id=$id", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
             ]);
             $res = json_decode($makeRequest->getBody(), true);
             $response['data'] = $res['data'] ?? array();
@@ -40,6 +43,7 @@ class Reseller extends BaseController
             $response['failed'] = $res['failed'] ?? 0;
             $getReseller = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/list", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -54,6 +58,9 @@ class Reseller extends BaseController
 
         try {
             $makeRequest = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/sum?startDt=$from&&endDt=$to&&id=$id", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
             ]);
             $res2 = json_decode($makeRequest->getBody(), true);
             $response['data2'] = $res2['data'] ?? array();
@@ -77,6 +84,7 @@ class Reseller extends BaseController
         try {
             $getLabaHarian = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/laba/hourly", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -113,6 +121,9 @@ class Reseller extends BaseController
 
         try {
             $getLabaHarian = $client->request("GET", getenv('API_HOST')."/reseller/$pathDB/labarugi", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
                 "query" => $datafilter
             ]);
 

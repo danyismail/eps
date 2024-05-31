@@ -14,6 +14,7 @@ class Deposit extends BaseController
             $client = service('curlrequest');
             $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/deposit", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -39,6 +40,7 @@ class Deposit extends BaseController
             $client = service('curlrequest');
             $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/depositProd", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -66,6 +68,7 @@ class Deposit extends BaseController
             $client = service('curlrequest');
             $getDepositToday = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn/balance", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],

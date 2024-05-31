@@ -16,6 +16,7 @@ class SN extends BaseController
         try {
             $getNullableSN = $client->request("GET", getenv('API_HOST')."/sn/null/$db_conn", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -30,6 +31,7 @@ class SN extends BaseController
         try {
             $getDuplicateSN = $client->request("GET", getenv('API_HOST')."/sn/duplicate/$db_conn", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],

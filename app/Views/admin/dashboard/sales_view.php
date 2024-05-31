@@ -7,14 +7,30 @@
             <select class="form-control"
                 onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select...</option>
-                <option value="<?=base_url('penjualan?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica
-                    Amazone</option>
-                <option value="<?=base_url('penjualan?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica
-                    EPS</option>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos
-                    Amazone</option>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos
-                    EPS</option>
+                <?php $session = session(); ?>
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
+                    <option value="<?=base_url('penjualan?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>
+                        Replica Amazone
+                    </option>
+                <?php } ?>
+
+                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                    <option value="<?=base_url('penjualan?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>
+                        Replica EPS
+                    </option>
+                <?php } ?>
+
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
+                    <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>
+                        Digipos Amazone
+                    </option>
+                <?php } ?>
+
+                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                    <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
+                        Digipos EPS
+                    </option>
+                <?php } ?>
             </select>
         </div>
     </div>

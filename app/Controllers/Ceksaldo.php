@@ -20,6 +20,7 @@ class Ceksaldo extends BaseController
             $client = service('curlrequest');
             $getDepositToday = $client->request("GET", getenv('API_HOST')."/supplier/$pathDB/balance", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],

@@ -9,10 +9,22 @@
                         <label for="db">Pilih Database</label>
                         <select name="db" class="form-control">
                             <option value="">-- Choose --</option>
-                            <option value="ra" <?=@$pathDB === "ra" ? "selected" : ''?>>Replica Amazone</option>
-                            <option value="re" <?=@$pathDB === "re" ? "selected" : ''?>>Replica EPS</option>
-                            <option value="da" <?=@$pathDB === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                            <option value="de" <?=@$pathDB === "de" ? "selected" : ''?>>Digipos EPS</option>
+                            <?php $session = session(); ?>
+                            <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
+                                <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica Amazone</option>
+                            <?php } ?>
+
+                            <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                                <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS</option>
+                            <?php } ?>
+
+                            <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
+                                <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
+                            <?php } ?>
+
+                            <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                                <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                            <?php } ?>
                         </select>
                     </div>
                     <div class="form-group col-md-3">

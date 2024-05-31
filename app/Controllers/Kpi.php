@@ -51,6 +51,7 @@ class Kpi extends BaseController
         try {
             $posts_data = $client->request("POST", getenv('API_HOST')."/kpi/$pathDB/list", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],

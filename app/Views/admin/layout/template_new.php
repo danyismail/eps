@@ -87,77 +87,102 @@
                     <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
                 </div> -->
         </form>
+        <div>
+            <?php $session = session(); echo $session->get('data')['username']?>
+        </div>
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li> -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="<?=base_url('/logout')?>">Logout</a></li>
+                </ul>
+            </li>
         </ul>
     </nav>
     <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
-                <?php 
-                        $pathArray = array("", "kpi");
-                        $pathCheckSNArray = array("", "sn/ra/list", "sn/re/list", "sn/da/list", "sn/de/list");
-                        $pathLabaResselerArray = array("", "reseller/ra/laba", "reseller/re/laba", "reseller/da/laba", "reseller/de/laba");
-                        $pathLabaHarianArray = array("", "reseller/ra/harian", "reseller/re/harian", "reseller/da/harian", "reseller/de/harian");
-                        $pathLabaRugiArray = array("", "reseller/ra/labarugi", "reseller/re/labarugi", "reseller/da/labarugi", "reseller/de/labarugi");
-                    ?>
+                <?php   
+                    $pathArray = array("", "kpi");
+                    $pathCheckSNArray = array("sn/ra/list", "sn/re/list", "sn/da/list", "sn/de/list");
+                    $pathLabaResselerArray = array("reseller/ra/laba", "reseller/re/laba", "reseller/da/laba", "reseller/de/laba");
+                    $pathLabaHarianArray = array("reseller/ra/harian", "reseller/re/harian", "reseller/da/harian", "reseller/de/harian");
+                    $pathLabaRugiArray = array("reseller/ra/labarugi", "reseller/re/labarugi", "reseller/da/labarugi", "reseller/de/labarugi");
+
+                    $menu = [
+                        [
+                            'name' => 'KPI', 
+                            'url' => 'kpi', 
+                            'rolePermission' => ['superadmin'],
+                            'active_class' =>  in_array(uri_string(), $pathArray) ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Saldo Supplier', 
+                            'url' => 'ceksaldo', 
+                            'rolePermission' => ['eps', 'amazone', 'superadmin'],
+                            'active_class' =>  (uri_string() === 'ceksaldo') ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Penjualan', 
+                            'url' => 'penjualan/periode', 
+                            'rolePermission' => ['eps', 'amazone', 'superadmin'],
+                            'active_class' =>  (uri_string() === 'penjualan/periode') ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Penjualan Hari Ini', 
+                            'url' => 'penjualan', 
+                            'rolePermission' => ['eps', 'amazone', 'superadmin'],
+                            'active_class' =>  (uri_string() === 'penjualan') ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Finance', 
+                            'url' => 'supplier', 
+                            'rolePermission' => ['superadmin', 'admin'],
+                            'active_class' =>  (uri_string() === 'supplier') ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Check SN', 
+                            'url' => '/sn/ra/list', 
+                            'rolePermission' => ['eps', 'amazone', 'superadmin'],
+                            'active_class' =>  in_array(uri_string(), $pathCheckSNArray) ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Laba Reseller',
+                            'url' => 'reseller/ra/laba',
+                            'rolePermission' => ['eps', 'amazone', 'superadmin'],
+                            'active_class' => in_array(uri_string(), $pathLabaResselerArray) ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Laba Harian',
+                            'url' => 'reseller/ra/harian',
+                            'rolePermission' => ['eps', 'amazone', 'superadmin'],
+                            'active_class' => in_array(uri_string(), $pathLabaHarianArray) ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Laba Rugi',
+                            'url' => 'reseller/labarugi',
+                            'rolePermission' => ['eps', 'amazone', 'superadmin'],
+                            'active_class' => (uri_string() === 'reseller/labarugi') ? 'active-single' : ''
+                        ]
+                    ];
+                ?>
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Main Menu</div>
-                        <a class="nav-link <?=array_search(uri_string(), $pathArray) ? 'active-single' : ''?>"
-                            href="<?=base_url('/kpi')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            KPI
-                        </a>
-                        <a class="nav-link <?=(uri_string() === 'ceksaldo') ? 'active-single' : ''?>"
-                            href="<?=base_url('/ceksaldo')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            Saldo Supplier
-                        </a>
-                        <a class="nav-link <?=(uri_string() === 'penjualan/periode') ? 'active-single' : ''?>"
-                            href="<?=base_url('/penjualan/periode')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            Penjualan
-                        </a>
-                        <a class="nav-link <?=(uri_string() === 'penjualan') ? 'active-single' : ''?>"
-                            href="<?=base_url('/penjualan')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            Penjualan Hari Ini
-                        </a>
-                        <a class="nav-link <?=(uri_string() === 'supplier') ? 'active-single' : ''?>"
-                            href="<?=base_url('/supplier')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            Finance
-                        </a>
-                        <a class="nav-link <?=array_search(uri_string(), $pathCheckSNArray) ? 'active-single' : ''?>"
-                            href="<?=base_url('/sn/ra/list')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            Check SN
-                        </a>
-                        <a class="nav-link <?=array_search(uri_string(), $pathLabaResselerArray) ? 'active-single' : ''?>"
-                            href="<?=base_url('/reseller/ra/laba')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            Laba Reseller
-                        </a>
-                        <a class="nav-link <?=array_search(uri_string(), $pathLabaHarianArray) ? 'active-single' : ''?>"
-                            href="<?=base_url('/reseller/ra/harian')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            Laba Harian
-                        </a>
-                        <a class="nav-link <?=(uri_string() === 'reseller/labarugi') ? 'active-single' : ''?>"
-                            href="<?=base_url('/reseller/labarugi')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
-                            Laba Rugi
-                        </a>
+                        <?php 
+                            foreach($menu as $item): 
+                                if(in_array($session->get('data')['role'], $item['rolePermission'])){
+                        ?>
+                                <a class="nav-link <?=$item['active_class']?>"
+                                    href="<?=base_url('/'.$item['url'])?>">
+                                    <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                                    <?=$item['name']?>
+                                </a>
+                        <?php 
+                                } 
+                            endforeach; 
+                        ?>
                     </div>
                 </div>
             </nav>
