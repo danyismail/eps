@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template_new') ?>
+<?php $this->extend('layout/template') ?>
 <?php $this->Section('content') ?>
 <div class="bg-white mb-3 mt-3 table-responsive">
     <div class="row mb-3">

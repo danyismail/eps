@@ -6,9 +6,9 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 // $routes->setAutoRoute(true);
-$routes->get('(:any)/ceksaldo', 'Deposit::GetSupplierBalance/$1');
-$routes->get('(:any)/penjualan/periode', 'Sales::GetSalesByDate/$1');
-$routes->get('(:any)/penjualan', 'Sales::GetSales/$1');
+// $routes->get('(:any)/ceksaldo', 'Deposit::GetSupplierBalance/$1');
+// $routes->get('(:any)/penjualan/periode', 'Sales::GetSalesByDate/$1');
+// $routes->get('(:any)/penjualan', 'Sales::GetSales/$1');
 
 $routes->get('/', 'Home::index');
 $routes->get('/login', 'LoginController::index');
@@ -17,7 +17,7 @@ $routes->post('/auth', 'LoginController::Auth');
 $routes->get('/kpi', 'Kpi::index', ['filter' => 'sessionCheck']);
 $routes->get('/ceksaldo', 'Ceksaldo::index');
 $routes->get('/penjualan', 'Penjualan::index');
-$routes->get('/penjualan/pph', 'Penjualan::GetPPH');
+// $routes->get('/penjualan/pph', 'Penjualan::GetPPH');
 $routes->get('/penjualan/periode', 'Penjualan::periode');
 
 $routes->get('/supplier', 'Finance\Supplier::GetAll');
@@ -47,3 +47,7 @@ $routes->get('/sn/(:any)/list', 'SN::CheckSN/$1');
 $routes->get('/reseller/(:any)/laba', 'Reseller::GetLaba/$1');
 $routes->get('/reseller/(:any)/harian', 'Reseller::GetLabaHarian/$1');
 $routes->get('/reseller/labarugi', 'Reseller::Labarugi');
+
+$routes->get('/user', 'UserController::index');
+$routes->post('/user/create', 'UserController::Create');
+$routes->get('/user/delete', 'UserController::Delete');

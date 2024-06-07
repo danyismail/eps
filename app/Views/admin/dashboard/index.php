@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template_new') ?>
+<?php $this->extend('layout/template') ?>
 <?php $this->Section('content') ?>
 <div class="pr-5 pl-5 mt-5">
     <div class="row">

@@ -69,10 +69,10 @@ class Reseller extends BaseController
         }
         $useDB = CheckDB($db_conn);
         $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '/', 'active' => true),
-            array('label' => 'Reseller', 'url' => '', 'active' => true),
-            array('label' => $useDB, 'url' => '', 'active' => true),
-            array('label' => 'Laba', 'url' => '', 'active' => false),
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Reseller', 'url' => '', 'active' => false),
+            array('label' => $useDB, 'url' => '', 'active' => false),
+            array('label' => 'Laba', 'url' => '', 'active' => true),
         );
         echo view('admin/dashboard/reseller_view', $response);
 	}
@@ -94,6 +94,14 @@ class Reseller extends BaseController
         } catch (\Exception $e) {
             $response['labaHarian'] = array();
         }
+
+        $useDB = CheckDB($db_conn);
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Reseller', 'url' => '', 'active' => false),
+            array('label' => $useDB, 'url' => '', 'active' => false),
+            array('label' => 'Laba Harian', 'url' => '', 'active' => true),
+        );
 
         echo view('admin/dashboard/check_laba_harian', $response);
 	}
@@ -132,6 +140,14 @@ class Reseller extends BaseController
         } catch (\Exception $e) {
             $response['labarugi'] = array();
         }
+
+        $useDB = CheckDB($pathDB);
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Reseller', 'url' => '', 'active' => false),
+            array('label' => $useDB, 'url' => '', 'active' => false),
+            array('label' => 'Laba Rugi', 'url' => '', 'active' => true),
+        );
 
         echo view('admin/dashboard/check_laba_rugi', $response);
 	}

@@ -5,14 +5,15 @@ use App\Models\ProviderModel;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\IncomingRequest;
 
-class Deposit extends BaseController
+class UserController extends BaseController
 {
     use ResponseTrait;
     public function index()
 	{
+        $client = service('curlrequest');
+
         try {
-            $client = service('curlrequest');
-            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/deposit", [
+            $getData = $client->request("GET", getenv('API_HOST')."/user/list", [
                 "headers" => [
                     "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
@@ -20,71 +21,86 @@ class Deposit extends BaseController
                 ],
             ]);
 
-            $res = json_decode($getDepositToday->getBody(), true);
+            $res = json_decode($getData->getBody(), true);
             $response['data'] = $res['data'] ?? array();
+
         } catch (\Exception $e) {
-            // exit($e->getMessage());
             $response['data'] = array();
         }
 
         $response['breadcrumb'] = array(
             array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Supplier EPS', 'url' => '', 'active' => true)
+            array('label' => 'User ', 'url' => '', 'active' => true)
         );
-        return view('admin/dashboard/deposit_view', $response);
+
+        echo view('admin/user/user_view', $response);
 	}
 
-    public function get_deposit()
-	{
+    public function Create() {
+        $request = request();
+        $client = service('curlrequest');
+
+        $dataform = array();
+        if($request->getPost('username')) {
+            $dataform['username'] = $request->getPost('username');
+        }
+
+        if($request->getPost('email')) {
+            $dataform['email'] = $request->getPost('email');
+        }
+
+        if($request->getPost('role')) {
+            $dataform['role'] = $request->getPost('role');
+        }
+
+        if($request->getPost('password')) {
+            $dataform['password'] = $request->getPost('password');
+        }
+
         try {
-            $client = service('curlrequest');
-            $getDepositToday = $client->request("GET", getenv('API_HOST')."/api/eps/depositProd", [
+            $getData = $client->request("POST", getenv('API_HOST')."/user/create", [
                 "headers" => [
                     "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
+                "json" => $dataform
             ]);
 
-            $res = json_decode($getDepositToday->getBody(), true);
+            $res = json_decode($getData->getBody(), true);
             $response['data'] = $res['data'] ?? array();
+
         } catch (\Exception $e) {
-            // exit($e->getMessage());
             $response['data'] = array();
         }
 
-        $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Supplier Amazone', 'url' => '', 'active' => true)
-        );
-        return view('admin/dashboard/deposit_view', $response);
+        return redirect()->to('/user');
 
+    }
 
-	}
+    public function Delete() {
+        $request = request();
+        $client = service('curlrequest');
 
-    public function GetSupplierBalance($db_conn)
-	{
         try {
-            $client = service('curlrequest');
-            $getDepositToday = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn/balance", [
+            $getData = $client->request("DELETE", getenv('API_HOST')."/user/delete", [
                 "headers" => [
                     "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
+                "query" => $request->getGet("id")
             ]);
 
-            $res = json_decode($getDepositToday->getBody(), true);
+            $res = json_decode($getData->getBody(), true);
             $response['data'] = $res['data'] ?? array();
+
         } catch (\Exception $e) {
-            // exit($e->getMessage());
             $response['data'] = array();
         }
 
-        $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '/', 'active' => false),
-            array('label' => 'Supplier Balance '.$db_conn, 'url' => '', 'active' => true)
-        );
-        return view('admin/dashboard/deposit_view', $response);
-	}
+        return redirect()->to('/user');
+    }
+
+
 }

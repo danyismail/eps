@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template_finance_new') ?>
+<?php $this->extend('layout/template_finance') ?>
 <?php $this->Section('content') ?>
 <div class="mt-1">
     <div class="row">

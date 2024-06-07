@@ -70,6 +70,10 @@
     .nav-link:hover {
         color: #2daab8 !important;
     }
+
+    .breadcrumb {
+        background-color: transparent;
+    }
     </style>
 </head>
 
@@ -164,6 +168,12 @@
                             'url' => 'reseller/labarugi',
                             'rolePermission' => ['eps', 'amazone', 'superadmin'],
                             'active_class' => (uri_string() === 'reseller/labarugi') ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'User',
+                            'url' => 'user',
+                            'rolePermission' => ['superadmin'],
+                            'active_class' => (uri_string() === 'user') ? 'active-single' : ''
                         ]
                     ];
                 ?>
@@ -190,6 +200,24 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <?php if (isset($breadcrumb)) {?>
+                            <?php foreach($breadcrumb as $key => $row): ?>
+                            <li class="breadcrumb-item <?=$row['active'] ? 'active text-secondary' : ''?>"
+                                <?=$row['active'] ? 'aria-current="page"' : ''?>>
+                                <?php
+                                    if($row['active']) {
+                                        echo $row['label'];
+                                    } else {
+                                        echo '<a href="'.$row['url'].'" class="text-info">'.$row['label'].'</a>';
+                                    }
+                                ?>
+                            </li>
+                            <?php endforeach ?>
+                            <?php } ?>
+                        </ol>
+                    </nav>
                     <?php $this->renderSection('content'); ?>
                 </div>
             </main>
