@@ -13,6 +13,7 @@
                             <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS</option>
                             <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
                             <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                            <option value="ba" <?=@$_GET['db'] === "ba" ? "selected" : ''?>>Amazone</option>
                         </select>
                     </div>
                 </div>
