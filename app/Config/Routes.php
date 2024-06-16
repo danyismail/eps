@@ -44,3 +44,7 @@ $routes->get('/sn/(:any)/list', 'SN::CheckSN/$1');
 $routes->get('/reseller/(:any)/laba', 'Reseller::GetLaba/$1');
 $routes->get('/reseller/(:any)/harian', 'Reseller::GetLabaHarian/$1');
 $routes->get('/reseller/labarugi', 'Reseller::Labarugi');
+
+$routes->get('/laba/reseller', 'Sales::LabaReseller');
+$routes->get('/laba/supplier', 'Sales::LabaSupplier');
+$routes->get('/laba/provider', 'Sales::LabaProvider');

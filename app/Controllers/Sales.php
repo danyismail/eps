@@ -91,4 +91,83 @@ class Sales extends BaseController
         echo view('admin/dashboard/sales_periode_amz', $response);
 	}
 
+    public function LabaReseller()
+	{
+        $params = $this->request->getGet();
+        $from = $params['startDt'] ?? '';
+        $to = $params['endDt'] ?? '';
+        $client = service('curlrequest');
+        try {
+            $labaReseller = $client->request("GET", getenv('API_HOST')."/margin/ba/reseller?startDt=$from&endDt=$to", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+            $res = json_decode($labaReseller->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            $response['data'] = array();
+        }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+        );
+        echo view('admin/dashboard/laporan_laba_reseller', $response);
+	}
+
+    public function LabaSupplier()
+	{
+        $params = $this->request->getGet();
+        $from = $params['startDt'] ?? '';
+        $to = $params['endDt'] ?? '';
+        $client = service('curlrequest');
+
+        try {
+            $labaSupplier = $client->request("GET", getenv('API_HOST')."/margin/ba/supplier?startDt=$from&endDt=$to", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($labaSupplier->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            $response['data'] = array();
+        }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+        );
+        echo view('admin/dashboard/laporan_laba_supplier', $response);
+	}
+
+    public function LabaProvider()
+	{
+        $params = $this->request->getGet();
+        $from = $params['startDt'] ?? '';
+        $to = $params['endDt'] ?? '';
+        $client = service('curlrequest');
+
+        try {
+            $result = $client->request("GET", getenv('API_HOST')."/margin/ba/provider?startDt=$from&endDt=$to", [
+                "headers" => [
+                    "Accept" => "application/json",
+                    "Content-Type" => "application/json"
+                ],
+            ]);
+
+            $res = json_decode($result->getBody(), true);
+            $response['data'] = $res['data'] ?? array();
+        } catch (\Exception $e) {
+            $response['data'] = array();
+        }
+
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+        );
+        echo view('admin/dashboard/laporan_laba_provider', $response);
+	}
+
 }

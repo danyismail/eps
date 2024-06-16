@@ -115,48 +115,51 @@
                         <div class="sb-sidenav-menu-heading">Main Menu</div>
                         <a class="nav-link <?=array_search(uri_string(), $pathArray) ? 'active-single' : ''?>"
                             href="<?=base_url('/kpi')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             KPI
                         </a>
                         <a class="nav-link <?=(uri_string() === 'ceksaldo') ? 'active-single' : ''?>"
                             href="<?=base_url('/ceksaldo')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Saldo Supplier
                         </a>
                         <a class="nav-link <?=(uri_string() === 'penjualan/periode') ? 'active-single' : ''?>"
                             href="<?=base_url('/penjualan/periode')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Penjualan
                         </a>
                         <a class="nav-link <?=(uri_string() === 'penjualan') ? 'active-single' : ''?>"
                             href="<?=base_url('/penjualan')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Penjualan Hari Ini
                         </a>
                         <a class="nav-link <?=(uri_string() === 'supplier') ? 'active-single' : ''?>"
                             href="<?=base_url('/supplier')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Finance
                         </a>
                         <a class="nav-link <?=array_search(uri_string(), $pathCheckSNArray) ? 'active-single' : ''?>"
                             href="<?=base_url('/sn/ra/list')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Check SN
                         </a>
                         <a class="nav-link <?=array_search(uri_string(), $pathLabaResselerArray) ? 'active-single' : ''?>"
                             href="<?=base_url('/reseller/ra/laba')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Laba Reseller
                         </a>
                         <a class="nav-link <?=array_search(uri_string(), $pathLabaHarianArray) ? 'active-single' : ''?>"
                             href="<?=base_url('/reseller/ra/harian')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Laba Harian
                         </a>
                         <a class="nav-link <?=(uri_string() === 'reseller/labarugi') ? 'active-single' : ''?>"
                             href="<?=base_url('/reseller/labarugi')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Laba Rugi
+                        </a>
+                        <a class="nav-link <?=(uri_string() === 'laba/reseller') ? 'active-single' : ''?>"
+                            href="<?=base_url('/laba/reseller')?>">
+                            - Laporan Reseller
+                        </a>
+                        <a class="nav-link <?=(uri_string() === 'laba/supplier') ? 'active-single' : ''?>"
+                            href="<?=base_url('/laba/supplier')?>">
+                            - Laporan Supplier
+                        </a>
+                        <a class="nav-link <?=(uri_string() === 'laba/provider') ? 'active-single' : ''?>"
+                            href="<?=base_url('/laba/provider')?>">
+                            - Laporan Provider
                         </a>
                     </div>
                 </div>
