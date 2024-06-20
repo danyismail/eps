@@ -32,6 +32,9 @@ class Reseller extends BaseController
 
         try {
             $makeRequest = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/laba?startDt=$from&&endDt=$to&&id=$id", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
             ]);
             $res = json_decode($makeRequest->getBody(), true);
             $response['data'] = $res['data'] ?? array();
@@ -40,6 +43,7 @@ class Reseller extends BaseController
             $response['failed'] = $res['failed'] ?? 0;
             $getReseller = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/list", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -54,6 +58,9 @@ class Reseller extends BaseController
 
         try {
             $makeRequest = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/sum?startDt=$from&&endDt=$to&&id=$id", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
             ]);
             $res2 = json_decode($makeRequest->getBody(), true);
             $response['data2'] = $res2['data'] ?? array();
@@ -62,10 +69,10 @@ class Reseller extends BaseController
         }
         $useDB = CheckDB($db_conn);
         $response['breadcrumb'] = array(
-            array('label' => 'Home', 'url' => '/', 'active' => true),
-            array('label' => 'Reseller', 'url' => '', 'active' => true),
-            array('label' => $useDB, 'url' => '', 'active' => true),
-            array('label' => 'Laba', 'url' => '', 'active' => false),
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Reseller', 'url' => '', 'active' => false),
+            array('label' => $useDB, 'url' => '', 'active' => false),
+            array('label' => 'Laba', 'url' => '', 'active' => true),
         );
         echo view('admin/dashboard/reseller_view', $response);
 	}
@@ -77,6 +84,7 @@ class Reseller extends BaseController
         try {
             $getLabaHarian = $client->request("GET", getenv('API_HOST')."/reseller/$db_conn/laba/hourly", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -86,6 +94,14 @@ class Reseller extends BaseController
         } catch (\Exception $e) {
             $response['labaHarian'] = array();
         }
+
+        $useDB = CheckDB($db_conn);
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Reseller', 'url' => '', 'active' => false),
+            array('label' => $useDB, 'url' => '', 'active' => false),
+            array('label' => 'Laba Harian', 'url' => '', 'active' => true),
+        );
 
         echo view('admin/dashboard/check_laba_harian', $response);
 	}
@@ -113,6 +129,9 @@ class Reseller extends BaseController
 
         try {
             $getLabaHarian = $client->request("GET", getenv('API_HOST')."/reseller/$pathDB/labarugi", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
                 "query" => $datafilter
             ]);
 
@@ -121,6 +140,14 @@ class Reseller extends BaseController
         } catch (\Exception $e) {
             $response['labarugi'] = array();
         }
+
+        $useDB = CheckDB($pathDB);
+        $response['breadcrumb'] = array(
+            array('label' => 'Home', 'url' => '/', 'active' => false),
+            array('label' => 'Reseller', 'url' => '', 'active' => false),
+            array('label' => $useDB, 'url' => '', 'active' => false),
+            array('label' => 'Laba Rugi', 'url' => '', 'active' => true),
+        );
 
         echo view('admin/dashboard/check_laba_rugi', $response);
 	}

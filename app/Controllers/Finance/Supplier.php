@@ -18,6 +18,7 @@ class Supplier extends BaseController
         try {
             $posts_data = $client->request("GET", getenv('API_HOST')."/supplier/$pathDB", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -51,6 +52,7 @@ class Supplier extends BaseController
         try {
             $posts_data = $client->request("POST", getenv('API_HOST')."/supplier/$pathDB/update", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -86,6 +88,7 @@ class Supplier extends BaseController
         try {
             $posts_data = $client->request("POST", getenv('API_HOST')."/supplier/$pathDB/create", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -107,6 +110,7 @@ class Supplier extends BaseController
         try {
             $getAPI = $client->request("GET", getenv('API_HOST')."/supplier/$db_conn/$id", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -133,7 +137,11 @@ class Supplier extends BaseController
         $id = $request->getGet('id');
 
         try {
-            $posts_data = $client->request("DELETE", getenv('API_HOST')."/supplier/$db_conn/$id");
+            $posts_data = $client->request("DELETE", getenv('API_HOST')."/supplier/$db_conn/$id", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
+            ]);
         } catch (\Exception $e) {
             exit($e->getMessage());
         }

@@ -17,7 +17,6 @@ class Deposit extends BaseController
     }
 
     public function DirectPaymentForm() {
-        $client = service('curlrequest');
 
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
@@ -45,6 +44,9 @@ class Deposit extends BaseController
 
         try {
             $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$pathDB", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
                 "form_params" => $dataPost
             ]);
         } catch (\Exception $e) {
@@ -71,6 +73,9 @@ class Deposit extends BaseController
 
         try {
             $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$database", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
                 "form_params" => $dataPost
             ]);
         } catch (\Exception $e) {
@@ -93,6 +98,7 @@ class Deposit extends BaseController
         try {
             $getDataCreated = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/created", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -107,6 +113,7 @@ class Deposit extends BaseController
         try {
             $getDataUpload = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/uploaded", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -142,6 +149,7 @@ class Deposit extends BaseController
             }
             $getData = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/done".$params, [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -168,6 +176,7 @@ class Deposit extends BaseController
         try {
             $posts_data = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/$id", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -208,6 +217,9 @@ class Deposit extends BaseController
 
         try {
             $response = $client->request("POST",getenv('API_HOST')."/deposit/$db_conn/update/$id", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
                 'debug' => true,'multipart' => $dataPost
             ]);
         } catch (\Exception $e) {
@@ -225,6 +237,7 @@ class Deposit extends BaseController
         try {
             $posts_data = $client->request("GET", getenv('API_HOST')."/deposit/$db_conn/$id", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
@@ -259,6 +272,9 @@ class Deposit extends BaseController
 
         try {
             $response = $client->post(getenv('API_HOST')."/deposit/$db_conn/update/$id", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ],
                 'debug' => true,'multipart' => $dataPost
             ]);
         } catch (\Exception $e) {
@@ -272,7 +288,11 @@ class Deposit extends BaseController
         $client = service('curlrequest');
 
         try {
-            $posts_data = $client->get(getenv('API_HOST')."/deposit/$db_conn/delete/$id");
+            $posts_data = $client->get(getenv('API_HOST')."/deposit/$db_conn/delete/$id", [
+                "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token']
+                ]
+            ]);
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
@@ -296,6 +316,7 @@ class Deposit extends BaseController
                 $params = "?dt=".urlencode(utf8_encode($request->getGet('date')));
                 $getData = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/all".$params, [
                     "headers" => [
+                        "Authorization" => "Bearer ".$this->session->get('data')['token'],
                         "Accept" => "application/json",
                         "Content-Type" => "application/x-www-form-urlencoded"
                     ],
@@ -328,6 +349,7 @@ class Deposit extends BaseController
         try {
             $posts_data = $client->request("GET", getenv('API_HOST')."/supplier/$pathDB", [
                 "headers" => [
+                    "Authorization" => "Bearer ".$this->session->get('data')['token'],
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],

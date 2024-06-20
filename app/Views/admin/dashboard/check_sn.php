@@ -1,4 +1,4 @@
-<?php $this->extend('admin/layout/template_new') ?>
+<?php $this->extend('layout/template') ?>
 <?php $this->Section('content') ?>
 
 <!-- <div class="mt-3">
@@ -12,14 +12,30 @@
             <select class="form-control"
                 onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select...</option>
-                <option value="<?=base_url('sn/ra/list')?>" <?=(uri_string() === 'sn/ra/list') ? 'selected' : ''?>>
-                    Replica Amazone</option>
-                <option value="<?=base_url('sn/re/list')?>" <?=(uri_string() === 'sn/re/list') ? 'selected' : ''?>>
-                    Replica EPS</option>
-                <option value="<?=base_url('sn/da/list')?>" <?=(uri_string() === 'sn/da/list') ? 'selected' : ''?>>
-                    Digipos Amazone</option>
-                <option value="<?=base_url('sn/de/list')?>" <?=(uri_string() === 'sn/de/list') ? 'selected' : ''?>>
-                    Digipos EPS</option>
+                <?php $session = session(); ?>
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
+                    <option value="<?=base_url('sn/ra/list')?>" <?=(uri_string() === 'sn/ra/list') ? 'selected' : ''?>>
+                        Replica Amazone
+                </option>
+                <?php } ?>
+                
+                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                    <option value="<?=base_url('sn/re/list')?>" <?=(uri_string() === 'sn/re/list') ? 'selected' : ''?>>
+                        Replica EPS
+                    </option>
+                <?php } ?>
+                
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
+                    <option value="<?=base_url('sn/da/list')?>" <?=(uri_string() === 'sn/da/list') ? 'selected' : ''?>>
+                        Digipos Amazone
+                    </option>
+                <?php } ?>
+                
+                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                    <option value="<?=base_url('sn/de/list')?>" <?=(uri_string() === 'sn/de/list') ? 'selected' : ''?>>
+                        Digipos EPS
+                    </option>
+                <?php } ?>
             </select>
         </div>
     </div>
