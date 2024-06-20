@@ -24,6 +24,8 @@
                     Amazone</option>
                 <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS
                 </option>
+                <option value="<?=base_url('ceksaldo?db=od')?>" <?=@$_GET['db'] === "od" ? "selected" : ''?>>Otodev
+                </option>
             </select>
         </div>
     </div>
