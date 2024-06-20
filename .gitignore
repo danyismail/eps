@@ -1,4 +1,4 @@
 system
 tests
-# vendor
-# writable
+vendor
+writable
