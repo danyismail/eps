@@ -12,12 +12,14 @@
                         </div>
                         <div class="form-group col-md-3 mt-2">
                             <label for="endDt">End Date</label>
-                            <input type="date" name="endDt" class="form-control" value="<?=@$_GET['startDt'] === 'yesterday' ? '' : @$_GET['endDt']?>" />
+                            <input type="date" name="endDt" class="form-control"
+                                value="<?=@$_GET['startDt'] === 'yesterday' ? '' : @$_GET['endDt']?>" />
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="form-group col-md-3">
-                            <input type="checkbox" name="startDt" value="yesterday" <?=@$_GET['startDt'] === 'yesterday' ? 'checked' : ''?> >
+                            <input type="checkbox" name="startDt" value="yesterday"
+                                <?=@$_GET['startDt'] === 'yesterday' ? 'checked' : ''?>>
                             <label for="html">Yesterday</label><br>
                         </div>
                     </div>
@@ -25,7 +27,7 @@
                 </form>
             </div>
         </div>
-        
+
         <table id="datatablesSimple" class="table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
@@ -48,14 +50,14 @@
                     <td><?=$row['server']?></td>
                     <td><?=$row['member']?></td>
                     <td></td>
-                    <td><?=$row['penjualan']?></td>
-                    <td><?=$row['pembelian']?></td>
-                    <td><?=$row['tekor']?></td>
-                    <td><?=$row['bakar']?></td>
-                    <td><?=$row['laba']?></td>
-                    <td><?=$row['komisi']?></td>
-                    <td><?=$row['ppn11']?></td>
-                    <td><?=$row['pph22']?></td>
+                    <td><?=FormatNumber($row['penjualan'])?></td>
+                    <td><?=FormatNumber($row['pembelian'])?></td>
+                    <td><?=FormatNumber($row['tekor'])?></td>
+                    <td><?=FormatNumber($row['bakar'])?></td>
+                    <td><?=FormatNumber($row['laba'])?></td>
+                    <td><?=FormatNumber($row['komisi'])?></td>
+                    <td><?=FormatNumberWithComma($row['ppn11'])?></td>
+                    <td><?=FormatNumberWithComma($row['pph22'])?></td>
                 </tr>
                 <?php endforeach ?>
             </tbody>
