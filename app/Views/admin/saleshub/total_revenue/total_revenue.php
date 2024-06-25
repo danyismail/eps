@@ -17,7 +17,7 @@
                     </div>
                     <div class="row mb-2">
                         <div class="form-group col-md-3">
-                            <input type="radio" name="startDt" value="yesterday" <?=@$_GET['startDt'] === 'yesterday' ? 'checked' : ''?> >
+                            <input type="checkbox" name="startDt" value="yesterday" <?=@$_GET['startDt'] === 'yesterday' ? 'checked' : ''?> >
                             <label for="html">Yesterday</label><br>
                         </div>
                     </div>
