@@ -170,6 +170,12 @@
                             'active_class' => (uri_string() === 'reseller/labarugi') ? 'active-single' : ''
                         ],
                         [
+                            'name' => 'Sales Hub',
+                            'url' => 'saleshub/total_revenue',
+                            'rolePermission' => ['superadmin'],
+                            'active_class' => (uri_string() === 'saleshub') ? 'active-single' : ''
+                        ],
+                        [
                             'name' => 'User',
                             'url' => 'user',
                             'rolePermission' => ['superadmin'],
