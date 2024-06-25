@@ -11,8 +11,17 @@ class TotalRevenueController extends BaseController
         $client = service('curlrequest');
 
         $datafilter = array();
-        if($request->getGet('startDt')) {
+        if($request->getGet('startDt') === 'yesterday') {
             $datafilter['startDt'] = $request->getGet('startDt');
+        } else {
+
+            if($request->getGet('startDt')) {
+                $datafilter['startDt'] = $request->getGet('startDt');
+            } 
+
+            if($request->getGet('endDt')) {
+                $datafilter['endDt'] = $request->getGet('endDt');
+            }
         }
 
         try {

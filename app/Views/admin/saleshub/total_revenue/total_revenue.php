@@ -2,13 +2,27 @@
 <?php $this->Section('content') ?>
 <div class="mt-2">
     <div class="table-responsive bg-white pb-3 p-2">
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <label for="db">Filter</label>
-                <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                    <option value="">Select...</option>
-                    <option value="?startDt=yesterday" <?=@$_GET['startDt'] === "yesterday" ? "selected" : ''?>>Yesterday</option>
-                </select>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="GET" action="<?=base_url('/saleshub/total_revenue')?>" class="mb-5">
+                    <div class="row mb-4">
+                        <div class="form-group col-md-3 mt-2">
+                            <label for="StartDate">Start Date</label>
+                            <input type="date" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" />
+                        </div>
+                        <div class="form-group col-md-3 mt-2">
+                            <label for="endDt">End Date</label>
+                            <input type="date" name="endDt" class="form-control" value="<?=@$_GET['startDt'] === 'yesterday' ? '' : @$_GET['endDt']?>" />
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="form-group col-md-3">
+                            <input type="radio" name="startDt" value="yesterday" <?=@$_GET['startDt'] === 'yesterday' ? 'checked' : ''?> >
+                            <label for="html">Yesterday</label><br>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </form>
             </div>
         </div>
         
