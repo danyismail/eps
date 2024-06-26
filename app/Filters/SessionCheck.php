@@ -23,7 +23,6 @@ class SessionCheck implements FilterInterface
         $session = \Config\Services::session();
         if (!$session->get('isLoggedIn')) {
             // If the user is not logged in, redirect to the login page
-            print_r("sesion abis");
             header('Location: /login');
             // return redirect()->to('/login');
         }
