@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <table id="datatablesSimple" class="table table-bordered">
+        <table class="table table-bordered">
             <thead>
                 <tr class="bg-info text-white">
                     <th width="10">Server</th>
