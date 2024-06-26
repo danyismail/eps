@@ -25,7 +25,7 @@ class Ceksaldo extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
-
+            CheckStatusResponAPI($getDepositToday->getStatusCode());
             $res = json_decode($getDepositToday->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {

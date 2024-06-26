@@ -30,4 +30,14 @@ if (!function_exists('FormatNumberWithComma')) {
     return number_format($num, 2, ',', '.');
   }
 }
+
+function CheckStatusResponAPI($statusCode) {
+  if($statusCode == '403') {
+    $session = session();   
+    $session->remove(['data', 'isLoggedIn']);
+    echo "<script type='text/javascript'> console.log('test'); location.reload(); </script>"; 
+    exit;
+  }
+}
+
 ?>

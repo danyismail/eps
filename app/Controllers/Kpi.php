@@ -57,6 +57,8 @@ class Kpi extends BaseController
                 ],
                 "form_params" => $datafilter
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
+
             $res = json_decode($posts_data->getBody(), true);
             $response['data'] = $res['data'] ?? array();
             $response['total_pages'] = $res['total'] ?? 0;

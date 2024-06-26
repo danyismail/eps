@@ -54,3 +54,5 @@ $routes->get('/laba/provider', 'Sales::LabaProvider');
 $routes->get('/user', 'UserController::index');
 $routes->post('/user/create', 'UserController::Create');
 $routes->get('/user/delete', 'UserController::Delete');
+
+$routes->get('/saleshub/total_revenue', 'Saleshub\TotalRevenueController::Index');

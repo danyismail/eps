@@ -37,11 +37,6 @@ class Deposit extends BaseController
         $dataPost['destination_account'] = $request->getPost('rekening_tujuan');
         $pathDB = $request->getPost('db');
 
-        // $pathDB = 'da';
-        // if($request->getPost('db')) {
-        //     $pathDB = $request->getPost('db');
-        // };
-
         try {
             $posts_data = $client->request("POST", getenv('API_HOST')."/deposit/$pathDB", [
                 "headers" => [
@@ -49,6 +44,7 @@ class Deposit extends BaseController
                 ],
                 "form_params" => $dataPost
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
@@ -78,6 +74,7 @@ class Deposit extends BaseController
                 ],
                 "form_params" => $dataPost
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
@@ -103,6 +100,7 @@ class Deposit extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($getDataCreated->getStatusCode());
             $res = json_decode($getDataCreated->getBody(), true);
             $response['dataCreated'] = $res['data'] ?? array();
         } catch (\Exception $e) {
@@ -118,6 +116,7 @@ class Deposit extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($getDataUpload->getStatusCode());
             $res2 = json_decode($getDataUpload->getBody(), true);
             $response['dataUpload'] = $res2['data'] ?? array();
         } catch (\Exception $e) {
@@ -155,6 +154,7 @@ class Deposit extends BaseController
                 ],
             ]);
 
+            CheckStatusResponAPI($getData->getStatusCode());
             $result = json_decode($getData->getBody(), true);
             $response['data'] = $result['data'] ?? array();
         } catch (\Exception $e) {
@@ -181,6 +181,7 @@ class Deposit extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
             $res = json_decode($posts_data->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {
@@ -222,6 +223,7 @@ class Deposit extends BaseController
                 ],
                 'debug' => true,'multipart' => $dataPost
             ]);
+            CheckStatusResponAPI($response->getStatusCode());
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
@@ -242,6 +244,7 @@ class Deposit extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
             $res = json_decode($posts_data->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {
@@ -277,6 +280,7 @@ class Deposit extends BaseController
                 ],
                 'debug' => true,'multipart' => $dataPost
             ]);
+            CheckStatusResponAPI($response->getStatusCode());
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
@@ -293,6 +297,7 @@ class Deposit extends BaseController
                     "Authorization" => "Bearer ".$this->session->get('data')['token']
                 ]
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
@@ -321,6 +326,7 @@ class Deposit extends BaseController
                         "Content-Type" => "application/x-www-form-urlencoded"
                     ],
                 ]);
+                CheckStatusResponAPI($getData->getStatusCode());
                 $res = json_decode($getData->getBody(), true);
                 $response['data'] = $res['data'] ?? array();
             } catch (\Exception $e) {
@@ -354,6 +360,7 @@ class Deposit extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
             $res = json_decode($posts_data->getBody(), true);
             $response['supplier'] = $res['data'] ?? array();
         } catch (\Exception $e) {
