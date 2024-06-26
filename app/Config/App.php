@@ -16,7 +16,8 @@ class App extends BaseConfig
      *
      *    http://example.com/
      */
-    public string $baseURL = 'https://apps.epsxpay.com/';
+    // public string $baseURL = 'http://36.88.42.95/';
+    public string $baseURL = '';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.
@@ -40,7 +41,7 @@ class App extends BaseConfig
      * something else. If you are using mod_rewrite to remove the page set this
      * variable so that it is blank.
      */
-    public string $indexPage = 'index.php';
+    public string $indexPage = '';
 
     /**
      * --------------------------------------------------------------------------
