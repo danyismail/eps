@@ -21,6 +21,10 @@
         crossorigin="anonymous"></script>
     <script src="<?=base_url("assets-new/js/datatables-simple-demo.js")?>"></script>
     <style>
+    body {
+        font-size: 14px;
+        font-family:"Calibri", sans-serif;
+    }
     .pagination {
         list-style-type: none;
         padding: 10px 0;
