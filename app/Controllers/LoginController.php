@@ -11,9 +11,7 @@ class LoginController extends BaseController
     public function index()
 	{
         $session = \Config\Services::session();
-        print_r($session->get('isLoggedIn'));
-        if ($session->get('isLoggedIn') === true) {
-            echo "tst";
+        if($session->get('isLoggedIn') === true) {
             // If the user is not logged in, redirect to the login page
             return redirect()->back();
         } else {

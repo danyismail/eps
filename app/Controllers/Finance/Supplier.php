@@ -23,7 +23,7 @@ class Supplier extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
-
+            CheckStatusResponAPI($posts_data->getStatusCode());
             $res = json_decode($posts_data->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {
@@ -58,6 +58,7 @@ class Supplier extends BaseController
                 ],
                 "form_params" => $dataPost
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
@@ -94,6 +95,7 @@ class Supplier extends BaseController
                 ],
                 "form_params" => $dataPost
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
         } catch (\Exception $e) {
             exit($e->getMessage());
         }
@@ -115,6 +117,7 @@ class Supplier extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($getAPI->getStatusCode());
             $res = json_decode($getAPI->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {
@@ -142,6 +145,7 @@ class Supplier extends BaseController
                     "Authorization" => "Bearer ".$this->session->get('data')['token']
                 ],
             ]);
+            CheckStatusResponAPI($posts_data->getStatusCode());
         } catch (\Exception $e) {
             exit($e->getMessage());
         }

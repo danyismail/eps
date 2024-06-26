@@ -21,6 +21,7 @@ class UserController extends BaseController
                 ],
             ]);
 
+            CheckStatusResponAPI($getData->getStatusCode());
             $res = json_decode($getData->getBody(), true);
             $response['data'] = $res['data'] ?? array();
 
@@ -67,6 +68,7 @@ class UserController extends BaseController
                 "json" => $dataform
             ]);
 
+            CheckStatusResponAPI($getData->getStatusCode());
             $res = json_decode($getData->getBody(), true);
             $response['data'] = $res['data'] ?? array();
 
@@ -92,6 +94,7 @@ class UserController extends BaseController
                 "query" => $request->getGet("id")
             ]);
 
+            CheckStatusResponAPI($getData->getStatusCode());
             $res = json_decode($getData->getBody(), true);
             $response['data'] = $res['data'] ?? array();
 

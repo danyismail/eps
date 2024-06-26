@@ -10,7 +10,6 @@
     <title>Dashboard - SB Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
     <link href="<?=base_url("assets-new/css/styles.css")?>" rel="stylesheet" />
-    <link rel="stylesheet" href=<?=base_url('assets/vendors/select2/css/select2.min.css')?> />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
     <script src=<?=base_url('assets/js/jquery1-3.4.1.min.js')?>></script>
@@ -21,7 +20,6 @@
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
         crossorigin="anonymous"></script>
     <script src="<?=base_url("assets-new/js/datatables-simple-demo.js")?>"></script>
-    <script src="<?=base_url('assets/vendors/select2/js/select2.min.js')?>"></script>
     <style>
     .pagination {
         list-style-type: none;
@@ -229,9 +227,6 @@
             </main>
         </div>
     </div>
-    <script>
-    $("#singleSelect").select2();
-    </script>
 </body>
 
 </html>

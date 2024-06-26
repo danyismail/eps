@@ -21,6 +21,7 @@ class SN extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($getNullableSN->getStatusCode());
             $res = json_decode($getNullableSN->getBody(), true);
             $response['nullableSN'] = $res['data'] ?? array();
         } catch (\Exception $e) {
@@ -36,6 +37,7 @@ class SN extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($getDuplicateSN->getStatusCode());
             $res2 = json_decode($getDuplicateSN->getBody(), true);
             $response['duplicateSN'] = $res2['data'] ?? array();
         } catch (\Exception $e) {

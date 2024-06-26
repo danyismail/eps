@@ -33,7 +33,7 @@ class TotalRevenueController extends BaseController
                 ],
                 "query" => $datafilter
             ]);
-
+            CheckStatusResponAPI($posts_data->getStatusCode());
             $res = json_decode($posts_data->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {

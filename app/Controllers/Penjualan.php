@@ -36,7 +36,7 @@ class Penjualan extends BaseController
                 ],
                 "query" => $datafilter
             ]);
-
+            CheckStatusResponAPI($getSalesPeriode->getStatusCode());
             $res = json_decode($getSalesPeriode->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {
@@ -83,6 +83,7 @@ class Penjualan extends BaseController
                 "query" => $datafilter
             ]);
 
+            CheckStatusResponAPI($getSalesPeriode->getStatusCode());
             $res = json_decode($getSalesPeriode->getBody(), true);
             $response['data'] = $res['data'] ?? array();
         } catch (\Exception $e) {

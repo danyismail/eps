@@ -36,6 +36,7 @@ class Reseller extends BaseController
                     "Authorization" => "Bearer ".$this->session->get('data')['token']
                 ],
             ]);
+            CheckStatusResponAPI($makeRequest->getStatusCode());
             $res = json_decode($makeRequest->getBody(), true);
             $response['data'] = $res['data'] ?? array();
             $response['total_pages'] = $res['total'] ?? 0;
@@ -62,6 +63,7 @@ class Reseller extends BaseController
                     "Authorization" => "Bearer ".$this->session->get('data')['token']
                 ],
             ]);
+            CheckStatusResponAPI($makeRequest->getStatusCode());
             $res2 = json_decode($makeRequest->getBody(), true);
             $response['data2'] = $res2['data'] ?? array();
         } catch (\Exception $e) {
@@ -89,6 +91,7 @@ class Reseller extends BaseController
                     "Content-Type" => "application/json"
                 ],
             ]);
+            CheckStatusResponAPI($getLabaHarian->getStatusCode());
             $resultHarian = json_decode($getLabaHarian->getBody(), true);
             $response['labaHarian'] = $resultHarian['data'] ?? array(); 
         } catch (\Exception $e) {
@@ -135,6 +138,7 @@ class Reseller extends BaseController
                 "query" => $datafilter
             ]);
 
+            CheckStatusResponAPI($getLabaHarian->getStatusCode());
             $resultHarian = json_decode($getLabaHarian->getBody(), true);
             $response['labarugi'] = $resultHarian['data'] ?? array(); 
         } catch (\Exception $e) {
