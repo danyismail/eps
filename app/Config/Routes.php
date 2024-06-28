@@ -10,11 +10,11 @@ use CodeIgniter\Router\RouteCollection;
 // $routes->get('(:any)/penjualan/periode', 'Sales::GetSalesByDate/$1');
 // $routes->get('(:any)/penjualan', 'Sales::GetSales/$1');
 
-$routes->get('/', 'Home::index');
+$routes->get('/', 'Kpi::index');
 $routes->get('/login', 'LoginController::index');
 $routes->get('/logout', 'LoginController::logout');
 $routes->post('/auth', 'LoginController::Auth');
-$routes->get('/kpi', 'Kpi::index', ['filter' => 'sessionCheck']);
+$routes->get('/kpi', 'Kpi::index');
 $routes->get('/ceksaldo', 'Ceksaldo::index');
 $routes->get('/penjualan', 'Penjualan::index');
 // $routes->get('/penjualan/pph', 'Penjualan::GetPPH');
