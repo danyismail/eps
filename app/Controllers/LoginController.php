@@ -87,9 +87,9 @@ class LoginController extends BaseController
 
     public function logout()
     {
-        $this->session->remove('data');
-        $this->session->set(['isLoggedIn' => false]);
-        return redirect()->to('/login');
+        $session = session();
+        $session->remove(['data', 'isLoggedIn']);
+        echo "<script type='text/javascript'> location.href = '".base_url('/login')."'; </script>"; 
     }
 
 }
