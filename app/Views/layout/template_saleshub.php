@@ -118,7 +118,7 @@
                         <div class="sb-sidenav-menu-heading">Sales Hub</div>
                         <a class="nav-link <?=(array_search(uri_string(), $arrSalesHubMenu)) ? 'active-single' : ''?>"
                             href="<?=base_url('/saleshub/total_revenue')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                            <div class="sb-nav-link-icon"></div>
                             Total Revenue
                         </a>
                         <a 
@@ -127,7 +127,7 @@
                             data-bs-target="#collapseLayouts" 
                             aria-expanded="<?=array_search(uri_string(), $arrRevenuePerBrand) ? 'true' : 'false'?>" 
                             aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                            <div class="sb-nav-link-icon"></div>
                             Revenue Per Brand
                             <div class="sb-sidenav-collapse-arrow">
                                 <i class="fa-solid fa-angle-down"></i>
@@ -149,6 +149,7 @@
                 <div class="container-fluid px-4">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="text-info" href="<?=base_url('/')?>">Main</a></li>
                             <?php if (isset($breadcrumb)) {?>
                             <?php foreach($breadcrumb as $key => $row): ?>
                             <li class="breadcrumb-item <?=$row['active'] ? 'active text-secondary' : ''?>"
