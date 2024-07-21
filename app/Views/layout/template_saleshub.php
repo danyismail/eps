@@ -111,7 +111,8 @@
             <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                 <?php 
                         $arrSalesHubMenu = array("", "saleshub/total_revenue");
-                    ?>
+                        $arrRevenuePerBrand = array("", "saleshub/revenue_perbrand");
+                ?>
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Sales Hub</div>
@@ -120,6 +121,25 @@
                             <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
                             Total Revenue
                         </a>
+                        <a 
+                            class="nav-link <?=array_search(uri_string(), $arrRevenuePerBrand) ? '' : 'collapsed'?>" 
+                            href="#" data-bs-toggle="collapse" 
+                            data-bs-target="#collapseLayouts" 
+                            aria-expanded="<?=array_search(uri_string(), $arrRevenuePerBrand) ? 'true' : 'false'?>" 
+                            aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                            Revenue Per Brand
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse <?=array_search(uri_string(), $arrRevenuePerBrand) ? 'show' : ''?>" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link <?=(uri_string() === 'saleshub/revenue_perbrand' && $_GET['db'] === 'ra') ? 'active-single' : ''?>" href="<?=base_url('/saleshub/revenue_perbrand?db=ra')?>">AMZ</a>
+                                <a class="nav-link <?=(uri_string() === 'saleshub/revenue_perbrand' && $_GET['db'] === 're') ? 'active-single' : ''?>" href="<?=base_url('/saleshub/revenue_perbrand?db=re')?>">EPS</a>
+                                <a class="nav-link <?=(uri_string() === 'saleshub/revenue_perbrand' && $_GET['db'] === 'od') ? 'active-single' : ''?>" href="<?=base_url('/saleshub/revenue_perbrand?db=od')?>">CNX</a>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -127,6 +147,24 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <?php if (isset($breadcrumb)) {?>
+                            <?php foreach($breadcrumb as $key => $row): ?>
+                            <li class="breadcrumb-item <?=$row['active'] ? 'active text-secondary' : ''?>"
+                                <?=$row['active'] ? 'aria-current="page"' : ''?>>
+                                <?php
+                                    if($row['active']) {
+                                        echo $row['label'];
+                                    } else {
+                                        echo '<a href="'.$row['url'].'" class="text-info">'.$row['label'].'</a>';
+                                    }
+                                ?>
+                            </li>
+                            <?php endforeach ?>
+                            <?php } ?>
+                        </ol>
+                    </nav>
                     <?php $this->renderSection('content'); ?>
                 </div>
             </main>

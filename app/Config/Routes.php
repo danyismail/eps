@@ -56,3 +56,4 @@ $routes->post('/user/create', 'UserController::Create');
 $routes->get('/user/delete', 'UserController::Delete');
 
 $routes->get('/saleshub/total_revenue', 'Saleshub\TotalRevenueController::Index');
+$routes->get('/saleshub/revenue_perbrand', 'Saleshub\RevenuePerBrandController::Index');
