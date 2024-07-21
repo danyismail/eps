@@ -102,7 +102,7 @@
                                     if($category['jenis_produk'] === 'SMS'){ 
                                         $dataNotfoundSMS = false;  
                                 ?>
-                                    <td><?=$category['trx'];?> - <?=$category['jenis_produk']?></td>
+                                    <td><?=$category['trx'];?></td>
                                     <td><?=$category['laba'];?></td>
                                 <?php break; } ?>
                             <?php endforeach; 
