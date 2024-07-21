@@ -194,7 +194,7 @@
                         ?>
                                 <a class="nav-link <?=$item['active_class']?>"
                                     href="<?=base_url('/'.$item['url'])?>">
-                                    <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                                    <div class="sb-nav-link-icon"></div>
                                     <?=$item['name']?>
                                 </a>
                         <?php 
