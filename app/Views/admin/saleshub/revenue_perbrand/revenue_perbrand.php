@@ -6,10 +6,11 @@
             <div class="col-md-12">
                 <form method="GET" action="<?=base_url('/saleshub/revenue_perbrand')?>" class="mb-5">
                     <div class="row mb-4">
-                        <input type="text" name="db" value="<?=@$_GET['db']?>" hidden id="form_db"/>
+                        <input type="text" name="db" value="<?=@$_GET['db']?>" hidden id="form_db" />
                         <div class="form-group col-md-3 mt-2">
                             <label for="StartDate">Start Date</label>
-                            <input type="date" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" id="startDate" />
+                            <input type="date" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>"
+                                id="startDate" />
                         </div>
                         <div class="form-group col-md-3 mt-2">
                             <label for="endDt">End Date</label>
@@ -20,9 +21,7 @@
                     <div class="row mb-2">
                         <div class="form-group col-md-3">
                             <input type="checkbox" name="startDt" value="yesterday"
-                                <?=@$_GET['startDt'] === 'yesterday' ? 'checked' : ''?>
-                                id="checkBoxYesterday"
-                            >
+                                <?=@$_GET['startDt'] === 'yesterday' ? 'checked' : ''?> id="checkBoxYesterday">
                             <label for="html">Yesterday</label><br>
                         </div>
                     </div>
@@ -70,104 +69,104 @@
                 </tr>
 
                 <?php foreach($data['response'] as $i => $item): ?>
-                    <?php if($data['response'][$i]){ ?>
-                        <tr>
-                            <td><?=$i?></td>
-                            <?php foreach($item['category'] as $category): $dataNotfoundData = true ?>
-                                <?php
+                <?php if($data['response'][$i]){ ?>
+                <tr>
+                    <td><?=$i?></td>
+                    <?php foreach($item['category'] as $category): $dataNotfoundData = true ?>
+                    <?php
                                     if($category['jenis_produk'] === 'DATA'){
                                         $dataNotfoundData = false; 
                                 ?>
-                                    <td><?=$category['trx'];?></td>
-                                    <td><?=$category['laba'];?></td>
-                                <?php break;  } ?>
-                            <?php endforeach; 
+                    <td><?=FormatNumber($category['trx']);?></td>
+                    <td><?=FormatNumber($category['laba']);?></td>
+                    <?php break;  } ?>
+                    <?php endforeach; 
                                 echo ($dataNotfoundData) ? '<td></td><td></td>' : ''; 
                             ?>
 
-                            <?php foreach($item['category'] as $category): $dataNotfoundReg = true ?>
-                                <?php
+                    <?php foreach($item['category'] as $category): $dataNotfoundReg = true ?>
+                    <?php
                                     if($category['jenis_produk'] === 'REGULER'){ 
                                         $dataNotfoundReg = false; 
                                 ?>
-                                    <td><?=$category['trx'];?></td>
-                                    <td><?=$category['laba'];?></td>
-                                <?php break;  } ?>
-                            <?php endforeach; 
+                    <td><?=FormatNumber($category['trx']);?></td>
+                    <td><?=FormatNumber($category['laba']);?></td>
+                    <?php break;  } ?>
+                    <?php endforeach; 
                                 echo ($dataNotfoundReg) ? '<td></td><td></td>' : ''; 
                             ?>
 
-                            <?php foreach($item['category'] as $category): $dataNotfoundSMS = true ?>
-                                <?php 
+                    <?php foreach($item['category'] as $category): $dataNotfoundSMS = true ?>
+                    <?php 
                                     if($category['jenis_produk'] === 'SMS'){ 
                                         $dataNotfoundSMS = false;  
                                 ?>
-                                    <td><?=$category['trx'];?></td>
-                                    <td><?=$category['laba'];?></td>
-                                <?php break; } ?>
-                            <?php endforeach; 
+                    <td><?=$category['trx'];?></td>
+                    <td><?=$category['laba'];?></td>
+                    <?php break; } ?>
+                    <?php endforeach; 
                                 echo ($dataNotfoundSMS) ? '<td></td><td></td>' : ''; 
                             ?>
 
-                            <?php foreach($item['category'] as $category): $dataNotfoundTelp = true ?>
-                                <?php
+                    <?php foreach($item['category'] as $category): $dataNotfoundTelp = true ?>
+                    <?php
                                     if($category['jenis_produk'] === 'TELP'){ 
                                         $dataNotfoundTelp = false; 
                                 ?>
-                                    <td><?=$category['trx'];?></td>
-                                    <td><?=$category['laba'];?></td>
-                                <?php break; } ?>
-                            <?php endforeach; 
+                    <td><?=FormatNumber($category['trx']);?></td>
+                    <td><?=FormatNumber($category['laba']);?></td>
+                    <?php break; } ?>
+                    <?php endforeach; 
                                 echo ($dataNotfoundTelp) ? '<td></td><td></td>' : ''; 
                             ?>
 
-                            <?php foreach($item['category'] as $category): $dataNotfoundTF = true ?>
-                                <?php
+                    <?php foreach($item['category'] as $category): $dataNotfoundTF = true ?>
+                    <?php
                                     if($category['jenis_produk'] === 'TRANSFER'){ 
                                         $dataNotfoundTF = false; 
                                 ?>
-                                    <td><?=$category['trx'];?></td>
-                                    <td><?=$category['laba'];?></td>
-                                <?php break; } ?>
-                            <?php endforeach; 
+                    <td><?=FormatNumber($category['trx']);?></td>
+                    <td><?=FormatNumber($category['laba']);?></td>
+                    <?php break; } ?>
+                    <?php endforeach; 
                                 echo ($dataNotfoundTF) ? '<td></td><td></td>' : ''; 
                             ?>
 
-                            <?php foreach($item['category'] as $category): $dataNotfoundVoucher = true ?>
-                                <?php 
+                    <?php foreach($item['category'] as $category): $dataNotfoundVoucher = true ?>
+                    <?php 
                                     if($category['jenis_produk'] === 'VOUCHER'){ 
                                         $dataNotfoundVoucher = false;
                                 ?>
-                                    <td><?=$category['trx'];?></td>
-                                    <td><?=$category['laba'];?></td>
-                                <?php break; } ?>
-                            <?php endforeach; 
+                    <td><?=$category['trx'];?></td>
+                    <td><?=$category['laba'];?></td>
+                    <?php break; } ?>
+                    <?php endforeach; 
                                 echo ($dataNotfoundVoucher) ? '<td></td><td></td>' : ''; 
                             ?>
 
-                            <?php foreach($item['category'] as $category): $dataNotfoundOther = true ?>
-                                <?php 
+                    <?php foreach($item['category'] as $category): $dataNotfoundOther = true ?>
+                    <?php 
                                     if($category['jenis_produk'] === 'OTHER'){ 
                                         $dataNotfoundOther = false;
                                 ?>
-                                    <td><?=$category['trx'];?></td>
-                                    <td><?=$category['laba'];?></td>
-                                <?php break; } ?>
-                            <?php endforeach; 
+                    <td><?=FormatNumber($category['trx']);?></td>
+                    <td><?=FormatNumber($category['laba']);?></td>
+                    <?php break; } ?>
+                    <?php endforeach; 
                                 echo ($dataNotfoundOther) ? '<td></td><td></td>' : ''; 
                             ?>
 
-                            <?php if($data['response'][$i]) { ?>
-                                <td><?=$data['response'][$i]['total_trx'];?></td>
-                                <td><?=$data['response'][$i]['total_laba'];?></td>
-                            <?php } ?>
-                        </tr>
+                    <?php if($data['response'][$i]) { ?>
+                    <td><?=FormatNumber($data['response'][$i]['total_trx']);?></td>
+                    <td><?=FormatNumber($data['response'][$i]['total_laba']);?></td>
                     <?php } ?>
+                </tr>
+                <?php } ?>
                 <?php endforeach; ?>
                 <tr>
                     <td colspan="15" align="right">TOTAL</td>
-                    <td><?=@$data['sub_total']?></td>
-                    <td><?=@$data['total']?></td>
+                    <td><?=@FormatNumber($data['sub_total'])?></td>
+                    <td><?=@FormatNumber($data['total'])?></td>
                 </tr>
             </tbody>
         </table>
@@ -180,11 +179,11 @@
     });
 
     $('#startDate').change(function() {
-        $('#checkBoxYesterday').prop('checked', false); 
+        $('#checkBoxYesterday').prop('checked', false);
     });
 
     $('#endDate').change(function() {
-        $('#checkBoxYesterday').prop('checked', false); 
+        $('#checkBoxYesterday').prop('checked', false);
     });
 
     $('#submitForm').click(function(e) {
@@ -195,16 +194,15 @@
         var endDate = $('#endDate').val();
         var yesterday = $('#checkBoxYesterday').val();
 
-        if($('#checkBoxYesterday').is(":checked")) {
-            params = '?db='+db+'&startDt='+yesterday;
-        } else if(startDate.length > 0 && endDate.length > 0)  {
-            params = "?db="+db+"&startDt="+startDate+"&endDt="+endDate;
+        if ($('#checkBoxYesterday').is(":checked")) {
+            params = '?db=' + db + '&startDt=' + yesterday;
+        } else if (startDate.length > 0 && endDate.length > 0) {
+            params = "?db=" + db + "&startDt=" + startDate + "&endDt=" + endDate;
         } else {
-            params = '?db='+db;
+            params = '?db=' + db;
         }
 
-        location.href = "<?=base_url('/saleshub/revenue_perbrand')?>"+params;
+        location.href = "<?=base_url('/saleshub/revenue_perbrand')?>" + params;
     });
-
 </script>
 <?php $this->endSection() ?>
