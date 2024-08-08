@@ -21,6 +21,10 @@
         crossorigin="anonymous"></script>
     <script src="<?=base_url("assets-new/js/datatables-simple-demo.js")?>"></script>
     <style>
+    body {
+        font-size: 14px;
+        font-family:"Calibri", sans-serif;
+    }
     .pagination {
         list-style-type: none;
         padding: 10px 0;
@@ -78,7 +82,7 @@
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-3 active-single" href="<?=base_url()?>"><b>EPS [testing]</b></a>
+        <a class="navbar-brand ps-3 active-single" href="<?=base_url()?>"><b>EPS</b></a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
                 class="fas fa-bars"></i></button>
@@ -190,7 +194,7 @@
                         ?>
                                 <a class="nav-link <?=$item['active_class']?>"
                                     href="<?=base_url('/'.$item['url'])?>">
-                                    <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                                    <div class="sb-nav-link-icon"></div>
                                     <?=$item['name']?>
                                 </a>
                         <?php 

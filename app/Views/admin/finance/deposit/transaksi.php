@@ -60,7 +60,8 @@
                     <td><?=$row['status']?></td>
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
-                    <td><a href="javascript:void(0)" onclick="getImage('<?=$getImage?>')" class="load-image">Show Image</a></td>
+                    <td><a href="javascript:void(0)" onclick="getImage('<?=$getImage?>')" class="load-image">Show
+                            Image</a></td>
                     <td><?=$row['reply']?></td>
                 </tr>
                 <?php endforeach ?>

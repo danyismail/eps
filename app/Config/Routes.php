@@ -48,8 +48,12 @@ $routes->get('/reseller/(:any)/laba', 'Reseller::GetLaba/$1');
 $routes->get('/reseller/(:any)/harian', 'Reseller::GetLabaHarian/$1');
 $routes->get('/reseller/labarugi', 'Reseller::Labarugi');
 
+$routes->get('/laba/reseller', 'Sales::LabaReseller');
+$routes->get('/laba/supplier', 'Sales::LabaSupplier');
+$routes->get('/laba/provider', 'Sales::LabaProvider');
 $routes->get('/user', 'UserController::index');
 $routes->post('/user/create', 'UserController::Create');
 $routes->get('/user/delete', 'UserController::Delete');
 
 $routes->get('/saleshub/total_revenue', 'Saleshub\TotalRevenueController::Index');
+$routes->get('/saleshub/revenue_perbrand', 'Saleshub\RevenuePerBrandController::Index');

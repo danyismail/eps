@@ -55,7 +55,7 @@ class Kpi extends BaseController
                     "Accept" => "application/json",
                     "Content-Type" => "application/json"
                 ],
-                "form_params" => $datafilter
+                "json" => $datafilter
             ]);
             CheckStatusResponAPI($posts_data->getStatusCode());
 

@@ -21,6 +21,10 @@
         crossorigin="anonymous"></script>
     <script src="<?=base_url("assets-new/js/datatables-simple-demo.js")?>"></script>>
     <style>
+    body {
+        font-size: 14px;
+        font-family:"Calibri", sans-serif;
+    }
     .pagination {
         list-style-type: none;
         padding: 10px 0;
@@ -107,15 +111,35 @@
             <nav class="sb-sidenav accordion sb-sidenav-light" id="sidenavAccordion">
                 <?php 
                         $arrSalesHubMenu = array("", "saleshub/total_revenue");
-                    ?>
+                        $arrRevenuePerBrand = array("", "saleshub/revenue_perbrand");
+                ?>
                 <div class="sb-sidenav-menu">
                     <div class="nav">
                         <div class="sb-sidenav-menu-heading">Sales Hub</div>
                         <a class="nav-link <?=(array_search(uri_string(), $arrSalesHubMenu)) ? 'active-single' : ''?>"
                             href="<?=base_url('/saleshub/total_revenue')?>">
-                            <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                            <div class="sb-nav-link-icon"></div>
                             Total Revenue
                         </a>
+                        <a 
+                            class="nav-link <?=array_search(uri_string(), $arrRevenuePerBrand) ? '' : 'collapsed'?>" 
+                            href="#" data-bs-toggle="collapse" 
+                            data-bs-target="#collapseLayouts" 
+                            aria-expanded="<?=array_search(uri_string(), $arrRevenuePerBrand) ? 'true' : 'false'?>" 
+                            aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"></div>
+                            Revenue Per Brand
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse <?=array_search(uri_string(), $arrRevenuePerBrand) ? 'show' : ''?>" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link <?=(uri_string() === 'saleshub/revenue_perbrand' && $_GET['db'] === 'ra') ? 'active-single' : ''?>" href="<?=base_url('/saleshub/revenue_perbrand?db=ra')?>">AMZ</a>
+                                <a class="nav-link <?=(uri_string() === 'saleshub/revenue_perbrand' && $_GET['db'] === 're') ? 'active-single' : ''?>" href="<?=base_url('/saleshub/revenue_perbrand?db=re')?>">EPS</a>
+                                <a class="nav-link <?=(uri_string() === 'saleshub/revenue_perbrand' && $_GET['db'] === 'od') ? 'active-single' : ''?>" href="<?=base_url('/saleshub/revenue_perbrand?db=od')?>">CNX</a>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -123,6 +147,25 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a class="text-info" href="<?=base_url('/')?>">Main</a></li>
+                            <?php if (isset($breadcrumb)) {?>
+                            <?php foreach($breadcrumb as $key => $row): ?>
+                            <li class="breadcrumb-item <?=$row['active'] ? 'active text-secondary' : ''?>"
+                                <?=$row['active'] ? 'aria-current="page"' : ''?>>
+                                <?php
+                                    if($row['active']) {
+                                        echo $row['label'];
+                                    } else {
+                                        echo '<a href="'.$row['url'].'" class="text-info">'.$row['label'].'</a>';
+                                    }
+                                ?>
+                            </li>
+                            <?php endforeach ?>
+                            <?php } ?>
+                        </ol>
+                    </nav>
                     <?php $this->renderSection('content'); ?>
                 </div>
             </main>

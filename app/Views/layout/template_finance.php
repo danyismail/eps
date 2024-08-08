@@ -18,6 +18,10 @@
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="<?=base_url("assets-new/js/datatables-simple-demo.js")?>"></script>
         <style>
+            body {
+                font-size: 14px;
+                font-family:"Calibri", sans-serif;
+            }
             .pagination {
                 list-style-type: none;
                 padding: 10px 0;
@@ -68,7 +72,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-light bg-light">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3 active-single" href="<?=base_url()?>"><b>EPS [testing]</b></a>
+            <a class="navbar-brand ps-3 active-single" href="<?=base_url()?>"><b>EPS Finance</b></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -105,7 +109,7 @@
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading">Finance</div>
                             <a class="nav-link <?=(array_search(uri_string(), $arrSupplierMenu)) ? 'active-single' : ''?>" href="<?=base_url('/supplier')?>">
-                                <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                                <div class="sb-nav-link-icon"></i></div>
                                 Supplier
                             </a>
                             <a 
@@ -114,7 +118,7 @@
                                 data-bs-target="#collapseLayouts" 
                                 aria-expanded="<?=array_search(uri_string(), $arrListMenu) ? 'true' : 'false'?>" 
                                 aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fa-regular fa-circle"></i></div>
+                                <div class="sb-nav-link-icon"></i></div>
                                 Deposit
                                 <div class="sb-sidenav-collapse-arrow">
                                     <i class="fa-solid fa-angle-down"></i>
@@ -135,6 +139,25 @@
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a class="text-info" href="<?=base_url('/')?>">Main</a></li>
+                                <?php if (isset($breadcrumb)) {?>
+                                <?php foreach($breadcrumb as $key => $row): ?>
+                                <li class="breadcrumb-item <?=$row['active'] ? 'active text-secondary' : ''?>"
+                                    <?=$row['active'] ? 'aria-current="page"' : ''?>>
+                                    <?php
+                                        if($row['active']) {
+                                            echo $row['label'];
+                                        } else {
+                                            echo '<a href="'.$row['url'].'" class="text-info">'.$row['label'].'</a>';
+                                        }
+                                    ?>
+                                </li>
+                                <?php endforeach ?>
+                                <?php } ?>
+                            </ol>
+                        </nav>
                         <?php $this->renderSection('content'); ?>
                     </div>
                 </main>
