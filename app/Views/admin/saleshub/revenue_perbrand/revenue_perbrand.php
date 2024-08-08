@@ -173,36 +173,36 @@
     </div>
 </div>
 <script>
-$('#checkBoxYesterday').change(function() {
-    $('#startDate').val('');
-    $('#endDate').val('');
-});
+    $('#checkBoxYesterday').change(function() {
+        $('#startDate').val('');
+        $('#endDate').val('');
+    });
 
-$('#startDate').change(function() {
-    $('#checkBoxYesterday').prop('checked', false);
-});
+    $('#startDate').change(function() {
+        $('#checkBoxYesterday').prop('checked', false);
+    });
 
-$('#endDate').change(function() {
-    $('#checkBoxYesterday').prop('checked', false);
-});
+    $('#endDate').change(function() {
+        $('#checkBoxYesterday').prop('checked', false);
+    });
 
-$('#submitForm').click(function(e) {
-    e.preventDefault();
+    $('#submitForm').click(function(e) {
+        e.preventDefault();
 
-    var db = $('#form_db').val();
-    var startDate = $('#startDate').val();
-    var endDate = $('#endDate').val();
-    var yesterday = $('#checkBoxYesterday').val();
+        var db = $('#form_db').val();
+        var startDate = $('#startDate').val();
+        var endDate = $('#endDate').val();
+        var yesterday = $('#checkBoxYesterday').val();
 
-    if ($('#checkBoxYesterday').is(":checked")) {
-        params = '?db=' + db + '&startDt=' + yesterday;
-    } else if (startDate.length > 0 && endDate.length > 0) {
-        params = "?db=" + db + "&startDt=" + startDate + "&endDt=" + endDate;
-    } else {
-        params = '?db=' + db;
-    }
+        if ($('#checkBoxYesterday').is(":checked")) {
+            params = '?db=' + db + '&startDt=' + yesterday;
+        } else if (startDate.length > 0 && endDate.length > 0) {
+            params = "?db=" + db + "&startDt=" + startDate + "&endDt=" + endDate;
+        } else {
+            params = '?db=' + db;
+        }
 
-    location.href = "<?=base_url('/saleshub/revenue_perbrand')?>" + params;
-});
+        location.href = "<?=base_url('/saleshub/revenue_perbrand')?>" + params;
+    });
 </script>
 <?php $this->endSection() ?>
