@@ -11,6 +11,8 @@ function CheckDB($currentDB){
         return $selected =  "Digipos Amazon";
       case "de":
         return $selected =  "Digipos EPS";
+      case "od":
+        return $selected =  "Otodev";
       default:
         return $selected = "Replica Amazon";
   }

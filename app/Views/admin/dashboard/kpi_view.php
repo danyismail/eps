@@ -11,7 +11,7 @@
                             <option value="">-- Choose --</option>
                             <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
                             <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
-                            <option value="de" <?=@$_GET['db'] === "od" ? "selected" : ''?>>Otodev</option>
+                            <option value="od" <?=@$_GET['db'] === "od" ? "selected" : ''?>>Otodev</option>
                         </select>
                     </div>
                 </div>
