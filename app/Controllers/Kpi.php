@@ -32,7 +32,7 @@ class Kpi extends BaseController
         }
 
         if($request->getGet('status')) {
-            $datafilter['status'] = $request->getGet('status');
+            $datafilter['status'] = (int)$request->getGet('status');
         };
 
         if($request->getGet('db')) {
