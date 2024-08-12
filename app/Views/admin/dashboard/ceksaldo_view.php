@@ -1,8 +1,6 @@
 <?php $this->extend('layout/template') ?>
 <?php $this->Section('content') ?>
 <div class="pr-5 pl-5 mt-2">
-    <a href="" onclick=f5()>Refresh page...</a>
-    <br>
     <?php
         $isToday = time();
         $isDate = date("Y-m-d", strtotime('+7 hours', $isToday));
@@ -17,43 +15,43 @@
                 onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
                 <option value="">Select...</option>
                 <?php $session = session(); ?>
-                
-                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                    <option value="<?=base_url('ceksaldo?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>
-                        Replica Amazone
-                    </option>
-                <?php } ?>
-
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                    <option value="<?=base_url('ceksaldo?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>
-                        Replica EPS
-                    </option>
-                <?php } ?>
 
                 <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                    <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>
-                        Digipos Amazone
-                    </option>
+                <option value="<?=base_url('ceksaldo?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>
+                    Replica Amazone
+                </option>
                 <?php } ?>
 
                 <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                    <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
-                        Digipos EPS
-                    </option>
+                <option value="<?=base_url('ceksaldo?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>
+                    Replica EPS
+                </option>
+                <?php } ?>
+
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
+                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>
+                    Digipos Amazone
+                </option>
                 <?php } ?>
 
                 <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                    <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
-                        Digipos EPS
-                    </option>
+                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
+                    Digipos EPS
+                </option>
+                <?php } ?>
+
+                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
+                    Digipos EPS
+                </option>
                 <?php } ?>
 
                 <?php if(in_array($session->get('data')['role'], ['superadmin'] )) {?>
-                    <option value="<?=base_url('ceksaldo?db=od')?>" <?=@$_GET['db'] === "od" ? "selected" : ''?>>
-                        Otodev
-                    </option>
+                <option value="<?=base_url('ceksaldo?db=od')?>" <?=@$_GET['db'] === "od" ? "selected" : ''?>>
+                    Otodev
+                </option>
                 <?php } ?>
-                
+
             </select>
         </div>
     </div>
