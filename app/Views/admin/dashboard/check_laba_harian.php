@@ -38,54 +38,122 @@
     <table class="table">
         <thead>
             <tr>
-                <th width="1%"></th>
-                <?php foreach ($labaHarian as $group) { ?>
-                <th scope="col" class="text-center" style="border-right:1px solid #ddd"><?=$group[0]['tanggal']?></th>
-                <?php } ?>
+                <th width="1%" style="border-bottom:none; border-left:1px solid #ddd"></th>
+                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd"><?=date("Y-m-d", strtotime("-2 day"))?></th>
+                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd"><?=date("Y-m-d", strtotime("-1 day"))?></th>
+                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd"><?=date("Y-m-d")?></th>
             </tr>
         </thead>
         <tbody>
             <tr>
-                <td style="padding: 0;">
-                    <table class="table table-bordered">
+                <td style="padding: 0; border-left:1px solid #ddd; border-top: none">
+                    <table class="tablex">
                         <thead>
-                            <th>Jam</th>
+                            <th style="border-bottom: none;">Jam</th>
                         </thead>
                         <?php for($i=1; $i<=24; $i++){ ?>
-                        <tbody>
-                            <td><?=$i == 24 ? '00' : $i?></td>
+                        <tbody style="border: none">
+                            <td  style="border-bottom: none;"><?=$i == 24 ? '00' : $i?></td>
                         </tbody>
                         <?php } ?>
                     </table>
                 </td>
-                <?php
-                    foreach ($labaHarian as $group) { ?>
-                <td style="padding: 0;">
-                    <table class="table">
-                        <thead>
-                            <th>Trx</th>
-                            <th style="border-right: 1px solid #ddd">Laba</th>
-                        </thead>
-                        <?php 
-                            foreach ($group as $item) { ?>
-                        <tbody>
-                            <td style="border-left: 1px solid #ddd"><?=FormatNumber($item['trx'])?></td>
-                            <td style="border-right: 1px solid #ddd"><?=FormatNumber($item['laba'])?></td>
-                        </tbody>
-                        <?php } ?>
+                
+                <td style="padding: 0; border-top: none">
+                    <?php
+                        foreach ($labaHarian as $group) { 
+                            if(date("Y-m-d", strtotime("-2 day")) == $group[0]['tanggal']) { 
+                    ?>
+                        <table class="table">
+                            <thead>
+                                <th style="border-bottom: none; border-left: 1px solid #ddd;">Trx</th>
+                                <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
+                            </thead>
+                            <?php 
+                                foreach ($group as $item) { 
+                            ?>
+                                <tbody style="border: none">
+                                    <td style="border-left: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['trx'])?></td>
+                                    <td style="border-right: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['laba'])?></td>
+                                </tbody>
+                            <?php } ?>
 
-                        <?php 
+                            <?php 
                                 if(count($group) < 24) { 
                                     for($i=1; $i <= 24 - count($group); $i++) {
                             ?>
-                        <tbody>
-                            <td style="border-left: 1px solid #ddd">&nbsp;</td>
-                            <td style="border-right: 1px solid #ddd">&nbsp;</td>
-                        </tbody>
-                        <?php } } ?>
-                    </table>
+                            <tbody>
+                                <td style="border-left: 1px solid #ddd; border-bottom: none">&nbsp;</td>
+                                <td style="border-right: 1px solid #ddd; border-bottom: none">&nbsp;</td>
+                            </tbody>
+                            <?php } } ?>
+                        </table>
+                    <?php } } ?>
                 </td>
-                <?php } ?>
+
+                <td style="padding: 0; border-top: none">
+                    <?php
+                        foreach ($labaHarian as $group) { 
+                            if(date("Y-m-d", strtotime("-1 day")) == $group[0]['tanggal']) { 
+                    ?>
+                            <table class="table">
+                                <thead>
+                                    <th style="border-bottom: none">Trx</th>
+                                    <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
+                                </thead>
+                                <?php 
+                                    foreach ($group as $item) { 
+                                ?>
+                                    <tbody style="border: none">
+                                        <td style="border-bottom: none"><?=FormatNumber($item['trx'])?></td>
+                                        <td style="border-right: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['laba'])?></td>
+                                    </tbody>
+                                <?php } ?>
+
+                                <?php 
+                                    if(count($group) < 24) { 
+                                        for($i=1; $i <= 24 - count($group); $i++) {
+                                ?>
+                                <tbody>
+                                    <td>&nbsp;</td>
+                                    <td>&nbsp;</td>
+                                </tbody>
+                                <?php } } ?>
+                            </table>
+                    <?php } } ?>
+                </td>
+
+                <td style="padding: 0; border-top: none">
+                    <?php
+                        foreach ($labaHarian as $group) { 
+                            if(date("Y-m-d") == $group[0]['tanggal']) { 
+                    ?>
+                        <table class="table" style="border: 0">
+                            <thead>
+                                <th style="border-bottom: none">Trx</th>
+                                <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
+                            </thead>
+                            <?php 
+                                foreach ($group as $item) { 
+                            ?>
+                                <tbody style="border:none">
+                                    <td style="border-bottom: none" ><?=FormatNumber($item['trx'])?></td>
+                                    <td style="border-right: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['laba'])?></td>
+                                </tbody>
+                            <?php } ?>
+
+                            <?php 
+                                if(count($group) < 24) { 
+                                    for($i=1; $i <= 24 - count($group); $i++) {
+                            ?>
+                            <tbody style="border:none">
+                                <td style="border-bottom: none">&nbsp;</td>
+                                <td style="border-right: 1px solid #ddd; border-bottom: none">&nbsp;</td>
+                            </tbody>
+                            <?php } } ?>
+                        </table>
+                    <?php } } ?>
+                </td>
             </tr>
         </tbody>
     </table>
