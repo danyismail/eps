@@ -53,7 +53,8 @@ class RevenuePerBrandController extends BaseController
         );
         if($session->get('data')['role'] === 'superadmin'){
             echo view('admin/saleshub/revenue_perbrand/revenue_perbrand', $response);
+        } else {
+            echo view('admin/dashboard/product_overview', $response);
         }
-        echo view('admin/dashboard/product_overview', $response);
 	}
 }
