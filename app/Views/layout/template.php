@@ -23,8 +23,9 @@
     <style>
     body {
         font-size: 14px;
-        font-family:"Calibri", sans-serif;
+        font-family: "Calibri", sans-serif;
     }
+
     .pagination {
         list-style-type: none;
         padding: 10px 0;
@@ -99,7 +100,8 @@
         <!-- Navbar-->
         <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                     <li><a class="dropdown-item" href="<?=base_url('/logout')?>">Logout</a></li>
                 </ul>
@@ -116,12 +118,23 @@
                     $pathLabaHarianArray = array("reseller/ra/harian", "reseller/re/harian", "reseller/da/harian", "reseller/de/harian");
                     $pathLabaRugiArray = array("reseller/ra/labarugi", "reseller/re/labarugi", "reseller/da/labarugi", "reseller/de/labarugi");
 
+                    $currentDB = GetDatabaseBySession($session->get('data')['role']);
+                    $dbName = [];
+                    foreach($currentDB as $db){
+                        array_push($dbName, CheckDB($db));
+                    }
                     $menu = [
                         [
                             'name' => 'KPI', 
                             'url' => 'kpi', 
                             'rolePermission' => ['superadmin'],
                             'active_class' =>  in_array(uri_string(), $pathArray) ? 'active-single' : ''
+                        ],
+                        [
+                            'name' => 'Product Overview',
+                            // 'url' => 'saleshub/revenue_perbrand?db='.$useDB,
+                            'rolePermission' => ['amazone', 'eps'],
+                            'active_class' => (uri_string() === 'saleshub/revenue_perbrand') ? 'active-single' : ''
                         ],
                         [
                             'name' => 'Saldo Supplier', 
@@ -192,15 +205,38 @@
                             foreach($menu as $item): 
                                 if(in_array($session->get('data')['role'], $item['rolePermission'])){
                         ?>
-                                <a class="nav-link <?=$item['active_class']?>"
-                                    href="<?=base_url('/'.$item['url'])?>">
-                                    <div class="sb-nav-link-icon"></div>
-                                    <?=$item['name']?>
-                                </a>
+
                         <?php 
-                                } 
-                            endforeach; 
+                            $arrRevenuePerBrand = array("", "saleshub/revenue_perbrand");
                         ?>
+
+                        <?php if ($item['name'] === "Product Overview") { ?>
+                        <a class="nav-link <?=array_search(uri_string(), $arrRevenuePerBrand) ? '' : 'collapsed'?>"
+                            href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
+                            aria-expanded="<?=array_search(uri_string(), $arrRevenuePerBrand) ? 'true' : 'false'?>"
+                            aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"></div>
+                            Product Overview
+                            <div class="sb-sidenav-collapse-arrow">
+                                <i class="fa-solid fa-angle-down"></i>
+                            </div>
+                        </a>
+                        <div class="collapse <?=array_search(uri_string(), $arrRevenuePerBrand) ? 'show' : ''?>"
+                            id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <?php $i=0; for($i=0; $i<count($dbName); $i++)  { ?>
+                                <a class="nav-link <?=(uri_string() === 'saleshub/revenue_perbrand' && $_GET['db'] === $currentDB[$i]) ? 'active-single' : ''?>"
+                                    href="<?=base_url('/saleshub/revenue_perbrand?db='.$currentDB[$i])?>"><?=$dbName[$i]; ?></a>
+                                <?php } ?>
+                            </nav>
+                        </div>
+                        <?php } else { ?>
+                        <a class="nav-link <?=$item['active_class']?>" href="<?=base_url('/'.$item['url'])?>">
+                            <div class="sb-nav-link-icon"></div>
+                            <?= $item['name'] ?>
+                        </a>
+                        <?php } ?>
+                        <?php } endforeach; ?>
                     </div>
                 </div>
             </nav>

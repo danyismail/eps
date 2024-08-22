@@ -1,22 +1,35 @@
 <?php
 
-// app/Helpers/custom_helper.php
-
 if (!function_exists('CheckDB')) {
     function CheckDB($db_conn) {
-        // Your custom function logic here
-        $selected = "";
-    switch ($db_conn) {
-        case "ra":
-            return $selected = "Replica Amazon";
-        case "re":
-          return $selected =  "Replica EPS";
-        case "da":
-          return $selected =  "Digipos Amazon";
-        case "de":
-          return $selected =  "Digipos EPS";
+      // Your custom function logic here
+      $selected = "ra";
+      switch ($db_conn) {
+          case "ra":
+              return $selected = "Replica Amazone";
+          case "re":
+            return $selected =  "Replica EPS";
+          case "da":
+            return $selected =  "Digipos Amazone";
+          case "de":
+            return $selected =  "Digipos EPS";
+      }
+      return $selected;
     }
+}
+
+if (!function_exists('GetDatabaseBySession')) {
+  function GetDatabaseBySession($role) {
+      // Your custom function logic here
+    $selected = ["ra"];
+    switch ($role) {
+      case "amazone":
+        return $selected = ["ra","da"];
+      case "eps":
+        return $selected =  ["re","de"];
     }
+    return $selected;
+  }
 }
 
 if (!function_exists('FormatNumber')) {

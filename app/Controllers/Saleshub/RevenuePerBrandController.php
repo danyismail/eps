@@ -7,6 +7,7 @@ class RevenuePerBrandController extends BaseController
 {
     public function Index()
 	{
+        $session = session();
         $request = request();
         $client = service('curlrequest');
 
@@ -50,6 +51,9 @@ class RevenuePerBrandController extends BaseController
             array('label' => 'Sales Hub', 'url' => '', 'active' => false),
             array('label' => 'Revenue Per Brand '.CheckDB($dbPath), 'url' => '', 'active' => true),
         );
-        echo view('admin/saleshub/revenue_perbrand/revenue_perbrand', $response);
+        if($session->get('data')['role'] === 'superadmin'){
+            echo view('admin/saleshub/revenue_perbrand/revenue_perbrand', $response);
+        }
+        echo view('admin/dashboard/product_overview', $response);
 	}
 }
