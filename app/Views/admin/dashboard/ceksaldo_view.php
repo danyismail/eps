@@ -28,21 +28,9 @@
                 </option>
                 <?php } ?>
 
-                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>
-                    Digipos Amazone
-                </option>
-                <?php } ?>
-
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
-                    Digipos EPS
-                </option>
-                <?php } ?>
-
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                <option value="<?=base_url('ceksaldo?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
-                    Digipos EPS
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'eps', 'superadmin'] )) {?>
+                <option value="<?=base_url('ceksaldo?db=de')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
+                    Digipos
                 </option>
                 <?php } ?>
 

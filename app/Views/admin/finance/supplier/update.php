@@ -6,7 +6,7 @@
             <div class="col-md-4">
             </div>
             <div class="col-md-8">
-                <form action="<?=base_url('/supplier/da/update')?>" method="POST">
+                <form action="<?=base_url('/supplier/de/update')?>" method="POST">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="formGroupExampleInput">Name</label>

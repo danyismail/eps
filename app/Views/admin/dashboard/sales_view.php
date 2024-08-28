@@ -20,15 +20,9 @@
                 </option>
                 <?php } ?>
 
-                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>
-                    Digipos Amazone
-                </option>
-                <?php } ?>
-
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'eps', 'superadmin'] )) {?>
                 <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
-                    Digipos EPS
+                    Digipos
                 </option>
                 <?php } ?>
             </select>

@@ -17,12 +17,8 @@
                     <option value="<?=base_url('reseller/re/laba')?>"<?=(uri_string() === 'reseller/re/laba') ? 'selected' : ''?>>Replica EPS</option>
                 <?php } ?>
 
-                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                    <option value="<?=base_url('reseller/da/laba')?>"<?=(uri_string() === 'reseller/da/laba') ? 'selected' : ''?>>Digipos Amazone</option>
-                <?php } ?>
-
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                    <option value="<?=base_url('reseller/de/laba')?>" <?=(uri_string() === 'reseller/de/laba') ? 'selected' : ''?>>Digipos EPS</option>
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'eps', 'superadmin'] )) {?>
+                    <option value="<?=base_url('reseller/de/laba')?>" <?=(uri_string() === 'reseller/de/laba') ? 'selected' : ''?>>Digipos</option>
                 <?php } ?>
             </select>
         </div>
