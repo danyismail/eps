@@ -86,11 +86,7 @@ class Deposit extends BaseController
         $request = request();
         $client = service('curlrequest');
 
-        $pathDB = 'da';
-        if($request->getGet('db')) {
-            $pathDB = $request->getGet('db');
-        };
-        $response['pathDB'] = $pathDB;
+        $pathDB = 'de';
 
         try {
             $getDataCreated = $client->request("GET", getenv('API_HOST')."/deposit/$pathDB/created", [
@@ -126,7 +122,7 @@ class Deposit extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Cek Pending '. CheckDB($pathDB), 'url' => '', 'active' => true)
+            array('label' => 'Cek Pending ', 'url' => '', 'active' => true)
         );
         echo view('admin/finance/deposit/cek_pending', $response);
     }
@@ -135,11 +131,7 @@ class Deposit extends BaseController
         $request = request();
         $client = service('curlrequest');
 
-        $pathDB = 'da';
-        if($request->getGet('db')) {
-            $pathDB = $request->getGet('db');
-        };
-        $response['pathDB'] = $pathDB;
+        $pathDB = 'de';
 
         try {
             $params = "";
@@ -165,7 +157,7 @@ class Deposit extends BaseController
         $response['breadcrumb'] = array(
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
-            array('label' => 'Data Transaksi '. CheckDB($pathDB), 'url' => '', 'active' => true)
+            array('label' => 'Data Transaksi ', 'url' => '', 'active' => true)
         );
         echo view('admin/finance/deposit/transaksi', $response);
     }
@@ -256,7 +248,7 @@ class Deposit extends BaseController
             array('label' => 'Finance', 'url' => '#!', 'active' => false),
             array('label' => 'Deposit', 'url' => '#!', 'active' => false),
             array('label' => 'Cek Pending', 'url' => '', 'active' => false),
-            array('label' => 'Reply '.CheckDB($db_conn), 'url' => '', 'active' => true)
+            array('label' => 'Reply', 'url' => '', 'active' => true)
         );
         echo view('admin/finance/deposit/form_reply', $response);
     }
@@ -309,11 +301,7 @@ class Deposit extends BaseController
         $request = request();
         $client = service('curlrequest');
 
-        $pathDB = 'da';
-        if($request->getGet('db')) {
-            $pathDB = $request->getGet('db');
-        };
-        $response['pathDB'] = $pathDB;
+        $pathDB = 'de';
         $response['data'] = array();
 
         if($request->getGet('date')) {

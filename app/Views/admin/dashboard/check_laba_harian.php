@@ -18,14 +18,9 @@
                     <?=(uri_string() === 'reseller/re/harian') ? 'selected' : ''?>>Replica EPS</option>
                 <?php } ?>
 
-                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                <option value="<?=base_url('reseller/da/harian')?>"
-                    <?=(uri_string() === 'reseller/da/harian') ? 'selected' : ''?>>Digipos Amazone</option>
-                <?php } ?>
-
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'eps', 'superadmin'] )) {?>
                 <option value="<?=base_url('reseller/de/harian')?>"
-                    <?=(uri_string() === 'reseller/de/harian') ? 'selected' : ''?>>Digipos EPS</option>
+                    <?=(uri_string() === 'reseller/de/harian') ? 'selected' : ''?>>Digipos</option>
                 <?php } ?>
 
                 <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
