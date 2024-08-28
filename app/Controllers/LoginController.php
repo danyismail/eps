@@ -72,14 +72,16 @@ class LoginController extends BaseController
                 
                 if($responseData['data']['role'] === 'admin') {
                     return redirect()->to(base_url('/supplier'));
-                } else {
+                } else if ($responseData['data']['role'] === 'amazone' || $responseData['data']['role'] === 'eps')  {
+                    $conn = GetDatabaseBySession($responseData['data']['role']);
+                    return redirect()->to(base_url('/saleshub/revenue_perbrand?db='.$conn[0]));
+                }
+                else {
                     return redirect()->to(base_url('/kpi'));
                 }
-
             } else {
                 $session->setFlashData('info', $responseData['message']);
                 return redirect()->to(base_url('/login'));
-                print_r($responseData['message']);
             }
         }
         return redirect()->to(base_url('/login'));

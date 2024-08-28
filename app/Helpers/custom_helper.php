@@ -25,9 +25,9 @@ if (!function_exists('GetDatabaseBySession')) {
     $selected = ["ra"];
     switch ($role) {
       case "amazone":
-        return $selected = ["ra","da"];
+        return $selected = ["ra"];
       case "eps":
-        return $selected =  ["re","de"];
+        return $selected =  ["re"];
     }
     return $selected;
   }
