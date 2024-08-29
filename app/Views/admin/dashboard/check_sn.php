@@ -15,13 +15,13 @@
                 <?php $session = session(); ?>
                 <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
                     <option value="<?=base_url('sn/ra/list')?>" <?=(uri_string() === 'sn/ra/list') ? 'selected' : ''?>>
-                        Replica Amazone
+                        Amazone
                 </option>
                 <?php } ?>
                 
                 <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
                     <option value="<?=base_url('sn/re/list')?>" <?=(uri_string() === 'sn/re/list') ? 'selected' : ''?>>
-                        Replica EPS
+                        EPS
                     </option>
                 <?php } ?>
                 

@@ -18,13 +18,13 @@
 
                 <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
                 <option value="<?=base_url('ceksaldo?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>
-                    Replica Amazone
+                    Amazone
                 </option>
                 <?php } ?>
 
                 <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
                 <option value="<?=base_url('ceksaldo?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>
-                    Replica EPS
+                    EPS
                 </option>
                 <?php } ?>
 

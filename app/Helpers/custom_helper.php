@@ -8,9 +8,9 @@ if (!function_exists('CheckDB')) {
         $selected = "";
     switch ($db_conn) {
         case "ra":
-            return $selected = "Replica Amazon";
+            return $selected = "Amazon";
         case "re":
-          return $selected =  "Replica EPS";
+          return $selected =  "EPS";
         case "da":
           return $selected =  "Digipos Amazon";
         case "de":

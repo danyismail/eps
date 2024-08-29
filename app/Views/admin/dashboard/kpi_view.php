@@ -9,8 +9,9 @@
                         <label for="db">Pilih Database</label>
                         <select name="db" class="form-control">
                             <option value="">-- Choose --</option>
-                            <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                            <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
+                            <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Amazone</option>
+                            <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>EPS</option>
+                            <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos</option>
                             <option value="od" <?=@$_GET['db'] === "od" ? "selected" : ''?>>Otodev</option>
                         </select>
                     </div>

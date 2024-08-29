@@ -11,11 +11,11 @@
                             <option value="">-- Choose --</option>
                             <?php $session = session(); ?>
                             <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                                <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Replica Amazone</option>
+                                <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Amazone</option>
                             <?php } ?>
 
                             <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                                <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>Replica EPS</option>
+                                <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>EPS</option>
                             <?php } ?>
 
                             <?php if(in_array($session->get('data')['role'], ['amazone', 'eps', 'superadmin'] )) {?>
