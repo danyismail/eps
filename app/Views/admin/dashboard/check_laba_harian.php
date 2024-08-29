@@ -23,7 +23,7 @@
                     <?=(uri_string() === 'reseller/de/harian') ? 'selected' : ''?>>Digipos</option>
                 <?php } ?>
 
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                <?php if(in_array($session->get('data')['role'], ['superadmin'] )) {?>
                 <option value="<?=base_url('reseller/od/harian')?>"
                     <?=(uri_string() === 'reseller/od/harian') ? 'selected' : ''?>>Otodev</option>
                 <?php } ?>

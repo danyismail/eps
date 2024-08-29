@@ -21,7 +21,7 @@
                 <?php } ?>
 
                 <?php if(in_array($session->get('data')['role'], ['amazone', 'eps', 'superadmin'] )) {?>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
+                <option value="<?=base_url('penjualan?db=de')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
                     Digipos
                 </option>
                 <?php } ?>
