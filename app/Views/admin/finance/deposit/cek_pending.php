@@ -2,16 +2,6 @@
 <?php $this->Section('content') ?>
 <div class="mt-1">
     <div class="bg-white pb-3 p-2">
-        <div class="row mb-3">
-            <div class="col-md-3">
-                <label for="db">Pilih Database</label>  
-                <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
-                    <option value="">Select...</option>
-                    <option value="cek_pending?db=da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                    <option value="cek_pending?db=de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
-                </select>
-            </div>
-        </div>
         <table class="table table-bordered table-responsive">
             <thead>
                 <tr class="bg-info text-white">
@@ -36,7 +26,7 @@
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td>
-                        <a href="<?=base_url('/deposit/'.$pathDB.'/form_upload/'.$row['id'])?>">Upload Image</a>
+                        <a href="<?=base_url('/deposit/de/form_upload/'.$row['id'])?>">Upload Image</a>
                     </td>
                 </tr>
                 <?php endforeach ?>
@@ -78,10 +68,10 @@
                     <td><?=$row['origin_account']?></td>
                     <td><?=$row['destination_account']?></td>
                     <td><?=$row['reply']?></td>
-                    <td><a href="<?=getenv('API_HOST')."/deposit/$pathDB/image/".$row['id']?>" class="load-image">Show
+                    <td><a href="<?=getenv('API_HOST')."/deposit/de/image/".$row['id']?>" class="load-image">Show
                             Image</a></td>
                     <td>
-                        <a href="<?=base_url('/deposit/'.$pathDB.'/add_reply/'.$row['id'])?>">Upload Bukti</a>
+                        <a href="<?=base_url('/deposit/de/add_reply/'.$row['id'])?>">Upload Bukti</a>
                     </td>
                 </tr>
                 <?php endforeach ?>

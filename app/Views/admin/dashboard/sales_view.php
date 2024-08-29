@@ -10,25 +10,19 @@
                 <?php $session = session(); ?>
                 <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
                 <option value="<?=base_url('penjualan?db=ra')?>" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>
-                    Replica Amazone
+                    Amazone
                 </option>
                 <?php } ?>
 
                 <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
                 <option value="<?=base_url('penjualan?db=re')?>" <?=@$_GET['db'] === "re" ? "selected" : ''?>>
-                    Replica EPS
+                    EPS
                 </option>
                 <?php } ?>
 
-                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "da" ? "selected" : ''?>>
-                    Digipos Amazone
-                </option>
-                <?php } ?>
-
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                <option value="<?=base_url('penjualan?db=da')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
-                    Digipos EPS
+                <?php if(in_array($session->get('data')['role'], ['amazone', 'eps', 'superadmin'] )) {?>
+                <option value="<?=base_url('penjualan?db=de')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>
+                    Digipos
                 </option>
                 <?php } ?>
             </select>

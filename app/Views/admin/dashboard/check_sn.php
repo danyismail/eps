@@ -15,25 +15,19 @@
                 <?php $session = session(); ?>
                 <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
                     <option value="<?=base_url('sn/ra/list')?>" <?=(uri_string() === 'sn/ra/list') ? 'selected' : ''?>>
-                        Replica Amazone
+                        Amazone
                 </option>
                 <?php } ?>
                 
                 <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
                     <option value="<?=base_url('sn/re/list')?>" <?=(uri_string() === 'sn/re/list') ? 'selected' : ''?>>
-                        Replica EPS
+                        EPS
                     </option>
                 <?php } ?>
                 
-                <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                    <option value="<?=base_url('sn/da/list')?>" <?=(uri_string() === 'sn/da/list') ? 'selected' : ''?>>
-                        Digipos Amazone
-                    </option>
-                <?php } ?>
-                
-                <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
+                <?php if(in_array($session->get('data')['role'], ['eps','amazone', 'superadmin'] )) {?>
                     <option value="<?=base_url('sn/de/list')?>" <?=(uri_string() === 'sn/de/list') ? 'selected' : ''?>>
-                        Digipos EPS
+                        Digipos
                     </option>
                 <?php } ?>
             </select>

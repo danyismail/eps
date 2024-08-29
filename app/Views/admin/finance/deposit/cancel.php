@@ -6,14 +6,6 @@
             <form method="GET" action="<?=base_url('/deposit/cancel')?>" class="mb-2 mt-2">
                 <div class="row mb-2 mt-2">
                     <div class="form-group col-md-3">
-                        <label for="db">Pilih Database</label>
-                        <select name="db" class="form-control">
-                            <option value="">-- Choose --</option>
-                            <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                            <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
                         <label for="date">Search Date</label>
                         <input type="text" name="date" class="form-control" value="<?=@$_GET['date']?>" />
                     </div>
@@ -51,7 +43,7 @@
                     <td><?=number_format($row['amount'], 0, ",", ".");?></td>
                     <td><?=$row['status']?></td>
                     <td>
-                        <a href="<?=base_url('/deposit/'.$pathDB.'/delete_deposit/'.$row['id'])?>"
+                        <a href="<?=base_url('/deposit/de/delete_deposit/'.$row['id'])?>"
                             onclick="return confirm('Yakin akan menghapus data ini?');">Edit Status</a>
                     </td>
                 </tr>

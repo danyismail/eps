@@ -8,16 +8,6 @@
             <div class="col-md-9 col-sm-12">
                 <form action="<?=base_url('/deposit/create')?>" method="POST">
                     <div class="form-row">
-                        <div class="form-group col-md-7 col-sm-12">
-                            <label for="db">Pilih Database</label>
-                            <select name="db" class="form-control" id="selectDB">
-                                <option value="">-- Choose --</option>
-                                <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                                <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-row">
                         <div class="form-group col-md-7">
                             <label for="formGroupExampleInput">PIC</label>
                             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="PIC"
@@ -84,6 +74,8 @@
             let val = $(this).val();
             loadData(val)
         });
+
+        loadData('de');
 
         function loadData(val) {
             $('#inputSupplier').html('<option value="">-- Choose --</option>');

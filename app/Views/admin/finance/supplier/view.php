@@ -2,7 +2,7 @@
 <?php $this->Section('content') ?>
 <div class="mt-2">
     <div class="table-responsive bg-white pb-3 p-2">
-        <div class="row mb-3">
+        <!-- <div class="row mb-3">
             <div class="col-md-3">
                 <label for="db">Pilih Database</label>
                 <select class="form-control" onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);">
@@ -11,7 +11,7 @@
                     <option value="<?=base_url('supplier?db=de')?>" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
                 </select>
             </div>
-        </div>
+        </div> -->
         
         <div class="mb-3">
             <a href="<?=base_url('/supplier/add')?>" class="btn btn-primary mb-2 float-rightx">Add Item</a>
