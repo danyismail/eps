@@ -6,7 +6,7 @@ if (!function_exists('CheckDB')) {
     function CheckDB($db_conn) {
         // Your custom function logic here
         $selected = "";
-    switch ($db_conn) {
+      switch ($db_conn) {
         case "ra":
             return $selected = "Amazon";
         case "re":
@@ -14,8 +14,10 @@ if (!function_exists('CheckDB')) {
         case "da":
           return $selected =  "Digipos Amazon";
         case "de":
-          return $selected =  "Digipos EPS";
-    }
+          return $selected =  "Digipos";
+        case "od":
+          return $selected =  "Otodev";
+      }
     }
 }
 
