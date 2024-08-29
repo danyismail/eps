@@ -4,16 +4,16 @@ function CheckDB($currentDB){
     $selected = "";
     switch ($currentDB) {
       case "ra":
-          return $selected = "Replica Amazon";
+          return $selected = "Amazon";
       case "re":
-        return $selected =  "Replica EPS";
+        return $selected =  "EPS";
       case "da":
         return $selected =  "Digipos Amazon";
       case "de":
-        return $selected =  "Digipos EPS";
+        return $selected =  "Digipos";
       case "od":
         return $selected =  "Otodev";
       default:
-        return $selected = "Replica Amazon";
+        return $selected = "Amazon";
   }
 }

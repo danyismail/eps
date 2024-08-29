@@ -2,20 +2,19 @@
 
 if (!function_exists('CheckDB')) {
     function CheckDB($db_conn) {
-      // Your custom function logic here
-      $selected = "ra";
+        // Your custom function logic here
+        $selected = "";
       switch ($db_conn) {
           case "ra":
-              return $selected = "Replica Amazone";
+              return $selected = "Amazon";
           case "re":
-            return $selected =  "Replica EPS";
+            return $selected =  "EPS";
           case "da":
-            return $selected =  "Digipos Amazone";
+            return $selected =  "Digipos Amazon";
           case "de":
             return $selected =  "Digipos EPS";
       }
-      return $selected;
-    }
+  }
 }
 
 if (!function_exists('GetDatabaseBySession')) {

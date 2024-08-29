@@ -6,14 +6,6 @@
             <form method="GET" action="<?=base_url('/deposit/data_transaksi')?>" class="mb-2 mt-2">
                 <div class="row mb-2 mt-2">
                     <div class="form-group col-md-3">
-                        <label for="db">Pilih Database</label>
-                        <select name="db" class="form-control">
-                            <option value="">-- Choose --</option>
-                            <option value="da" <?=@$_GET['db'] === "da" ? "selected" : ''?>>Digipos Amazone</option>
-                            <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos EPS</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-3">
                         <label for="StartDate">Start Date</label>
                         <input type="date" name="startDt" class="form-control" value="<?=@$_GET['startDt']?>" />
                     </div>
@@ -48,7 +40,7 @@
             <tbody>
                 <?php 
                     foreach($data as $row): 
-                        $getImage = "/deposit/$pathDB/image/".$row['id'];
+                        $getImage = "/deposit/de/image/".$row['id'];
                 ?>
                 <tr>
                     <td><?=$row['id']?></td>
