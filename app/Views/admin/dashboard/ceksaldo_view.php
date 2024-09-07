@@ -36,7 +36,7 @@
 
                 <?php if(in_array($session->get('data')['role'], ['superadmin'] )) {?>
                 <option value="<?=base_url('ceksaldo?db=od')?>" <?=@$_GET['db'] === "od" ? "selected" : ''?>>
-                    Otodev
+                    Connexion
                 </option>
                 <?php } ?>
 

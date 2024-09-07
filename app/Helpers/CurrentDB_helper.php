@@ -12,7 +12,7 @@ function CheckDB($currentDB){
       case "de":
         return $selected =  "Digipos";
       case "od":
-        return $selected =  "Otodev";
+        return $selected =  "Connexion";
       default:
         return $selected = "Amazon";
   }
