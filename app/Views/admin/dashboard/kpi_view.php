@@ -12,7 +12,7 @@
                             <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Amazone</option>
                             <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>EPS</option>
                             <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos</option>
-                            <option value="od" <?=@$_GET['db'] === "od" ? "selected" : ''?>>Otodev</option>
+                            <option value="od" <?=@$_GET['db'] === "od" ? "selected" : ''?>>Connexion</option>
                         </select>
                     </div>
                 </div>

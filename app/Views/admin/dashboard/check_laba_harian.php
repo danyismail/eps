@@ -25,7 +25,7 @@
 
                 <?php if(in_array($session->get('data')['role'], ['superadmin'] )) {?>
                 <option value="<?=base_url('reseller/od/harian')?>"
-                    <?=(uri_string() === 'reseller/od/harian') ? 'selected' : ''?>>Otodev</option>
+                    <?=(uri_string() === 'reseller/od/harian') ? 'selected' : ''?>>Connexion</option>
                 <?php } ?>
             </select>
         </div>
@@ -34,9 +34,12 @@
         <thead>
             <tr>
                 <th width="1%" style="border-bottom:none; border-left:1px solid #ddd"></th>
-                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd"><?=date("Y-m-d", strtotime("-2 day"))?></th>
-                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd"><?=date("Y-m-d", strtotime("-1 day"))?></th>
-                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd"><?=date("Y-m-d")?></th>
+                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd">
+                    <?=date("Y-m-d", strtotime("-2 day"))?></th>
+                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd">
+                    <?=date("Y-m-d", strtotime("-1 day"))?></th>
+                <th scope="col" class="text-center" style="border-bottom:none; border-right:1px solid #ddd">
+                    <?=date("Y-m-d")?></th>
             </tr>
         </thead>
         <tbody>
@@ -48,41 +51,43 @@
                         </thead>
                         <?php for($i=1; $i<=24; $i++){ ?>
                         <tbody style="border: none">
-                            <td  style="border-bottom: none;"><?=$i == 24 ? '00' : $i?></td>
+                            <td style="border-bottom: none;"><?=$i == 24 ? '00' : $i?></td>
                         </tbody>
                         <?php } ?>
                     </table>
                 </td>
-                
+
                 <td style="padding: 0; border-top: none">
                     <?php
                         foreach ($labaHarian as $group) { 
                             if(date("Y-m-d", strtotime("-2 day")) == $group[0]['tanggal']) { 
                     ?>
-                        <table class="table">
-                            <thead>
-                                <th style="border-bottom: none; border-left: 1px solid #ddd;">Trx</th>
-                                <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
-                            </thead>
-                            <?php 
+                    <table class="table">
+                        <thead>
+                            <th style="border-bottom: none; border-left: 1px solid #ddd;">Trx</th>
+                            <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
+                        </thead>
+                        <?php 
                                 foreach ($group as $item) { 
                             ?>
-                                <tbody style="border: none">
-                                    <td style="border-left: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['trx'])?></td>
-                                    <td style="border-right: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['laba'])?></td>
-                                </tbody>
-                            <?php } ?>
+                        <tbody style="border: none">
+                            <td style="border-left: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['trx'])?>
+                            </td>
+                            <td style="border-right: 1px solid #ddd; border-bottom: none">
+                                <?=FormatNumber($item['laba'])?></td>
+                        </tbody>
+                        <?php } ?>
 
-                            <?php 
+                        <?php 
                                 if(count($group) < 24) { 
                                     for($i=1; $i <= 24 - count($group); $i++) {
                             ?>
-                            <tbody>
-                                <td style="border-left: 1px solid #ddd; border-bottom: none">&nbsp;</td>
-                                <td style="border-right: 1px solid #ddd; border-bottom: none">&nbsp;</td>
-                            </tbody>
-                            <?php } } ?>
-                        </table>
+                        <tbody>
+                            <td style="border-left: 1px solid #ddd; border-bottom: none">&nbsp;</td>
+                            <td style="border-right: 1px solid #ddd; border-bottom: none">&nbsp;</td>
+                        </tbody>
+                        <?php } } ?>
+                    </table>
                     <?php } } ?>
                 </td>
 
@@ -91,30 +96,31 @@
                         foreach ($labaHarian as $group) { 
                             if(date("Y-m-d", strtotime("-1 day")) == $group[0]['tanggal']) { 
                     ?>
-                            <table class="table">
-                                <thead>
-                                    <th style="border-bottom: none">Trx</th>
-                                    <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
-                                </thead>
-                                <?php 
+                    <table class="table">
+                        <thead>
+                            <th style="border-bottom: none">Trx</th>
+                            <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
+                        </thead>
+                        <?php 
                                     foreach ($group as $item) { 
                                 ?>
-                                    <tbody style="border: none">
-                                        <td style="border-bottom: none"><?=FormatNumber($item['trx'])?></td>
-                                        <td style="border-right: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['laba'])?></td>
-                                    </tbody>
-                                <?php } ?>
+                        <tbody style="border: none">
+                            <td style="border-bottom: none"><?=FormatNumber($item['trx'])?></td>
+                            <td style="border-right: 1px solid #ddd; border-bottom: none">
+                                <?=FormatNumber($item['laba'])?></td>
+                        </tbody>
+                        <?php } ?>
 
-                                <?php 
+                        <?php 
                                     if(count($group) < 24) { 
                                         for($i=1; $i <= 24 - count($group); $i++) {
                                 ?>
-                                <tbody>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tbody>
-                                <?php } } ?>
-                            </table>
+                        <tbody>
+                            <td>&nbsp;</td>
+                            <td>&nbsp;</td>
+                        </tbody>
+                        <?php } } ?>
+                    </table>
                     <?php } } ?>
                 </td>
 
@@ -123,30 +129,31 @@
                         foreach ($labaHarian as $group) { 
                             if(date("Y-m-d") == $group[0]['tanggal']) { 
                     ?>
-                        <table class="table" style="border: 0">
-                            <thead>
-                                <th style="border-bottom: none">Trx</th>
-                                <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
-                            </thead>
-                            <?php 
+                    <table class="table" style="border: 0">
+                        <thead>
+                            <th style="border-bottom: none">Trx</th>
+                            <th style="border-right: 1px solid #ddd; border-bottom: none">Laba</th>
+                        </thead>
+                        <?php 
                                 foreach ($group as $item) { 
                             ?>
-                                <tbody style="border:none">
-                                    <td style="border-bottom: none" ><?=FormatNumber($item['trx'])?></td>
-                                    <td style="border-right: 1px solid #ddd; border-bottom: none"><?=FormatNumber($item['laba'])?></td>
-                                </tbody>
-                            <?php } ?>
+                        <tbody style="border:none">
+                            <td style="border-bottom: none"><?=FormatNumber($item['trx'])?></td>
+                            <td style="border-right: 1px solid #ddd; border-bottom: none">
+                                <?=FormatNumber($item['laba'])?></td>
+                        </tbody>
+                        <?php } ?>
 
-                            <?php 
+                        <?php 
                                 if(count($group) < 24) { 
                                     for($i=1; $i <= 24 - count($group); $i++) {
                             ?>
-                            <tbody style="border:none">
-                                <td style="border-bottom: none">&nbsp;</td>
-                                <td style="border-right: 1px solid #ddd; border-bottom: none">&nbsp;</td>
-                            </tbody>
-                            <?php } } ?>
-                        </table>
+                        <tbody style="border:none">
+                            <td style="border-bottom: none">&nbsp;</td>
+                            <td style="border-right: 1px solid #ddd; border-bottom: none">&nbsp;</td>
+                        </tbody>
+                        <?php } } ?>
+                    </table>
                     <?php } } ?>
                 </td>
             </tr>

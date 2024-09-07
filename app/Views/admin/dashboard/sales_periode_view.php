@@ -9,22 +9,22 @@
                         <label for="db">Pilih Database</label>
                         <select name="db" class="form-control">
                             <option value="">-- Choose --</option>
-                            
+
                             <?php $session = session(); ?>
                             <?php if(in_array($session->get('data')['role'], ['amazone', 'superadmin'] )) {?>
-                                <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Amazone</option>
+                            <option value="ra" <?=@$_GET['db'] === "ra" ? "selected" : ''?>>Amazone</option>
                             <?php } ?>
 
                             <?php if(in_array($session->get('data')['role'], ['eps', 'superadmin'] )) {?>
-                                <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>EPS</option>
+                            <option value="re" <?=@$_GET['db'] === "re" ? "selected" : ''?>>EPS</option>
                             <?php } ?>
 
                             <?php if(in_array($session->get('data')['role'], ['amazone', 'eps', 'superadmin'] )) {?>
-                                <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos</option>
+                            <option value="de" <?=@$_GET['db'] === "de" ? "selected" : ''?>>Digipos</option>
                             <?php } ?>
 
                             <?php if(in_array($session->get('data')['role'], ['superadmin'] )) {?>
-                                <option value="od" <?=@$_GET['db'] === "od" ? "selected" : ''?>>Otodev</option>
+                            <option value="od" <?=@$_GET['db'] === "od" ? "selected" : ''?>>Connexion</option>
                             <?php } ?>
                         </select>
                     </div>
